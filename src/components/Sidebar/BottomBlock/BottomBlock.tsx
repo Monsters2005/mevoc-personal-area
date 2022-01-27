@@ -1,5 +1,7 @@
 import React from 'react';
 
-export function SidebarBottomBlock() {
+type Props = {};
+
+export const SidebarBottomBlock = (props: Props) => {
   return <div></div>;
-}
+};

@@ -1,5 +1,7 @@
 import React from 'react';
 
-export function SidebarNavigation() {
+type Props = {};
+
+export const SidebarNavigation = (props: Props) => {
   return <div></div>;
-}
+};

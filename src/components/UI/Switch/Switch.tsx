@@ -2,6 +2,6 @@ import React from 'react';
 
 type Props = {};
 
-export const Dropdown = (props: Props) => {
+export const Switch = (props: Props) => {
   return <div></div>;
 };

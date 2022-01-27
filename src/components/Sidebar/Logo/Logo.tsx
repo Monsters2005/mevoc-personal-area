@@ -1,5 +1,7 @@
 import React from 'react';
 
-export function SidebarLogo() {
+type Props = {};
+
+export const SidebarLogo = (props: Props) => {
   return <div></div>;
-}
+};

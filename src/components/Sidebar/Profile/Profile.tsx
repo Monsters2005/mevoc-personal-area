@@ -1,5 +1,7 @@
 import React from 'react';
 
-export function SidebarProfile() {
+type Props = {};
+
+export const SidebarProfile = (props: Props) => {
   return <div></div>;
-}
+};

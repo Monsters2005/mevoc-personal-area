@@ -2,6 +2,6 @@ import React from 'react';
 
 type Props = {};
 
-const ProfileEdit = (props: Props) => {
+export const Select = (props: Props) => {
   return <div></div>;
 };
