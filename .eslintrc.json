@@ -39,6 +39,12 @@
       "error",
       { "anonymous": "always", "named": "never", "asyncArrow": "always" }
     ],
-    "import/extensions": "off"
+    "linebreak-style": ["error", "windows"],
+    "import/prefer-default-export": "off",
+    "react/require-default-props": [
+      "error",
+      { "ignoreFunctionalComponents": true }
+    ],
+    "react/button-has-type": "off"
   }
 }
