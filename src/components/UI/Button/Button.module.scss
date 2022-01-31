@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
 
-    background: #ffeba7 !important;
+    background: #ffeba7;
     border-radius: 10px;
     border: none;
 
@@ -13,13 +13,19 @@
     text-transform: uppercase;
 
     color: #1f2029;
+    transition: all 0.1s;
+
+    &:hover {
+      cursor: pointer;
+      background: #faecbd;
+    }
   }
   &_secondary {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #353742;
+    background: #282936;
     border-radius: 10px;
     border: none;
 
@@ -27,8 +33,63 @@
     letter-spacing: 1px;
     text-transform: uppercase;
 
+    transition: all 0.1s;
     color: rgba(196, 195, 202, 0.7);
+    & svg {
+      width: 30px;
+      height: 30px;
+
+      fill: rgba(196, 195, 202, 0.7);
+
+      & path {
+        fill: rgba(196, 195, 202, 0.7);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: rgb(196, 195, 202);
+      background: #373743;
+      & svg {
+        fill: rgb(196, 195, 202);
+        & path {
+          fill: rgb(196, 195, 202);
+        }
+      }
+    }
   }
   &_small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    padding: 9px;
+    border-radius: 10px;
+    border: none;
+
+    transition: all 0.1s;
+    & svg {
+      width: 30px;
+      height: 30px;
+
+      fill: rgba(196, 195, 202, 0.7);
+
+      & path {
+        fill: rgba(196, 195, 202, 0.7);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      background: rgba(234, 231, 255, 0.1);
+      & svg {
+        fill: rgb(196, 195, 202);
+        & path {
+          fill: rgb(196, 195, 202);
+        }
+      }
+    }
   }
 }
