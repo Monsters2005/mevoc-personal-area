@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
   styles?: CSSProperties;
   HTMLType?: 'button' | 'submit' | 'reset';
-  func: () => void;
+  onCLick: () => void;
 };
 
 export function Button({
@@ -14,14 +14,14 @@ export function Button({
   type,
   styles = {},
   HTMLType = 'button',
-  func,
+  onCLick,
 }: Props) {
   return (
     <button
       style={{ ...styles }}
       type={HTMLType}
       className={s[`button_${type}`]}
-      onClick={func}
+      onClick={onCLick}
     >
       {children}
     </button>

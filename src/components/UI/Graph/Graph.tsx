@@ -1,7 +1,5 @@
 import React from 'react';
 
-type Props = {};
-
-export const Graph = (props: Props) => {
-  return <div></div>;
-};
+export function Graph() {
+  return <div />;
+}

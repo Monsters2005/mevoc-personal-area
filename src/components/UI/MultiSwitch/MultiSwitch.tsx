@@ -1,7 +1,5 @@
 import React from 'react';
 
-type Props = {};
-
-export const MultiSwitch = (props: Props) => {
-  return <div></div>;
-};
+export function MultiSwitch() {
+  return <div />;
+}

@@ -1,7 +1,5 @@
 import React from 'react';
 
-type Props = {};
-
-export const InfoBlock = (props: Props) => {
-  return <div></div>;
-};
+export function InfoBlock() {
+  return <div />;
+}
