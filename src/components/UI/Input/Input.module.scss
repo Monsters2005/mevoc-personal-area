@@ -1,0 +1,57 @@
+.input {
+  &_container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    & input {
+      width: 100%;
+
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 20px;
+
+      background: #1f2029;
+      border-radius: 10px;
+      color: #c4c3ca;
+      border: none;
+      padding: 15px 15px;
+      outline: none;
+
+      &::placeholder {
+        font-weight: 500;
+        line-height: 20px;
+        color: rgba(196, 195, 202, 0.7);
+      }
+    }
+  }
+  &_icon {
+    position: absolute;
+    left: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & svg {
+      max-height: 20px;
+      max-width: 20px;
+    }
+  }
+  &_content {
+    position: absolute;
+    right: 20px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #c4c3ca;
+
+    & svg {
+      fill: #c4c3ca;
+    }
+  }
+}
