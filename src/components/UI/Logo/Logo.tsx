@@ -1,7 +1,5 @@
 import React from 'react';
 
-type Props = {};
-
-export const Logo = (props: Props) => {
-  return <div></div>;
-};
+export function Logo() {
+  return <div />;
+}

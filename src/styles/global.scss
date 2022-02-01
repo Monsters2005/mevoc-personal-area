@@ -1,4 +1,5 @@
-@import "~normalize.css";
+@import '~normalize.css';
+@import './shared/fonts.scss';
 
 *,
 *::before,
@@ -17,4 +18,6 @@ a {
 }
 
 body {
+  font-family: 'Poppins';
+  background: #1f2029;
 }

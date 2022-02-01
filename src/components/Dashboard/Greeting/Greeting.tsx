@@ -1,7 +1,5 @@
 import React from 'react';
 
-type Props = {};
-
-export const DashboardGreeting = (props: Props) => {
-  return <div></div>;
-};
+export function DashboardGreeting() {
+  return <div />;
+}
