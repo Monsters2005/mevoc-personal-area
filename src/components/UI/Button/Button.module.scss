@@ -1,10 +1,11 @@
+@import '../../../styles/shared/variables.scss';
 .button {
   &_primary {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #ffeba7;
+    background: $accent-color;
     border-radius: 10px;
     border: none;
 
@@ -17,7 +18,7 @@
 
     &:hover {
       cursor: pointer;
-      background: #faecbd;
+      background: lighten($accent-color, 5);
     }
   }
   &_secondary {
@@ -34,26 +35,26 @@
     text-transform: uppercase;
 
     transition: all 0.1s;
-    color: rgba(196, 195, 202, 0.7);
+    color: rgba($primary-color, 0.7);
     & svg {
       width: 30px;
       height: 30px;
 
-      fill: rgba(196, 195, 202, 0.7);
+      fill: rgba($primary-color, 0.7);
 
       & path {
-        fill: rgba(196, 195, 202, 0.7);
+        fill: rgba($primary-color, 0.7);
       }
     }
 
     &:hover {
       cursor: pointer;
-      color: rgb(196, 195, 202);
+      color: $primary-color;
       background: #373743;
       & svg {
-        fill: rgb(196, 195, 202);
+        fill: $primary-color;
         & path {
-          fill: rgb(196, 195, 202);
+          fill: $primary-color;
         }
       }
     }
@@ -73,21 +74,21 @@
       width: 30px;
       height: 30px;
 
-      fill: rgba(196, 195, 202, 0.7);
+      fill: rgba($primary-color, 0.7);
 
       & path {
-        fill: rgba(196, 195, 202, 0.7);
+        fill: rgba($primary-color, 0.7);
       }
     }
 
     &:hover {
       cursor: pointer;
 
-      background: rgba(234, 231, 255, 0.1);
+      background: rgba($primary-color, 0.1);
       & svg {
-        fill: rgb(196, 195, 202);
+        fill: $primary-color;
         & path {
-          fill: rgb(196, 195, 202);
+          fill: $primary-color;
         }
       }
     }
