@@ -63,7 +63,7 @@ export function MultiSelector<T extends string>({
         className={s.select_active}
         style={{
           width: `${100 / transformOptions.length}%`,
-          marginLeft: `${offset}`,
+          marginLeft: offset,
         }}
       />
     </div>
