@@ -5,6 +5,7 @@
   },
   "extends": [
     "plugin:react/recommended",
+    "plugin:storybook/recommended",
     "airbnb",
     "plugin:import/typescript",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -32,9 +33,9 @@
     "react/jsx-filename-extension": [0],
     "import/extensions": "off",
     "semi": ["error", "always"],
+    "react/jsx-props-no-spreading": "off",
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "arrow-parens": ["error", "as-needed"],
-    // "comma-dangle": ["error", "always-multiline"],
     "prefer-promise-reject-errors": ["error", { "allowEmptyReject": true }],
     "space-before-function-paren": [
       "error",
@@ -54,6 +55,13 @@
         "imports": "always-multiline",
         "exports": "always-multiline",
         "functions": "ignore"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*"],
+        "peerDependencies": true
       }
     ]
   }
