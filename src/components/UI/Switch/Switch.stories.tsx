@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof Switch> = function (args) {
 export const DefaultState = Template.bind({});
 
 DefaultState.args = {
-  defaultState: true,
+  defaultChecked: true,
   onChange: state => {
     console.log(state);
   },
