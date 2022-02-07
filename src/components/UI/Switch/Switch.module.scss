@@ -40,6 +40,6 @@
     width: 25px;
   }
   &_checkbox:checked ~ &_label &_button {
-    background: $primary-color !important;
+    background: $primary-color;
   }
 }
