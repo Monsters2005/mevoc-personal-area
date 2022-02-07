@@ -1,3 +1,4 @@
+@import '../../../styles/shared/variables.scss';
 .select {
   &_container {
     width: fit-content;
@@ -32,11 +33,11 @@
       margin-right: 2px;
       & svg {
         transition: all 0.1s;
-        fill: rgba(196, 195, 202, 0.7);
+        fill: rgba($primary-color, 0.7);
 
         & path {
           transition: all 0.1s;
-          fill: rgba(196, 195, 202, 0.7);
+          fill: rgba($primary-color, 0.7);
         }
       }
     }
@@ -47,19 +48,19 @@
       line-height: 20px;
 
       transition: all 0.1s;
-      color: rgba(196, 195, 202, 0.7);
+      color: rgba($primary-color, 0.7);
     }
 
     &_active {
       transition: all 0.1s;
       & p {
-        color: rgb(196, 195, 202);
+        color: $primary-color;
       }
       & span {
         & svg {
-          fill: rgb(196, 195, 202);
+          fill: $primary-color;
           & path {
-            fill: rgb(196, 195, 202);
+            fill: $primary-color;
           }
         }
       }
@@ -68,14 +69,14 @@
     &:hover {
       & span {
         & svg {
-          fill: rgb(196, 195, 202);
+          fill: $primary-color;
           & path {
-            fill: rgb(196, 195, 202);
+            fill: $primary-color;
           }
         }
       }
       & p {
-        color: rgb(196, 195, 202);
+        color: $primary-color;
       }
     }
   }

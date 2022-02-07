@@ -1,5 +1,6 @@
 @import '~normalize.css';
 @import './shared/fonts.scss';
+@import './shared/variables.scss';
 
 *,
 *::before,
@@ -18,6 +19,7 @@ a {
 }
 
 body {
-  background: #21232d;
+  font-family: $font;
+  background: $base-color;
   padding: 50px;
 }
