@@ -1,0 +1,45 @@
+@import '../../../styles/shared/variables.scss';
+
+.switch {
+  &_checkbox {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  &_checkbox:checked + &_label &_button {
+    left: calc(100% - 3px);
+    transform: translateX(-100%);
+  }
+
+  &_label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 52.72px;
+    height: 25px;
+    background: $ui-light;
+    border-radius: 100px;
+    position: relative;
+    transition: background-color 0.2s;
+  }
+  &_label &_button {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    transition: 0.2s;
+    background: rgba($primary-color, 0.7);
+    box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+  }
+
+  &_label:active &_button {
+    width: 25px;
+  }
+  &_checkbox:checked ~ &_label &_button {
+    background: $primary-color !important;
+  }
+}
