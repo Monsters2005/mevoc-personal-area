@@ -1,0 +1,27 @@
+@import '../../../styles/shared/variables.scss';
+.greeting {
+  &_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    & h2 {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 34px;
+      line-height: 51px;
+
+      color: $primary-color;
+    }
+    & p {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 21px;
+      line-height: 31px;
+
+      color: rgba($primary-color, 0.7);
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
