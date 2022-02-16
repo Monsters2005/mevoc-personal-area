@@ -3,13 +3,15 @@ import React from 'react';
 import { SidebarSvgSelector } from '../SidebarSvgSelector';
 import s from './Card.module.scss';
 
+type Item = {
+  icon: string;
+  name: string;
+  path: string;
+  id: number;
+};
+
 type Props = {
-  item: {
-    icon: string;
-    name: string;
-    path: string;
-    id: number;
-  };
+  item: Item;
   onClick: () => void;
   active: string;
 };
