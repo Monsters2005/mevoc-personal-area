@@ -21,5 +21,8 @@ a {
 body {
   font-family: $font;
   background: $base-color;
-  padding: 50px;
+  background-image: url('../assets/images/background.svg');
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
