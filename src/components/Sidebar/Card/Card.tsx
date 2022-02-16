@@ -1,33 +1,27 @@
-import classNames from 'classnames';
 import React from 'react';
+import classNames from 'classnames';
 import { SidebarSvgSelector } from '../SidebarSvgSelector';
 import s from './Card.module.scss';
-
-type Item = {
-  icon: string;
-  name: string;
-  path: string;
-  id: number;
-};
+import { Page } from '../Sidebar/types';
 
 type Props = {
-  item: Item;
+  page: Page;
   onClick: () => void;
-  active: string;
+  active: string | number | symbol;
 };
 
-export function SidebarCard({ item, onClick, active }: Props) {
+export function SidebarCard({ page, onClick, active }: Props) {
   return (
     <button
       className={classNames(s.card_container, {
-        [s.card_active]: item.path === active,
+        [s.card_active]: page.key === active,
       })}
       onClick={onClick}
     >
       <span className={s.card_icon}>
-        <SidebarSvgSelector id={item.icon} />
+        <SidebarSvgSelector id={page.icon} />
       </span>
-      <p className={s.card_name}>{item.name}</p>
+      <p className={s.card_name}>{page.name}</p>
     </button>
   );
 }

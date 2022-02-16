@@ -3,40 +3,26 @@ import { SidebarBottomBlock } from '../BottomBlock/BottomBlock';
 import { SidebarLogo } from '../Logo/Logo';
 import { SidebarNavigation } from '../Navigation/Navigation';
 import { SidebarProfile } from '../Profile/Profile';
+import { Page, Pages } from './types';
 
-export function Sidebar() {
-  const pages = [
-    {
-      icon: 'house',
-      name: 'Dashboard',
-      path: 'dashboard',
-      id: 1,
-    },
-    {
-      icon: 'list',
-      name: 'Lists Management',
-      path: 'lists-management',
-      id: 2,
-    },
-    {
-      icon: 'user',
-      name: 'User Profile',
-      path: 'user-profile',
-      id: 3,
-    },
-    {
-      icon: 'settings',
-      name: 'Settings',
-      path: 'settings',
-      id: 4,
-    },
-  ];
+type Props<T> = {
+  pages: T;
+  defaultActive: keyof T;
+};
+
+export function Sidebar<T extends Pages>({ pages, defaultActive }: Props<T>) {
+  const sortedPages = Object.keys(pages).map(key => ({
+    icon: pages[key].icon,
+    name: pages[key].name,
+    path: pages[key].path,
+    key,
+  }));
 
   return (
     <>
       <SidebarLogo />
       <SidebarProfile />
-      <SidebarNavigation pages={pages} />
+      <SidebarNavigation pages={sortedPages} defaultActive={defaultActive} />
       <SidebarBottomBlock />
     </>
   );
