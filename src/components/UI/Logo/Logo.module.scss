@@ -1,4 +1,5 @@
-@import '../../../styles/shared/variables.scss';
+@use '@styles/shared/variables.scss' as *;
+
 .logo {
   &_container {
     display: flex;
