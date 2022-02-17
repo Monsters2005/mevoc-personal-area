@@ -3,29 +3,31 @@ import classNames from 'classnames';
 import s from './MultiSelector.module.scss';
 import { useOffset } from './useOffset';
 
-export type MultiSelectorOption<T = string> = {
+export type MultiSelectorOption = {
   value: string;
   icon: ReactNode;
-  label?: T;
+  label?: string;
 };
 
-type Props<T extends string> = {
+type MultiSelectorObject = Record<string, MultiSelectorOption>;
+
+type Props<T> = {
   styles?: CSSProperties;
-  options: Record<T, MultiSelectorOption<T>>;
-  defaultActive: T;
+  options: MultiSelectorObject;
+  defaultActive: keyof T;
   onClick: (active: MultiSelectorOption) => void;
 };
 
-export function MultiSelector<T extends string>({
+export function MultiSelector<T extends MultiSelectorObject>({
   options,
   styles,
   defaultActive,
   onClick,
 }: Props<T>) {
   const transformOptions = Object.keys(options).map((key: string) => ({
-    value: options[key as T].value,
-    label: key as T,
-    icon: options[key as T].icon,
+    value: options[key].value,
+    label: key,
+    icon: options[key].icon,
   }));
 
   const defaultIndex = transformOptions.findIndex(
@@ -35,9 +37,9 @@ export function MultiSelector<T extends string>({
     transformOptions.length,
     defaultIndex
   );
-  const [active, setActive] = useState<T>(defaultActive);
+  const [active, setActive] = useState<keyof T>(defaultActive);
 
-  function buttonHandler(item: MultiSelectorOption<T>, i: number) {
+  function buttonHandler(item: MultiSelectorOption, i: number) {
     return () => {
       if (item.label) setActive(item.label);
       recalcOffset(i);
