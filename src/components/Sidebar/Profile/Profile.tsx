@@ -2,20 +2,19 @@ import React from 'react';
 import { getMediaLink } from '../../../utils/getMediaLink';
 import s from './Profile.module.scss';
 
+type User = {
+  firstName: string;
+  lastName: string;
+  username: string;
+  avatar: string;
+};
+
 type Props = {
-  user: {
-    firstName: string;
-    lastName: string;
-    username: string;
-    avatar: {
-      name: string;
-      path: string;
-    };
-  };
+  user: User;
 };
 
 export function SidebarProfile({ user }: Props) {
-  const avatarUrl = getMediaLink(user.avatar.name, user.avatar.path);
+  const avatarUrl = getMediaLink(user.avatar);
 
   return (
     <div className={s.profile_container}>
