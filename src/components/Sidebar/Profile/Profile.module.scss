@@ -55,5 +55,8 @@
     border: none;
 
     margin-left: auto;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

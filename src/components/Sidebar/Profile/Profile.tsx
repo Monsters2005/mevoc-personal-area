@@ -1,4 +1,5 @@
 import React from 'react';
+import { getMediaLink } from '../../../utils/getMediaLink';
 import s from './Profile.module.scss';
 
 type Props = {
@@ -6,15 +7,20 @@ type Props = {
     firstName: string;
     lastName: string;
     username: string;
-    avatarUrl: string;
+    avatar: {
+      name: string;
+      path: string;
+    };
   };
 };
 
 export function SidebarProfile({ user }: Props) {
+  const avatarUrl = getMediaLink(user.avatar.name, user.avatar.path);
+
   return (
     <div className={s.profile_container}>
       <span className={s.profile_avatar}>
-        <img src={user.avatarUrl} alt={`${user.username} profile`} />
+        <img src={avatarUrl} alt={`${user.username} profile`} />
       </span>
       <div className={s.profile_info}>
         <h5>{`${user.firstName} ${user.lastName}`}</h5>
