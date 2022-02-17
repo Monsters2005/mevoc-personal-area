@@ -1,11 +1,11 @@
 import React from 'react';
+import { Sidebar } from './components/Sidebar/Sidebar/Sidebar';
 import { Button } from './components/UI/Button/Button';
-import { Logo } from './components/UI/Logo/Logo';
 
 function App() {
   return (
     <div className="App">
-      <Logo />
+      <Sidebar />
     </div>
   );
 }

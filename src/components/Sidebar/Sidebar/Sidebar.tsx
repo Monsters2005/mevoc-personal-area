@@ -5,6 +5,10 @@ import { SidebarBottomBlock } from '../BottomBlock/BottomBlock';
 import { SidebarNavigation } from '../Navigation/Navigation';
 import { SidebarProfile } from '../Profile/Profile';
 
+import { Logo } from '../../UI/Logo/Logo';
+import { user } from '../../../mocks/user';
+
+
 import { Page, Pages } from './types';
 
 type Props<T> = {
@@ -22,11 +26,13 @@ export function Sidebar<T extends Pages>({ pages, defaultActive }: Props<T>) {
 
 
   return (
-    <>
-      <SidebarLogo />
-      <SidebarProfile />
-      <SidebarNavigation pages={sortedPages} defaultActive={defaultActive} />
-      <SidebarBottomBlock />
-    </>
+    <div className={s.sidebar_container}>
+      <div className={s.sidebar_content}>
+        <Logo />
+        <SidebarProfile user={user} />
+        <SidebarNavigation pages={sortedPages} defaultActive={defaultActive} />
+        <SidebarBottomBlock />
+      </div>
+    </div>
   );
 }
