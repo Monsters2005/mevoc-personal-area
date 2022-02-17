@@ -1,8 +1,10 @@
 import React from 'react';
+import s from './Sidebar.module.scss';
+
 import { SidebarBottomBlock } from '../BottomBlock/BottomBlock';
-import { SidebarLogo } from '../Logo/Logo';
 import { SidebarNavigation } from '../Navigation/Navigation';
 import { SidebarProfile } from '../Profile/Profile';
+
 import { Page, Pages } from './types';
 
 type Props<T> = {
@@ -17,6 +19,7 @@ export function Sidebar<T extends Pages>({ pages, defaultActive }: Props<T>) {
     path: pages[key].path,
     key,
   }));
+
 
   return (
     <>
