@@ -1,4 +1,4 @@
-@import '../../../styles/shared/variables.scss';
+@use '@styles/shared/variables.scss' as *;
 .card {
   &_container {
     width: 100%;

@@ -8,7 +8,6 @@ import { SidebarProfile } from '../Profile/Profile';
 import { Logo } from '../../UI/Logo/Logo';
 import { user } from '../../../mocks/user';
 
-
 import { Page, Pages } from './types';
 
 type Props<T> = {
@@ -23,7 +22,6 @@ export function Sidebar<T extends Pages>({ pages, defaultActive }: Props<T>) {
     path: pages[key].path,
     key,
   }));
-
 
   return (
     <div className={s.sidebar_container}>

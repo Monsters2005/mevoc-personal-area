@@ -20,9 +20,6 @@ DefaultState.args = {
     firstName: 'Karina',
     lastName: 'Carmichael',
     username: 'perfechate',
-    avatar: {
-      path: 'fHrx3Yx',
-      name: 'photo-1',
-    },
+    avatar: '',
   },
 };
