@@ -1,0 +1,87 @@
+@use '@styles/shared/variables.scss' as *;
+.card {
+  &_container {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 9px 15px;
+    border-radius: 10px;
+    transition: all 0.1s;
+    margin-top: 20px;
+
+    background: none;
+    border: none;
+    &:hover {
+      background: rgba($active-color, 0.1);
+      cursor: pointer;
+      & p {
+        transition: all 0.1s;
+        color: $primary-color !important;
+      }
+      & span {
+        & svg {
+          & path {
+            fill: $primary-color !important;
+          }
+        }
+      }
+    }
+  }
+
+  &_name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: rgba($primary-color, 0.7);
+    margin: 2px 0 0 13px;
+  }
+  &_icon {
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s;
+
+    & svg {
+      & path {
+        transition: all 0.1s;
+        fill: rgba($primary-color, 0.7);
+      }
+    }
+  }
+  &_active {
+    background: rgba($active-color, 0.1);
+    & p {
+      transition: all 0.1s;
+      color: $accent-color !important;
+    }
+    & span {
+      & svg {
+        & path {
+          fill: $accent-color !important;
+        }
+      }
+    }
+    &:hover {
+      & p {
+        transition: all 0.1s;
+        color: $accent-color !important;
+      }
+      & span {
+        & svg {
+          & path {
+            fill: $accent-color !important;
+          }
+        }
+      }
+    }
+  }
+}
