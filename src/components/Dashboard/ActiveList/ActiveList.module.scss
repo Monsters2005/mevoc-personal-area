@@ -12,10 +12,12 @@
     padding: 8px 10px;
     border-radius: 10px;
 
-    transition: all 0.3s;
+    transition: background 0.1s;
     cursor: default;
   }
-
+  &_dragging {
+    background: lighten($element-light-color, 5);
+  }
   &_content {
     margin-left: 10px;
     & h4 {
