@@ -12,18 +12,10 @@ export function DashboardGreeting({ name }: Props) {
   const currentTime = useCurrentTime();
   const currentDate = useCurrentDate();
 
-  function getFullGreeting(fullName: string, greeting: string) {
-    return `${greeting}, ${fullName}`;
-  }
-
-  function getFullDate(date: string) {
-    return `Today is ${date}`;
-  }
-
   return (
     <div className={s.greeting_container}>
-      <h2>{getFullGreeting(name, getGreetingByTime(currentTime))}</h2>
-      <p>{getFullDate(currentDate)}</p>
+      <h2>{`${greeting}, ${fullName}`}</h2>
+      <p>{`Today is ${date}`}</p>
     </div>
   );
 }
