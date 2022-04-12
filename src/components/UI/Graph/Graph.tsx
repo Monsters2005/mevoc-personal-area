@@ -22,8 +22,8 @@ ChartJS.register(
 
 type Props = {
   data: LineChartData;
-  height: number;
-  width: number;
+  height?: number;
+  width?: number;
   options: ChartOptions;
 };
 
