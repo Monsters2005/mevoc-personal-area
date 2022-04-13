@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
+import { Pack } from '../../../@types/entities/WordPack';
 import { getWordsCount } from '../../../utils/getWordsCount';
 import { Button } from '../../UI/Button/Button';
-import { Pack } from '../WordPacks/types';
 import s from './WordPack.module.scss';
 
 type Props = {
