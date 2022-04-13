@@ -3,11 +3,7 @@ import { UserCard } from './components/User/Card/Card';
 import { user } from './mocks/user';
 
 function App() {
-  return (
-    <div className="App">
-      <UserCard userData={user} />
-    </div>
-  );
+  return <div className="App" />;
 }
 
 export default App;
