@@ -2,10 +2,10 @@ import React from 'react';
 import s from './LinearProgress.module.scss';
 
 type Props = {
-  progressValue: number;
-  bgColor: string;
-  lineStroke: number;
-  showPercent: boolean;
+  progressValue?: number;
+  bgColor?: string;
+  lineStroke?: number;
+  showPercent?: boolean;
 };
 
 export function LinearProgress({
