@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import { checkLength } from '../../../utils/checkLength';
+import { makeSuspensionString } from '../../../utils/makeSuspensionString';
 import { Button } from '../../UI/Button/Button';
 import { ListsManagementSvgSelector } from '../ListsManagementSvgSelector';
 import s from './WordCard.module.scss';
@@ -19,19 +19,21 @@ export function DashboardWordCard({
   const [selected, setSelected] = useState(false);
 
   return (
-    <button
+    <div
       onClick={() => setSelected(!selected)}
+      onKeyPress={() => setSelected(!selected)}
+      role="presentation"
       className={classNames(s.wordcard_container, {
         [s.wordcard_active]: selected,
       })}
     >
       <div className={s.wordcard_content}>
-        <h3>{checkLength(wordLearning, 20)}</h3>
-        <p>{checkLength(wordNative, 20)}</p>
+        <h3>{makeSuspensionString(wordLearning, 20)}</h3>
+        <p>{makeSuspensionString(wordNative, 20)}</p>
       </div>
       <Button type="small" onClick={onEdit}>
         <ListsManagementSvgSelector id="edit" />
       </Button>
-    </button>
+    </div>
   );
 }

@@ -1,21 +1,25 @@
 import React from 'react';
-import { workerData } from 'worker_threads';
-import { list } from '../../../mocks/list';
+import { Word } from '../../../@types/entities';
 import { ListsManagementSvgSelector } from '../ListsManagementSvgSelector';
 import { DashboardWordCard } from '../WordCard/WordCard';
 import s from './WordList.module.scss';
 
-export function DashboardWordList() {
+type Props = {
+  words: Word[];
+};
+
+export function DashboardWordList({ words }: Props) {
   return (
     <div className={s.wordlist_container}>
       <button className={s.wordlist_addword}>
         <ListsManagementSvgSelector id="plus" />
       </button>
-      {list.words.map(item => (
+      {words.map(({ wordNative, wordLearning, id }: Word) => (
         <DashboardWordCard
-          wordLearning={item.learningLang}
-          wordNative={item.nativeLang}
-          onEdit={() => 'editing.. at least trying'}
+          key={id}
+          wordLearning={wordLearning}
+          wordNative={wordNative}
+          onEdit={() => '...'} // TODO: Make a function for editing word data
         />
       ))}
     </div>

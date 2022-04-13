@@ -36,6 +36,6 @@ export function GlobalSvgSelector({ id }: { id: string }) {
       );
 
     default:
-      return <p />;
+      return null;
   }
 }
