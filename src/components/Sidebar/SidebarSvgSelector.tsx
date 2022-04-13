@@ -95,6 +95,6 @@ export function SidebarSvgSelector({ id }: { id: string }) {
         </svg>
       );
     default:
-      return <p />;
+      return null;
   }
 }
