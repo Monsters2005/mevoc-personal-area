@@ -1,3 +1,3 @@
 export function convertDate(date: string) {
-  return 'ok';
+  // TODO: Make a function for converting dates to common format
 }
