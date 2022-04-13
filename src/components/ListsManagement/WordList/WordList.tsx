@@ -1,5 +1,5 @@
 import React from 'react';
-import { Word } from '../../../@types/entities';
+import { Word } from '../../../@types/entities/Word';
 import { ListsManagementSvgSelector } from '../ListsManagementSvgSelector';
 import { DashboardWordCard } from '../WordCard/WordCard';
 import s from './WordList.module.scss';
