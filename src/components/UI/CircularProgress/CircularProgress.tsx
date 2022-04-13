@@ -2,18 +2,18 @@ import React, { CSSProperties, useEffect, useState } from 'react';
 import s from './CircularProgress.module.scss';
 
 type Props = {
-  width: number;
-  height: number;
-  circleStroke: number;
-  bgColor: string;
+  width?: number;
+  height?: number;
+  circleStroke?: number;
+  bgColor?: string;
   progressValue: number;
   percentStyles?: CSSProperties;
 };
 
 export function CircularProgress({
-  width,
-  height,
-  circleStroke,
+  width = 200,
+  height = 200,
+  circleStroke = 4,
   bgColor,
   progressValue,
   percentStyles,
