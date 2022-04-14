@@ -1,0 +1,35 @@
+@import '../../../styles/shared/variables.scss';
+.tabs {
+  &_container {
+    display: flex;
+    align-items: center;
+  }
+  &_item {
+    margin: 0 10px 0 0;
+    padding: 0px 15px;
+
+    background: none;
+    border: none;
+    border-radius: 10px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 50%;
+
+    display: flex;
+    align-items: center;
+
+    color: rgba($primary-color, 0.7);
+    transition: all 0.1s;
+
+    &:hover {
+      background: rgba($active-color, 0.1);
+      cursor: pointer;
+    }
+    &_active {
+      background: rgba($active-color, 0.1);
+      color: $accent-color;
+    }
+  }
+}
