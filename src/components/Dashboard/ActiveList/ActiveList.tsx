@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Draggable } from 'react-beautiful-dnd';
 import s from './ActiveList.module.scss';
-import { List } from '../ActiveLists/types';
-import { getWordsCount } from '../../../utils/getWordsCount';
+import { pluralizeString } from '../../../utils/pluralizeString';
+import { List } from '../../../@types/entities/List';
 
 type Props = {
   item: List;
   index: number;
 };
 
-export function ActiveList({ item, index }: Props) {
+export function DashboardActiveList({ item, index }: Props) {
   const [selected, setSelected] = useState(false);
 
   function selectList() {
@@ -19,7 +19,7 @@ export function ActiveList({ item, index }: Props) {
   }
 
   return (
-    <Draggable draggableId={item.key} index={index}>
+    <Draggable draggableId={item.id} index={index}>
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
@@ -40,7 +40,7 @@ export function ActiveList({ item, index }: Props) {
           </button>
           <div className={s.activelist_content}>
             <h4 className={s.activvelist_title}>{item.name}</h4>
-            <p>{getWordsCount(item.words.length)}</p>
+            <p>{pluralizeString(item.words.length)}</p>
           </div>
         </div>
       )}

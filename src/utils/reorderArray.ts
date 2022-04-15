@@ -1,4 +1,4 @@
-export function reorder<T>(
+export function reorderArray<T>(
   list: T[],
   startIndex: number,
   endIndex: number

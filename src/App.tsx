@@ -1,12 +1,7 @@
 import React from 'react';
-import { DashboardActiveLists } from './components/Dashboard/ActiveLists/ActiveLists';
 
 function App() {
-  return (
-    <div className="App">
-      <DashboardActiveLists />
-    </div>
-  );
+  return <div className="App" />;
 }
 
 export default App;

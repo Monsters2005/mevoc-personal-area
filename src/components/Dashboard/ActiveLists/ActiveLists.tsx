@@ -1,23 +1,23 @@
 import React from 'react';
-import {
-  DragDropContext,
-  Draggable,
-  Droppable,
-  DropResult,
-} from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { CardLayout } from '../../../layouts/CardLayout/CardLayout';
-import { lists } from '../../../mocks/lists';
 import { Button } from '../../UI/Button/Button';
-import { ActiveList } from '../ActiveList/ActiveList';
+import { DashboardActiveList } from '../ActiveList/ActiveList';
 import s from './ActiveLists.module.scss';
-import { reorder } from '../../../utils/reorder';
+import { reorderArray } from '../../../utils/reorderArray';
+import { List } from '../../../@types/entities/List';
 
-export function DashboardActiveLists() {
+type Props = {
+  onAddList: () => void;
+  lists: List[];
+};
+
+export function DashboardActiveLists({ onAddList, lists }: Props) {
   const [items, setItems] = React.useState(lists);
 
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
-    const newItems = reorder(items, source.index, destination.index);
+    const newItems = reorderArray(items, source.index, destination.index);
     setItems(newItems);
   };
 
@@ -25,7 +25,7 @@ export function DashboardActiveLists() {
     <CardLayout title="Active Lists">
       <Button
         type="primary"
-        onClick={() => console.log('added')}
+        onClick={() => onAddList()}
         styles={{
           fontWeight: '700',
           fontSize: '13px',
@@ -47,7 +47,11 @@ export function DashboardActiveLists() {
             {provided => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
                 {items.map((item, index) => (
-                  <ActiveList item={item} index={index} key={item.key} />
+                  <DashboardActiveList
+                    item={item}
+                    index={index}
+                    key={item.id}
+                  />
                 ))}
                 {provided.placeholder}
               </div>
