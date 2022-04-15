@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { Pack } from '../../../@types/entities/WordPack';
-import { getWordsCount } from '../../../utils/getWordsCount';
+import { pluralizeString } from '../../../utils/pluralizeString';
 import { Button } from '../../UI/Button/Button';
 import s from './WordPack.module.scss';
 
@@ -24,7 +24,7 @@ export function WordPack({ item }: Props) {
           <img src={item.icon} alt={item.key} />
         </span>
         <h4 className={s.wordpack_title}>{item.name}</h4>
-        <p>{getWordsCount(item.words.length)}</p>
+        <p>{pluralizeString(item.words.length)}</p>
       </div>
       <div className={s.wordpack_buttons}>
         <Button

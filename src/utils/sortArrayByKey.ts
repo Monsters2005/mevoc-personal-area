@@ -1,10 +1,9 @@
 type ArrayIndex = string | number | symbol;
 type Result<T> = Record<ArrayIndex, T[]>;
 
-export function groupBy<T extends Record<ArrayIndex, string | null | number>>(
-  array: T[],
-  key: keyof T
-) {
+export function sortArrayByKey<
+  T extends Record<ArrayIndex, string | null | number>
+>(array: T[], key: keyof T) {
   return array.reduce((acc: Result<T>, el: T) => {
     const elValue = el[key];
     if (elValue) {
