@@ -17,7 +17,14 @@ export function AvatarCard({ avatar, onEdit, onDelete }: Props) {
   return (
     <div className={s.avatarcard_container}>
       <div className={s.avatarcard_image}>
-        <img src={avatarUrl} alt={avatar} />
+        <img
+          src={
+            avatarUrl !== ' '
+              ? avatarUrl
+              : "https://i.ibb.co/FXPtHCX/profile-1.png'"
+          }
+          alt={avatar}
+        />
       </div>
 
       <div className={s.avatarcard_buttons}>
