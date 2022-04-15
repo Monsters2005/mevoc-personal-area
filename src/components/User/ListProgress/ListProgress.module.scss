@@ -1,0 +1,65 @@
+@use '@styles/shared/variables.scss' as *;
+
+.list {
+  &_container {
+    min-width: 320px;
+    min-height: 90px;
+    max-width: 320px;
+    max-height: 90px;
+
+    background: $element-light-color;
+    backdrop-filter: blur(45px);
+    border-radius: 10px;
+
+    padding: 15px 22px;
+
+    display: flex;
+    align-items: center;
+
+    border: none;
+    outline: none;
+
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  &_progress {
+    width: 61px;
+    height: 64px;
+  }
+  &_content {
+    text-align: left;
+    & h4 {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 27px;
+
+      color: $primary-color;
+      margin: 0;
+      padding: 0;
+    }
+    & p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: rgba($primary-color, 0.7);
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &_active {
+    background: rgba($active-color, 0.1);
+    & div {
+      & h4 {
+        color: $accent-color;
+        transition: all 0.2s;
+      }
+      & p {
+        color: rgba($accent-color, 0.7);
+        transition: all 0.2s;
+      }
+    }
+  }
+}
