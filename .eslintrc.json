@@ -79,6 +79,8 @@
           "some": ["nesting", "id"]
         }
       }
-    ]
+    ],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-param-reassign": ["error", { "props": false }]
   }
 }
