@@ -1,6 +1,6 @@
 export const list = {
   name: 'For the test',
-  key: 'for_the_test',
+  id: 'for_the_test',
   words: [
     {
       wordLearning: 'insufficiently ',
