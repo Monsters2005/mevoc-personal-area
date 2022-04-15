@@ -1,5 +1,6 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 import s from './CircularProgress.module.scss';
+import { useTimeout } from './useTimeout';
 
 type Props = {
   width?: number;
@@ -14,7 +15,7 @@ export function CircularProgress({
   width = 200,
   height = 200,
   circleStroke = 4,
-  bgColor,
+  bgColor = '#ffffff',
   progressValue,
   percentStyles,
 }: Props) {
@@ -25,21 +26,7 @@ export function CircularProgress({
     return circumference - (percent / 100) * circumference;
   }
 
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    if (progress > +progressValue.toFixed(0)) {
-      setProgress(0);
-      return;
-    }
-
-    let timeoutId = -1;
-    if (progress !== +progressValue.toFixed(0)) {
-      timeoutId = +setTimeout(setProgress, 10, progress + 1);
-    }
-    /* eslint-disable consistent-return */
-    return () => clearTimeout(timeoutId);
-  }, [progress, progressValue]);
+  const progress = useTimeout(progressValue);
 
   return (
     <div className={s.progress__bar__wrapper}>
