@@ -6,8 +6,8 @@ import { List } from '../../../@types/entities/List';
 
 type Props = {
   item: List;
-  active: string;
-  onClick: (active: string) => void;
+  active: number;
+  onClick: (active: number) => void;
 };
 
 export function ListProgress({ item, active, onClick }: Props) {

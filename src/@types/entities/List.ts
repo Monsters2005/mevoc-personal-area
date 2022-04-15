@@ -2,7 +2,7 @@ import { Word } from './Word';
 
 export type List = {
   name: string;
-  id: string;
+  id: number;
   words: Word[];
   progress: number;
 };
