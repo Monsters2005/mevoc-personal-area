@@ -36,6 +36,11 @@
       line-height: 24px;
 
       color: rgba($primary-color, 0.7);
+      cursor: default;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
     & p {
       margin: 0;
@@ -48,6 +53,7 @@
       line-height: 19px;
 
       color: rgba($primary-color, 0.5);
+      cursor: default;
     }
   }
   &_expand {

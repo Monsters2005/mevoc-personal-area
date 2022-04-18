@@ -3,4 +3,7 @@ export const user = {
   lastName: 'Carmichael',
   username: 'perfechate',
   avatar: 'fHrx3Yx/photo-1.jpg',
+  langLearning: 'English',
+  langNative: 'Russian',
+  location: 'India, New Delhi',
 };

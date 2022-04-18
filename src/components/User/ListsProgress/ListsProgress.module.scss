@@ -1,0 +1,12 @@
+.lists {
+  &_container {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1060px;
+
+    flex-wrap: wrap;
+    grid-gap: 30px;
+  }
+}
