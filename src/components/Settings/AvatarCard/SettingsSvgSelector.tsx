@@ -104,6 +104,6 @@ export function SettingsSvgSelector({ id }: { id: string }) {
       );
 
     default:
-      return <p />;
+      return null;
   }
 }
