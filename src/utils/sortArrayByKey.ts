@@ -11,6 +11,7 @@ export function sortArrayByKey<
       const arr = (acc[elValue as string] = acc[elValue as string] || []);
       arr.push(el);
     }
+    // console.log('acc', acc);
     return acc;
   }, {} as Result<T>);
 }
