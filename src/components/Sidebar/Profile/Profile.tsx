@@ -7,7 +7,7 @@ type User = {
   firstName: string;
   lastName: string;
   username: string;
-  avatar: string | null;
+  avatar: string;
 };
 
 type Props = {

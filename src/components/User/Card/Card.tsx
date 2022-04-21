@@ -8,7 +8,7 @@ type Props = {
   userData: {
     firstName: string;
     lastName: string;
-    avatar: string | null;
+    avatar: string;
     location: string;
     langNative: string;
     langLearning: string;
