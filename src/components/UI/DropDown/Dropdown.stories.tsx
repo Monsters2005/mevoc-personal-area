@@ -50,7 +50,4 @@ DropdownExample.args = {
   listTitle: 'Options',
   allowNoneSelected: true,
   side: 'right',
-  //   onClick: active => {
-  //     console.log(active);
-  //   },
 };

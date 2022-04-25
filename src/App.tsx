@@ -16,17 +16,17 @@ function App() {
       key: 1456,
     },
     {
-      value: 'Option',
+      value: 'Option2',
       details: 'details',
       key: 7566,
     },
     {
-      value: 'Option',
+      value: 'Option3',
       details: 'details',
       key: 9384,
     },
     {
-      value: 'Option',
+      value: 'Option4',
       details: 'details',
       key: 3457,
     },
