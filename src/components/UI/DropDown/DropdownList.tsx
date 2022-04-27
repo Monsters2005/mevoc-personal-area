@@ -1,5 +1,4 @@
 import React, { CSSProperties } from 'react';
-import classNames from 'classnames';
 import s from './Dropdown.module.scss';
 import { DropdownItem } from './DropdownItem';
 import { Option } from './types';
@@ -9,16 +8,21 @@ type Props = {
   isOpen: boolean;
   options: Option[];
   listTitle: string;
-  selectedItem: Option;
-  setSelectedItem: (item: Option) => void;
+  selectedItem: Option | null;
+  setSelectedItem: (item: Option | null) => void;
   styles?: CSSProperties;
+  allowNoneSelected: boolean;
 };
 
-export function DropdownList(props: Props) {
-  const {
-    isOpen, listTitle, options, selectedItem, setSelectedItem, styles,
-  } = props;
-
+export function DropdownList({
+  isOpen,
+  listTitle,
+  options,
+  selectedItem,
+  setSelectedItem,
+  styles,
+  allowNoneSelected,
+}: Props) {
   const transitionStyles = {
     entering: { opacity: 0.5, zIndex: 1 },
     entered: { opacity: 1, zIndex: 1 },
@@ -26,14 +30,21 @@ export function DropdownList(props: Props) {
     exited: { opacity: 0, zIndex: -100 },
   };
 
-  function selectHandler(item: Option) {
-    console.log(item);
-    if (item) setSelectedItem(item);
+  function selectHandler(item: Option | null) {
+    if (allowNoneSelected) {
+      if (item?.key === selectedItem?.key) {
+        setSelectedItem(null);
+      } else {
+        setSelectedItem(item);
+      }
+    } else {
+      setSelectedItem(item);
+    }
   }
 
   return (
     <TransitionWrapper inState={!isOpen} transitionStyles={transitionStyles}>
-      <div style={styles} className={classNames(s.dropdown_list)}>
+      <div style={styles} className={s.dropdown_list}>
         <h3 className={s.dropdown_title}>{listTitle}</h3>
         <div className={s.dropdown_options}>
           {options.map(item => (
