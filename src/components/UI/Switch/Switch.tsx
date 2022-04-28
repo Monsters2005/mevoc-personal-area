@@ -4,9 +4,10 @@ import s from './Switch.module.scss';
 type Props = {
   onChange: (checked: boolean) => void;
   defaultChecked: boolean;
+  name: string;
 };
 
-export function Switch({ onChange, defaultChecked }: Props) {
+export function Switch({ onChange, defaultChecked, name }: Props) {
   const [checked, setChecked] = useState(defaultChecked);
 
   function changeHandler(e: ChangeEvent<HTMLInputElement>) {
@@ -18,12 +19,12 @@ export function Switch({ onChange, defaultChecked }: Props) {
     <div className={s.switch_container}>
       <input
         className={s.switch_checkbox}
-        id="switch"
+        id={name}
         type="checkbox"
         checked={checked}
         onChange={changeHandler}
       />
-      <label className={s.switch_label} htmlFor="switch">
+      <label className={s.switch_label} htmlFor={name}>
         <span className={s.switch_button} />
       </label>
     </div>

@@ -2,12 +2,13 @@ import React from 'react';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { getMediaLink } from '../../../utils/getMediaLink';
 import s from './Profile.module.scss';
+import defaultAvatar from '../../../assets/images/defaultAvatar.png';
 
 type User = {
   firstName: string;
   lastName: string;
   username: string;
-  avatar: string | null;
+  avatar: string;
 };
 
 type Props = {
@@ -19,19 +20,12 @@ export function SidebarProfile({
     firstName, lastName, avatar, username,
   },
 }: Props) {
-  const avatarUrl = getMediaLink(avatar);
+  const avatarUrl = getMediaLink(avatar) || defaultAvatar;
 
   return (
     <div className={s.profile_container}>
       <span className={s.profile_avatar}>
-        <img
-          src={
-            avatarUrl !== ' '
-              ? avatarUrl
-              : "https://i.ibb.co/FXPtHCX/profile-1.png'"
-          }
-          alt={`${username} profile`}
-        />
+        <img src={avatarUrl} alt={`${username} profile`} />
       </span>
       <div className={s.profile_info}>
         <h5>{`${firstName} ${lastName}`}</h5>
