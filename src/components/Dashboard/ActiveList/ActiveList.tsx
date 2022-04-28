@@ -19,7 +19,7 @@ export function DashboardActiveList({ item, index }: Props) {
   }
 
   return (
-    <Draggable draggableId={item.id} index={index}>
+    <Draggable draggableId={item.id.toString()} index={index}>
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
