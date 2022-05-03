@@ -1,10 +1,10 @@
 import React from 'react';
-import { getMediaLink } from '../../../utils/getMediaLink';
-import { Button } from '../../UI/Button/Button';
+import { getMediaLink } from '../../../../utils/getMediaLink';
+import { Button } from '../../../UI/Button/Button';
 
 import s from './AvatarCard.module.scss';
 import { SettingsSvgSelector } from './SettingsSvgSelector';
-import defaultAvatar from '../../../assets/images/defaultAvatar.png';
+import defaultAvatar from '../../../../assets/images/defaultAvatar.png';
 
 type Props = {
   avatar: string;

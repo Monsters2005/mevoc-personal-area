@@ -1,0 +1,39 @@
+@use '@styles/shared/variables.scss' as *;
+
+.auth {
+  &_container {
+    display: flex;
+    flex-direction: column;
+
+    grid-gap: 30px;
+  }
+  &_item {
+    width: 600px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & h3 {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: $primary-color;
+    }
+    & p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: rgba($primary-color, 0.7);
+    }
+    &_content {
+      max-width: 500px;
+
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
