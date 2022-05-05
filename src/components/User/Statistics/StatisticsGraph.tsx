@@ -1,9 +1,14 @@
 import React from 'react';
 import { List } from '../../../@types/entities/List';
 import { Word } from '../../../@types/entities/Word';
+import { weekdays } from '../../../constants/weekdays';
 import { sortArrayByKey } from '../../../utils/sortArrayByKey';
 import { Graph } from '../../UI/Graph/Graph';
-import { LineChartData, LineChartOptions } from '../../UI/Graph/types';
+import {
+  LineChartData,
+  LineChartOptions,
+  LineChartTooltipItem,
+} from '../../UI/Graph/types';
 import s from './Statistics.module.scss';
 
 type Props = {
@@ -35,9 +40,7 @@ export function StatisticsGraph({ list }: Props) {
     Object.entries(obj).forEach(([key]) => arr.push(key));
     const labels = arr.map(el => {
       const d = new Date(el).getDay();
-      return Number.isNaN(d)
-        ? null
-        : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][d];
+      return Number.isNaN(d) ? null : weekdays[d];
     });
     return labels;
   }
@@ -106,8 +109,6 @@ export function StatisticsGraph({ list }: Props) {
       tooltip: {
         callbacks: {
           title: () => '',
-          // eslint-disable-next-line
-          // @ts-ignore
           label: (item: LineChartTooltipItem) => `${item.formattedValue} ${
             Number(item.formattedValue) > 1 ? 'words' : 'word'
           }`,
