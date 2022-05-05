@@ -1,23 +1,23 @@
 import React, { ReactNode } from 'react';
 import { Button } from '../../components/UI/Button/Button';
-import s from './FormLayout.module.scss';
+import s from './AuthFormLayout.module.scss';
 
 type Props = {
   children: ReactNode;
   title: string;
-  onClick: () => void;
+  onSubmit: () => void;
   btnText: string;
   bottomText?: string;
-  onBottomClick?: () => void;
+  onBottomText?: () => void;
 };
 
-export function FormLayout({
+export function AuthFormLayout({
   children,
   title,
-  onClick,
+  onSubmit,
   btnText,
   bottomText,
-  onBottomClick,
+  onBottomText,
 }: Props) {
   return (
     <div className={s.formlayout}>
@@ -26,7 +26,7 @@ export function FormLayout({
       <div className={s.formlayout_bottom}>
         <Button
           type="primary"
-          onClick={onClick}
+          onClick={onSubmit}
           styles={{
             fontStyle: 'normal',
             fontWeight: 600,
@@ -43,7 +43,7 @@ export function FormLayout({
           <p
             role="presentation"
             className={s.formlayout_bottomtext}
-            onClick={onBottomClick}
+            onClick={onBottomText}
           >
             {bottomText}
           </p>

@@ -5,14 +5,13 @@ import React, {
   FormEventHandler,
   ReactNode,
 } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import s from './Input.module.scss';
 
 type Props = {
   name: string;
-  defaultValue?: string;
-  placeholder: string;
+  value?: string;
+  placeholder?: string;
   children?: ReactNode;
   icon?: ReactNode;
   styles?: CSSProperties;
@@ -29,7 +28,7 @@ type Props = {
 export function Input({
   children,
   name,
-  defaultValue,
+  value,
   placeholder,
   type,
   icon,
@@ -43,39 +42,28 @@ export function Input({
   error,
   ...props
 }: Props) {
-  const {
-    control,
-    formState: { errors },
-  } = useFormContext();
-
   return (
     <div className={s.input_container}>
       <div className={s.input_top}>
         <span className={s.input_icon}>{icon}</span>
-
-        <Controller
-          name={name}
-          control={control}
-          defaultValue={defaultValue || ''}
-          render={({ field: { ref, ...rest } }) => (
-            <input
-              {...rest}
-              {...props}
-              style={{ ...styles, paddingLeft: icon ? '50px' : '0' }}
-              placeholder={placeholder}
-              type={type}
-              onFocus={onFocus}
-              onInput={onInput}
-              onPaste={onPaste}
-            />
-          )}
+        <input
+          {...props}
+          value={value}
+          style={{ ...styles, paddingLeft: icon ? '50px' : '0' }}
+          placeholder={placeholder}
+          type={type}
+          onChange={onChange}
+          onFocus={onFocus}
+          onInput={onInput}
+          onPaste={onPaste}
         />
+
         <span className={s.input_content}>{children}</span>
       </div>
-      {!!errors[name] && (
+      {isError && (
         <div className={s.input_error}>
           <GlobalSvgSelector id="error" />
-          <p>{errors[name]?.message ?? ''}</p>
+          <p>{error ?? ''}</p>
         </div>
       )}
     </div>

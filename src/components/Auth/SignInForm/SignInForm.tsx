@@ -1,26 +1,27 @@
 import React from 'react';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormLayout } from '../../../layouts/FormLayout/FormLayout';
+import { AuthFormLayout } from '../../../layouts/AuthFormLayout/AuthFormLayout';
 import { Input } from '../../UI/Input/Input';
 import { AuthSvgSelector } from '../AuthSvgSelector';
 import s from './SignInForm.module.scss';
 import schema from './validaiton';
 
 import { SignInDto } from '../../../@types/dto/auth/signin.dto';
+import HookFormInput from '../../HookForm/HookFormInput';
 
 type Props = {
   onSubmit: SubmitHandler<SignInDto>;
 };
 
-export function SignInForm({ onSubmit }: Props) {
-  const inputStyles = {
-    width: '100%',
-    fontWeight: 500,
-    fontSize: '14px',
-    lineHeight: '21px',
-  };
+const inputStyles = {
+  width: '100%',
+  fontWeight: 500,
+  fontSize: '14px',
+  lineHeight: '21px',
+};
 
+export function SignInForm({ onSubmit }: Props) {
   const values = useForm<SignInDto>({
     resolver: yupResolver(schema),
   });
@@ -32,23 +33,23 @@ export function SignInForm({ onSubmit }: Props) {
 
   return (
     <FormProvider {...values}>
-      <FormLayout
+      <AuthFormLayout
         title="Log In"
-        onClick={values.handleSubmit(submitHandler)}
+        onSubmit={values.handleSubmit(submitHandler)}
         btnText="submit"
         bottomText="Forgot your password?"
-        onBottomClick={() => console.log('')} // TODO: link to forgot password page
+        onBottomText={() => console.log('')} // TODO: link to forgot password page
       >
         <div className={s.signin_container}>
           <form onSubmit={values.handleSubmit(submitHandler)}>
-            <Input
+            <HookFormInput
               name="login"
               placeholder="Your Email"
               icon={<AuthSvgSelector id="email" />}
               styles={inputStyles}
               type="email"
             />
-            <Input
+            <HookFormInput
               name="password"
               placeholder="Your Password"
               icon={<AuthSvgSelector id="password" />}
@@ -57,7 +58,7 @@ export function SignInForm({ onSubmit }: Props) {
             />
           </form>
         </div>
-      </FormLayout>
+      </AuthFormLayout>
     </FormProvider>
   );
 }
