@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 
-import { colors } from '../../../constants/colors';
-import { ColorPicker } from '../ColorPicker/ColorPicker';
+import { COLORS } from '../../../constants/colors';
+import { SettingsColorPicker } from '../ColorPicker/ColorPicker';
 import { SettingsSvgSelector } from '../SettingsSvgSelector';
 
 import s from './ColorSelect.module.scss';
@@ -18,7 +18,7 @@ type Props = {
   onClick: (color: Color) => void;
 };
 
-export function ColorSelect({ defaultSelected, onClick }: Props) {
+export function SettingsColorSelect({ defaultSelected, onClick }: Props) {
   const [customIsOpened, setCustomIsOpened] = useState(false);
   const [color, setColor] = useState(defaultSelected.value);
 
@@ -35,7 +35,7 @@ export function ColorSelect({ defaultSelected, onClick }: Props) {
   return (
     <div className={s.colorpicker_container}>
       <div className={s.colorpicker_pallete}>
-        {colors.map(item => (
+        {COLORS.map(item => (
           <button
             key={item.key}
             className={classNames(s.colorpicker_color, {
@@ -61,7 +61,7 @@ export function ColorSelect({ defaultSelected, onClick }: Props) {
         <SettingsSvgSelector id="color-picker" />
       </button>
 
-      <ColorPicker
+      <SettingsColorPicker
         color={color}
         setCustomSelected={(item, value) => handleCustomSelect(item, value)}
         isOpen={customIsOpened}

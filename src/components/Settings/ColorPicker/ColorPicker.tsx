@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import { hexToRgb } from '../../../utils/hexToRgb';
 
@@ -13,7 +13,11 @@ type Props = {
   isOpen: boolean;
 };
 
-export function ColorPicker({ color, setCustomSelected, isOpen }: Props) {
+export function SettingsColorPicker({
+  color,
+  setCustomSelected,
+  isOpen,
+}: Props) {
   const [customColor, setCustomColor] = useState(color);
   const rgbColor = hexToRgb(color);
 
@@ -21,13 +25,15 @@ export function ColorPicker({ color, setCustomSelected, isOpen }: Props) {
     setCustomSelected(customColor, false);
   }
 
-  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.target.value.length > 7) {
+  function handleInput(e: ChangeEvent<HTMLInputElement>) {
+    const { value } = e.target;
+
+    if (value.length > 7) {
       setCustomColor(color);
-    } else if (e.target.value.length === 0) {
+    } else if (value.length === 0) {
       setCustomColor('#ffffff');
     } else {
-      setCustomColor(e.target.value);
+      setCustomColor(value);
     }
   }
 

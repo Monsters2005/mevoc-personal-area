@@ -1,4 +1,4 @@
-export const colors = [
+export const COLORS = [
   {
     label: 'light_yellow',
     value: '#FFEBA7',
