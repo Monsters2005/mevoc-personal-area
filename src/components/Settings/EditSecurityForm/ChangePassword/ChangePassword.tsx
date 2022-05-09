@@ -1,14 +1,15 @@
 import React from 'react';
-import { SavableSection } from '../SavableSection/SavableSection';
+import { SettingsSection } from '../../Section/Section';
 import s from './ChangePassword.module.scss';
 
 export function ChangePassword() {
   return (
-    <SavableSection
+    <SettingsSection
       title="Change your password"
+      isSavable
       onSave={() => console.log('change password')}
     >
       <div className={s.changepassword_container} />
-    </SavableSection>
+    </SettingsSection>
   );
 }

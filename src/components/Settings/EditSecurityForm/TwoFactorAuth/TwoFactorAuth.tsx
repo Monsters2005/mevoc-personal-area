@@ -1,6 +1,6 @@
 import React from 'react';
 import { User } from '../../../../@types/entities/User';
-import { SavableSection } from '../SavableSection/SavableSection';
+import { SettingsSection } from '../../Section/Section';
 import s from './TwoFactorAuth.module.scss';
 import { TwoFactorItem } from './TwoFactorItem';
 import { Option } from './types';
@@ -12,9 +12,10 @@ type Props = {
 
 export function TwoFactorAuth({ user, options }: Props) {
   return (
-    <SavableSection
+    <SettingsSection
       title="Two-factor authentication"
       onSave={() => console.log('save changes')}
+      isSavable
     >
       <div className={s.auth_container}>
         {options.map((item: Option) => (
@@ -30,6 +31,6 @@ export function TwoFactorAuth({ user, options }: Props) {
           />
         ))}
       </div>
-    </SavableSection>
+    </SettingsSection>
   );
 }
