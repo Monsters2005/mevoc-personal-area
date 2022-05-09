@@ -8,15 +8,11 @@ import s from './Calendar.module.scss';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import { Dates } from './types';
 
-export type CalendarDates = {
+type CalendarDates = {
   startDate: Moment | null;
   endDate: Moment | null;
-};
-
-export type Dates = {
-  startDate: Date;
-  endDate: Date;
 };
 
 type Props = {
@@ -73,9 +69,8 @@ export function Calendar({
           }
         }}
         focusedInput={focusedInput}
-        // eslint-disable-next-line
-        onFocusChange={(focusedInput: FocusedInputShape | null) => {
-          setFocusedInput(focusedInput);
+        onFocusChange={(focused: FocusedInputShape | null) => {
+          setFocusedInput(focused);
         }}
       />
     </div>
