@@ -2,7 +2,7 @@
 
 .formlayout {
   width: 440px;
-  height: 400px;
+  height: fit-content;
 
   background: url('../../assets/images/form-background.svg'), $element-color;
   border-radius: 6px;
@@ -14,6 +14,9 @@
 
   overflow: hidden;
   padding: 30px 0;
+
+  grid-gap: 30px;
+  transition: all 0.2s;
 
   &_content {
     width: 100%;
