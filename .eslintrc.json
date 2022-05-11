@@ -47,6 +47,7 @@
       { "ignoreFunctionalComponents": true }
     ],
     "react/button-has-type": "off",
+    "max-len": "off",
     "comma-dangle": [
       2,
       {
