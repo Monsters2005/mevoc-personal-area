@@ -1,6 +1,6 @@
-@import '~normalize.css';
-@import './shared/fonts.scss';
-@import './shared/variables.scss';
+@use '~normalize.css' as *;
+@use './shared/fonts.scss';
+@use './shared/variables.scss' as *;
 
 *,
 *::before,
@@ -21,6 +21,10 @@ a {
 body {
   font-family: $font;
   background: $base-color;
+  background-image: url('../assets/images/background.svg');
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   padding: 50px;
 }
 
