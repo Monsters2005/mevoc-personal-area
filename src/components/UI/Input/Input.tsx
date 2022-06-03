@@ -23,6 +23,7 @@ type Props = {
   onInput?: FormEventHandler<HTMLInputElement>;
   isError?: boolean;
   error?: string;
+  label?: string;
 };
 
 export function Input({
@@ -40,16 +41,22 @@ export function Input({
   onPaste,
   isError,
   error,
+  label,
   ...props
 }: Props) {
   return (
     <div className={s.input_container}>
+      {label && (
+        <label className={s.input_label} htmlFor={name}>
+          {label}
+        </label>
+      )}
       <div className={s.input_top}>
         <span className={s.input_icon}>{icon}</span>
         <input
           {...props}
           value={value}
-          style={{ ...styles, paddingLeft: icon ? '50px' : '0' }}
+          style={{ ...styles, paddingLeft: icon ? '50px' : '10px' }}
           placeholder={placeholder}
           type={type}
           onChange={onChange}

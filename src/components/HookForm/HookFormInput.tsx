@@ -13,6 +13,7 @@ type Props = {
   defaultValue?: string;
   type?: string;
   placeholder?: string;
+  label?: string;
   icon?: ReactNode;
   children?: ReactNode;
   styles?: CSSProperties;
