@@ -14,6 +14,13 @@ type Props = {
   allowNoneSelected: boolean;
 };
 
+const transitionStyles = {
+  entering: { opacity: 0.5, zIndex: 1 },
+  entered: { opacity: 1, zIndex: 1 },
+  exiting: { opacity: 0 },
+  exited: { opacity: 0, zIndex: -100 },
+};
+
 export function DropdownList({
   isOpen,
   listTitle,
@@ -23,13 +30,6 @@ export function DropdownList({
   styles,
   allowNoneSelected,
 }: Props) {
-  const transitionStyles = {
-    entering: { opacity: 0.5, zIndex: 1 },
-    entered: { opacity: 1, zIndex: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0, zIndex: -100 },
-  };
-
   function selectHandler(item: Option | null) {
     if (allowNoneSelected) {
       if (item?.key === selectedItem?.key) {
