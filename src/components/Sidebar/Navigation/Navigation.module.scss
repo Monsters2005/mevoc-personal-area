@@ -1,0 +1,11 @@
+.navigation {
+  &_container {
+    width: 100%;
+    max-width: 250px;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 30px;
+  }
+}

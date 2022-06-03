@@ -1,4 +1,4 @@
-@import '../../../styles/shared/variables.scss';
+@use '@styles/shared/variables.scss' as *;
 .button {
   &_primary {
     display: flex;
@@ -50,7 +50,7 @@
     &:hover {
       cursor: pointer;
       color: $primary-color;
-      background: #373743;
+      background: $ui-light;
       & svg {
         fill: $primary-color;
         & path {

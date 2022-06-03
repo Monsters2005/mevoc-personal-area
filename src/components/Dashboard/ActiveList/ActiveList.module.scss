@@ -1,0 +1,115 @@
+@use '@styles/shared/variables.scss' as *;
+
+.activelist {
+  &_container {
+    width: 385px;
+
+    display: flex;
+    align-items: center;
+
+    background: $element-light-color;
+    margin-top: 13px;
+    padding: 8px 10px;
+    border-radius: 10px;
+
+    transition: background 0.1s;
+    cursor: default;
+  }
+  &_dragging {
+    background: lighten($element-light-color, 5);
+  }
+  &_content {
+    margin-left: 10px;
+    & h4 {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: $primary-color;
+      margin: 0;
+      padding: 0;
+    }
+    & p {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 18px;
+
+      color: rgba($primary-color, 0.7);
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &_checkbox {
+    width: 25px;
+    height: 25px;
+
+    background: none;
+    border: 2.7px solid rgba($primary-color, 0.7);
+    border-radius: 100px;
+    position: relative;
+    transition: all 0.3s;
+    &:hover {
+      cursor: pointer;
+    }
+    & span {
+      &::before {
+        content: '';
+        position: absolute;
+        background: $accent-color;
+        border-radius: 30px;
+        width: 0px;
+        height: 0px;
+        transition: all 0.3s;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        background: $accent-color;
+        border-radius: 30px;
+        width: 0px;
+        height: 0px;
+        transition: all 0.3s;
+      }
+    }
+    &_selected {
+      transition: all 0.3s;
+      border-color: $accent-color;
+      & span {
+        &::before {
+          content: '';
+
+          width: 2.5px;
+          height: 5px;
+
+          top: 50%;
+          left: 50%;
+          transform: rotate(-36.26deg) translateX(-120%) translateY(-60%);
+          transition: all 0.3s;
+        }
+        &::after {
+          content: '';
+
+          width: 10px;
+          height: 2.5px;
+
+          top: 50%;
+          left: 50%;
+          transform: rotate(-45deg) translateX(-20%) translateY(-150%);
+          transition: all 0.3s;
+        }
+      }
+    }
+  }
+  &_selected {
+    background: rgba($active-color, 0.1);
+    & h4 {
+      color: $accent-color !important;
+    }
+    & p {
+      color: rgba($accent-color, 0.7) !important;
+    }
+  }
+}

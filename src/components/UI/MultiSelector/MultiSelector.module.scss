@@ -1,4 +1,4 @@
-@import '../../../styles/shared/variables.scss';
+@use '@styles/shared/variables.scss' as *;
 .select {
   &_container {
     width: fit-content;
@@ -8,11 +8,11 @@
     align-items: center;
     justify-content: space-between;
 
-    background: #1f2029;
+    background: $base-color;
     border-radius: 10px;
     position: relative;
 
-    border-right: 10px solid #1f2029;
+    border-right: 10px solid $base-color;
   }
   &_item {
     min-width: 135px;
@@ -85,7 +85,7 @@
     height: 80%;
     position: absolute;
 
-    background: #373744;
+    background: $ui-light;
     border-radius: 10px;
     left: 5px;
     z-index: 0;
