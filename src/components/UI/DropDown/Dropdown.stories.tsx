@@ -19,34 +19,34 @@ const options = [
   {
     value: 'Option',
     details: 'details',
-    key: 1456,
+    id: 1456,
   },
   {
     value: 'Option',
     details: 'details',
-    key: 7566,
+    id: 7566,
   },
   {
     value: 'Option',
     details: 'details',
-    key: 9384,
+    id: 9384,
   },
   {
     value: 'Option',
     details: 'details',
-    key: 3457,
+    id: 3457,
   },
 ];
 
 const obj = {
   value: 'Option',
   details: 'details',
-  key: 1456,
+  id: 1456,
 };
 
 DropdownExample.args = {
   options,
-  defaultSelected: obj,
+  selectedItem: obj,
   listTitle: 'Options',
   allowNoneSelected: true,
   side: 'right',

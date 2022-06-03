@@ -1,4 +1,4 @@
-import { Moment } from 'moment';
+import moment, { Moment } from 'moment';
 import React, { useState } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -23,6 +23,8 @@ export function HookFormDatePicker({
     formState: { errors },
   } = useFormContext();
 
+  const [state, setState] = useState(defaultDate);
+
   return (
     <div>
       <Controller
@@ -31,12 +33,13 @@ export function HookFormDatePicker({
             {...rest}
             {...props}
             setDate={date => {
+              setState(moment(date));
               onChange(date);
             }}
             isError={!!errors[name]}
             error={errors[name]?.message ?? ''}
             label={label}
-            value={defaultDate}
+            value={state}
           />
         )}
         control={control}

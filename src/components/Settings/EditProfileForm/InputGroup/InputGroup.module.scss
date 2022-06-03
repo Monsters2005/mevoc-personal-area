@@ -22,20 +22,21 @@
     justify-content: space-between;
   }
   &_addcontent {
+    display: flex;
+    align-items: center;
 
-      display: flex;
-      align-items: center;
+    height: 50px;
+    background: $base-color;
+    padding: 0 20px 0 10px;
+    border-radius: 10px;
 
-      height: 50px;
-      background: $base-color;
-     padding: 0 20px 0 10px;
-     border-radius: 10px;
+    grid-gap: 10px;
 
-     grid-gap:10px;
-
-      & p {
-        margin-bottom: 15px;
-      }
-    
+    & p {
+      margin-bottom: 15px;
+    }
+  }
+  &_selectfield {
+    background: $base-color;
   }
 }

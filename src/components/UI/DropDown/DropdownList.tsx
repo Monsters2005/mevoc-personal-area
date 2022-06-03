@@ -7,10 +7,9 @@ import { TransitionWrapper } from '../../../layouts/Transition/Transition';
 type Props = {
   isOpen: boolean;
   options: Option[];
-  listTitle: string;
+  listTitle?: string;
   selectedItem: Option | null;
   setSelectedItem: (item: Option | null) => void;
-  styles?: CSSProperties;
   allowNoneSelected: boolean;
 };
 
@@ -20,7 +19,6 @@ export function DropdownList({
   options,
   selectedItem,
   setSelectedItem,
-  styles,
   allowNoneSelected,
 }: Props) {
   const transitionStyles = {
@@ -32,7 +30,7 @@ export function DropdownList({
 
   function selectHandler(item: Option | null) {
     if (allowNoneSelected) {
-      if (item?.key === selectedItem?.key) {
+      if (item?.id === selectedItem?.id) {
         setSelectedItem(null);
       } else {
         setSelectedItem(item);
@@ -44,13 +42,13 @@ export function DropdownList({
 
   return (
     <TransitionWrapper inState={!isOpen} transitionStyles={transitionStyles}>
-      <div style={styles} className={s.dropdown_list}>
+      <div className={s.dropdown_list}>
         <h3 className={s.dropdown_title}>{listTitle}</h3>
         <div className={s.dropdown_options}>
           {options.map(item => (
             <DropdownItem
               item={item}
-              key={item.key}
+              key={item.id}
               selectedItem={selectedItem}
               onClick={option => selectHandler(option)}
             />

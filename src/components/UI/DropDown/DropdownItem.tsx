@@ -14,7 +14,7 @@ export function DropdownItem({ item, selectedItem, onClick }: Props) {
     <div
       className={classNames(s.dropdown_item, {
         [s.dropdown_item__selected]:
-          selectedItem && item.key === selectedItem.key,
+          selectedItem && item.id === selectedItem.id,
       })}
       onClick={() => onClick(item)}
       role="presentation"

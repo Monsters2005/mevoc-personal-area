@@ -45,7 +45,7 @@ export default function DatePicker({
           inputIconPosition="after"
           numberOfMonths={1}
           keepOpenOnDateSelect
-          displayFormat="DD.MM.YY"
+          displayFormat="DD.MM.YYYY"
           isOutsideRange={() => false}
           date={value}
           onDateChange={setDate}

@@ -4,9 +4,12 @@ import React from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { SettignsProfileFormDto } from '../../../../@types/dto/settings/profileform.dto';
 import { User } from '../../../../@types/entities/User';
+import { languages } from '../../../../constants/languages';
 import { HookFormDatePicker } from '../../../HookForm/HookFormDatePicker';
 import HookFormInput from '../../../HookForm/HookFormInput';
+import HookFormSelect from '../../../HookForm/HookFormSelect';
 import { Button } from '../../../UI/Button/Button';
+import { Option } from '../../../UI/DropDown/types';
 import { SettingsSvgSelector } from '../../SettingsSvgSelector';
 import s from './InputGroup.module.scss';
 import schema from './validation';
@@ -62,7 +65,10 @@ export function SettingsInputGroup({
 
   return (
     <FormProvider {...values}>
-      <form className={s.inputgroup_container}>
+      <form
+        className={s.inputgroup_container}
+        onSubmit={e => e.preventDefault()}
+      >
         <div className={s.inputgroup_section}>
           <div className={s.inputgroup_doublerow}>
             <HookFormInput
@@ -136,9 +142,19 @@ export function SettingsInputGroup({
           </div>
         </div>
         <div className={s.inputgroup_section}>
-          <div className={s.inputgroup_doublerow} />
+          <div className={s.inputgroup_doublerow}>
+            <HookFormSelect
+              options={languages}
+              defaultSelected={languages[3]}
+              label="Native Language"
+            />
+            <HookFormSelect
+              options={languages}
+              defaultSelected={languages[1]}
+              label="Learning Language"
+            />
+          </div>
         </div>
-        <button onClick={values.handleSubmit(submitHandler)}>sdfsdf</button>
       </form>
     </FormProvider>
   );
