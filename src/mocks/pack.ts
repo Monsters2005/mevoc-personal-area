@@ -1,0 +1,23 @@
+export const wordPack = {
+  name: 'Food',
+  id: 1,
+  icon: 'wordpack-food',
+  words: [
+    'nutrition',
+    'meal',
+    'seafood',
+    'vegetarian',
+    'fruit',
+    'vegetable',
+    'seed',
+    'products',
+    'meat',
+    'hunger',
+    'protein',
+    'solid food',
+    'junk food',
+    'breakfast',
+    'lunch',
+    'dinner',
+  ],
+};
