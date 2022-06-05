@@ -68,7 +68,7 @@ export function Input({
         <span className={s.input_content}>{children}</span>
       </div>
       {isError && (
-        <div className={s.input_error}>
+        <div className={s.input_error} style={{ width: styles?.width }}>
           <GlobalSvgSelector id="error" />
           <p>{error ?? ''}</p>
         </div>

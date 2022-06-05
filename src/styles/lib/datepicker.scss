@@ -46,7 +46,7 @@
 .SingleDatePickerInput__withBorder,
 .SingleDatePickerInput__withBorder_2 {
   background: rgba($active-color, 0.1);
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   display: flex;
@@ -59,6 +59,7 @@
   background-color: $element-light-color;
   display: flex;
   justify-content: center;
+  margin-left: -10px;
 }
 
 .SingleDatePicker_picker,
@@ -187,7 +188,7 @@
 
 .CalendarMonth_table,
 .CalendarMonth_table_1 {
-  margin-top: 10px;
+  margin-top: 30px;
   table-layout: fixed !important;
   & tbody {
     & tr {
@@ -275,4 +276,55 @@
 .CalendarDay__selected_span_3 {
   background: rgba($accent-color, 0.3) !important;
   color: $element-light-color !important;
+}
+
+.DayPicker {
+  border-radius: 10px;
+  width: 300px !important;
+}
+
+.SingleDatePicker_picker {
+  border-radius: 10px;
+}
+
+.DayPicker_transitionContainer {
+  width: 300px !important;
+}
+.DayPicker_focusRegion {
+  width: 300px !important;
+}
+
+.DayPicker,
+.DayPicker_1,
+.DayPicker__horizontal,
+.DayPicker__horizontal_2,
+.DayPicker__withBorder,
+.DayPicker__withBorder_3 {
+  width: 300px !important;
+  height: 320px !important;
+  background: transparent !important;
+}
+
+.DayPicker div,
+.DayPicker_1 div,
+.DayPicker__horizontal div,
+.DayPicker__horizontal_2 div,
+.DayPicker__withBorder div,
+.DayPicker__withBorder_3 div {
+  background-color: transparent !important;
+}
+
+.DayPicker_weekHeader,
+.DayPicker_weekHeader_1 {
+  margin-left: -10px;
+  margin-top: 10px;
+}
+
+.CalendarMonth_caption,
+.CalendarMonth_caption_1 {
+  margin-top: 0;
+}
+
+.DayPickerNavigation_button {
+  margin-top: 0px;
 }

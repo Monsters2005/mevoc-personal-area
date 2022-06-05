@@ -4,7 +4,6 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { Controller, useFormContext } from 'react-hook-form';
 import DatePicker from '../UI/DatePicker/DatePicker';
-import { DatePickerField, DatePickerState, Render } from './types';
 
 type Props = {
   name: string;
@@ -28,6 +27,7 @@ export function HookFormDatePicker({
   return (
     <div>
       <Controller
+        defaultValue={state}
         render={({ field: { ref, onChange, ...rest } }) => (
           <DatePicker
             {...rest}
@@ -43,7 +43,7 @@ export function HookFormDatePicker({
           />
         )}
         control={control}
-        name="dob"
+        name={name}
       />
     </div>
   );

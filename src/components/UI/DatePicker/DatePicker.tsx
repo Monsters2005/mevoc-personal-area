@@ -31,6 +31,8 @@ export default function DatePicker({
 }: Props) {
   const [focusedInput, setFocusedInput] = useState(false);
 
+  const changeHandler = (date: Date) => (date ? setDate(date) : setDate(value));
+
   return (
     <div className={s.datepicker_container}>
       {label && (
@@ -48,7 +50,7 @@ export default function DatePicker({
           displayFormat="DD.MM.YYYY"
           isOutsideRange={() => false}
           date={value}
-          onDateChange={setDate}
+          onDateChange={changeHandler}
           focused={focusedInput}
           onFocusChange={({ focused }) => {
             setFocusedInput(focused);
@@ -59,7 +61,7 @@ export default function DatePicker({
       </div>
 
       {isError && (
-        <div className={s.input_error}>
+        <div className={s.datepicker_error}>
           <GlobalSvgSelector id="error" />
           <p>{error ?? ''}</p>
         </div>

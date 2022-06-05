@@ -22,10 +22,10 @@ export function DropdownList({
   allowNoneSelected,
 }: Props) {
   const transitionStyles = {
-    entering: { opacity: 0.5, zIndex: 1 },
-    entered: { opacity: 1, zIndex: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0, zIndex: -100 },
+    entering: { opacity: 1, zIndex: 100 },
+    entered: { opacity: 1, zIndex: 10 },
+    exiting: { opacity: 0, zIndex: 10, pointerEvents: 'none' },
+    exited: { opacity: 0, zIndex: -10, pointerEvents: 'none' },
   };
 
   function selectHandler(item: Option | null) {

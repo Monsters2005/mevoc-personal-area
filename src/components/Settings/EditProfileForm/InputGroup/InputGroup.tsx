@@ -4,12 +4,12 @@ import React from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { SettignsProfileFormDto } from '../../../../@types/dto/settings/profileform.dto';
 import { User } from '../../../../@types/entities/User';
+import { countries } from '../../../../constants/countries';
 import { languages } from '../../../../constants/languages';
 import { HookFormDatePicker } from '../../../HookForm/HookFormDatePicker';
 import HookFormInput from '../../../HookForm/HookFormInput';
 import HookFormSelect from '../../../HookForm/HookFormSelect';
 import { Button } from '../../../UI/Button/Button';
-import { Option } from '../../../UI/DropDown/types';
 import { SettingsSvgSelector } from '../../SettingsSvgSelector';
 import s from './InputGroup.module.scss';
 import schema from './validation';
@@ -59,8 +59,8 @@ export function SettingsInputGroup({
   });
 
   const submitHandler = (data: SettignsProfileFormDto) => {
-    console.log(data);
     onSave(data);
+    console.log(data);
   };
 
   return (
@@ -75,13 +75,21 @@ export function SettingsInputGroup({
               name="firstName"
               defaultValue={firstName}
               label="First Name"
-              styles={{ ...inputStyles, width: '300px' }}
+              styles={{
+                ...inputStyles,
+                width: '300px',
+                textTransform: 'capitalize',
+              }}
             />
             <HookFormInput
               name="lastName"
               defaultValue={lastName}
               label="Last Name"
-              styles={{ ...inputStyles, width: '300px' }}
+              styles={{
+                ...inputStyles,
+                width: '300px',
+                textTransform: 'capitalize',
+              }}
             />
           </div>
           <div className={s.inputgroup_doublerow}>
@@ -129,16 +137,12 @@ export function SettingsInputGroup({
               label="Phone Number"
               styles={{ ...inputStyles, width: '300px' }}
             />
-            <HookFormInput
-              name="location"
-              defaultValue={location}
+            <HookFormSelect
+              options={countries}
+              defaultSelected={countries[87]}
               label="Location"
-              styles={{ ...inputStyles, width: '300px' }}
-            >
-              <span className={s.inputgroup_addcontent}>
-                <SettingsSvgSelector id="location" />
-              </span>
-            </HookFormInput>
+              name="location"
+            />
           </div>
         </div>
         <div className={s.inputgroup_section}>
@@ -147,11 +151,13 @@ export function SettingsInputGroup({
               options={languages}
               defaultSelected={languages[3]}
               label="Native Language"
+              name="nativeLang"
             />
             <HookFormSelect
               options={languages}
               defaultSelected={languages[1]}
               label="Learning Language"
+              name="learningLang"
             />
           </div>
         </div>

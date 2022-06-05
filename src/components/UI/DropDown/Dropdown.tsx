@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { CSSProperties, SetStateAction, useState } from 'react';
 import { UISvgSelector } from '../../../assets/icons/UI/SvgSelector';
+import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import s from './Dropdown.module.scss';
 import { DropdownList } from './DropdownList';
 import { Option } from './types';
@@ -14,6 +15,8 @@ type DropdownProps = {
   allowNoneSelected: boolean;
   styles?: CSSProperties;
   side?: 'left' | 'right';
+  isError?: boolean;
+  error?: string;
 };
 
 export function Dropdown({
@@ -25,6 +28,8 @@ export function Dropdown({
   setSelectedItem,
   styles,
   side = 'left',
+  isError,
+  error,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -64,6 +69,7 @@ export function Dropdown({
             <UISvgSelector id="arrow-down" />
           </div>
         </button>
+
         <DropdownList
           isOpen={isOpen}
           selectedItem={selectedItem}
@@ -72,6 +78,12 @@ export function Dropdown({
           listTitle={listTitle}
           allowNoneSelected={allowNoneSelected}
         />
+        {isError && (
+          <div className={s.dropdown_error}>
+            <GlobalSvgSelector id="error" />
+            <p>{error ?? ''}</p>
+          </div>
+        )}
       </div>
     </>
   );
