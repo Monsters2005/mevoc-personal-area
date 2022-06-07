@@ -1,0 +1,164 @@
+@use '@styles/shared/variables.scss' as *;
+
+.wordpack {
+  &_container {
+    width: 217px;
+    height: 283px;
+
+    background: $element-light-color;
+    backdrop-filter: blur(45px);
+    border-radius: 10px;
+
+    margin: 0;
+    padding: 30px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-left: 45px;
+  }
+  &_container:first-child {
+    margin-left: 0;
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & p {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 18px;
+
+      color: rgba($primary-color, 0.7);
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &_icon {
+    width: 81px;
+    height: 81px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid rgba($primary-color, 0.7);
+    box-sizing: border-box;
+
+    border-radius: 150px;
+    margin-top: 10px;
+
+    & img {
+      min-width: 45px;
+      min-height: 45px;
+      max-width: 45px;
+      max-height: 45px;
+    }
+  }
+  &_title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: $primary-color;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+  }
+  &_buttons {
+    display: flex;
+    align-items: center;
+
+    margin-top: auto;
+  }
+
+  &_add {
+    width: 25px;
+    height: 25px;
+
+    background: none;
+    border: 2.7px solid $accent-color;
+    border-radius: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.2s;
+    margin-left: 10px;
+
+    & span {
+      position: relative;
+      &::before {
+        content: '';
+
+        width: 2.5px;
+        height: 12px;
+
+        position: absolute;
+        background: $accent-color;
+        border-radius: 30px;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: all 0.5s;
+      }
+      &::after {
+        content: '';
+
+        width: 12px;
+        height: 2.5px;
+
+        position: absolute;
+        background: $accent-color;
+        border-radius: 30px;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: all 0.5s;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      border-color: lighten($accent-color, 5);
+      & span {
+        &::after,
+        &::before {
+          background: lighten($accent-color, 5);
+        }
+      }
+    }
+  }
+  &_added {
+    transition: all 0.3s;
+    background: $accent-color;
+    & span {
+      &::after {
+        transition: all 0.5s;
+        transform: translateX(-30%) translateY(-60%) rotate(-45deg);
+        background: $base-color;
+      }
+      &::before {
+        transition: all 0.5s;
+        transform: translateX(-160%) translateY(-30%) rotate(-40deg);
+        height: 6px;
+        background: $base-color;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      border-color: $accent-color !important;
+      & span {
+        &::after,
+        &::before {
+          background: $base-color !important;
+        }
+      }
+    }
+  }
+}
