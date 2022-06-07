@@ -62,6 +62,73 @@ export const list = {
       id: 10,
       dateLearned: null,
     },
+
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-05',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-05',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-05',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-06',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-07',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-07',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-07',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-07',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-08',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-08',
+    },
+    {
+      wordLearning: 'domestic',
+      wordNative: 'прислуга',
+      id: 10,
+      dateLearned: '2020-04-08',
+    },
   ],
   progress: 97,
 };
