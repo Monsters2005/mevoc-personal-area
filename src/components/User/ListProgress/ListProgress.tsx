@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import s from './ListProgress.module.scss';
 import { pluralizeString } from '../../../utils/pluralizeString';
 import { List } from '../../../@types/entities/List';
+import { CircularProgress } from '../../UI/CircularProgress/CircularProgress';
 
 type Props = {
   item: List;
@@ -24,7 +25,16 @@ export function ListProgress({ item, active, onClick }: Props) {
       })}
       onClick={selectHandler(item)}
     >
-      <div className={s.list_progress} />
+      <div className={s.list_progress}>
+        <CircularProgress
+          progressValue={item.progress}
+          width={60}
+          height={60}
+          percentStyles={{ fontSize: '14px' }}
+          circleStroke={3}
+          styles={{ minWidth: '60px', minHeight: '60px' }}
+        />
+      </div>
       <div className={s.list_content}>
         <h4>{item.name}</h4>
         <p>{pluralizeString(item.words.length)}</p>
