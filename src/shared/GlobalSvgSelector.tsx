@@ -95,7 +95,7 @@ export function GlobalSvgSelector({ id }: { id: string }) {
           />
         </svg>
       );
-      
+
     default:
       return null;
   }
