@@ -21,6 +21,7 @@
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
     "eslint-plugin-storybook": "^0.5.6",
+    "moment": "^2.29.3",
     "normalize.css": "^8.0.1",
     "postcss": "^8.4.13",
     "postcss-loader": "^6.2.1",
