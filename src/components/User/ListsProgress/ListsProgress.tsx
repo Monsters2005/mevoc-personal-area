@@ -5,11 +5,11 @@ import { List } from '../../../@types/entities/List';
 
 type Props = {
   lists: List[];
+  active: List;
+  setActive: (id: List) => void;
 };
 
-export function UserListsProgress({ lists }: Props) {
-  const [active, setActive] = useState(lists[0].id);
-
+export function UserListsProgress({ lists, active, setActive }: Props) {
   return (
     <div className={s.lists_container}>
       {lists.map((item: List) => (
@@ -17,7 +17,7 @@ export function UserListsProgress({ lists }: Props) {
           key={item.id}
           item={item}
           active={active}
-          onClick={newActive => setActive(newActive)}
+          onClick={list => setActive(list)}
         />
       ))}
     </div>

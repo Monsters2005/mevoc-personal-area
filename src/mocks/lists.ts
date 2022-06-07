@@ -64,7 +64,7 @@ export const lists = [
         dateLearned: null,
       },
     ],
-    progress: 97,
+    progress: 87,
   },
   {
     name: 'Whatever',
@@ -76,6 +76,13 @@ export const lists = [
         id: 1,
         dateLearned: '2020-04-01',
       },
+      {
+        wordLearning: 'insufficiently ',
+        wordNative: 'недостаточно ',
+        id: 1,
+        dateLearned: '2020-04-01',
+      },
+
       {
         wordLearning: 'elitist ',
         wordNative: 'элитарный',
@@ -128,9 +135,21 @@ export const lists = [
         wordLearning: 'domestic',
         wordNative: 'прислуга',
         id: 10,
-        dateLearned: null,
+        dateLearned: '2020-04-05',
+      },
+      {
+        wordLearning: 'decontextualization ',
+        wordNative: 'деконтекстуализация',
+        id: 9,
+        dateLearned: '2020-04-05',
+      },
+      {
+        wordLearning: 'domestic',
+        wordNative: 'прислуга',
+        id: 10,
+        dateLearned: '2020-04-05',
       },
     ],
-    progress: 97,
+    progress: 44,
   },
 ];
