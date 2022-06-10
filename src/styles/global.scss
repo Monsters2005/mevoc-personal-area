@@ -1,6 +1,7 @@
 @use '~normalize.css' as *;
 @use './shared/fonts.scss';
 @use './shared/variables.scss' as *;
+@use './lib/datepicker.scss' as *;
 
 *,
 *::before,
