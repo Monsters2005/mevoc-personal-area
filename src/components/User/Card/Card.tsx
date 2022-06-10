@@ -3,6 +3,7 @@ import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { getMediaLink } from '../../../utils/getMediaLink';
 import { LanguageField } from '../LanguageField/LanguageField';
 import s from './Card.module.scss';
+import defaultAvatar from '../../../assets/images/defaultAvatar.png';
 
 type Props = {
   userData: {
@@ -25,19 +26,12 @@ export function UserCard({
     langNative,
   },
 }: Props) {
-  const avatarUrl = getMediaLink(avatar);
+  const avatarUrl = getMediaLink(avatar) || defaultAvatar;
 
   return (
     <div className={s.usercard_container}>
       <div className={s.usercard_avatar}>
-        <img
-          src={
-            avatarUrl !== ' '
-              ? avatarUrl
-              : "https://i.ibb.co/FXPtHCX/profile-1.png'"
-          }
-          alt="avatar"
-        />
+        <img src={avatarUrl} alt="avatar" />
       </div>
       <div className={s.usercard_info}>
         <h4>{`${firstName} ${lastName}`}</h4>

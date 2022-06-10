@@ -1,0 +1,52 @@
+@use '@styles/shared/variables.scss' as *;
+
+.progress {
+  &_container {
+    width: 290px;
+
+    & button {
+      margin-left: auto;
+    }
+  }
+  &_words {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+
+    grid-gap: 6px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+
+    color: rgba($primary-color, 0.7);
+  }
+  &_hint {
+    width: 300px;
+
+    padding: 10px 14px;
+    background: $element-color;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 133.5%;
+    border-radius: 10px;
+
+    color: rgba($primary-color, 0.7);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 13px 28px 13px;
+      border-color: transparent transparent $element-color transparent;
+      top: -16px;
+      right: 21px;
+    }
+  }
+}
