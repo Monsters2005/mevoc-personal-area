@@ -1,14 +1,11 @@
-import React, {
-  Dispatch, SetStateAction, useEffect, useState,
-} from 'react';
+import React, { useState } from 'react';
 
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
 import { DateRangePicker, FocusedInputShape } from 'react-dates';
 import s from './Calendar.module.scss';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { Dates } from './types';
 
 type CalendarDates = {
   startDate: Moment | null;
@@ -16,23 +13,12 @@ type CalendarDates = {
 };
 
 type Props = {
-  startDate: Date;
-  endDate: Date;
-  setGraphDates: Dispatch<SetStateAction<Dates>>;
+  setDates: (dates: CalendarDates) => void;
+  dates: CalendarDates;
 };
 
-export function Calendar({ startDate, endDate, setGraphDates }: Props) {
+export function Calendar({ setDates, dates }: Props) {
   const [focusedInput, setFocusedInput] = useState<FocusedInputShape | null>(null);
-
-  const [dates, setDates] = useState<CalendarDates>({
-    startDate: null,
-    endDate: null,
-  });
-
-  useEffect(() => {
-    setDates({ startDate: moment(startDate), endDate: moment(endDate) });
-    setGraphDates({ startDate, endDate });
-  }, [startDate, endDate]);
 
   return (
     <div className={s.calendar_container}>
@@ -48,16 +34,8 @@ export function Calendar({ startDate, endDate, setGraphDates }: Props) {
         startDateId="1"
         endDate={dates.endDate}
         endDateId="2"
-        // eslint-disable-next-line
-        onDatesChange={({ startDate, endDate }: CalendarDates) => {
-          setDates(() => ({
-            startDate,
-            endDate,
-          }));
-          setGraphDates({
-            startDate: new Date(startDate?.toString() || ''),
-            endDate: new Date(endDate?.toString() || ''),
-          });
+        onDatesChange={(data: CalendarDates) => {
+          setDates(data);
         }}
         focusedInput={focusedInput}
         onFocusChange={(focused: FocusedInputShape | null) => {

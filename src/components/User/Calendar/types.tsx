@@ -1,9 +1,6 @@
-export type Dates = {
-  startDate: Date;
-  endDate: Date;
-};
+import { Moment } from 'moment';
 
-export type Tab = {
-  key: string;
-  value: string;
+export type Dates = {
+  startDate: Moment | null;
+  endDate: Moment | null;
 };
