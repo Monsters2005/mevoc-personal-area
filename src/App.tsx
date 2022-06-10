@@ -20,26 +20,9 @@ function App() {
     endDate: new Date(),
   });
 
-  const tabs: Tab[] = [
-    {
-      key: 'week',
-      value: 'Week',
-    },
-    {
-      key: 'month',
-      value: 'Month',
-    },
-    {
-      key: 'year',
-      value: 'Year',
-    },
-  ];
-  const [activeTab, setActiveTab] = useState<string>(tabs[0].key);
-
   return (
     <div className="App">
       <Calendar
-        setActiveTab={setActiveTab}
         setGraphDates={setGraphDates}
         startDate={dates.startDate}
         endDate={dates.endDate}

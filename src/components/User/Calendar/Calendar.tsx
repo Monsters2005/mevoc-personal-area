@@ -19,15 +19,9 @@ type Props = {
   startDate: Date;
   endDate: Date;
   setGraphDates: Dispatch<SetStateAction<Dates>>;
-  setActiveTab: Dispatch<SetStateAction<string>>;
 };
 
-export function Calendar({
-  startDate,
-  endDate,
-  setGraphDates,
-  setActiveTab,
-}: Props) {
+export function Calendar({ startDate, endDate, setGraphDates }: Props) {
   const [focusedInput, setFocusedInput] = useState<FocusedInputShape | null>(null);
 
   const [dates, setDates] = useState<CalendarDates>({
@@ -55,7 +49,7 @@ export function Calendar({
         endDate={dates.endDate}
         endDateId="2"
         // eslint-disable-next-line
-        onDatesChange={({ startDate, endDate }) => {
+        onDatesChange={({ startDate, endDate }: CalendarDates) => {
           setDates(() => ({
             startDate,
             endDate,
@@ -64,9 +58,6 @@ export function Calendar({
             startDate: new Date(startDate?.toString() || ''),
             endDate: new Date(endDate?.toString() || ''),
           });
-          if (setActiveTab) {
-            setActiveTab('off');
-          }
         }}
         focusedInput={focusedInput}
         onFocusChange={(focused: FocusedInputShape | null) => {
