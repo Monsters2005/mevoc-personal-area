@@ -1,6 +1,7 @@
 .dashboardpage {
   &_container {
     width: 100%;
+    max-height: 100vh;
     padding: 30px 40px;
   }
   &_header {
