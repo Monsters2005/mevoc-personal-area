@@ -9,6 +9,7 @@ type Props = {
   bgColor?: string;
   progressValue: number;
   percentStyles?: CSSProperties;
+  styles?: CSSProperties;
 };
 
 export function CircularProgress({
@@ -18,6 +19,7 @@ export function CircularProgress({
   bgColor = '#ffffff',
   progressValue,
   percentStyles,
+  styles,
 }: Props) {
   const radius = width / 2 - circleStroke / 2;
 
@@ -29,7 +31,7 @@ export function CircularProgress({
   const progress = useTimeout(progressValue);
 
   return (
-    <div className={s.progress__bar__wrapper}>
+    <div className={s.progress__bar__wrapper} style={{ ...styles }}>
       <div className={s.progress__bar__number} style={{ ...percentStyles }}>
         {progress}
         %

@@ -1,6 +1,6 @@
 export type Pack = {
   name: string;
-  key: string;
+  id: number;
   words: Array<string>;
   icon: string;
 };

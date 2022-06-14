@@ -1,0 +1,150 @@
+@import '../../../styles/shared/variables.scss';
+
+.dropdown {
+  &_container {
+    width: 100%;
+    position: relative;
+    &_right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+    }
+  }
+
+  &_active {
+    width: fit-content;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 10px;
+    background: none;
+    border: none;
+
+    transition: all 0.1s;
+
+    &:hover {
+      background: rgba($active-color, 0.1);
+      cursor: pointer;
+    }
+
+    &__open {
+      background: rgba($active-color, 0.1);
+    }
+
+    &__value {
+      margin-right: 30px;
+      & p {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 27px;
+
+        color: $primary-color;
+      }
+    }
+    &__expand {
+      transition: all 0.1s;
+    }
+  }
+
+  &_list {
+    height: fit-content;
+    max-height: 270px;
+
+    background: rgba($element-color, 0.25);
+    backdrop-filter: blur(45px);
+    border-radius: 10px;
+
+    padding: 13px;
+    margin-top: 20px;
+
+    transition: all 0.3s;
+
+    &__open {
+      opacity: 1;
+      animation: slide-in-elliptic-top-fwd 0.4s
+        cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      transform: translateY(0px) translateX(0px);
+    }
+    &__closed {
+      animation: slide-out-elliptic-top-fwd 0.3s
+        cubic-bezier(0.5, 0.5, 0.1, 0.1) both;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+  &_options {
+    max-height: 200px;
+    overflow-y: auto;
+
+    margin-top: 10px;
+    padding-right: 10px;
+  }
+  &_title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: rgba($primary-color, 0.7);
+    padding-left: 13px;
+  }
+  &_item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    padding: 8px 13px;
+    margin-top: 5px;
+
+    border-radius: 10px;
+    transition: all 0.1s;
+
+    &__selected {
+      background: rgba($active-color, 0.1);
+      & h4 {
+        color: $accent-color !important;
+      }
+      & p {
+        color: rgba($accent-color, 0.7) !important;
+      }
+    }
+    &__info {
+      display: flex;
+      flex-direction: column;
+      & h4 {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+
+        margin: 0;
+        padding: 0;
+
+        color: $primary-color;
+      }
+      & p {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+
+        margin: 0;
+        padding: 0;
+
+        color: rgba($primary-color, 0.7);
+      }
+    }
+    &__addition {
+      margin-left: auto;
+    }
+    &:hover {
+      cursor: pointer;
+      background: rgba($active-color, 0.1);
+    }
+  }
+}

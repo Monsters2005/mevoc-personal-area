@@ -1,0 +1,60 @@
+@use '@styles/shared/variables.scss' as *;
+
+.formlayout {
+  width: 440px;
+  height: fit-content;
+
+  background: url('../../assets/images/form-background.svg'), $element-color;
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: hidden;
+  padding: 30px 0;
+
+  grid-gap: 30px;
+  transition: all 0.2s;
+
+  &_content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 27px;
+  }
+
+  &_title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: $primary-color;
+    margin: 0;
+  }
+  &_bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &_bottomtext {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: rgba($primary-color, 0.7);
+    transition: all 0.1s;
+    &:hover {
+      color: $primary-color;
+      cursor: pointer;
+    }
+  }
+}

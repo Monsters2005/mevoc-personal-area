@@ -21,7 +21,7 @@ export function WordPack({ item }: Props) {
     <div className={s.wordpack_container}>
       <div className={s.wordpack_info}>
         <span className={s.wordpack_icon}>
-          <img src={item.icon} alt={item.key} />
+          <img src={item.icon} alt={item.name} />
         </span>
         <h4 className={s.wordpack_title}>{item.name}</h4>
         <p>{pluralizeString(item.words.length)}</p>

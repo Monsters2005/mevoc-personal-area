@@ -13,7 +13,7 @@ export function DashboardWordPacks({ packs }: Props) {
     <CardLayout title="Word packs">
       <div className={s.wordpacks_container}>
         {packs.map(item => (
-          <WordPack key={item.key} item={item} />
+          <WordPack key={item.id} item={item} />
         ))}
       </div>
     </CardLayout>
