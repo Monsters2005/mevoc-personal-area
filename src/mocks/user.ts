@@ -5,5 +5,5 @@ export const user = {
   avatar: 'fHrx3Yx/photo-1.jpg',
   langLearning: 'English',
   langNative: 'Russian',
-  location: 'India, New Delhi',
+  location: 'Australia',
 };
