@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import React, { useMemo, useState } from 'react';
-import { delayAction } from '../../../utils/delayAction';
-import { shuffleArray } from '../../../utils/shuffleArray';
+import { shuffleArray } from '../../../../utils/shuffleArray';
+import { LetterBox } from '../LetterBox/LetterBox';
+import { LetterCard } from '../LetterCard/LetterCard';
+import { ActiveAnimation, Letter } from '../types';
 import s from './FirstStage.module.scss';
-import { LetterBox } from './LetterBox/LetterBox';
-import { LetterCard } from './LetterCard/LetterCard';
-import { ActiveAnimation, Letter } from './types';
 
 type Props = {
   wordLearning: string;
@@ -53,30 +52,32 @@ export default function FirstStage({
   };
 
   return (
-    <div className={s.firststage_container}>
-      <div className={s.firststage_wordNative}>{wordNative}</div>
-      <div className={s.firststage_boxes}>
-        {letters.map(item => (
-          <div className={s.firststage_box} key={item.id}>
-            <LetterBox
-              item={item}
-              filled={item.id < currentCell.id}
-              cellId={currentCell.id}
-            />
-          </div>
-        ))}
-      </div>
-      <div className={s.firststage_letters}>
-        {cards.map(item => (
-          <div key={item.id} className={s.firststage_card}>
-            <LetterCard
-              item={item}
-              removed={item.id < currentCell.id}
-              animation={activeAnimation}
-              onClick={() => handleLetterPick(item)}
-            />
-          </div>
-        ))}
+    <div className={s.firststage_wrapper}>
+      <div className={s.firststage_container}>
+        <div className={s.firststage_wordNative}>{wordNative}</div>
+        <div className={s.firststage_boxes}>
+          {letters.map(item => (
+            <div className={s.firststage_box} key={item.id}>
+              <LetterBox
+                item={item}
+                filled={item.id < currentCell.id}
+                cellId={currentCell.id}
+              />
+            </div>
+          ))}
+        </div>
+        <div className={s.firststage_letters}>
+          {cards.map(item => (
+            <div key={item.id} className={s.firststage_card}>
+              <LetterCard
+                item={item}
+                removed={item.id < currentCell.id}
+                animation={activeAnimation}
+                onClick={() => handleLetterPick(item)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

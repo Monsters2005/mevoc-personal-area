@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import s from '../FirstStage.module.scss';
+import s from '../FirstStage/FirstStage.module.scss';
 import { Letter } from '../types';
 
 type Props = {

@@ -1,6 +1,13 @@
 @use '@styles/shared/variables.scss' as *;
 
 .firststage {
+  &_wrapper {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &_container {
     display: flex;
     align-items: center;
@@ -15,6 +22,7 @@
     line-height: 42px;
 
     color: $primary-color;
+    user-select: none;
   }
   &_boxes {
     display: flex;

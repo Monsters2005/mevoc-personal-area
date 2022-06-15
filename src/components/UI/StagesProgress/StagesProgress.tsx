@@ -4,7 +4,7 @@ import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { LinearProgress } from '../LinearProgress/LinearProgress';
 import s from './StagesProgress.module.scss';
 
-type Stage = {
+export type Stage = {
   id: number;
   name: string;
   progress: number;

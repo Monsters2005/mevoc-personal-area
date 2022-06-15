@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import s from '../FirstStage.module.scss';
+import s from '../FirstStage/FirstStage.module.scss';
 import anim from '../Animations.module.scss';
 import { ActiveAnimation, Letter } from '../types';
 
