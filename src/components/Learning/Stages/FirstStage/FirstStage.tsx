@@ -1,5 +1,8 @@
+/* eslint-disable */
+
 import classNames from 'classnames';
 import React, { useMemo, useState } from 'react';
+import { GlobalSvgSelector } from '../../../../shared/GlobalSvgSelector';
 import { shuffleArray } from '../../../../utils/shuffleArray';
 import { LetterBox } from '../LetterBox/LetterBox';
 import { LetterCard } from '../LetterCard/LetterCard';
@@ -9,7 +12,7 @@ import s from './FirstStage.module.scss';
 type Props = {
   wordLearning: string;
   wordNative: string;
-  onComplete: () => void;
+  onComplete: (mistakes: number) => void;
 };
 
 export default function FirstStage({
@@ -23,32 +26,47 @@ export default function FirstStage({
   }));
   const cards = useMemo(() => shuffleArray([...letters]), []);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(2);
   const [mistakesCount, setMistakesCount] = useState(0);
-  const [activeAnimation, setActiveAnimation] = useState<ActiveAnimation | null>(null);
+  const [completed, setCompleted] = useState(false);
+  const [activeAnimation, setActiveAnimation] =
+    useState<ActiveAnimation | null>(null);
   const currentCell = letters[currentIndex];
 
   const handleAnimation = (state: 'incorrect' | 'correct', id: number) => {
     setActiveAnimation({ state, letterId: id });
   };
 
+  const handlePickSuccess = (letterPicked: Letter) => {
+    const cardIndex = cards.indexOf(
+      cards.find(el => el.id === currentCell.id) || letters[currentIndex]
+    );
+    cards.splice(cardIndex, 1);
+    setCurrentIndex(currentIndex + 1);
+    handleAnimation('correct', letterPicked.id);
+    //! animation is broken. changes the visibility of two same elements
+  };
+
+  const handleCompletion = () => {
+    onComplete(mistakesCount);
+    setCompleted(true);
+  };
+
   const handleLetterPick = (letterPicked: Letter) => {
-    // const insertLetter = () => {};
-    if (letterPicked.letter === currentCell.letter) {
-      // insertLetter();
-      const cardIndex = cards.indexOf(
-        cards.find(el => el.id === currentCell.id) || letters[currentIndex]
-      );
-      cards.splice(cardIndex, 1);
-      setCurrentIndex(currentIndex + 1);
-      console.log(letterPicked.id, currentCell.id);
-      console.log('cards', cards);
-      handleAnimation('correct', letterPicked.id);
-      //! animation is broken. changes the visibility of two same elements
-    } else {
-      setMistakesCount(mistakesCount + 1);
-      handleAnimation('incorrect', letterPicked.id);
+    const isCorrect = letterPicked.letter === currentCell.letter;
+
+    // if (isCorrect) {
+    if (letters.length === letterPicked.id) {
+      console.log('ok');
+      handleCompletion();
     }
+    // } else {
+    //   handlePickSuccess(letterPicked);
+    // }
+    // } else {
+    //   setMistakesCount(mistakesCount + 1);
+    //   handleAnimation('incorrect', letterPicked.id);
+    // }
   };
 
   return (
@@ -65,6 +83,7 @@ export default function FirstStage({
               />
             </div>
           ))}
+          {completed && <GlobalSvgSelector id="checkmark-circle" />}
         </div>
         <div className={s.firststage_letters}>
           {cards.map(item => (

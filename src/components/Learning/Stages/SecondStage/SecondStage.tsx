@@ -1,5 +1,6 @@
-/* eslint-disable */
-import React, { createRef, RefObject, useEffect, useState } from 'react';
+import React, {
+  createRef, RefObject, useEffect, useState,
+} from 'react';
 import { LearningSvgSelector } from '../../LearningSvgSelector';
 import { LetterBox } from '../LetterBox/LetterBox';
 import s from './SecondStage.module.scss';
