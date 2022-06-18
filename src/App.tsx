@@ -5,6 +5,7 @@ import { Sidebar } from './components/Sidebar/Sidebar/Sidebar';
 import { actions, pages } from './constants/sidebar';
 import { DashboardPage } from './pages/Dashboard/Dashboard';
 import ListManagementPage from './pages/ListManagement/ListManagement';
+import { SettingsPage } from './pages/Settings/Settings';
 import { UserProfilePage } from './pages/UserProfile/UserProfile';
 import { getLocationName } from './utils/getLocationName';
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/lists-management" element={<ListManagementPage />} />
           <Route path="/user-profile" element={<UserProfilePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </div>
     </div>
