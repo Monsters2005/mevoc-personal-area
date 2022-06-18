@@ -1,0 +1,59 @@
+@use '@styles/shared/variables.scss' as *;
+
+.thirdstage {
+  &_complete {
+    position: absolute;
+    right: -60px;
+  }
+  &_info {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    & p {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 26px;
+      display: flex;
+      align-items: center;
+
+      color: rgba($primary-color, 0.7);
+      max-width: 250px;
+      margin-left: 5px;
+    }
+  }
+  &_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-gap: 40px;
+    transition: all 0.4s;
+  }
+  &_boxes {
+    display: flex;
+    align-items: center;
+
+    grid-gap: 15px;
+    transition: all 0.4s;
+    position: relative;
+  }
+  &_wordNative {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 42px;
+
+    color: $primary-color;
+    user-select: none;
+  }
+  &_wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:focus {
+      outline: none;
+    }
+  }
+}

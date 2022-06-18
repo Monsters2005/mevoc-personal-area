@@ -32,15 +32,21 @@ export default function LearningHeader({
 }: Props) {
   return (
     <div className={s.header_container}>
-      <Button styles={buttonStyles} type="secondary" onClick={onGoBack}>
-        <LearningSvgSelector id="arrow-left" />
-        Go back
-      </Button>
-      <StagesProgress stages={stages} />
-      <Button styles={buttonStyles} type="secondary" onClick={onSkipStages}>
-        Move To The Test
-        <LearningSvgSelector id="arrow-right" />
-      </Button>
+      <div className={s.header_part}>
+        <Button styles={buttonStyles} type="secondary" onClick={onGoBack}>
+          <LearningSvgSelector id="arrow-left" />
+          Go back
+        </Button>
+      </div>
+      <div className={s.header_part}>
+        <StagesProgress stages={stages} />
+      </div>
+      <div className={s.header_part}>
+        <Button styles={buttonStyles} type="secondary" onClick={onSkipStages}>
+          Move To The Test
+          <LearningSvgSelector id="arrow-right" />
+        </Button>
+      </div>
     </div>
   );
 }

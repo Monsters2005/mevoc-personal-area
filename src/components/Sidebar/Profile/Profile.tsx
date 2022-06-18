@@ -1,6 +1,6 @@
 import React from 'react';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
-import { getMediaLink } from '../../../utils/getMediaLink';
+import { getMediaLink } from '../../../utils/components/getMediaLink';
 import s from './Profile.module.scss';
 import defaultAvatar from '../../../assets/images/defaultAvatar.png';
 

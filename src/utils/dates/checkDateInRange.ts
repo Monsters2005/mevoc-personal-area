@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Dates } from '../components/User/Calendar/types';
+import { Dates } from '../../components/User/Calendar/types';
 
 export function checkDateInRange<T extends string>(
   compare: T,

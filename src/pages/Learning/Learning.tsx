@@ -3,26 +3,12 @@ import React, { useState } from 'react';
 import s from './Learning.module.scss';
 import LearningHeader from '../../components/Learning/LearningHeader/LearningHeader';
 import { stages } from '../../constants/stages';
-import FirstStage from '../../components/Learning/Stages/FirstStage/FirstStage';
+import { createQueue } from '../../utils/queue/createQueue';
+import ThirdStage from '../../components/Learning/Stages/ThirdStage/ThirdStage';
 
 export function LearningPage() {
   const [activeStage, setActiveStage] = useState(1);
-
-  const getCurrentStage = (id: number) => {
-    switch (id) {
-      case 1:
-        return (
-          <FirstStage
-            wordLearning="oka"
-            wordNative="хорошо"
-            onComplete={() => console.log('')}
-          />
-        );
-
-      default:
-        return null;
-    }
-  };
+  const stageQueue = createQueue();
 
   const handleStageChange = () => {};
 
@@ -39,7 +25,6 @@ export function LearningPage() {
         }}
         setStage={item => console.log(item)}
       />
-      {getCurrentStage(activeStage)}
     </div>
   );
 }

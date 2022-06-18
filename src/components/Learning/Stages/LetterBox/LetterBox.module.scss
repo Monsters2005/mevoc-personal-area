@@ -1,54 +1,7 @@
 @use '@styles/shared/variables.scss' as *;
 
-.secondstage {
-  &_wrapper {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.letterbox {
   &_container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    grid-gap: 40px;
-    transition: all 0.4s;
-  }
-  &_wordNative {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 42px;
-
-    color: $primary-color;
-    user-select: none;
-  }
-  &_boxes {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-
-    grid-gap: 15px;
-    transition: all 0.4s;
-    position: relative;
-  }
-  &_card {
-    width: 50px;
-    height: 50px;
-  }
-  &_complete {
-    position: absolute;
-    right: -60px;
-  }
-  &_letters {
-    display: flex;
-    flex-wrap: wrap;
-
-    grid-gap: 10px;
-    width: 350px;
-  }
-  &_lettercontainer {
     width: 45px;
     height: 45px;
 

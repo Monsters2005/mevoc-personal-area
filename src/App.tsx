@@ -7,7 +7,7 @@ import { DashboardPage } from './pages/Dashboard/Dashboard';
 import { LearningPage } from './pages/Learning/Learning';
 import ListManagementPage from './pages/ListManagement/ListManagement';
 import { UserProfilePage } from './pages/UserProfile/UserProfile';
-import { getLocationName } from './utils/getLocationName';
+import { getLocationName } from './utils/components/getLocationName';
 
 function App() {
   const location = useLocation();

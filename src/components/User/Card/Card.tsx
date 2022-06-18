@@ -1,6 +1,6 @@
 import React from 'react';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
-import { getMediaLink } from '../../../utils/getMediaLink';
+import { getMediaLink } from '../../../utils/components/getMediaLink';
 import { LanguageField } from '../LanguageField/LanguageField';
 import s from './Card.module.scss';
 import defaultAvatar from '../../../assets/images/defaultAvatar.png';

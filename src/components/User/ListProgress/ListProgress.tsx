@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import s from './ListProgress.module.scss';
-import { pluralizeString } from '../../../utils/pluralizeString';
+import { pluralizeString } from '../../../utils/components/pluralizeString';
 import { List } from '../../../@types/entities/List';
 import { CircularProgress } from '../../UI/CircularProgress/CircularProgress';
 

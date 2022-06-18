@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getGreetingByTime } from '../../../utils/getGreetingByTime';
+import { getGreetingByTime } from '../../../utils/components/getGreetingByTime';
 import s from './Greeting.module.scss';
 import { useCurrentDate } from './useCurrentDate';
 import { useCurrentTime } from './useCurrentTime';

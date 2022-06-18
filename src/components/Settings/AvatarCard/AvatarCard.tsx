@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMediaLink } from '../../../utils/getMediaLink';
+import { getMediaLink } from '../../../utils/components/getMediaLink';
 import { Button } from '../../UI/Button/Button';
 
 import s from './AvatarCard.module.scss';

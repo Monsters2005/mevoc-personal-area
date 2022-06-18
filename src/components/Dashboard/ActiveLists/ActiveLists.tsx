@@ -4,7 +4,7 @@ import { CardLayout } from '../../../layouts/CardLayout/CardLayout';
 import { Button } from '../../UI/Button/Button';
 import { DashboardActiveList } from '../ActiveList/ActiveList';
 import s from './ActiveLists.module.scss';
-import { reorderArray } from '../../../utils/reorderArray';
+import { reorderArray } from '../../../utils/common/reorderArray';
 import { List } from '../../../@types/entities/List';
 
 type Props = {
