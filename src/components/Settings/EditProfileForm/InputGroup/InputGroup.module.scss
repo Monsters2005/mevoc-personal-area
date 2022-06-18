@@ -1,0 +1,42 @@
+@use '@styles/shared/variables.scss' as *;
+
+.inputgroup {
+  &_container {
+    background: #232530;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    grid-gap: 70px;
+    max-width: 700px;
+  }
+  &_section {
+    display: flex;
+    flex-direction: column;
+
+    grid-gap: 25px;
+  }
+  &_doublerow {
+    display: flex;
+    justify-content: space-between;
+  }
+  &_addcontent {
+    display: flex;
+    align-items: center;
+
+    height: 50px;
+    background: $base-color;
+    padding: 0 20px 0 10px;
+    border-radius: 10px;
+
+    grid-gap: 10px;
+
+    & p {
+      margin-bottom: 15px;
+    }
+  }
+  &_selectfield {
+    background: $base-color;
+  }
+}

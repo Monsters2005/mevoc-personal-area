@@ -1,7 +1,7 @@
 import React from 'react';
 import { User } from '../../../../@types/entities/User';
 import { Button } from '../../../UI/Button/Button';
-import { AvatarCard } from '../../AvatarCard/AvatarCard';
+import { AvatarCard } from '../../EditProfileForm/AvatarCard/AvatarCard';
 import s from './Account.module.scss';
 
 type Props = {

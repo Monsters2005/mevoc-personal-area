@@ -1,5 +1,5 @@
 import React from 'react';
-// import { FlagSvgSelector } from '../assets/images/flags/FlagsSelector';
+import { FlagSvgSelector } from '../assets/images/flags/FlagsSelector';
 
 // const base = [
 //   { lang: 'English', coun: 'uk' },
@@ -20,31 +20,31 @@ export const languages = [
   {
     value: 'English',
     id: 1,
-    // icon: <FlagSvgSelector id="uk-flag" />,
+    icon: <FlagSvgSelector id="uk-flag" />,
   },
   {
     value: 'German',
     id: 2,
-    // icon: <FlagSvgSelector id="germany-flag" />,
+    icon: <FlagSvgSelector id="germany-flag" />,
   },
   {
     value: 'Russian',
     id: 3,
-    // icon: <FlagSvgSelector id="russia-flag" />,
+    icon: <FlagSvgSelector id="russia-flag" />,
   },
   {
     value: 'French',
     id: 4,
-    // icon: <FlagSvgSelector id="france-flag" />,
+    icon: <FlagSvgSelector id="france-flag" />,
   },
   {
     value: 'Spanish',
     id: 5,
-    // icon: <FlagSvgSelector id="spain-flag" />,
+    icon: <FlagSvgSelector id="spain-flag" />,
   },
   {
     value: 'Swedish',
     id: 6,
-    // icon: <FlagSvgSelector id="sweden-flag" />,
+    icon: <FlagSvgSelector id="sweden-flag" />,
   },
 ];
