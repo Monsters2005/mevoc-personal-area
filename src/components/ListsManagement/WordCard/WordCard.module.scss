@@ -1,0 +1,66 @@
+@use '@styles/shared/variables.scss' as *;
+
+.wordcard {
+  &_container {
+    width: 290px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: $element-light-color;
+    backdrop-filter: blur(30px);
+
+    border-radius: 10px;
+    padding: 20px 25px;
+    cursor: default;
+    transition: all 0.1s;
+    border: none;
+    &:hover {
+      background: lighten($element-light-color, 2);
+    }
+    & button {
+      margin-right: -15px;
+    }
+  }
+  &_active {
+    background: rgba($active-color, 0.1);
+    transition: all 0.3s;
+    & h3 {
+      color: $accent-color !important;
+    }
+    & p {
+      color: rgba($accent-color, 0.7) !important;
+    }
+  }
+  &_content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    & h3 {
+      margin: 0;
+      padding: 0;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+
+      color: #c4c3ca;
+    }
+    & p {
+      margin: 5px 0 0 0;
+      padding: 0;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+
+      color: rgba(196, 195, 202, 0.7);
+    }
+  }
+}

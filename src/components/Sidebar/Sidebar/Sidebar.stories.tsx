@@ -38,5 +38,19 @@ DefaultState.args = {
       path: '/settings',
     },
   },
+  actions: [
+    {
+      label: 'Sign Out',
+      action: () => console.log('sign out'),
+      icon: 'signout',
+      key: 'sign_out',
+    },
+    {
+      label: 'Help',
+      action: () => console.log('help'),
+      icon: 'question',
+      key: 'help',
+    },
+  ],
   defaultActive: 'settings',
 };
