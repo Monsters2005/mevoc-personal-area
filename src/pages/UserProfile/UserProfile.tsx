@@ -20,7 +20,9 @@ export function UserProfilePage() {
         </div>
         <div className={s.profilepage_listsinfo}>
           <div className={s.profilepage_graph}>
-            <Statistics list={activeList} />
+            <div className="stats-connect">
+              <Statistics list={activeList} />
+            </div>
           </div>
           <div className={s.profilepage_lists}>
             <UserListsProgress

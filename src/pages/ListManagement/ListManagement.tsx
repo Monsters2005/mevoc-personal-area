@@ -44,7 +44,6 @@ export default function ListManagementPage() {
               setSelectedItem={(item: Option | null) => setSelectedList(item)}
               allowNoneSelected={false}
               styles={{ width: '250px', marginBottom: '8px' }}
-              listStyles={{ width: '330px' }}
             />
             <Button type="small" onClick={() => console.log('add list')}>
               <GlobalSvgSelector id="plus-circle" />

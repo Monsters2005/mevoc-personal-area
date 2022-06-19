@@ -11,6 +11,7 @@ type Props = {
   selectedItem: Option | null;
   setSelectedItem: (item: Option | null) => void;
   allowNoneSelected: boolean;
+  listStyles?: CSSProperties;
 };
 
 export function DropdownList({
@@ -20,6 +21,7 @@ export function DropdownList({
   selectedItem,
   setSelectedItem,
   allowNoneSelected,
+  listStyles,
 }: Props) {
   const transitionStyles = {
     entering: { opacity: 1, zIndex: 100 },
@@ -42,7 +44,7 @@ export function DropdownList({
 
   return (
     <TransitionWrapper inState={!isOpen} transitionStyles={transitionStyles}>
-      <div className={s.dropdown_list}>
+      <div className={s.dropdown_list} style={listStyles}>
         <h3 className={s.dropdown_title}>{listTitle}</h3>
         <div className={s.dropdown_options}>
           {options.map(item => (

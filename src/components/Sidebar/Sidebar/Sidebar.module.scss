@@ -8,7 +8,7 @@
 
     background: rgba($element-color, 0.1);
     backdrop-filter: blur(30px);
-    // position: absolute;
+    position: fixed;
   }
   &_content {
     width: 100%;

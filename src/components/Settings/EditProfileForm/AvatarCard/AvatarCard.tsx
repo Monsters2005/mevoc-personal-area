@@ -10,9 +10,15 @@ type Props = {
   avatar: string;
   onEdit: () => void;
   onDelete: () => void;
+  onSave: () => void;
 };
 
-export function AvatarCard({ avatar, onEdit, onDelete }: Props) {
+export function SettingsAvatarCard({
+  avatar,
+  onEdit,
+  onDelete,
+  onSave,
+}: Props) {
   const avatarUrl = getMediaLink(avatar) || defaultAvatar;
 
   return (

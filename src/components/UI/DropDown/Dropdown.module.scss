@@ -61,6 +61,7 @@
       align-items: center;
       word-break: break-all;
       overflow: hidden;
+      grid-gap: 10px;
       & p {
         font-style: normal;
         font-weight: 500;
@@ -124,6 +125,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    grid-gap: 10px;
 
     padding: 12px 13px;
     margin-top: 5px;

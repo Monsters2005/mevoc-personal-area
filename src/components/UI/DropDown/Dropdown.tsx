@@ -14,6 +14,7 @@ type DropdownProps = {
   setSelectedItem: (item: Option | null) => void;
   allowNoneSelected: boolean;
   styles?: CSSProperties;
+  listStyles?: CSSProperties;
   side?: 'left' | 'right';
   isError?: boolean;
   error?: string;
@@ -30,6 +31,7 @@ export function Dropdown({
   side = 'left',
   isError,
   error,
+  listStyles,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -77,6 +79,7 @@ export function Dropdown({
           options={options}
           listTitle={listTitle}
           allowNoneSelected={allowNoneSelected}
+          listStyles={listStyles}
         />
         {isError && (
           <div className={s.dropdown_error}>

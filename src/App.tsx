@@ -20,12 +20,14 @@ function App() {
           actions={actions}
           defaultActive={locationName}
         />
-        <Routes>
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/lists-management" element={<ListManagementPage />} />
-          <Route path="/user-profile" element={<UserProfilePage />} />
-          <Route path="/settings" element={<SettingsPage />} />
-        </Routes>
+        <div className="page_content">
+          <Routes>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/lists-management" element={<ListManagementPage />} />
+            <Route path="/user-profile" element={<UserProfilePage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );

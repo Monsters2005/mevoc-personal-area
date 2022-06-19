@@ -32,6 +32,7 @@ export function DashboardPage() {
             setSelectedItem={(item: Option | null) => setLang(item)}
             allowNoneSelected={false}
             styles={{ width: '200px' }}
+            listStyles={{ width: '300px', left: '-6.2rem' }}
           />
         </div>
       </div>

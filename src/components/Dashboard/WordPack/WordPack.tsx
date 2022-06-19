@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { Pack } from '../../../@types/entities/WordPack';
+import { primaryMiddle } from '../../../shared/styles/button-variations';
 import { pluralizeString } from '../../../utils/pluralizeString';
 import { Button } from '../../UI/Button/Button';
 import s from './WordPack.module.scss';
@@ -29,12 +30,7 @@ export function WordPack({ item }: Props) {
       <div className={s.wordpack_buttons}>
         <Button
           type="primary"
-          styles={{
-            padding: '6px 14px',
-            fontSize: '13px',
-            lineHeight: '19px',
-            fontWeight: '600',
-          }}
+          styles={primaryMiddle}
           onClick={() => console.log('view more')}
         >
           VIEW MORE

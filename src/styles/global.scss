@@ -50,5 +50,13 @@ body {
 .main {
   &_container {
     display: flex;
+    align-items: flex-start;
+
+    height: 100vh;
+    overflow: auto;
   }
+}
+.page_content {
+  margin-left: 390px;
+  margin-top: 30px;
 }

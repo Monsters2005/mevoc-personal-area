@@ -2,14 +2,13 @@
 
 .inputgroup {
   &_container {
-    background: #232530;
-    padding: 30px;
-
     display: flex;
     flex-direction: column;
 
     grid-gap: 70px;
-    max-width: 700px;
+
+    width: 640px;
+    height: 100%;
   }
   &_section {
     display: flex;
