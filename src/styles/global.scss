@@ -26,6 +26,16 @@ body {
   background-image: url('../assets/images/background.svg');
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 10px 10px 10px 1000px $base-color inset;
+  -webkit-text-fill-color: $primary-color !important;
+  -webkit-background-clip: text;
+  -webkit-font-feature-settings: off;
+}
+
 //! Class for turning of animations while page is not loaded
 
 // .preload * {
