@@ -1,7 +1,7 @@
 @use '~normalize.css' as *;
 @use './shared/fonts.scss';
 @use './shared/variables.scss' as *;
-@use './libs/react-colorful.scss' as *;
+@use './lib/react-colorful.scss' as *;
 @use './lib/datepicker.scss' as *;
 
 *,
@@ -24,10 +24,16 @@ body {
   font-family: $font;
   background: $base-color;
   background-image: url('../assets/images/background.svg');
-  // width: 100%;
-  // height: 100vh;
-  // overflow: hidden;
 }
+
+//! Class for turning of animations while page is not loaded
+
+// .preload * {
+//   animation-duration: 0s !important;
+//   -webkit-animation-duration: 0s !important;
+//   transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s,
+//     padding 0s, margin 0s !important;
+// }
 
 ::-webkit-scrollbar {
   width: 4px;
@@ -55,9 +61,11 @@ body {
 
     height: 100vh;
     overflow: auto;
+    overflow-y: overlay;
   }
 }
 .page_content {
-  margin-left: 390px;
+  width: 100%;
+  margin-left: 360px;
   margin-top: 30px;
 }

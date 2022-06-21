@@ -20,7 +20,7 @@ type Props = {
 };
 
 export function Calendar({ setDates, dates }: Props) {
-  const [focusedInput, setFocusedInput] = useState<FocusedInputShape | null>(null);
+  const [focusedInput, setFocusedInput] = useState<FocusedInputShape | null>('startDate');
 
   return (
     <div className={s.calendar_container}>
@@ -48,15 +48,6 @@ export function Calendar({ setDates, dates }: Props) {
           }
         }}
       />
-      {focusedInput && (
-        <Button
-          type="small"
-          onClick={() => setFocusedInput(null)}
-          styles={{ position: 'absolute' }}
-        >
-          <GlobalSvgSelector id="checkmark-circle" />
-        </Button>
-      )}
     </div>
   );
 }

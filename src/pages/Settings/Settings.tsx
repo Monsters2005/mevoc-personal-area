@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SettingsAccountTab } from '../../components/Settings/Tabs/Account/Account';
+import SettingsTab from '../../components/Settings/Tabs/Tab/SettingsTab';
 import { TabOption, Tabs } from '../../components/UI/Tabs/Tabs';
 import { PageLayout } from '../../layouts/PageLayout/PageLayout';
 import { user } from '../../mocks/user';
@@ -23,24 +23,22 @@ const settingsTabs = {
 export function SettingsPage() {
   const [activeTab, setActiveTab] = useState('account');
 
+  const handleTabChange = (tab: TabOption) => {
+    if (tab.label) setActiveTab(tab.label);
+  };
+
   return (
-    <PageLayout title="Settings" styles={{ height: '1100px' }}>
+    <PageLayout title="Settings" styles={{ height: 'fit-content' }}>
       <div className={s.settingspage_container}>
         <div className={s.settingspage_header}>
           <Tabs
             options={settingsTabs}
             defaultActive={activeTab}
-            onClick={it => console.log(it)}
+            onClick={tab => handleTabChange(tab)}
           />
         </div>
         <div className={s.settingspage_content}>
-          <SettingsAccountTab
-            user={user}
-            onAvatarEdit={() => console.log('')}
-            onAvatarDelete={() => console.log('')}
-            onVerifyEmail={() => console.log('')}
-            onDataSave={() => console.log('')}
-          />
+          <SettingsTab tab={activeTab} />
         </div>
       </div>
     </PageLayout>

@@ -1,11 +1,10 @@
 .account {
   &_container {
     width: 100%;
-    height: 100%;
+    height: 900px;
 
     display: flex;
     align-items: flex-start;
-    padding: 2rem 4rem;
     margin-top: auto;
   }
   &_fields {
