@@ -52,5 +52,4 @@ DefaultState.args = {
       key: 'help',
     },
   ],
-  defaultActive: 'settings',
 };

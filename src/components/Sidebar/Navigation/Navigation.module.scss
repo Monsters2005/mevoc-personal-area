@@ -7,4 +7,9 @@
 
     margin-top: 30px;
   }
+  &_content {
+    & a {
+      text-decoration: none;
+    }
+  }
 }

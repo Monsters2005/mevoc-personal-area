@@ -1,0 +1,11 @@
+.profilepage {
+  &_container {
+    display: flex;
+    grid-gap: 30px;
+  }
+  &_listsinfo {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 18px;
+  }
+}

@@ -6,6 +6,8 @@ import s from './Calendar.module.scss';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import { Button } from '../../UI/Button/Button';
+import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 
 type CalendarDates = {
   startDate: Moment | null;
@@ -39,9 +41,22 @@ export function Calendar({ setDates, dates }: Props) {
         }}
         focusedInput={focusedInput}
         onFocusChange={(focused: FocusedInputShape | null) => {
-          setFocusedInput(focused);
+          if (focused) {
+            setFocusedInput(focused);
+          } else {
+            setFocusedInput('startDate');
+          }
         }}
       />
+      {focusedInput && (
+        <Button
+          type="small"
+          onClick={() => setFocusedInput(null)}
+          styles={{ position: 'absolute' }}
+        >
+          <GlobalSvgSelector id="checkmark-circle" />
+        </Button>
+      )}
     </div>
   );
 }

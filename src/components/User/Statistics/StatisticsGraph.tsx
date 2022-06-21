@@ -1,7 +1,11 @@
-import React from 'react';
+/* eslint-disable */
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
 import { List } from '../../../@types/entities/List';
 import { Word } from '../../../@types/entities/Word';
 import { weekdays } from '../../../constants/weekdays';
+import { checkDateInRange } from '../../../utils/checkDateInRange';
+import { enumerateDaysBetweenDates } from '../../../utils/enumerateDaysBetweenDates';
 import { sortArrayByKey } from '../../../utils/sortArrayByKey';
 import { Graph } from '../../UI/Graph/Graph';
 import {
@@ -9,29 +13,51 @@ import {
   LineChartOptions,
   LineChartTooltipItem,
 } from '../../UI/Graph/types';
+import { Dates } from '../Calendar/types';
 import s from './Statistics.module.scss';
 
 type Props = {
   list: List;
+  dateRange: Dates;
 };
 
-export function StatisticsGraph({ list }: Props) {
+export function StatisticsGraph({ list, dateRange }: Props) {
   const filteredWordList = list.words.filter(el => el.dateLearned);
   const sortedByDates = sortArrayByKey(filteredWordList, 'dateLearned');
-  // TODO: Make a function which will be filling all empty spaces (dates when no
-  // words have been learnt) in array with zeros (add key with date and empty array)
+  const datesObj = fillRange(sortedByDates);
 
-  function getGraphData(
-    obj: Record<string, Word[]>,
-    range: { from: string; to: string }
-  ) {
-    const nums = [];
-    // eslint-disable-next-line
-    for (const [_, value] of Object.entries<Word[]>(obj)) {
-      nums.push(value.length);
+  function fillRange(obj: Record<string, Word[]>) {
+    const dates = [];
+    for (const date in obj) {
+      dates.push(date);
     }
 
-    // TODO: filter array based on presence of word date in range
+    const datesList = enumerateDaysBetweenDates({
+      startDate: dateRange.startDate,
+      endDate: dateRange.endDate,
+    });
+
+    const fillDates: Record<string, Word[]> = {};
+
+    datesList.map(el => {
+      const key = moment(el).format('YYYY-MM-DD');
+      obj.hasOwnProperty(key)
+        ? (fillDates[key] = obj[key])
+        : (fillDates[key] = []);
+    });
+
+    return fillDates;
+  }
+
+  function getGraphData(obj: Record<string, Word[]>, range: Dates) {
+    const nums = [];
+
+    // eslint-disable-next-line
+    for (const [_, value] of Object.entries<Word[]>(obj)) {
+      const inRange = checkDateInRange(_, range, 'YYYY-MM-DD');
+      inRange ? nums.push(value.length) : nums.push(0);
+    }
+
     return nums;
   }
 
@@ -45,8 +71,8 @@ export function StatisticsGraph({ list }: Props) {
     return labels;
   }
 
-  const graphData = getGraphData(sortedByDates, { from: 'p', to: 'kl' });
-  const labels = getGraphLabels(sortedByDates);
+  const graphData = getGraphData(datesObj, dateRange);
+  const labels = getGraphLabels(datesObj);
 
   const data: LineChartData = {
     labels,
@@ -109,9 +135,10 @@ export function StatisticsGraph({ list }: Props) {
       tooltip: {
         callbacks: {
           title: () => '',
-          label: (item: LineChartTooltipItem) => `${item.formattedValue} ${
-            Number(item.formattedValue) > 1 ? 'words' : 'word'
-          }`,
+          label: (item: LineChartTooltipItem) =>
+            `${item.formattedValue} ${
+              Number(item.formattedValue) > 1 ? 'words' : 'word'
+            }`,
         },
 
         bodyColor: '#C4C3CA',
@@ -136,6 +163,7 @@ export function StatisticsGraph({ list }: Props) {
   return (
     <div className={s.statistics_graph}>
       <Graph data={data} options={options} width={680} height={270} />
+      {/* <button onClick={() => console.log(prevDay)}>ok</button> */}
     </div>
   );
 }

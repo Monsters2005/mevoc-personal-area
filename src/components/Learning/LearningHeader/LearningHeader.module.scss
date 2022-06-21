@@ -1,0 +1,8 @@
+.header {
+  &_container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 60px 80px;
+  }
+}
