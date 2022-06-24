@@ -1,5 +1,6 @@
-export function getAllLetters(wordLearning: string) {
-  return wordLearning.split('').map((letter, id) => ({
+export function getAllLetters(word: string) {
+  const validWord = word.replace(/\s/g, '');
+  return validWord.split('').map((letter, id) => ({
     id,
     letter,
   }));

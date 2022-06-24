@@ -8,6 +8,10 @@ type QueueType<T> = {
 export class Queue<T> implements QueueType<T> {
   private storage: T[] = [];
 
+  constructor(items: T[]) {
+    this.storage = items;
+  }
+
   private capacity = Infinity;
 
   enqueue(item: T): void {
@@ -26,9 +30,4 @@ export class Queue<T> implements QueueType<T> {
   size(): number {
     return this.storage.length;
   }
-}
-
-export function createQueue() {
-  const queue = new Queue();
-  return queue;
 }

@@ -3,14 +3,21 @@ import React, { useState } from 'react';
 import s from './Learning.module.scss';
 import LearningHeader from '../../components/Learning/LearningHeader/LearningHeader';
 import { stages } from '../../constants/stages';
-import { createQueue } from '../../utils/queue/createQueue';
 import ThirdStage from '../../components/Learning/Stages/ThirdStage/ThirdStage';
+import { LearningMain } from '../../components/Learning/Main/LearningMain';
+import { Stage } from '../../components/UI/StagesProgress/StagesProgress';
+import { lists } from '../../mocks/lists';
+import { mergeArrays } from '../../utils/common/mergeArrays';
+import { compareArrOrder } from '../../utils/common/compareArrOrder';
 
 export function LearningPage() {
-  const [activeStage, setActiveStage] = useState(1);
-  const stageQueue = createQueue();
+  const [activeStage, setActiveStage] = useState<Stage>(stages[0]);
 
-  const handleStageChange = () => {};
+  const handleStageChange = (item: Stage) => {
+    setActiveStage(item);
+  };
+
+  const words = mergeArrays(lists.map(el => el.words));
 
   return (
     <div className={s.learning_container}>
@@ -24,6 +31,11 @@ export function LearningPage() {
           progress: 0,
         }}
         setStage={item => console.log(item)}
+      />
+      <LearningMain
+        setActiveStage={handleStageChange}
+        stage={activeStage}
+        words={words}
       />
     </div>
   );
