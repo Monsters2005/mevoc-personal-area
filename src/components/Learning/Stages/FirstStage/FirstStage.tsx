@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Button } from '../../../UI/Button/Button';
 import { Loader } from '../../../UI/Loader/Loader';
 import { LearningSvgSelector } from '../../LearningSvgSelector';
 import { LearningCore, LearningEvent } from '../../Main/Core';
@@ -7,6 +8,18 @@ import { LetterCard } from '../LetterCard/LetterCard';
 import { Stage } from '../types';
 import s from './FirstStage.module.scss';
 
+export const btnStyles = {
+  fontStyle: 'normal',
+  fontWeight: 700,
+  fontSize: '18px',
+  lineHeight: '27px',
+  letterSpacing: '1px',
+  textTransform: 'uppercase' as const,
+  color: '#1F2029',
+  padding: '4px 0px 4px 8px',
+  marginTop: '20px',
+};
+
 export default function FirstStage({ word, currentStage, onComplete }: Stage) {
   const [learningState, setLearningState] = useState({} as LearningEvent);
   function changeLearningState(e: LearningEvent) {
@@ -14,14 +27,14 @@ export default function FirstStage({ word, currentStage, onComplete }: Stage) {
   }
   const learning = useMemo(
     () => new LearningCore(changeLearningState, word, currentStage.id),
-    []
+    [word]
   );
 
   const start = () => learning.start();
 
   useEffect(() => {
     start();
-  }, []);
+  }, [word]);
 
   return (
     <div className={s.firststage_wrapper}>
@@ -67,6 +80,16 @@ export default function FirstStage({ word, currentStage, onComplete }: Stage) {
           <Loader />
         )}
       </div>
+      {learningState.isCompleted && (
+        <Button
+          type="primary"
+          onClick={() => onComplete(learningState.mistakesCount)}
+          styles={btnStyles}
+        >
+          Next
+          <LearningSvgSelector id="arrow-right" />
+        </Button>
+      )}
     </div>
   );
 }

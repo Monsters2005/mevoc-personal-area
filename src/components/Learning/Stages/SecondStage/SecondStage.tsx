@@ -6,6 +6,8 @@ import { Stage } from '../types';
 import s from './SecondStage.module.scss';
 import { Loader } from '../../../UI/Loader/Loader';
 import { LearningCore, LearningEvent } from '../../Main/Core';
+import { btnStyles } from '../FirstStage/FirstStage';
+import { Button } from '../../../UI/Button/Button';
 
 export default function SecondStage({
   word,
@@ -71,6 +73,16 @@ export default function SecondStage({
           <Loader />
         )}
       </div>
+      {learningState.isCompleted && (
+        <Button
+          type="primary"
+          onClick={() => onComplete(learningState.mistakesCount)}
+          styles={btnStyles}
+        >
+          Next
+          <LearningSvgSelector id="arrow-right" />
+        </Button>
+      )}
     </div>
   );
 }

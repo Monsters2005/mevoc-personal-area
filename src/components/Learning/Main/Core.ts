@@ -2,7 +2,6 @@ import { KeyboardEvent } from 'react';
 import { Word } from '../../../@types/entities/Word';
 import { compareArrOrder } from '../../../utils/common/compareArrOrder';
 import { shuffleArray } from '../../../utils/common/shuffleArray';
-import { getAllLetters } from '../Stages/handlers';
 import { ActiveAnimation, Letter } from '../Stages/types';
 /* eslint-disable */
 //! если что это для ++ потом добавлю адекватное правило ибо мне лень 🐈
@@ -20,6 +19,8 @@ const STAGES_RULES = {
     wordHidden: 'wordLearning',
   },
 };
+
+export const MAX_MISTAKES_VALUE = 3;
 
 export interface LearningEvent {
   word: Word | null;
@@ -94,19 +95,20 @@ export class LearningCore {
 
   handleCardPick(item: Letter) {
     this.checkPickedValue(item);
+    console.log(this);
   }
 
   handleKeyPick(item: KeyboardEvent<HTMLDivElement>) {
     const keyPressed = `Key${this.currentCell?.letter.toUpperCase()}`;
     if (item.code === keyPressed) {
       if (this.isCompleted) return;
-      if (this.cards.length === 1) this.isCompleted = true;
+      if (this.currentIndex === this.letters.length - 1)
+        this.isCompleted = true;
       this.currentIndex++;
       this.currentCell = this.letters[this.currentIndex];
     } else {
       this.mistakesCount++;
     }
-
     this.pushEvent();
   }
 
@@ -116,7 +118,7 @@ export class LearningCore {
         STAGES_RULES[this.stage as keyof typeof STAGES_RULES].wordHidden;
       const currentWord =
         this.word[stageRule as 'wordLearning' | 'wordNative'];
-      this.letters = getAllLetters(currentWord);
+      this.getAllLetters(currentWord);
     }
     this.pushEvent();
   }
@@ -157,5 +159,13 @@ export class LearningCore {
     };
     this.mistakesCount++;
     this.pushEvent();
+  }
+
+  private getAllLetters(word: string) {
+    const validWord = word.replace(/\s/g, '');
+    this.letters = validWord.split('').map((letter, id) => ({
+      id,
+      letter,
+    }));
   }
 }

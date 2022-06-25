@@ -15,6 +15,16 @@
 
     color: #1f2029;
     transition: all 0.1s;
+    & svg {
+      width: 30px;
+      height: 30px;
+
+      fill: $base-color;
+
+      & path {
+        fill: $base-color;
+      }
+    }
 
     &:hover {
       cursor: pointer;

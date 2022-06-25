@@ -2,7 +2,7 @@ export const stages = [
   {
     id: 1,
     name: 'Stage 1',
-    progress: 10,
+    progress: 1,
   },
   {
     id: 2,

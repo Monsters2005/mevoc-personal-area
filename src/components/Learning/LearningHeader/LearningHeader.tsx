@@ -10,8 +10,6 @@ type Props = {
   onGoBack: () => void;
   onSkipStages: () => void;
   stages: ProgressStage[];
-  currentStage: ProgressStage;
-  setStage: (item: ProgressStage) => void;
 };
 
 const buttonStyles = {
@@ -29,8 +27,6 @@ export default function LearningHeader({
   onGoBack,
   onSkipStages,
   stages,
-  currentStage,
-  setStage,
 }: Props) {
   return (
     <div className={s.header_container}>
