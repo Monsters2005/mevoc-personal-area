@@ -5,15 +5,15 @@ import LearningHeader from '../../components/Learning/LearningHeader/LearningHea
 import { stages } from '../../constants/stages';
 import ThirdStage from '../../components/Learning/Stages/ThirdStage/ThirdStage';
 import { LearningMain } from '../../components/Learning/Main/LearningMain';
-import { Stage } from '../../components/UI/StagesProgress/StagesProgress';
+import { ProgressStage } from '../../components/UI/StagesProgress/StagesProgress';
 import { lists } from '../../mocks/lists';
 import { mergeArrays } from '../../utils/common/mergeArrays';
 import { compareArrOrder } from '../../utils/common/compareArrOrder';
 
 export function LearningPage() {
-  const [activeStage, setActiveStage] = useState<Stage>(stages[0]);
+  const [activeStage, setActiveStage] = useState<ProgressStage>(stages[2]);
 
-  const handleStageChange = (item: Stage) => {
+  const handleStageChange = (item: ProgressStage) => {
     setActiveStage(item);
   };
 

@@ -1,9 +1,11 @@
+import { KeyboardEvent } from 'react';
 import { Word } from '../../../@types/entities/Word';
 import { compareArrOrder } from '../../../utils/common/compareArrOrder';
 import { shuffleArray } from '../../../utils/common/shuffleArray';
 import { getAllLetters } from '../Stages/handlers';
 import { ActiveAnimation, Letter } from '../Stages/types';
-
+/* eslint-disable */
+//! если что это для ++ потом добавлю адекватное правило ибо мне лень 🐈
 const STAGES_RULES = {
   1: {
     wordVisible: 'wordLearning',
@@ -34,7 +36,6 @@ export interface LearningEvent {
 }
 
 export class LearningCore {
-  //* State of learning
   private word: Word | null = null;
 
   private letters: Letter[] = [];
@@ -83,26 +84,38 @@ export class LearningCore {
   }
 
   start() {
-    // this.currentCell = this.letters[this.currentIndex];
-    this.pushEvent();
-
     this.getLetters();
     this.getCards();
-    console.log(this.currentCell);
+    this.currentIndex = 0;
+    this.currentCell = this.letters[this.currentIndex];
+
+    this.pushEvent();
   }
 
-  // handleCardPick(item: Letter) {
-  //   this.checkPickedValue(item);
-  // }
+  handleCardPick(item: Letter) {
+    this.checkPickedValue(item);
+  }
 
-  gete() {
-    this.currentIndex += this.currentIndex;
+  handleKeyPick(item: KeyboardEvent<HTMLDivElement>) {
+    const keyPressed = `Key${this.currentCell?.letter.toUpperCase()}`;
+    if (item.code === keyPressed) {
+      if (this.isCompleted) return;
+      if (this.cards.length === 1) this.isCompleted = true;
+      this.currentIndex++;
+      this.currentCell = this.letters[this.currentIndex];
+    } else {
+      this.mistakesCount++;
+    }
+
+    this.pushEvent();
   }
 
   private getLetters() {
     if (this.word) {
-      const stageRule = STAGES_RULES[this.stage as keyof typeof STAGES_RULES].wordHidden;
-      const currentWord = this.word[stageRule as 'wordLearning' | 'wordNative'];
+      const stageRule =
+        STAGES_RULES[this.stage as keyof typeof STAGES_RULES].wordHidden;
+      const currentWord =
+        this.word[stageRule as 'wordLearning' | 'wordNative'];
       this.letters = getAllLetters(currentWord);
     }
     this.pushEvent();
@@ -129,11 +142,10 @@ export class LearningCore {
   }
 
   private handleSuccessPick(item: Letter) {
-    this.currentIndex += this.currentIndex;
-    this.activeAnimation = {
-      letterId: item.id,
-      state: 'correct',
-    };
+    if (this.isCompleted) return;
+    if (this.cards.length === 1) this.isCompleted = true;
+    this.currentIndex++;
+    this.currentCell = this.letters[this.currentIndex];
     this.cards = this.cards.filter(el => el.id !== item.id);
     this.pushEvent();
   }
@@ -143,6 +155,7 @@ export class LearningCore {
       letterId: item.id,
       state: 'incorrect',
     };
+    this.mistakesCount++;
     this.pushEvent();
   }
 }

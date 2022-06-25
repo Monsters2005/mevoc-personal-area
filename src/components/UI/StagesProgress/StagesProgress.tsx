@@ -4,18 +4,20 @@ import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { LinearProgress } from '../LinearProgress/LinearProgress';
 import s from './StagesProgress.module.scss';
 
-export type Stage = {
+export type ProgressStage = {
   id: number;
   name: string;
   progress: number;
 };
 
 type Props = {
-  stages: Stage[];
+  stages: ProgressStage[];
 };
 
 export default function StagesProgress({ stages }: Props) {
-  const [activeState, setActiveState] = useState<Stage | null>(stages[0]);
+  const [activeState, setActiveState] = useState<ProgressStage | null>(
+    stages[0]
+  );
   const allCompleted = stages.filter(item => item.progress !== 100).length === 0;
 
   useEffect(() => {

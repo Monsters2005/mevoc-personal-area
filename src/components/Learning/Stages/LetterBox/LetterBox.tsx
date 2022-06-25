@@ -8,7 +8,7 @@ type Props = {
   item: Letter;
   filled: boolean;
   completed: boolean;
-  cellId: number;
+  cellId: number | null;
 };
 
 export function LetterBox({

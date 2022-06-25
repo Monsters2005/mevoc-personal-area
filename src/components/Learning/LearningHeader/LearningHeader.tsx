@@ -1,15 +1,17 @@
 import React, { CSSProperties } from 'react';
 import { Button } from '../../UI/Button/Button';
-import StagesProgress, { Stage } from '../../UI/StagesProgress/StagesProgress';
+import StagesProgress, {
+  ProgressStage,
+} from '../../UI/StagesProgress/StagesProgress';
 import { LearningSvgSelector } from '../LearningSvgSelector';
 import s from './LearningHeader.module.scss';
 
 type Props = {
   onGoBack: () => void;
   onSkipStages: () => void;
-  stages: Stage[];
-  currentStage: Stage;
-  setStage: (item: Stage) => void;
+  stages: ProgressStage[];
+  currentStage: ProgressStage;
+  setStage: (item: ProgressStage) => void;
 };
 
 const buttonStyles = {

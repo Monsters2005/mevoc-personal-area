@@ -1,3 +1,6 @@
+import { Word } from '../../../@types/entities/Word';
+import { ProgressStage } from '../../UI/StagesProgress/StagesProgress';
+
 export type Letter = {
   id: number;
   letter: string;
@@ -9,7 +12,7 @@ export type ActiveAnimation = {
 };
 
 export type Stage = {
-  wordLearning: string;
-  wordNative: string;
+  word: Word | null;
+  currentStage: ProgressStage;
   onComplete: (mistakes: number) => void;
 };

@@ -49,7 +49,7 @@
 
     &:hover {
       cursor: pointer;
-      color: $primary-color;
+      color: $primary-color !important;
       background: $ui-light;
       & svg {
         fill: $primary-color;
