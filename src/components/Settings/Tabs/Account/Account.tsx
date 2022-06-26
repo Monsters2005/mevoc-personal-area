@@ -8,7 +8,8 @@ import { SettingsInputGroup } from '../../EditProfileForm/InputGroup/InputGroup'
 import s from './Account.module.scss';
 
 export function AccountTab() {
-  // TODO: User should be received from the context which will have a data about current user signed in
+  // TODO: User should be received from the context which will have a data about current user
+  // TODO: signed in
   // TODO: Add logic to all functions below
   const onAvatarEdit = () => console.log();
   const onAvatarDelete = () => console.log();

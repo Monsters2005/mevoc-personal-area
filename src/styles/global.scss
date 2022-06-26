@@ -35,6 +35,15 @@ input:-webkit-autofill:active {
   -webkit-background-clip: text;
   -webkit-font-feature-settings: off;
 }
+* {
+  &:-webkit-autofill::first-line,
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    font-family: $font !important;
+  }
+}
 
 //! Class for turning of animations while page is not loaded
 

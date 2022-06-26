@@ -10,7 +10,8 @@ import { SettingsColorSelect } from '../../ColorSelect/ColorSelect';
 import s from './Appearance.module.scss';
 
 export default function AppearanceTab() {
-  // TODO: User should be received from the context which will have a data about current user signed in
+  // TODO: User should be received from the context which will have a data about
+  // TODO: current user signed in
   // TODO: Add logic to all functions below
   const onThemeSelect = () => console.log();
   const onColorSelect = () => console.log();
