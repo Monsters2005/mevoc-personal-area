@@ -35,6 +35,7 @@ export function WordPack({ item }: Props) {
             lineHeight: '19px',
             fontWeight: '600',
           }}
+          // TODO: pass the funciton here which actully shows info bout pack
           onClick={() => console.log('view more')}
         >
           VIEW MORE

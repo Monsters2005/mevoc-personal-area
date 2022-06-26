@@ -12,23 +12,26 @@ export type ProgressStage = {
 
 type Props = {
   stages: ProgressStage[];
+  currentStage: ProgressStage;
+  setCurrentStage: (item: ProgressStage | null) => void;
 };
 
-export default function StagesProgress({ stages }: Props) {
-  const [activeState, setActiveState] = useState<ProgressStage | null>(
-    stages[0]
-  );
-  const allCompleted = stages.filter(item => item.progress !== 100).length === 0;
+export default function StagesProgress({
+  stages,
+  setCurrentStage,
+  currentStage,
+}: Props) {
+  const allCompleted = stages?.filter(item => item.progress !== 100).length === 0;
 
   useEffect(() => {
     function checkActiveStage() {
       const estimateActive = stages.find(
-        item => item.progress > 0 && item.progress < 100
+        item => item.progress >= 0 && item.progress < 100
       );
       if (!estimateActive) {
-        setActiveState(null);
+        setCurrentStage(null);
       } else {
-        setActiveState(estimateActive);
+        setCurrentStage(estimateActive);
       }
     }
     checkActiveStage();
@@ -44,7 +47,7 @@ export default function StagesProgress({ stages }: Props) {
         <div
           key={item.id}
           className={classNames(s.stages_stage, {
-            [s.stages_stage_active]: item.id === activeState?.id,
+            [s.stages_stage_active]: item.id === currentStage?.id,
           })}
         >
           <div className={s.stages_stage_line}>
@@ -52,7 +55,7 @@ export default function StagesProgress({ stages }: Props) {
           </div>
           <p
             className={classNames(s.stages_stage_title, {
-              [s.stages_stage_title_completion]: item.id === activeState?.id,
+              [s.stages_stage_title_completion]: item.id === currentStage?.id,
             })}
           >
             {item.name}

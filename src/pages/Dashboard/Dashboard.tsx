@@ -39,6 +39,7 @@ export function DashboardPage() {
         <div className={s.dashboardpage_row}>
           <DashboardActiveLists
             lists={lists}
+            // TODO: pass the funciton here which actully adds list
             onAddList={() => console.log('')}
           />
           <DashboardDailyProgress words={2} wordsLearned={1} />

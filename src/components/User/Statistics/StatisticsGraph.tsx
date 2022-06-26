@@ -163,7 +163,6 @@ export function StatisticsGraph({ list, dateRange }: Props) {
   return (
     <div className={s.statistics_graph}>
       <Graph data={data} options={options} width={680} height={270} />
-      {/* <button onClick={() => console.log(prevDay)}>ok</button> */}
     </div>
   );
 }

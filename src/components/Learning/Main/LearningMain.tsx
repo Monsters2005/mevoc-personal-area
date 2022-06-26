@@ -1,33 +1,33 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Word } from '../../../@types/entities/Word';
-import { stages } from '../../../constants/stages';
 import { cloneObj } from '../../../utils/common/cloneObj';
 import { countPercentage } from '../../../utils/common/countPercentage';
 import { Queue } from '../../../utils/queue/createQueue';
 import { ProgressStage } from '../../UI/StagesProgress/StagesProgress';
 import StageSelector from '../Stages/StageSelector';
-import ThirdStage from '../Stages/ThirdStage/ThirdStage';
 import { MAX_MISTAKES_VALUE } from './Core';
 import s from './LearningMain.module.scss';
 
 type Props = {
   stage: ProgressStage;
-  setActiveStage: (item: ProgressStage) => void;
+  updateStages: (item: ProgressStage | null) => void;
   words: Word[];
 };
 
-export function LearningMain({ setActiveStage, words, stage }: Props) {
+export function LearningMain({ words, stage, updateStages }: Props) {
   const stageQueue = useMemo(() => new Queue(cloneObj(words) as Word[]), []);
   const [currentWord, setCurrentWord] = useState(stageQueue.getItem());
 
+  useEffect(() => {
+    stageQueue.enqueueAll(cloneObj(words));
+    setCurrentWord(stageQueue.getItem());
+  }, [stage]);
+
   function updateProgressStage() {
-    const updStage = {
-      ...stage,
-      progress: Math.round(
-        countPercentage(words.length - stageQueue.size(), words.length)
-      ),
-    };
-    setActiveStage(updStage);
+    stage.progress = Math.round(
+      countPercentage(words.length - stageQueue.size(), words.length)
+    );
+    updateStages(stage);
   }
 
   function completeWordHandler(mistakes: number) {
@@ -41,6 +41,8 @@ export function LearningMain({ setActiveStage, words, stage }: Props) {
       updateProgressStage();
     }
   }
+
+  // function queueWords()
 
   return (
     <div className={s.learning_container}>

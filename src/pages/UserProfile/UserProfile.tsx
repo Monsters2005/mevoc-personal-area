@@ -10,7 +10,7 @@ import { user } from '../../mocks/user';
 import s from './UserProfile.module.scss';
 
 export function UserProfilePage() {
-  const [activeList, setActiveList] = useState(lists[0]);
+  const [activeList, setActiveList] = useState<List>(lists[0]);
 
   return (
     <PageLayout title="Lists management">

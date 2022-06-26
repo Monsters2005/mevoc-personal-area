@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react';
+import { learningBtn } from '../../../shared/styles/button-variations';
 import { Button } from '../../UI/Button/Button';
 import StagesProgress, {
   ProgressStage,
@@ -10,37 +11,34 @@ type Props = {
   onGoBack: () => void;
   onSkipStages: () => void;
   stages: ProgressStage[];
+  activeStage: ProgressStage;
+  setCurrentStage: (item: ProgressStage | null) => void;
 };
 
-const buttonStyles = {
-  fontStyle: 'normal',
-  fontWeight: 500,
-  fontSize: '16px',
-  lineHeight: '24px',
-  color: 'rgba(196, 195, 202, 0.7)',
-  textTransform: 'capitalize' as const,
-  padding: '2px 10px',
-  height: '42px',
-};
-
-export default function LearningHeader({
+export function LearningHeader({
   onGoBack,
   onSkipStages,
   stages,
+  setCurrentStage,
+  activeStage,
 }: Props) {
   return (
     <div className={s.header_container}>
       <div className={s.header_part}>
-        <Button styles={buttonStyles} type="secondary" onClick={onGoBack}>
+        <Button styles={learningBtn} type="secondary" onClick={onGoBack}>
           <LearningSvgSelector id="arrow-left" />
           Go back
         </Button>
       </div>
       <div className={s.header_part}>
-        <StagesProgress stages={stages} />
+        <StagesProgress
+          stages={stages}
+          currentStage={activeStage}
+          setCurrentStage={setCurrentStage}
+        />
       </div>
       <div className={s.header_part}>
-        <Button styles={buttonStyles} type="secondary" onClick={onSkipStages}>
+        <Button styles={learningBtn} type="secondary" onClick={onSkipStages}>
           Move To The Test
           <LearningSvgSelector id="arrow-right" />
         </Button>

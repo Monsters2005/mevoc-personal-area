@@ -14,6 +14,10 @@ export class Queue<T> implements QueueType<T> {
 
   private capacity = Infinity;
 
+  enqueueAll(items: T[]) {
+    this.storage = items;
+  }
+
   enqueue(item: T): void {
     if (this.size() < this.capacity) this.storage.push(item);
   }

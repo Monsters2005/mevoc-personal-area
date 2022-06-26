@@ -95,7 +95,6 @@ export class LearningCore {
 
   handleCardPick(item: Letter) {
     this.checkPickedValue(item);
-    console.log(this);
   }
 
   handleKeyPick(item: KeyboardEvent<HTMLDivElement>) {
@@ -112,6 +111,10 @@ export class LearningCore {
     this.pushEvent();
   }
 
+  handleCompletion(func: (mistakes: number) => void) {
+    if (this.isCompleted) func(this.mistakesCount);
+  }
+
   private getLetters() {
     if (this.word) {
       const stageRule =
@@ -126,9 +129,9 @@ export class LearningCore {
   private getCards() {
     function getRandom(obj: LearningCore) {
       const random = shuffleArray([...obj.letters]);
-      if (compareArrOrder(random, obj.letters)) {
-        getRandom(obj);
-      }
+      // if (compareArrOrder(random, obj.letters)) {
+      //   getRandom(obj);
+      // }
       obj.cards = random;
     }
     getRandom(this);
