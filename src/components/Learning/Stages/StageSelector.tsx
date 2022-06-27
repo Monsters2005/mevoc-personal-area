@@ -1,5 +1,6 @@
 import React from 'react';
 import FirstStage from './FirstStage/FirstStage';
+import FourthStage from './FourthStage/FourthStage';
 import SecondStage from './SecondStage/SecondStage';
 import ThirdStage from './ThirdStage/ThirdStage';
 import { Stage } from './types';
@@ -29,6 +30,14 @@ export default function StageSelector({
     case 3:
       return (
         <ThirdStage
+          word={word}
+          currentStage={currentStage}
+          onComplete={onComplete}
+        />
+      );
+    case 4:
+      return (
+        <FourthStage
           word={word}
           currentStage={currentStage}
           onComplete={onComplete}

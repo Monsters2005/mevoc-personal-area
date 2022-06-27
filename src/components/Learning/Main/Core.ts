@@ -18,6 +18,10 @@ const STAGES_RULES = {
     wordVisible: 'wordNative',
     wordHidden: 'wordLearning',
   },
+  4: {
+    wordVisible: 'wordNative',
+    wordHidden: 'wordLearning',
+  },
 };
 
 export const MAX_MISTAKES_VALUE = 3;
@@ -100,6 +104,19 @@ export class LearningCore {
   handleKeyPick(item: KeyboardEvent<HTMLDivElement>) {
     const keyPressed = `Key${this.currentCell?.letter.toUpperCase()}`;
     if (item.code === keyPressed) {
+      if (this.isCompleted) return;
+      if (this.currentIndex === this.letters.length - 1)
+        this.isCompleted = true;
+      this.currentIndex++;
+      this.currentCell = this.letters[this.currentIndex];
+    } else {
+      this.mistakesCount++;
+    }
+    this.pushEvent();
+  }
+
+  handleInput(word: string) {
+    if (this.currentCell?.letter === word) {
       if (this.isCompleted) return;
       if (this.currentIndex === this.letters.length - 1)
         this.isCompleted = true;
