@@ -6,11 +6,11 @@ import { AuthSvgSelector } from '../AuthSvgSelector';
 import s from './SignUpForm.module.scss';
 import schema from './validation';
 
-import { SignInDto } from '../../../@types/dto/auth/signin.dto';
+import { SignUpDto } from '../../../@types/dto/auth/signup.dto';
 import HookFormInput from '../../HookForm/HookFormInput';
 
 type Props = {
-  onSubmit: SubmitHandler<SignInDto>;
+  onSubmit: SubmitHandler<SignUpDto>;
 };
 
 const inputStyles = {
@@ -21,11 +21,11 @@ const inputStyles = {
 };
 
 export function SignUpForm({ onSubmit }: Props) {
-  const values = useForm<SignInDto>({
+  const values = useForm<SignUpDto>({
     resolver: yupResolver(schema),
   });
 
-  const submitHandler = (data: SignInDto) => {
+  const submitHandler = (data: SignUpDto) => {
     onSubmit(data);
   };
 
