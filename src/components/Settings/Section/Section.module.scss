@@ -1,0 +1,20 @@
+@use '@styles/shared/variables.scss' as *;
+
+.section {
+  &_container {
+    width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+
+    grid-gap: 30px;
+  }
+  &_title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: $primary-color;
+  }
+}

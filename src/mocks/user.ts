@@ -6,4 +6,12 @@ export const user = {
   langLearning: 'English',
   langNative: 'Russian',
   location: 'India, New Delhi',
+  settings: {
+    safety: {
+      twoFactAuth: {
+        textMessage: false,
+        authApp: true,
+      },
+    },
+  },
 };
