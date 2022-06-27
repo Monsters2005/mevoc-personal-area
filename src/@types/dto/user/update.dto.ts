@@ -1,3 +1,5 @@
+import { UserSettings } from '../../entities/UserSettings';
+
 export type UpdateUserDto = {
   firstName: string;
   lastName: string;
@@ -6,12 +8,5 @@ export type UpdateUserDto = {
   langLearning: string;
   langNative: string;
   location: string;
-  settings: {
-    safety: {
-      twoFactAuth: {
-        textMessage: boolean;
-        authApp: boolean;
-      };
-    };
-  };
+  settings: UserSettings;
 };

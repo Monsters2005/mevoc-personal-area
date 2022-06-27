@@ -1,4 +1,4 @@
-export type RestorePasswordDto = {
+export type RestorePasswordDto = Readonly<{
   password: string;
-  confirm_password: string;
-};
+  confirmPassword: string;
+}>;

@@ -1,21 +1,16 @@
 import { Word } from '../../@types/entities/Word';
+import { Id } from '../../@types/shared-kernel';
 import { baseApi } from './baseApi';
 
 export const wordApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    getWordById: builder.query<Word, number>({
+    getWordById: builder.query<Word, Id>({
       query: id => ({
         url: `/word/${id}`,
         method: 'GET',
       }),
     }),
-    // getAllByListId: builder.query<Word, number>({
-    //   query: id => ({
-    //     url: `/word/${id}`,
-    //     method: 'GET',
-    //   }),
-    // }),
-    createWord: builder.mutation<Word, number>({
+    createWord: builder.mutation<Word, Id>({
       query: id => ({
         url: '/word',
         method: 'POST',

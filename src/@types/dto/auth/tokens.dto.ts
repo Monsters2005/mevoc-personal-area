@@ -1,4 +1,4 @@
-export type Tokens = {
+export type Tokens = Readonly<{
   refreshToken: string;
   accessToken: string;
-};
+}>;

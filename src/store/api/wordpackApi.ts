@@ -1,15 +1,16 @@
 import { Pack } from '../../@types/entities/WordPack';
+import { Id } from '../../@types/shared-kernel';
 import { baseApi } from './baseApi';
 
 export const wordpackApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    getAllForUser: builder.query<Pack[], number>({
+    getAllByUserId: builder.query<Pack[], Id>({
       query: userId => ({
         url: `/wordpack/${userId}`,
         method: 'GET',
       }),
     }),
-    getWordpack: builder.query<Pack, number>({
+    getWordpackById: builder.query<Pack, Id>({
       query(id) {
         return {
           url: `/wordpack/${id}`,

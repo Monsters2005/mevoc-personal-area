@@ -1,5 +1,6 @@
 import { CreateUserDto } from '../../@types/dto/user/create.dto';
 import { User } from '../../@types/entities/User';
+import { Id, UniqueId } from '../../@types/shared-kernel';
 import { baseApi } from './baseApi';
 
 export const userApi = baseApi.injectEndpoints({
@@ -16,7 +17,7 @@ export const userApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
     }),
-    getUserById: builder.query<User, number>({
+    getUserById: builder.query<User, Id>({
       query: (id: number) => ({
         url: `/users/${id}`,
         method: 'GET',
@@ -28,7 +29,7 @@ export const userApi = baseApi.injectEndpoints({
         method: 'POST',
       }),
     }),
-    deleteUser: builder.mutation<User, string>({
+    deleteUser: builder.mutation<User, UniqueId>({
       query: id => ({
         url: `/users/${id}`,
         method: 'DELETE',

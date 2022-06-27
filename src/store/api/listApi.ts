@@ -1,9 +1,10 @@
 import { List } from '../../@types/entities/List';
+import { Id } from '../../@types/shared-kernel';
 import { baseApi } from './baseApi';
 
 export const listApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    getListById: builder.query<List, number>({
+    getListById: builder.query<List, Id>({
       query: id => ({
         url: `/list/${id}`,
         method: 'GET',
@@ -31,7 +32,7 @@ export const listApi = baseApi.injectEndpoints({
         };
       },
     }),
-    deleteList: builder.mutation<List, number>({
+    deleteList: builder.mutation<List, Id>({
       query: id => ({
         url: `/word/${id}`,
         method: 'DELETE',

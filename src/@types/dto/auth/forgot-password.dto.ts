@@ -1,3 +1,3 @@
-export type ForgotPasswordDto = {
+export type ForgotPasswordDto = Readonly<{
   email: string;
-};
+}>;
