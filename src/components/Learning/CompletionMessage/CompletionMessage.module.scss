@@ -1,0 +1,80 @@
+@use '@styles/shared/variables.scss' as *;
+
+.completion {
+  &_container {
+    width: 40rem;
+    height: 650px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    background: rgba(42, 43, 56, 0.25);
+    backdrop-filter: blur(45px);
+    border-radius: 25px;
+    user-select: none;
+    margin: 0;
+  }
+  &_title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+
+    color: $accent-color;
+
+    margin: 0;
+    padding: 0;
+  }
+  &_words {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: rgba($primary-color, 0.7);
+  }
+  &_description {
+    max-width: 500px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+
+    color: $primary-color;
+
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+  &_progress {
+    width: 200px;
+    height: 200px;
+  }
+  &_progresses {
+    display: flex;
+  }
+  &_btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  &_listname {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+
+    color: #c4c3ca;
+    margin-bottom: -10px;
+    text-transform: capitalize;
+  }
+}

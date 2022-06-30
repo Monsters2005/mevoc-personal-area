@@ -25,12 +25,14 @@ const STAGES_RULES = {
 };
 
 export const MAX_MISTAKES_VALUE = 3;
+export const MAX_TIMER_VALUE = 60;
 
 export interface LearningEvent {
   word: Word | null;
   letters: Letter[];
   cards: Letter[];
   stage: number;
+  timer: number;
 
   currentIndex: number;
   currentCell: Letter | null;
@@ -59,6 +61,8 @@ export class LearningCore {
 
   private isCompleted = false;
 
+  private timer = MAX_TIMER_VALUE;
+
   private eventHandler: (e: LearningEvent) => void;
 
   constructor(
@@ -77,6 +81,7 @@ export class LearningCore {
       letters: this.letters,
       cards: this.cards,
       stage: this.stage,
+      timer: this.timer,
 
       currentIndex: this.currentIndex,
       currentCell: this.currentCell,
@@ -96,6 +101,12 @@ export class LearningCore {
 
     this.pushEvent();
   }
+
+  // startTimer() {
+  //   this.timer = MAX_TIMER_VALUE;
+  //    this.timer > 0 && setInterval(() => setCounter(counter - 1), 1000);
+  //    return () => clearInterval(timer);
+  // }
 
   handleCardPick(item: Letter) {
     this.checkPickedValue(item);
@@ -127,6 +138,8 @@ export class LearningCore {
     }
     this.pushEvent();
   }
+
+  handleTimerChange() {}
 
   handleCompletion(func: (mistakes: number) => void) {
     if (this.isCompleted) func(this.mistakesCount);

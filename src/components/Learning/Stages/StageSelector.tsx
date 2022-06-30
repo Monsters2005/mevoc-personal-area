@@ -3,20 +3,21 @@ import FirstStage from './FirstStage/FirstStage';
 import FourthStage from './FourthStage/FourthStage';
 import SecondStage from './SecondStage/SecondStage';
 import ThirdStage from './ThirdStage/ThirdStage';
-import { Stage } from './types';
+import { StageSelect } from './types';
 
 export default function StageSelector({
   word,
   currentStage,
-  onComplete,
-}: Stage) {
+  onStageComplete,
+  onTestComplete,
+}: StageSelect) {
   switch (currentStage.id) {
     case 1:
       return (
         <FirstStage
           word={word}
           currentStage={currentStage}
-          onComplete={onComplete}
+          onComplete={onStageComplete}
         />
       );
     case 2:
@@ -24,7 +25,7 @@ export default function StageSelector({
         <SecondStage
           word={word}
           currentStage={currentStage}
-          onComplete={onComplete}
+          onComplete={onStageComplete}
         />
       );
     case 3:
@@ -32,7 +33,7 @@ export default function StageSelector({
         <ThirdStage
           word={word}
           currentStage={currentStage}
-          onComplete={onComplete}
+          onComplete={onStageComplete}
         />
       );
     case 4:
@@ -40,7 +41,7 @@ export default function StageSelector({
         <FourthStage
           word={word}
           currentStage={currentStage}
-          onComplete={onComplete}
+          onComplete={onTestComplete}
         />
       );
     default:

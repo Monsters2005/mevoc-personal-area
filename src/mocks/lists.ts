@@ -4,8 +4,8 @@ export const lists = [
     id: 1,
     words: [
       {
-        wordLearning: 'okt',
-        wordNative: 'okt ',
+        wordLearning: 'good',
+        wordNative: 'хорошо',
         id: 1,
         dateLearned: '2022-06-08',
       },

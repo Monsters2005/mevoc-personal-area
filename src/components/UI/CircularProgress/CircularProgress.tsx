@@ -1,4 +1,6 @@
-import React, { CSSProperties, useEffect, useState } from 'react';
+import React, {
+  CSSProperties, ReactNode, useEffect, useState,
+} from 'react';
 import s from './CircularProgress.module.scss';
 import { useTimeout } from './useTimeout';
 
@@ -10,6 +12,7 @@ type Props = {
   progressValue: number;
   percentStyles?: CSSProperties;
   styles?: CSSProperties;
+  asset?: ReactNode;
 };
 
 export function CircularProgress({
@@ -20,6 +23,7 @@ export function CircularProgress({
   progressValue,
   percentStyles,
   styles,
+  asset,
 }: Props) {
   const radius = width / 2 - circleStroke / 2;
 
@@ -36,6 +40,12 @@ export function CircularProgress({
         {progress}
         %
       </div>
+      {asset && (
+        <div className={s.progress__bar__asset}>
+          <hr />
+          {asset}
+        </div>
+      )}
       <div className={s.progress__bar__svg__wrapper}>
         <svg height={height} width={width} className={s.progress__bar}>
           <circle

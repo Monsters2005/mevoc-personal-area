@@ -4,6 +4,7 @@ import { cloneObj } from '../../../utils/common/cloneObj';
 import { countPercentage } from '../../../utils/common/countPercentage';
 import { Queue } from '../../../utils/queue/createQueue';
 import { ProgressStage } from '../../UI/StagesProgress/StagesProgress';
+import CompletionMessage from '../CompletionMessage/CompletionMessage';
 import StageSelector from '../Stages/StageSelector';
 import { MAX_MISTAKES_VALUE } from './Core';
 import s from './LearningMain.module.scss';
@@ -16,6 +17,20 @@ type Props = {
 
 export function LearningMain({ words, stage, updateStages }: Props) {
   const stageQueue = useMemo(() => new Queue(cloneObj(words) as Word[]), []);
+  const results = [
+    {
+      name: 'for the test',
+      words: 10,
+      wordsLearned: 6,
+      id: 1,
+    },
+    {
+      name: 'whatever',
+      words: 16,
+      wordsLearned: 6,
+      id: 2,
+    },
+  ];
   const [currentWord, setCurrentWord] = useState(stageQueue.getItem());
 
   useEffect(() => {
@@ -42,15 +57,15 @@ export function LearningMain({ words, stage, updateStages }: Props) {
     }
   }
 
-  // function queueWords()
-
   return (
     <div className={s.learning_container}>
-      <StageSelector
+      {/* <StageSelector
         word={currentWord}
         currentStage={stage}
-        onComplete={m => completeWordHandler(m)}
-      />
+        onStageComplete={m => completeWordHandler(m)}
+        onTestComplete={() => console.log()} // onComplete={m => completeWordHandler(m)}
+      /> */}
+      <CompletionMessage progresses={results} />
     </div>
   );
 }
