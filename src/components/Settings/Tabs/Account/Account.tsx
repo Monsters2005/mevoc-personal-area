@@ -29,11 +29,11 @@ export function AccountTab() {
       </div>
       <div className={s.account_fields}>
         <div className="settings-connect">
-          <SettingsInputGroup
+          {/* <SettingsInputGroup
             user={user}
             onSave={onDataSave}
             onVerifyEmail={onVerifyEmail}
-          />
+          /> */}
         </div>
       </div>
     </div>

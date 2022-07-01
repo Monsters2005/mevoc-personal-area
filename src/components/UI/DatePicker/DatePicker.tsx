@@ -1,8 +1,8 @@
 import { Moment } from 'moment';
 import React, { useState } from 'react';
-import { SingleDatePicker, FocusedInputShape } from 'react-dates';
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
+// import { SingleDatePicker, FocusedInputShape } from 'react-dates';
+// import 'react-dates/initialize';
+// import 'react-dates/lib/css/_datepicker.css';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { UISvgSelector } from '../UISvgSelector';
 import s from './DatePicker.module.scss';
@@ -35,7 +35,7 @@ export default function DatePicker({
 
   return (
     <div className={s.datepicker_container}>
-      {label && (
+      {/* {label && (
         <label className={s.datepicker_label} htmlFor={name}>
           {label}
         </label>
@@ -52,9 +52,9 @@ export default function DatePicker({
           date={value}
           onDateChange={changeHandler}
           focused={focusedInput}
-          onFocusChange={({ focused }) => {
-            setFocusedInput(focused);
-          }}
+          // onFocusChange={({ focused }) => {
+          //   setFocusedInput(focused);
+          // }}
           id="dob"
         />
         <UISvgSelector id="calendar" />
@@ -65,7 +65,7 @@ export default function DatePicker({
           <GlobalSvgSelector id="error" />
           <p>{error ?? ''}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

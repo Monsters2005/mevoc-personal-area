@@ -4,7 +4,7 @@ import s from './AvatarCard.module.scss';
 import defaultAvatar from '../../../../assets/images/defaultAvatar.png';
 import { getMediaLink } from '../../../../utils/getMediaLink';
 import { Button } from '../../../UI/Button/Button';
-import { SettingsSvgSelector } from '../../SettingsSvgSelector';
+// import { SettingsSvgSelector } from '../../SettingsSvgSelector';
 
 type Props = {
   avatar: string;
@@ -29,11 +29,11 @@ export function SettingsAvatarCard({
 
       <div className={s.avatarcard_buttons}>
         <Button type="secondary" onClick={onDelete}>
-          <SettingsSvgSelector id="delete" />
+          {/* <SettingsSvgSelector id="delete" /> */}
           Delete Avatar
         </Button>
         <Button type="secondary" onClick={onEdit}>
-          <SettingsSvgSelector id="edit" />
+          {/* <SettingsSvgSelector id="edit" /> */}
           Edit avatar
         </Button>
       </div>

@@ -10,7 +10,7 @@ import { HookFormDatePicker } from '../../../HookForm/HookFormDatePicker';
 import HookFormInput from '../../../HookForm/HookFormInput';
 import HookFormSelect from '../../../HookForm/HookFormSelect';
 import { Button } from '../../../UI/Button/Button';
-import { SettingsSvgSelector } from '../../SettingsSvgSelector';
+// import { SettingsSvgSelector } from '../../SettingsSvgSelector';
 import s from './InputGroup.module.scss';
 import schema from './validation';
 
@@ -116,7 +116,7 @@ export function SettingsInputGroup({
             >
               {confirmed ? (
                 <span className={s.inputgroup_addcontent}>
-                  <SettingsSvgSelector id="confirm" />
+                  {/* <SettingsSvgSelector id="confirm" /> */}
                   <p>Email Verified</p>
                 </span>
               ) : (

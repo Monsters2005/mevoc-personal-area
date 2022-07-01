@@ -1,4 +1,5 @@
 export type User = {
+  id: number;
   firstName: string;
   lastName: string;
   username: string;
@@ -11,4 +12,12 @@ export type User = {
   phoneNumber: string;
   confirmed_hash: string;
   confirmed: boolean;
+  settings: {
+    safety: {
+      twoFactAuth: {
+        textMessage: boolean;
+        authApp: boolean;
+      };
+    };
+  };
 };

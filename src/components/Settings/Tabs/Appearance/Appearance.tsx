@@ -1,12 +1,12 @@
 import React from 'react';
-import {
-  accentColors,
-  currentTheme,
-  textColor,
-  textSizes,
-} from '../../../../constants/settings';
+// import {
+//   accentColors,
+//   currentTheme,
+//   textColor,
+//   textSizes,
+// } from '../../../../constants/settings';
 import { MultiSelector } from '../../../UI/MultiSelector/MultiSelector';
-import { SettingsColorSelect } from '../../ColorSelect/ColorSelect';
+// import { SettingsColorSelect } from '../../ColorSelect/ColorSelect';
 import s from './Appearance.module.scss';
 
 export default function AppearanceTab() {
@@ -23,7 +23,7 @@ export default function AppearanceTab() {
       <div className={s.appearance_sections}>
         <div className={s.appearance_section}>
           <h3 className={s.appearance_title}>Current Theme</h3>
-          <div className={s.appearance_content}>
+          {/* <div className={s.appearance_content}>
             <MultiSelector
               options={currentTheme}
               defaultActive="dark"
@@ -59,7 +59,7 @@ export default function AppearanceTab() {
               defaultActive="normal"
               onClick={onTextColorSelect}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

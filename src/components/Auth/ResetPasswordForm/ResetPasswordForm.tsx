@@ -3,15 +3,14 @@ import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AuthFormLayout } from '../../../layouts/AuthFormLayout/AuthFormLayout';
 import { AuthSvgSelector } from '../AuthSvgSelector';
-import s from './SignUpForm.module.scss';
+import s from './ResetPasswordForm.module.scss';
 import schema from './validation';
 
-import { SignUpDto } from '../../../@types/dto/auth/signup.dto';
+import { ResetPasswordDto } from '../../../@types/dto/auth/reset-password.dto';
 import HookFormInput from '../../HookForm/HookFormInput';
 
 type Props = {
-  onLink: () => void;
-  onSubmit: SubmitHandler<SignUpDto>;
+  onSubmit: SubmitHandler<ResetPasswordDto>;
 };
 
 const inputStyles = {
@@ -21,43 +20,34 @@ const inputStyles = {
   lineHeight: '21px',
 };
 
-export function SignUpForm({ onSubmit, onLink }: Props) {
-  const values = useForm<SignUpDto>({
+export function ResetPasswordForm({ onSubmit }: Props) {
+  const values = useForm<ResetPasswordDto>({
     resolver: yupResolver(schema),
   });
 
-  const submitHandler = (data: SignUpDto) => {
+  const submitHandler = (data: ResetPasswordDto) => {
     onSubmit(data);
   };
 
   return (
     <FormProvider {...values}>
       <AuthFormLayout
-        title="Sign Up"
+        title="Reset your password"
         onSubmit={values.handleSubmit(submitHandler)}
-        btnText="submit"
-        bottomText="Already have an account?"
-        onBottomText={onLink}
+        btnText="Confirm"
       >
-        <div className={s.signup_container}>
+        <div className={s.resetpassword_container}>
           <form onSubmit={values.handleSubmit(submitHandler)}>
             <HookFormInput
-              name="firstName"
-              placeholder="First Name"
-              icon={<AuthSvgSelector id="person" />}
-              styles={inputStyles}
-              type="text"
-            />
-            <HookFormInput
-              name="email"
-              placeholder="New Email"
-              icon={<AuthSvgSelector id="email" />}
-              styles={inputStyles}
-              type="email"
-            />
-            <HookFormInput
-              name="password"
+              name="newPassword"
               placeholder="New Password"
+              icon={<AuthSvgSelector id="password" />}
+              styles={inputStyles}
+              type="password"
+            />
+            <HookFormInput
+              name="confirmPassword"
+              placeholder="Confirm Password"
               icon={<AuthSvgSelector id="password" />}
               styles={inputStyles}
               type="password"
