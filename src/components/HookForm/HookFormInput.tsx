@@ -5,7 +5,7 @@ import React, {
   FormEventHandler,
   ReactNode,
 } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, FieldError, useFormContext } from 'react-hook-form';
 import { Input } from '../UI/Input/Input';
 
 type Props = {
@@ -44,7 +44,7 @@ export default function HookFormInput({
           {...rest}
           {...props}
           isError={!!errors[name]}
-          error={errors[name]?.message ?? ''}
+          error={errors.multiple && (errors.multiple as FieldError).message}
         />
       )}
     />

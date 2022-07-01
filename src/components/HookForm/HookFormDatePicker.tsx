@@ -2,7 +2,7 @@ import moment, { Moment } from 'moment';
 import React, { useState } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, FieldError, useFormContext } from 'react-hook-form';
 import DatePicker from '../UI/DatePicker/DatePicker';
 
 type Props = {
@@ -37,7 +37,7 @@ export function HookFormDatePicker({
               onChange(date);
             }}
             isError={!!errors[name]}
-            error={errors[name]?.message ?? ''}
+            error={errors.multiple && (errors.multiple as FieldError).message}
             label={label}
             value={state}
           />

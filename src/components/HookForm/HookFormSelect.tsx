@@ -1,5 +1,5 @@
 import React, { SetStateAction, useState } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, FieldError, useFormContext } from 'react-hook-form';
 import { Dropdown } from '../UI/DropDown/Dropdown';
 import { Option } from '../UI/DropDown/types';
 
@@ -46,7 +46,7 @@ export default function HookFormSelect({
             allowNoneSelected={false}
             label={label}
             isError={!!errors[name]}
-            error={errors[name]?.message ?? ''}
+            error={errors.multiple && (errors.multiple as FieldError).message}
             styles={dropdownStyles}
           />
         )}
