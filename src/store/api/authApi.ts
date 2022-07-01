@@ -2,6 +2,7 @@ import { ChangePasswordDto } from '../../@types/dto/auth/change-password.dto';
 import { ForgotPasswordDto } from '../../@types/dto/auth/forgot-password.dto';
 import { RestorePasswordDto } from '../../@types/dto/auth/restore-password.dto';
 import { SignInDto } from '../../@types/dto/auth/signin.dto';
+import { SignUpDto } from '../../@types/dto/auth/signup.dto';
 import { Tokens } from '../../@types/dto/auth/tokens.dto';
 import { VerifyEmailDto } from '../../@types/dto/auth/verify-email.dto';
 import { baseApi } from './baseApi';
@@ -10,12 +11,23 @@ const path = '/auth';
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    signin: builder.query<Tokens, SignInDto>({
-      query: body => ({
-        url: `${path}/signin`,
-        method: 'POST',
-        body,
-      }),
+    signup: builder.mutation<void, SignUpDto>({
+      query(body) {
+        return {
+          method: 'POST',
+          url: `${path}/signup`,
+          body,
+        };
+      },
+    }),
+    signin: builder.mutation<Tokens, SignInDto>({
+      query(body) {
+        return {
+          method: 'POST',
+          url: `${path}/signin`,
+          body,
+        };
+      },
     }),
     signout: builder.mutation<void, void>({
       query: () => ({
@@ -60,3 +72,5 @@ export const authApi = baseApi.injectEndpoints({
     }),
   }),
 });
+
+// export const { useSignupMutation, useSigninMutation } = authApi;
