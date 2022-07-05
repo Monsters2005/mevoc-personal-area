@@ -17,6 +17,7 @@ export const authApi = baseApi.injectEndpoints({
           method: 'POST',
           url: `${path}/signup`,
           body,
+          headers: { 'Access-Control-Allow-Origin': '*' },
         };
       },
     }),
@@ -73,4 +74,12 @@ export const authApi = baseApi.injectEndpoints({
   }),
 });
 
-// export const { useSignupMutation, useSigninMutation } = authApi;
+export const {
+  useSignupMutation,
+  useSigninMutation,
+  useSignoutMutation,
+  useRefreshMutation,
+  useForgotPasswordMutation,
+  useChangePasswordMutation,
+  useVerifyMutation,
+} = authApi;

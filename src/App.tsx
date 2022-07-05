@@ -9,12 +9,14 @@ import { SettingsPage } from './pages/Settings/Settings';
 import { SignInPage } from './pages/SignIn/SignIn';
 import SignUpPage from './pages/SignUp/SignUp';
 import { UserProfilePage } from './pages/UserProfile/UserProfile';
+import { useGetCurrentUserQuery } from './store/api/userApi';
 import { getLocationName } from './utils/getLocationName';
 
 function App() {
   const location = useLocation();
   const locationName = getLocationName(location);
   const preload = useRef<HTMLDivElement>(null);
+  const { data: currentUser } = useGetCurrentUserQuery();
   const isAuth = false;
 
   //! Use effect below is supposed to remove a class which hides all animations on preload

@@ -1,44 +1,47 @@
 import { CreateUserDto } from '../../@types/dto/user/create.dto';
 import { User } from '../../@types/entities/User';
 import { Id, UniqueId } from '../../@types/shared-kernel';
+import { user } from '../../mocks/user';
 import { baseApi } from './baseApi';
+
+const path = '/users';
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     getCurrentUser: builder.query<User, void>({
       query: () => ({
-        url: '/users/me',
+        url: `${path}/me`,
         method: 'GET',
       }),
     }),
     getAllUsers: builder.query<User[], void>({
       query: () => ({
-        url: '/users',
+        url: `${path}`,
         method: 'GET',
       }),
     }),
     getUserById: builder.query<User, Id>({
       query: (id: number) => ({
-        url: `/users/${id}`,
+        url: `${path}/${id}`,
         method: 'GET',
       }),
     }),
     createUser: builder.mutation<void, CreateUserDto>({
       query: () => ({
-        url: '/users',
+        url: `${path}`,
         method: 'POST',
       }),
     }),
     deleteUser: builder.mutation<User, UniqueId>({
       query: id => ({
-        url: `/users/${id}`,
+        url: `${path}/${id}`,
         method: 'DELETE',
       }),
     }),
     updateUser: builder.mutation<User, Partial<User> & Pick<User, 'id'>>({
       query(body) {
         return {
-          url: `/users/${body.id}`,
+          url: `${path}/${body.id}`,
           method: 'PUT',
           body,
         };
@@ -46,3 +49,5 @@ export const userApi = baseApi.injectEndpoints({
     }),
   }),
 });
+
+export const { useGetCurrentUserQuery } = userApi;
