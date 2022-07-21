@@ -1,10 +1,11 @@
 import { CreateUserDto } from '../../@types/dto/user/create.dto';
 import { User } from '../../@types/entities/User';
 import { Id, UniqueId } from '../../@types/shared-kernel';
+import { Path } from '../../constants/routes';
 import { user } from '../../mocks/user';
 import { baseApi } from './baseApi';
 
-const path = '/users';
+const path = Path.USER;
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: builder => ({
@@ -50,4 +51,10 @@ export const userApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetCurrentUserQuery } = userApi;
+export const {
+  useGetCurrentUserQuery,
+  useGetAllUsersQuery,
+  useCreateUserMutation,
+  useDeleteUserMutation,
+  useGetUserByIdQuery,
+} = userApi;

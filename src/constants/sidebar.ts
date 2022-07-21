@@ -1,3 +1,5 @@
+import { Path } from './routes';
+
 export const pages = {
   dashboard: {
     icon: 'house',
@@ -34,4 +36,12 @@ export const actions = [
     icon: 'question',
     key: 'help',
   },
+];
+
+export const visiblePaths = [
+  Path.HOME,
+  Path.USER,
+  Path.HELP,
+  Path.LISTS,
+  Path.SETTINGS,
 ];

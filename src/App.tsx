@@ -2,7 +2,7 @@ import React, { RefObject, useEffect, useRef } from 'react';
 import { useLocation, Route, Routes } from 'react-router';
 
 import { Sidebar } from './components/Sidebar/Sidebar/Sidebar';
-import { actions, pages } from './constants/sidebar';
+import { actions, pages, visiblePaths } from './constants/sidebar';
 import { DashboardPage } from './pages/Dashboard/Dashboard';
 import ListManagementPage from './pages/ListManagement/ListManagement';
 import { SettingsPage } from './pages/Settings/Settings';
@@ -16,8 +16,8 @@ function App() {
   const location = useLocation();
   const locationName = getLocationName(location);
   const preload = useRef<HTMLDivElement>(null);
-  const { data: currentUser } = useGetCurrentUserQuery();
-  const isAuth = false;
+  const withSidebar = visiblePaths.includes(locationName as any);
+  // const { data: currentUser } = useGetCurrentUserQuery();
 
   //! Use effect below is supposed to remove a class which hides all animations on preload
   //! But it's not working so I'll fix that later 😠
@@ -30,7 +30,7 @@ function App() {
     <div className="App">
       <div className="preload" ref={preload}>
         <div className="main_container">
-          {isAuth ? (
+          {withSidebar ? (
             <>
               <Sidebar
                 pages={pages}

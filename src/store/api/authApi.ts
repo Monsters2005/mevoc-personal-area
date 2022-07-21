@@ -5,9 +5,10 @@ import { SignInDto } from '../../@types/dto/auth/signin.dto';
 import { SignUpDto } from '../../@types/dto/auth/signup.dto';
 import { Tokens } from '../../@types/dto/auth/tokens.dto';
 import { VerifyEmailDto } from '../../@types/dto/auth/verify-email.dto';
+import { Path } from '../../constants/routes';
 import { baseApi } from './baseApi';
 
-const path = '/auth';
+const path = Path.AUTH;
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: builder => ({
@@ -15,7 +16,7 @@ export const authApi = baseApi.injectEndpoints({
       query(body) {
         return {
           method: 'POST',
-          url: `${path}/signup`,
+          url: `${path}/${Path.SIGN_UP}`,
           body,
           headers: { 'Access-Control-Allow-Origin': '*' },
         };
@@ -25,14 +26,14 @@ export const authApi = baseApi.injectEndpoints({
       query(body) {
         return {
           method: 'POST',
-          url: `${path}/signin`,
+          url: `${path}/${Path.SIGN_IN}`,
           body,
         };
       },
     }),
     signout: builder.mutation<void, void>({
       query: () => ({
-        url: `${path}/signout`,
+        url: `${path}/${Path.SIGN_OUT}`,
         method: 'POST',
       }),
     }),
@@ -45,21 +46,21 @@ export const authApi = baseApi.injectEndpoints({
 
     forgotPassword: builder.mutation<void, ForgotPasswordDto>({
       query: body => ({
-        url: `${path}/forgot-password`,
+        url: `${path}/${Path.FORGOT_PASSWORD}`,
         method: 'POST',
         body,
       }),
     }),
     restorePassword: builder.mutation<void, RestorePasswordDto>({
       query: body => ({
-        url: `${path}/restore-password`,
+        url: `${path}/${Path.RESTORE_PASSWORD}`,
         method: 'POST',
         body,
       }),
     }),
     changePassword: builder.mutation<void, ChangePasswordDto>({
       query: body => ({
-        url: `${path}/change-password`,
+        url: `${path}/${Path.CHANGE_PASSWORD}`,
         method: 'POST',
         body,
       }),

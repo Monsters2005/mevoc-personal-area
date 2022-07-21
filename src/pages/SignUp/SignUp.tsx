@@ -23,7 +23,7 @@ export default function SignUpPage() {
 
     try {
       await signUp(dataObj).unwrap();
-      // goToDashboard();
+      goToDashboard();
     } catch (e: unknown) {
       // event bus notification
     }
