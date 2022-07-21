@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { CSSProperties, ReactNode, useRef } from 'react';
 import { Transition } from 'react-transition-group';
 
 export type StateParam = {
@@ -36,10 +36,13 @@ export function TransitionWrapper({
     zIndex: -1,
   };
 
+  const nodeRef = useRef(null);
+
   return (
-    <Transition in={!inState} timeout={duration}>
+    <Transition in={!inState} timeout={duration} nodeRef={nodeRef}>
       {(state: keyof State) => (
         <div
+          ref={nodeRef}
           style={{
             ...styles,
             ...defaultStyle,

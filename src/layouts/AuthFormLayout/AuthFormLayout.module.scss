@@ -5,6 +5,9 @@
   height: fit-content;
 
   background: url('../../assets/images/form-background.svg'), $element-color;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   border-radius: 6px;
 
   display: flex;

@@ -10,6 +10,7 @@ import { SignUpDto } from '../../../@types/dto/auth/signup.dto';
 import HookFormInput from '../../HookForm/HookFormInput';
 
 type Props = {
+  onLink: () => void;
   onSubmit: SubmitHandler<SignUpDto>;
 };
 
@@ -20,7 +21,7 @@ const inputStyles = {
   lineHeight: '21px',
 };
 
-export function SignUpForm({ onSubmit }: Props) {
+export function SignUpForm({ onSubmit, onLink }: Props) {
   const values = useForm<SignUpDto>({
     resolver: yupResolver(schema),
   });
@@ -36,7 +37,7 @@ export function SignUpForm({ onSubmit }: Props) {
         onSubmit={values.handleSubmit(submitHandler)}
         btnText="submit"
         bottomText="Already have an account?"
-        onBottomText={() => console.log('')} // TODO: link to login page
+        onBottomText={onLink}
       >
         <div className={s.signup_container}>
           <form onSubmit={values.handleSubmit(submitHandler)}>

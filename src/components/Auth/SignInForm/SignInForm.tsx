@@ -11,6 +11,7 @@ import HookFormInput from '../../HookForm/HookFormInput';
 
 type Props = {
   onSubmit: SubmitHandler<SignInDto>;
+  onLink: () => void;
 };
 
 const inputStyles = {
@@ -20,7 +21,7 @@ const inputStyles = {
   lineHeight: '21px',
 };
 
-export function SignInForm({ onSubmit }: Props) {
+export function SignInForm({ onSubmit, onLink }: Props) {
   const values = useForm<SignInDto>({
     resolver: yupResolver(schema),
   });
@@ -36,8 +37,8 @@ export function SignInForm({ onSubmit }: Props) {
         title="Log In"
         onSubmit={values.handleSubmit(submitHandler)}
         btnText="submit"
-        bottomText="Forgot your password?"
-        onBottomText={() => console.log('')} // TODO: link to forgot password page
+        bottomText="Don't have an account?"
+        onBottomText={onLink}
       >
         <div className={s.signin_container}>
           <form onSubmit={values.handleSubmit(submitHandler)}>

@@ -1,0 +1,27 @@
+.flag {
+  &_container {
+    position: relative;
+    width: 30px;
+    height: 20px;
+    border-radius: 5px;
+    & img {
+      width: 30px;
+      height: 20px;
+      left: 465px;
+      top: 491px;
+
+      border-radius: 5px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      background: rgba(31, 32, 41, 0.3);
+
+      width: 100%;
+      height: 100%;
+
+      top: 0;
+      left: 0;
+    }
+  }
+}

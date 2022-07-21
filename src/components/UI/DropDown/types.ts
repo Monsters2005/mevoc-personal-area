@@ -5,5 +5,5 @@ export type Option = {
   details?: string;
   icon?: ReactNode;
   addition?: ReactNode;
-  key: number;
+  id: number;
 };

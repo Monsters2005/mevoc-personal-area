@@ -7,6 +7,11 @@ export type User = {
   langLearning: string;
   langNative: string;
   location: string;
+  dob: Date;
+  emailAdress: string;
+  phoneNumber: string;
+  confirmed_hash: string;
+  confirmed: boolean;
   settings: {
     safety: {
       twoFactAuth: {

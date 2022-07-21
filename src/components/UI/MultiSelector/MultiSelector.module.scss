@@ -30,7 +30,8 @@
     border: none;
 
     & span {
-      margin-right: 2px;
+      margin-right: 5px;
+      margin-top: 2px;
       & svg {
         transition: all 0.1s;
         fill: rgba($primary-color, 0.7);
