@@ -43,7 +43,7 @@ export default function HookFormInput({
           {...rest}
           {...props}
           isError={!!errors[name]}
-          error={errors[name]?.message ?? ''}
+          // error={errors[name]?.message ?? ''}
         />
       )}
     />

@@ -1,0 +1,35 @@
+.notification {
+  &_container {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+  }
+  &_icon {
+    margin: 0 15px 0 0;
+  }
+  &_title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #c4c3ca;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+  }
+  &_text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #c4c3ca;
+    margin: 0 0 0 0;
+    padding: 0;
+    user-select: none;
+  }
+}
