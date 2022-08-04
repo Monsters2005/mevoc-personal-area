@@ -40,7 +40,7 @@ export const actions = [
 
 export const visiblePaths = [
   Path.HOME,
-  Path.USER,
+  Path.PROFILE,
   Path.HELP,
   Path.LISTS,
   Path.SETTINGS,

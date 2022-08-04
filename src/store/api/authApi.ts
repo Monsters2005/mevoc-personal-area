@@ -18,7 +18,7 @@ export const authApi = baseApi.injectEndpoints({
           method: 'POST',
           url: `${path}/${Path.SIGN_UP}`,
           body,
-          headers: { 'Access-Control-Allow-Origin': '*' },
+          // headers: { 'Access-Control-Allow-Origin': '*' },
         };
       },
     }),

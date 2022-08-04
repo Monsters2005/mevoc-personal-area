@@ -85,6 +85,10 @@ input:-webkit-autofill:active {
 }
 .page_content {
   width: 100%;
-  margin-left: 360px;
+  padding-left: 360px;
   margin-top: 30px;
+}
+
+.page_container {
+  width: 100%;
 }

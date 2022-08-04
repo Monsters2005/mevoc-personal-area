@@ -28,7 +28,7 @@ export default function ListManagementPage() {
     })
   );
 
-  const [selectedList, setSelectedList] = useState<Option | null>(
+  const [selectedList, setSelectedList] = useState<Option | undefined>(
     listOptions[0]
   );
 
@@ -41,7 +41,7 @@ export default function ListManagementPage() {
               listTitle="Your lists"
               options={listOptions}
               selectedItem={selectedList}
-              setSelectedItem={(item: Option | null) => setSelectedList(item)}
+              setSelectedItem={(item: Option | undefined) => setSelectedList(item)}
               allowNoneSelected={false}
               styles={{ width: '250px', marginBottom: '8px' }}
             />

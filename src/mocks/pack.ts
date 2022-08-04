@@ -1,7 +1,7 @@
 export const wordPack = {
   name: 'Food',
   id: 1,
-  icon: 'wordpack-food',
+  icon: undefined,
   words: [
     'nutrition',
     'meal',

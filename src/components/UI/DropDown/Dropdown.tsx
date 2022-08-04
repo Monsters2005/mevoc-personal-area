@@ -10,8 +10,8 @@ type DropdownProps = {
   listTitle?: string;
   label?: string;
   options: Option[];
-  selectedItem: Option | null;
-  setSelectedItem: (item: Option | null) => void;
+  selectedItem: Option | undefined;
+  setSelectedItem: (item: Option | undefined) => void;
   allowNoneSelected: boolean;
   styles?: CSSProperties;
   listStyles?: CSSProperties;

@@ -18,6 +18,7 @@
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
     "@types/yup": "^0.29.13",
+    "caniuse-lite": "^1.0.30001374",
     "chart.js": "^3.7.1",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",

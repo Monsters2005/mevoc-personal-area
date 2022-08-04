@@ -39,7 +39,7 @@ export function TransitionWrapper({
   const nodeRef = useRef(null);
 
   return (
-    <Transition in={!inState} timeout={duration} nodeRef={nodeRef}>
+    <Transition in={inState} timeout={duration} nodeRef={nodeRef}>
       {(state: keyof State) => (
         <div
           ref={nodeRef}

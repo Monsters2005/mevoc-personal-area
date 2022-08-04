@@ -15,7 +15,7 @@ export enum Path {
 
   FORGOT_PASSWORD = 'forgot-password',
   RESTORE_PASSWORD = 'restore-password',
-  CHANGE_PASSWORD = 'chnage-password',
+  CHANGE_PASSWORD = 'change-password',
 
   LEARNING = 'learning',
   LIST = 'list',

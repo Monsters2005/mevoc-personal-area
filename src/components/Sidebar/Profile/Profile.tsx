@@ -2,17 +2,11 @@ import React from 'react';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { getMediaLink } from '../../../utils/getMediaLink';
 import s from './Profile.module.scss';
-import defaultAvatar from '../../../assets/images/defaultAvatar.png';
-
-type User = {
-  firstName: string;
-  lastName: string;
-  username: string;
-  avatar: string;
-};
+import { User } from '../../../@types/entities/User';
+import FallbackImgSelector from '../../../assets/FallbackImgSelector';
 
 type Props = {
-  user: User;
+  user: Partial<User>;
 };
 
 export function SidebarProfile({
@@ -20,15 +14,19 @@ export function SidebarProfile({
     firstName, lastName, avatar, username,
   },
 }: Props) {
-  const avatarUrl = getMediaLink(avatar) || defaultAvatar;
+  const avatarUrl = avatar && getMediaLink(avatar);
 
   return (
     <div className={s.profile_container}>
       <span className={s.profile_avatar}>
-        <img src={avatarUrl} alt={`${username} profile`} />
+        {avatarUrl ? (
+          <img src={avatarUrl} alt={`${username} profile`} />
+        ) : (
+          <FallbackImgSelector id="user-avatar" />
+        )}
       </span>
       <div className={s.profile_info}>
-        <h5>{`${firstName} ${lastName}`}</h5>
+        <h5>{`${firstName} ${lastName || ''}`}</h5>
         <p>
           @
           {username}

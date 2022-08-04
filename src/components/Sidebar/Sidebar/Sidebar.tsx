@@ -6,20 +6,23 @@ import { SidebarNavigation } from '../Navigation/Navigation';
 import { SidebarProfile } from '../Profile/Profile';
 
 import { Logo } from '../../UI/Logo/Logo';
-import { user } from '../../../mocks/user';
 
 import { ActionItem, Pages } from './types';
+import { useGetCurrentUserQuery } from '../../../store/api/userApi';
+import { User } from '../../../@types/entities/User';
 
 type Props<T> = {
   pages: T;
   defaultActive: keyof T;
   actions: ActionItem[];
+  user: User;
 };
 
 export function Sidebar<T extends Pages>({
   pages,
   defaultActive,
   actions,
+  user,
 }: Props<T>) {
   const sortedPages = Object.keys(pages).map(key => ({
     icon: pages[key].icon,

@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { lists } from './lists';
 
 export const user = {
   firstName: 'Karina',
@@ -13,4 +14,5 @@ export const user = {
   phoneNumber: '+4247725802',
   confirmed_hash: '',
   confirmed: true,
+  lists,
 };

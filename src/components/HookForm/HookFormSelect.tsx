@@ -27,7 +27,7 @@ export default function HookFormSelect({
     control,
     formState: { errors },
   } = useFormContext();
-  const [state, setState] = useState<Option | null>(defaultSelected);
+  const [state, setState] = useState<Option | undefined>(defaultSelected);
 
   return (
     <div>
@@ -38,7 +38,7 @@ export default function HookFormSelect({
             {...rest}
             {...props}
             options={options}
-            setSelectedItem={(item: Option | null) => {
+            setSelectedItem={(item: Option | undefined) => {
               setState(item);
               onChange(item?.value);
             }}
