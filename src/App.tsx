@@ -5,6 +5,7 @@ import { Sidebar } from './components/Sidebar/Sidebar/Sidebar';
 import { Loader } from './components/UI/Loader/Loader';
 import { Path } from './constants/routes';
 import { actions, pages, visiblePaths } from './constants/sidebar';
+import { PrivateLayout } from './layouts/PrivateLayout/PrivateLayout';
 import { DashboardPage } from './pages/Dashboard/Dashboard';
 import ListManagementPage from './pages/ListManagement/ListManagement';
 import { SettingsPage } from './pages/Settings/Settings';
@@ -12,6 +13,7 @@ import { SignInPage } from './pages/SignIn/SignIn';
 import SignUpPage from './pages/SignUp/SignUp';
 import { UserProfilePage } from './pages/UserProfile/UserProfile';
 import { centeredLoader } from './shared/styles/loader-variations';
+import { useSignoutMutation } from './store/api/authApi';
 import { useGetCurrentUserQuery } from './store/api/userApi';
 import { getLocationName } from './utils/getLocationName';
 
@@ -31,7 +33,7 @@ function App() {
   //   if (node) node.className = '';
   // }, [location]);
 
-  const { data: user } = useGetCurrentUserQuery();
+  const { data: currentUser } = useGetCurrentUserQuery();
 
   return (
     <div className="App">
@@ -39,36 +41,25 @@ function App() {
         <div className="main_container">
           {withSidebar ? (
             <div className="page_container">
-              {/* Maybe add styles to this container. so it would be possible to remove them from the loader  */}
-              {user ? (
-                <>
-                  <Sidebar
-                    pages={pages}
-                    actions={actions}
-                    defaultActive={locationName}
-                    user={user}
+              {/* <PrivateLayout> */}
+              <Sidebar
+                pages={pages}
+                actions={actions}
+                defaultActive={locationName}
+                user={currentUser}
+              />
+              <div className="page_content">
+                <Routes>
+                  <Route
+                    path={Path.HOME}
+                    element={<DashboardPage user={currentUser} />}
                   />
-                  <div className="page_content">
-                    <Routes>
-                      <Route
-                        path={Path.HOME}
-                        element={<DashboardPage user={user} />}
-                      />
-                      <Route
-                        path={Path.LISTS}
-                        element={<ListManagementPage />}
-                      />
-                      <Route
-                        path={Path.PROFILE}
-                        element={<UserProfilePage />}
-                      />
-                      <Route path={Path.SETTINGS} element={<SettingsPage />} />
-                    </Routes>
-                  </div>
-                </>
-              ) : (
-                <Loader styles={centeredLoader} size={150} />
-              )}
+                  <Route path={Path.LISTS} element={<ListManagementPage />} />
+                  <Route path={Path.PROFILE} element={<UserProfilePage />} />
+                  <Route path={Path.SETTINGS} element={<SettingsPage />} />
+                </Routes>
+              </div>
+              {/* </PrivateLayout> */}
             </div>
           ) : (
             <Routes>

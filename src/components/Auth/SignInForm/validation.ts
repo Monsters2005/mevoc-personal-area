@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export default yup.object().shape({
-  login: yup
+  email: yup
     .string()
     .email('Invalid email')
     .required('Please enter your email adress'),

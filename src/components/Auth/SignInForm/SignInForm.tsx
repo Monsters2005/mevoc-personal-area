@@ -43,7 +43,7 @@ export function SignInForm({ onSubmit, onLink }: Props) {
         <div className={s.signin_container}>
           <form onSubmit={values.handleSubmit(submitHandler)}>
             <HookFormInput
-              name="login"
+              name="email"
               placeholder="Your Email"
               icon={<AuthSvgSelector id="email" />}
               styles={inputStyles}

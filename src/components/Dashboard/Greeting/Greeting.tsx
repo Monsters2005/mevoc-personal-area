@@ -14,7 +14,7 @@ export function DashboardGreeting({ name }: Props) {
 
   return (
     <div className={s.greeting_container}>
-      <h2>{`${getGreetingByTime(currentTime)}, ${name}`}</h2>
+      <h2>{`${getGreetingByTime(currentTime)}${name && ','} ${name}`}</h2>
       <p>{`Today is ${currentDate}`}</p>
     </div>
   );

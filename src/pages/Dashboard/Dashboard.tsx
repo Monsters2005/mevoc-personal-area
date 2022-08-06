@@ -12,11 +12,11 @@ import { wordPack } from '../../mocks/pack';
 import s from './Dashboard.module.scss';
 
 type Props = {
-  user: User;
+  user: User | undefined;
 };
 
 export function DashboardPage({ user }: Props) {
-  const langOption = languages.find(item => item.name === user.langNative) || languages[0];
+  const langOption = languages.find(item => item.name === user?.langNative) || languages[0];
   const [lang, setLang] = useState<Option | undefined>(langOption);
 
   return (
@@ -24,7 +24,7 @@ export function DashboardPage({ user }: Props) {
     <div className={s.dashboardpage_container}>
       <div className={s.dashboardpage_header}>
         <div className={s.dashboardpage_greeting}>
-          <DashboardGreeting name={user.firstName} />
+          <DashboardGreeting name={user?.firstName || ''} />
         </div>
         <div className={s.dashboardpage_lang}>
           <Dropdown
@@ -41,7 +41,7 @@ export function DashboardPage({ user }: Props) {
       <div className={s.dashboardpage_grid}>
         <div className={s.dashboardpage_row}>
           <DashboardActiveLists
-            lists={user.lists}
+            lists={user?.lists || null}
             onAddList={() => console.log('')}
           />
           <DashboardDailyProgress words={2} wordsLearned={0} />

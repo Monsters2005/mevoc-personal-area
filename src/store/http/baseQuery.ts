@@ -27,21 +27,20 @@ export const baseQueryWithReauth: BaseQueryFn<
 > = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
   if (result.error && result.error.status === HTTP_UNAUTHORIZED) {
-    const refreshResult = await baseQuery(
+    const { data }: any = await baseQuery(
       { url: 'auth/refresh', method: 'POST' },
       api,
       extraOptions
     );
-    console.log(refreshResult);
-    if (refreshResult.data) {
+    if (data) {
       result = await baseQuery(args, api, extraOptions);
+      localStorage.setItem('accessToken', data.accessToken);
     } else {
-      // await baseQuery(
-      //   { url: 'auth/signout', method: 'POST' },
-      //   api,
-      //   extraOptions
-      // );
-      console.log('fuckoff');
+      await baseQuery(
+        { url: 'auth/signout', method: 'POST' },
+        api,
+        extraOptions
+      );
       return result;
     }
   }
