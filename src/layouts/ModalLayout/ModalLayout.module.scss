@@ -1,0 +1,53 @@
+@use '@styles/shared/variables.scss' as *;
+
+.modal {
+  &_container {
+    width: fit-content;
+    height: fit-content;
+
+    background: $element-color;
+    border-radius: 19px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 22px 25px;
+    & button {
+      margin-left: auto;
+    }
+  }
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  &_content {
+    display: flex;
+    flex-direction: column;
+  }
+  &_title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: #c4c3ca;
+
+    margin: 0;
+    padding: 0;
+  }
+  &_children {
+    height: 100%;
+  }
+  &_description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: rgba(196, 195, 202, 0.7);
+
+    margin: 0;
+    padding: 0;
+  }
+}

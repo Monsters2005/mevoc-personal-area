@@ -1,11 +1,18 @@
 import React, { useRef } from 'react';
 import { useLocation, Route, Routes } from 'react-router';
+import AddListModal from './components/Modals/ListsManagement/AddList';
+import AddWordModal from './components/Modals/WordManagement/AddWord';
+import EditWordModal from './components/Modals/WordManagement/EditWord';
+import { WordpackModal } from './components/Modals/Wordpack/Wordpack';
 
 import { Sidebar } from './components/Sidebar/Sidebar/Sidebar';
 import { Loader } from './components/UI/Loader/Loader';
 import { Path } from './constants/routes';
 import { actions, pages, visiblePaths } from './constants/sidebar';
+import { AuthLayout } from './layouts/AuthLayout/AuthLayout';
+import ModalLayout from './layouts/ModalLayout/ModalLayout';
 import { PrivateLayout } from './layouts/PrivateLayout/PrivateLayout';
+import { wordPack } from './mocks/pack';
 import { DashboardPage } from './pages/Dashboard/Dashboard';
 import ListManagementPage from './pages/ListManagement/ListManagement';
 import { SettingsPage } from './pages/Settings/Settings';
@@ -22,7 +29,6 @@ function App() {
   const locationName = getLocationName(pathname);
 
   const preload = useRef<HTMLDivElement>(null);
-  //! Change this "any" below to a normal type 😠
   const withSidebar = visiblePaths.includes(pathname.replace('/', '') as Path);
   // const { data: currentUser } = useGetCurrentUserQuery();
 
@@ -41,31 +47,36 @@ function App() {
         <div className="main_container">
           {withSidebar ? (
             <div className="page_container">
-              {/* <PrivateLayout> */}
-              <Sidebar
-                pages={pages}
-                actions={actions}
-                defaultActive={locationName}
-                user={currentUser}
-              />
-              <div className="page_content">
-                <Routes>
-                  <Route
-                    path={Path.HOME}
-                    element={<DashboardPage user={currentUser} />}
-                  />
-                  <Route path={Path.LISTS} element={<ListManagementPage />} />
-                  <Route path={Path.PROFILE} element={<UserProfilePage />} />
-                  <Route path={Path.SETTINGS} element={<SettingsPage />} />
-                </Routes>
-              </div>
-              {/* </PrivateLayout> */}
+              <PrivateLayout>
+                <Sidebar
+                  pages={pages}
+                  actions={actions}
+                  defaultActive={locationName}
+                  user={currentUser}
+                />
+                <div className="page_content">
+                  <Routes>
+                    <Route
+                      path={Path.HOME}
+                      element={<DashboardPage user={currentUser} />}
+                    />
+                    <Route
+                      path={Path.LISTS}
+                      element={<ListManagementPage />}
+                    />
+                    <Route path={Path.PROFILE} element={<UserProfilePage />} />
+                    <Route path={Path.SETTINGS} element={<SettingsPage />} />
+                  </Routes>
+                </div>
+              </PrivateLayout>
             </div>
           ) : (
-            <Routes>
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route path="/signin" element={<SignInPage />} />
-            </Routes>
+            <AuthLayout>
+              <Routes>
+                <Route path="/signup" element={<SignUpPage />} />
+                <Route path="/signin" element={<SignInPage />} />
+              </Routes>
+            </AuthLayout>
           )}
         </div>
       </div>

@@ -31,3 +31,19 @@ export const primarySmallNoLists = {
   top: '58%',
   transform: 'translateX(-50%) translateY(-50%)',
 };
+
+export const primaryModal = {
+  fontStyle: 'normal',
+  fontWeight: '600',
+  fontSize: '13px',
+  lineHeight: '20px',
+  letterSpacing: '1px',
+  width: 'fit-content',
+  height: '36px',
+  padding: '2px 15px',
+  color: '#1F2029',
+};
+
+export const smallModal = {
+  width: '50px',
+};

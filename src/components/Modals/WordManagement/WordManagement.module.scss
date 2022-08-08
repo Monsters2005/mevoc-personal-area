@@ -1,0 +1,13 @@
+.wordmanage {
+  &_container {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0 50px;
+    padding: 0;
+  }
+  &_form {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+  }
+}

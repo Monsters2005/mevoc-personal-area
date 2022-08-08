@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '../../@types/entities/User';
+import { user } from '../../mocks/user';
 import { authApi } from '../api/authApi';
 import { userApi } from '../api/userApi';
 
@@ -11,7 +12,7 @@ export type AuthState = {
 
 const initialState: AuthState = {
   currentUser: null,
-  isAuthorized: false,
+  isAuthorized: true,
   isFetching: false,
 };
 
@@ -34,13 +35,16 @@ export const authSlice = createSlice({
       .addMatcher(authApi.endpoints.signin.matchFulfilled, state => {
         state.isAuthorized = true;
       })
+      .addMatcher(authApi.endpoints.signup.matchFulfilled, state => {
+        state.isAuthorized = true;
+      })
       .addMatcher(userApi.endpoints.getCurrentUser.matchFulfilled, state => {
         state.isAuthorized = true;
       })
       .addMatcher(
         userApi.endpoints.getCurrentUser.matchRejected,
         (state, action) => {
-          if (action.error.name === '') return;
+          if (action.error.name === 'ConditionError') return;
           state.isAuthorized = false;
         }
       )

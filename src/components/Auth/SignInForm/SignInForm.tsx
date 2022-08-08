@@ -8,17 +8,11 @@ import schema from './validation';
 
 import { SignInDto } from '../../../@types/dto/auth/signin.dto';
 import HookFormInput from '../../HookForm/HookFormInput';
+import { inputForm } from '../../../shared/styles/input-variations';
 
 type Props = {
   onSubmit: SubmitHandler<SignInDto>;
   onLink: () => void;
-};
-
-const inputStyles = {
-  width: '100%',
-  fontWeight: 500,
-  fontSize: '14px',
-  lineHeight: '21px',
 };
 
 export function SignInForm({ onSubmit, onLink }: Props) {
@@ -46,14 +40,14 @@ export function SignInForm({ onSubmit, onLink }: Props) {
               name="email"
               placeholder="Your Email"
               icon={<AuthSvgSelector id="email" />}
-              styles={inputStyles}
+              styles={inputForm}
               type="email"
             />
             <HookFormInput
               name="password"
               placeholder="Your Password"
               icon={<AuthSvgSelector id="password" />}
-              styles={inputStyles}
+              styles={inputForm}
               type="password"
             />
           </form>
