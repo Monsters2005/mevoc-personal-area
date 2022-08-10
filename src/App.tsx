@@ -64,7 +64,10 @@ function App() {
                       path={Path.LISTS}
                       element={<ListManagementPage />}
                     />
-                    <Route path={Path.PROFILE} element={<UserProfilePage />} />
+                    <Route
+                      path={Path.PROFILE}
+                      element={<UserProfilePage user={currentUser} />}
+                    />
                     <Route path={Path.SETTINGS} element={<SettingsPage />} />
                   </Routes>
                 </div>

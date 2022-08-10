@@ -12,6 +12,7 @@ import { User } from '../../../@types/entities/User';
 import { useSignoutMutation } from '../../../store/api/authApi';
 import { Path } from '../../../constants/routes';
 import s from './Sidebar.module.scss';
+import { ContentSkeleton } from '../../UI/ContentLoader/ContentLoader';
 
 type Props<T> = {
   pages: T;
@@ -51,19 +52,14 @@ export function Sidebar<T extends Pages>({
         {user ? (
           <SidebarProfile user={user} />
         ) : (
-          <ContentLoader
-            speed={2}
+          <ContentSkeleton
+            type="profile"
             width={400}
             height={50}
-            viewBox="0 0 400 50"
-            backgroundColor="#4F4E60"
-            foregroundColor="#7a798f"
+            bgColor="#4F4E60"
+            fgColor="#7a798f"
             style={{ marginTop: '50px' }}
-          >
-            <rect x="59" y="12" rx="3" ry="3" width="200" height="8" />
-            <rect x="59" y="30" rx="3" ry="3" width="82" height="7" />
-            <circle cx="25" cy="25" r="25" />
-          </ContentLoader>
+          />
         )}
         <SidebarNavigation pages={sortedPages} defaultActive={defaultActive} />
         <SidebarActionItems
