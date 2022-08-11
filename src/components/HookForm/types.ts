@@ -15,7 +15,7 @@ export type DatePickerField = {
   onBlur: () => void;
   onChange: (e: Event) => void;
   ref: Ref;
-  value: '';
+  value: string;
 };
 
 export type Render = {

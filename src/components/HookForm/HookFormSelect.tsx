@@ -1,5 +1,6 @@
 import React, { SetStateAction, useState } from 'react';
 import { Controller, FieldError, useFormContext } from 'react-hook-form';
+import { dropdownStyles } from '../../shared/styles/dropdown-variations';
 import { Dropdown } from '../UI/DropDown/Dropdown';
 import { Option } from '../UI/DropDown/types';
 
@@ -8,12 +9,6 @@ type Props = {
   defaultSelected: Option;
   label: string;
   name: string;
-};
-
-const dropdownStyles = {
-  width: '300px',
-  height: '50px',
-  background: '#1F2029',
 };
 
 export default function HookFormSelect({

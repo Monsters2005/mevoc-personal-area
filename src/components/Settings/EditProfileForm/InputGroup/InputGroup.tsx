@@ -6,6 +6,8 @@ import { SettignsProfileFormDto } from '../../../../@types/dto/settings/profilef
 import { User } from '../../../../@types/entities/User';
 import { countries } from '../../../../constants/countries';
 import { languages } from '../../../../constants/languages';
+import { btnInputSettings } from '../../../../shared/styles/button-variations';
+import { inputSettings } from '../../../../shared/styles/input-variations';
 import { HookFormDatePicker } from '../../../HookForm/HookFormDatePicker';
 import HookFormInput from '../../../HookForm/HookFormInput';
 import HookFormSelect from '../../../HookForm/HookFormSelect';
@@ -18,24 +20,6 @@ type Props = {
   user: User;
   onSave: SubmitHandler<SettignsProfileFormDto>;
   onVerifyEmail: (email: string) => void;
-};
-
-const inputStyles = {
-  fontFamily: 'Poppins',
-  fontStyle: 'normal',
-  fontWeight: 400,
-  lineHeight: '20px',
-  paddingLeft: '10px',
-};
-
-const verifyBtnStyles = {
-  fontFamily: 'Poppins',
-  fontStyle: 'normal',
-  fontWeight: 600,
-  lineHeight: '20px',
-  fontSize: '16px',
-  padding: '5px 10px',
-  marginRight: '20px',
 };
 
 export function SettingsInputGroup({
@@ -76,7 +60,7 @@ export function SettingsInputGroup({
               defaultValue={firstName}
               label="First Name"
               styles={{
-                ...inputStyles,
+                ...inputSettings,
                 width: '300px',
                 textTransform: 'capitalize',
               }}
@@ -86,7 +70,7 @@ export function SettingsInputGroup({
               defaultValue={lastName}
               label="Last Name"
               styles={{
-                ...inputStyles,
+                ...inputSettings,
                 width: '300px',
                 textTransform: 'capitalize',
               }}
@@ -97,7 +81,7 @@ export function SettingsInputGroup({
               name="username"
               defaultValue={username}
               label="Username"
-              styles={{ ...inputStyles, width: '300px' }}
+              styles={{ ...inputSettings, width: '300px' }}
             />
             <HookFormDatePicker
               label="Date Of Birth"
@@ -112,7 +96,7 @@ export function SettingsInputGroup({
               name="email"
               defaultValue={emailAdress}
               label="Email Adress"
-              styles={{ ...inputStyles, width: '100%' }}
+              styles={{ ...inputSettings, width: '100%' }}
             >
               {confirmed ? (
                 <span className={s.inputgroup_addcontent}>
@@ -121,7 +105,7 @@ export function SettingsInputGroup({
                 </span>
               ) : (
                 <Button
-                  styles={verifyBtnStyles}
+                  styles={btnInputSettings}
                   type="primary"
                   onClick={() => onVerifyEmail(emailAdress)}
                 >
@@ -135,7 +119,7 @@ export function SettingsInputGroup({
               name="phoneNumber"
               defaultValue={phoneNumber}
               label="Phone Number"
-              styles={{ ...inputStyles, width: '300px' }}
+              styles={{ ...inputSettings, width: '300px' }}
             />
             <HookFormSelect
               options={countries}

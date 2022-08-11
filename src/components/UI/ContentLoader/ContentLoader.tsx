@@ -60,6 +60,19 @@ export function ContentSkeleton({
           />
         </ContentLoader>
       );
+    case 'line':
+      return (
+        <ContentLoader
+          speed={2}
+          width={width}
+          height={height}
+          viewBox="0 0 165 53"
+          backgroundColor="#c4c3ca7b"
+          foregroundColor="#c4c3cab2"
+        >
+          <rect x="0" y="34" rx="10" ry="10" width="165" height="18" />
+        </ContentLoader>
+      );
 
     default:
       return null;

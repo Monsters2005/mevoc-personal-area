@@ -20,7 +20,6 @@ export function DashboardPage({ user }: Props) {
   const [lang, setLang] = useState<Option | undefined>(langOption);
 
   return (
-    // <PrivateLayout>
     <div className={s.dashboardpage_container}>
       <div className={s.dashboardpage_header}>
         <div className={s.dashboardpage_greeting}>
@@ -51,6 +50,5 @@ export function DashboardPage({ user }: Props) {
         </div>
       </div>
     </div>
-    // </PrivateLayout>
   );
 }

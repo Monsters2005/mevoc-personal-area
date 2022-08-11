@@ -12,3 +12,11 @@ export const inputModal = {
   fontSize: '14px',
   lineHeight: '21px',
 };
+
+export const inputSettings = {
+  fontFamily: 'Poppins',
+  fontStyle: 'normal',
+  fontWeight: 400,
+  lineHeight: '20px',
+  paddingLeft: '10px',
+};

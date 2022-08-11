@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { AddWordDto } from '../../../@types/dto/word/add.dto';
+import { CreateWordDto } from '../../../@types/dto/word/create.dto';
 import ModalLayout from '../../../layouts/ModalLayout/ModalLayout';
 import { inputModal } from '../../../shared/styles/input-variations';
 import HookFormInput from '../../HookForm/HookFormInput';
@@ -9,15 +9,15 @@ import schema from './addValidation';
 import s from './WordManagement.module.scss';
 
 type Props = {
-  onAddWord: SubmitHandler<AddWordDto>;
+  onAddWord: SubmitHandler<CreateWordDto>;
 };
 
 export default function AddWordModal({ onAddWord }: Props) {
-  const values = useForm<AddWordDto>({
+  const values = useForm<CreateWordDto>({
     resolver: yupResolver(schema),
   });
 
-  const submitHandler = (data: AddWordDto) => {
+  const submitHandler = (data: CreateWordDto) => {
     onAddWord(data);
   };
 

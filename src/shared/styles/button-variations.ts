@@ -47,3 +47,13 @@ export const primaryModal = {
 export const smallModal = {
   width: '50px',
 };
+
+export const btnInputSettings = {
+  fontFamily: 'Poppins',
+  fontStyle: 'normal',
+  fontWeight: 600,
+  lineHeight: '20px',
+  fontSize: '16px',
+  padding: '5px 10px',
+  marginRight: '20px',
+};
