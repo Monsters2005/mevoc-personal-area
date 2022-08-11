@@ -8,19 +8,14 @@ import schema from './validation';
 
 import { SignUpDto } from '../../../@types/dto/auth/signup.dto';
 import HookFormInput from '../../HookForm/HookFormInput';
+import { inputForm } from '../../../shared/styles/input-variations';
 
 type Props = {
+  onLink: () => void;
   onSubmit: SubmitHandler<SignUpDto>;
 };
 
-const inputStyles = {
-  width: '100%',
-  fontWeight: 500,
-  fontSize: '14px',
-  lineHeight: '21px',
-};
-
-export function SignUpForm({ onSubmit }: Props) {
+export function SignUpForm({ onSubmit, onLink }: Props) {
   const values = useForm<SignUpDto>({
     resolver: yupResolver(schema),
   });
@@ -36,7 +31,7 @@ export function SignUpForm({ onSubmit }: Props) {
         onSubmit={values.handleSubmit(submitHandler)}
         btnText="submit"
         bottomText="Already have an account?"
-        onBottomText={() => console.log('')} // TODO: link to login page
+        onBottomText={onLink}
       >
         <div className={s.signup_container}>
           <form onSubmit={values.handleSubmit(submitHandler)}>
@@ -44,21 +39,21 @@ export function SignUpForm({ onSubmit }: Props) {
               name="firstName"
               placeholder="First Name"
               icon={<AuthSvgSelector id="person" />}
-              styles={inputStyles}
+              styles={inputForm}
               type="text"
             />
             <HookFormInput
               name="email"
               placeholder="New Email"
               icon={<AuthSvgSelector id="email" />}
-              styles={inputStyles}
+              styles={inputForm}
               type="email"
             />
             <HookFormInput
               name="password"
               placeholder="New Password"
               icon={<AuthSvgSelector id="password" />}
-              styles={inputStyles}
+              styles={inputForm}
               type="password"
             />
           </form>

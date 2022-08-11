@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import ContentLoader from 'react-content-loader';
 import { getGreetingByTime } from '../../../utils/getGreetingByTime';
+import { ContentSkeleton } from '../../UI/ContentLoader/ContentLoader';
 import s from './Greeting.module.scss';
 import { useCurrentDate } from './useCurrentDate';
 import { useCurrentTime } from './useCurrentTime';
@@ -14,7 +16,19 @@ export function DashboardGreeting({ name }: Props) {
 
   return (
     <div className={s.greeting_container}>
-      <h2>{`${getGreetingByTime(currentTime)}, ${name}`}</h2>
+      <h2>
+        {getGreetingByTime(currentTime)}
+        ,&nbsp;
+        {name || (
+          <ContentSkeleton
+            type="line"
+            width={190}
+            height={53}
+            bgColor="#c4c3ca7b"
+            fgColor="#c4c3cab2"
+          />
+        )}
+      </h2>
       <p>{`Today is ${currentDate}`}</p>
     </div>
   );

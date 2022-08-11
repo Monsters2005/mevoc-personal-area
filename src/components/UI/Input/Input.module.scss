@@ -1,8 +1,19 @@
+@use '@styles/shared/variables.scss' as *;
+
 .input {
   &_container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+  &_label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: rgba($primary-color, 0.7);
+    margin-bottom: 10px;
   }
   &_top {
     position: relative;
@@ -17,9 +28,9 @@
       font-size: 18px;
       line-height: 20px;
 
-      background: #1f2029;
+      background: $base-color;
       border-radius: 10px;
-      color: #c4c3ca;
+      color: $primary-color;
       border: none;
       padding: 15px 15px;
       outline: none;
@@ -27,7 +38,7 @@
       &::placeholder {
         font-weight: 500;
         line-height: 20px;
-        color: rgba(#c4c3ca, 0.7);
+        color: rgba($primary-color, 0.7);
       }
     }
   }
@@ -39,9 +50,9 @@
     align-items: center;
     & svg {
       & path {
-        fill: #ffeba7;
+        fill: $accent-color;
       }
-      fill: #ffeba7;
+      fill: $accent-color;
       max-height: 20px;
       max-width: 20px;
       min-height: 20px;
@@ -50,22 +61,22 @@
   }
   &_content {
     position: absolute;
-    right: 20px;
+    right: 0px;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #c4c3ca;
+    color: $primary-color;
 
     & svg {
-      max-height: 20px;
-      max-width: 20px;
-      min-height: 20px;
-      min-width: 20px;
+      max-height: 25px;
+      max-width: 25px;
+      min-height: 25px;
+      min-width: 25px;
       & path {
-        fill: #c4c3ca;
+        fill: $primary-color;
       }
-      fill: #c4c3ca;
+      fill: $primary-color;
     }
   }
   &_error {
@@ -73,7 +84,6 @@
     align-items: flex-start;
     width: 100%;
     margin-top: 10px;
-    margin-left: 20px;
     & svg {
       max-height: 24px;
       max-width: 24px;
@@ -89,7 +99,7 @@
       font-size: 14px;
       line-height: 21px;
 
-      color: rgba(196, 195, 202, 0.7);
+      color: rgba($primary-color, 0.7);
     }
   }
 }

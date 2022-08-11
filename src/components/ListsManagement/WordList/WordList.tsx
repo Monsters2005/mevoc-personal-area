@@ -6,12 +6,14 @@ import s from './WordList.module.scss';
 
 type Props = {
   words: Word[];
+  onAddWord: () => void;
+  onEditWord: () => void;
 };
 
-export function DashboardWordList({ words }: Props) {
+export function DashboardWordList({ words, onEditWord, onAddWord }: Props) {
   return (
     <div className={s.wordlist_container}>
-      <button className={s.wordlist_addword}>
+      <button className={s.wordlist_addword} onClick={onAddWord}>
         <ListsManagementSvgSelector id="plus" />
       </button>
       {words.map(({ wordNative, wordLearning, id }: Word) => (
@@ -19,7 +21,7 @@ export function DashboardWordList({ words }: Props) {
           key={id}
           wordLearning={wordLearning}
           wordNative={wordNative}
-          onEdit={() => '...'} // TODO: Make a function for editing word data
+          onEdit={onEditWord}
         />
       ))}
     </div>

@@ -17,7 +17,6 @@ export function DashboardActiveList({ item, index }: Props) {
     setSelected(!selected);
     // TODO: pass the funciton here which actully selects a specific list
   }
-
   return (
     <Draggable draggableId={item.id.toString()} index={index}>
       {(provided, snapshot) => (

@@ -7,7 +7,6 @@ export type Page = {
 
 export type ActionItem = {
   label: string;
-  action: () => void;
   icon: string;
   key: string;
 };

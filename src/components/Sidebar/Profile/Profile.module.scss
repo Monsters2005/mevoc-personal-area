@@ -23,6 +23,10 @@
 
       object-fit: cover;
     }
+    & svg {
+      width: 50px;
+      height: 50px;
+    }
   }
   &_info {
     margin-left: 10px;

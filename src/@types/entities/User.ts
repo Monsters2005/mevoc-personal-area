@@ -1,3 +1,5 @@
+import { List } from './List';
+
 export type User = {
   id: number;
   firstName: string;
@@ -7,6 +9,12 @@ export type User = {
   langLearning: string;
   langNative: string;
   location: string;
+  dob: Date;
+  emailAdress: string;
+  phoneNumber: string;
+  confirmed_hash: string;
+  confirmed: boolean;
+  lists: List[];
   settings: {
     safety: {
       twoFactAuth: {

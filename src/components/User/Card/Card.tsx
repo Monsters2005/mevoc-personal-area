@@ -4,16 +4,11 @@ import { getMediaLink } from '../../../utils/getMediaLink';
 import { LanguageField } from '../LanguageField/LanguageField';
 import s from './Card.module.scss';
 import defaultAvatar from '../../../assets/images/defaultAvatar.png';
+import { User } from '../../../@types/entities/User';
+import FallbackImgSelector from '../../../assets/FallbackImgSelector';
 
 type Props = {
-  userData: {
-    firstName: string;
-    lastName: string;
-    avatar: string;
-    location: string;
-    langNative: string;
-    langLearning: string;
-  };
+  userData: Partial<User>;
 };
 
 export function UserCard({
@@ -26,22 +21,33 @@ export function UserCard({
     langNative,
   },
 }: Props) {
-  const avatarUrl = getMediaLink(avatar) || defaultAvatar;
+  const avatarUrl = avatar && getMediaLink(avatar);
 
   return (
     <div className={s.usercard_container}>
+      {}
       <div className={s.usercard_avatar}>
-        <img src={avatarUrl} alt="avatar" />
+        {avatarUrl ? (
+          <img src={avatarUrl} alt={`${firstName} profile`} />
+        ) : (
+          <FallbackImgSelector id="user-avatar" />
+        )}
       </div>
       <div className={s.usercard_info}>
-        <h4>{`${firstName} ${lastName}`}</h4>
+        <h4>{`${firstName} ${lastName || ''}`}</h4>
         <p>
           <GlobalSvgSelector id="location" />
-          {location}
+          {location || 'Hidden'}
         </p>
 
-        <LanguageField label="Native Language" language={langNative} />
-        <LanguageField label="Currently Learning" language={langLearning} />
+        <LanguageField
+          label="Native Language"
+          language={langNative || 'English'}
+        />
+        <LanguageField
+          label="Currently Learning"
+          language={langLearning || 'English'}
+        />
       </div>
     </div>
   );

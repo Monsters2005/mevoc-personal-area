@@ -2,11 +2,17 @@
 
 .sidebar {
   &_container {
-    width: 360px;
+    min-width: 360px;
+    max-width: 360px;
     height: 100vh;
 
     background: rgba($element-color, 0.1);
     backdrop-filter: blur(30px);
+
+    position: fixed;
+    z-index: 1000000;
+    top: 0;
+    left: 0;
   }
   &_content {
     width: 100%;

@@ -8,19 +8,14 @@ import schema from './validation';
 
 import { SignInDto } from '../../../@types/dto/auth/signin.dto';
 import HookFormInput from '../../HookForm/HookFormInput';
+import { inputForm } from '../../../shared/styles/input-variations';
 
 type Props = {
   onSubmit: SubmitHandler<SignInDto>;
+  onLink: () => void;
 };
 
-const inputStyles = {
-  width: '100%',
-  fontWeight: 500,
-  fontSize: '14px',
-  lineHeight: '21px',
-};
-
-export function SignInForm({ onSubmit }: Props) {
+export function SignInForm({ onSubmit, onLink }: Props) {
   const values = useForm<SignInDto>({
     resolver: yupResolver(schema),
   });
@@ -36,23 +31,23 @@ export function SignInForm({ onSubmit }: Props) {
         title="Log In"
         onSubmit={values.handleSubmit(submitHandler)}
         btnText="submit"
-        bottomText="Forgot your password?"
-        onBottomText={() => console.log('')} // TODO: link to forgot password page
+        bottomText="Don't have an account?"
+        onBottomText={onLink}
       >
         <div className={s.signin_container}>
           <form onSubmit={values.handleSubmit(submitHandler)}>
             <HookFormInput
-              name="login"
+              name="email"
               placeholder="Your Email"
               icon={<AuthSvgSelector id="email" />}
-              styles={inputStyles}
+              styles={inputForm}
               type="email"
             />
             <HookFormInput
               name="password"
               placeholder="Your Password"
               icon={<AuthSvgSelector id="password" />}
-              styles={inputStyles}
+              styles={inputForm}
               type="password"
             />
           </form>

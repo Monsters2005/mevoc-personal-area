@@ -1,0 +1,155 @@
+@use '@styles/shared/variables.scss' as *;
+
+.modal {
+  &_container {
+    height: 315px;
+    overflow-y: auto;
+    margin: 30px 0;
+  }
+  &_items {
+    max-width: 610px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-right: 20px;
+    grid-gap: 10px;
+  }
+  &_item {
+    width: 285px;
+    height: 70px;
+
+    background: $element-light-color;
+    backdrop-filter: blur(45px);
+
+    border-radius: 10px;
+    padding: 17px 19px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    &_word {
+      display: flex;
+      flex-direction: column;
+    }
+    &_add {
+      width: 25px;
+      height: 25px;
+
+      background: none;
+      border: 2.7px solid $accent-color;
+      border-radius: 100px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      transition: all 0.2s;
+      margin-left: 10px;
+
+      & span {
+        position: relative;
+        &::before {
+          content: '';
+
+          width: 2.5px;
+          height: 12px;
+
+          position: absolute;
+          background: $accent-color;
+          border-radius: 30px;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          transition: all 0.5s;
+        }
+        &::after {
+          content: '';
+
+          width: 12px;
+          height: 2.5px;
+
+          position: absolute;
+          background: $accent-color;
+          border-radius: 30px;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          transition: all 0.5s;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        border-color: lighten($accent-color, 5);
+        & span {
+          &::after,
+          &::before {
+            background: lighten($accent-color, 5);
+          }
+        }
+      }
+    }
+    &_added {
+      transition: all 0.3s;
+      background: $accent-color;
+      & span {
+        &::after {
+          transition: all 0.5s;
+          transform: translateX(-30%) translateY(-60%) rotate(-45deg);
+          background: $base-color;
+        }
+        &::before {
+          transition: all 0.5s;
+          transform: translateX(-160%) translateY(-30%) rotate(-40deg);
+          height: 6px;
+          background: $base-color;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        border-color: $accent-color !important;
+        & span {
+          &::after,
+          &::before {
+            background: $base-color !important;
+          }
+        }
+      }
+    }
+
+    & h3 {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: $primary-color;
+
+      margin: 0;
+      padding: 0;
+
+      text-transform: lowercase;
+    }
+    & p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+
+      color: rgba($primary-color, 0.7);
+      text-align: left;
+
+      margin: 0;
+      padding: 0;
+
+      text-transform: lowercase;
+    }
+
+    &:hover {
+      background: lighten($element-light-color, 2);
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@use '@styles/shared/variables.scss' as *;
+
 .avatarcard {
   &_container {
     display: flex;
@@ -22,7 +24,7 @@
       font-size: 14px;
       line-height: 21px;
 
-      color: rgba(196, 195, 202, 0.7);
+      color: rgba($primary-color, 0.7);
       text-transform: capitalize;
       padding: 10px 12px;
       margin-bottom: 15px;

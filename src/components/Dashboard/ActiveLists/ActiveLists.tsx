@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { CardLayout } from '../../../layouts/CardLayout/CardLayout';
 import { Button } from '../../UI/Button/Button';
@@ -6,59 +6,58 @@ import { DashboardActiveList } from '../ActiveList/ActiveList';
 import s from './ActiveLists.module.scss';
 import { reorderArray } from '../../../utils/reorderArray';
 import { List } from '../../../@types/entities/List';
+import {
+  primarySmallLists,
+  primarySmallNoLists,
+} from '../../../shared/styles/button-variations';
 
 type Props = {
   onAddList: () => void;
-  lists: List[];
+  lists: List[] | null | undefined;
 };
 
 export function DashboardActiveLists({ onAddList, lists }: Props) {
-  const [items, setItems] = React.useState(lists);
+  const [items, setItems] = useState(lists);
 
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
-    const newItems = reorderArray(items, source.index, destination.index);
+    const newItems = items && reorderArray(items, source.index, destination.index);
     setItems(newItems);
   };
 
   return (
-    <CardLayout title="Active Lists">
-      <Button
-        type="primary"
-        onClick={() => onAddList()}
-        styles={{
-          fontWeight: '700',
-          fontSize: '13px',
-          lineHeight: '19px',
-          padding: '10px 16px',
-          width: '65px',
-          height: '30px',
-          position: 'absolute',
-          right: '25px',
-          top: '18px',
-        }}
-      >
-        Add
-      </Button>
-
-      <div className={s.activelists_container}>
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="droppable-list">
-            {provided => (
-              <div ref={provided.innerRef} {...provided.droppableProps}>
-                {items.map((item, index) => (
-                  <DashboardActiveList
-                    item={item}
-                    index={index}
-                    key={item.id}
-                  />
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </div>
-    </CardLayout>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <CardLayout title="Active Lists">
+        <Button
+          type="primary"
+          onClick={() => onAddList()}
+          styles={items ? primarySmallLists : primarySmallNoLists}
+        >
+          Add
+        </Button>
+        <div className={s.activelists_container}>
+          {items ? (
+            <Droppable droppableId="droppable-list">
+              {provided => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                  {items.map((item, index) => (
+                    <DashboardActiveList
+                      item={item}
+                      index={index}
+                      key={item.id}
+                    />
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          ) : (
+            <div className={s.activelists_none}>
+              <p>You don’t have any added lists at the moment.</p>
+            </div>
+          )}
+        </div>
+      </CardLayout>
+    </DragDropContext>
   );
 }

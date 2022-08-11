@@ -5,7 +5,7 @@ import React, {
   FormEventHandler,
   ReactNode,
 } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, FieldError, useFormContext } from 'react-hook-form';
 import { Input } from '../UI/Input/Input';
 
 type Props = {
@@ -13,6 +13,7 @@ type Props = {
   defaultValue?: string;
   type?: string;
   placeholder?: string;
+  label?: string;
   icon?: ReactNode;
   children?: ReactNode;
   styles?: CSSProperties;
@@ -32,7 +33,6 @@ export default function HookFormInput({
     control,
     formState: { errors },
   } = useFormContext();
-
   return (
     <Controller
       name={name}
@@ -43,7 +43,7 @@ export default function HookFormInput({
           {...rest}
           {...props}
           isError={!!errors[name]}
-          // error={errors[name]?.message ?? ''}
+          error={errors[name]?.message as string}
         />
       )}
     />

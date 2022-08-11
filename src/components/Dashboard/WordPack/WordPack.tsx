@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { Pack } from '../../../@types/entities/WordPack';
+import FallbackImgSelector from '../../../assets/FallbackImgSelector';
+import { primaryMiddle } from '../../../shared/styles/button-variations';
 import { pluralizeString } from '../../../utils/pluralizeString';
 import { Button } from '../../UI/Button/Button';
 import s from './WordPack.module.scss';
@@ -21,7 +23,11 @@ export function WordPack({ item }: Props) {
     <div className={s.wordpack_container}>
       <div className={s.wordpack_info}>
         <span className={s.wordpack_icon}>
-          <img src={item.icon} alt={item.name} />
+          {item.icon ? (
+            <img src={item.icon} alt={item.name} />
+          ) : (
+            <FallbackImgSelector id="wordpack-cover" />
+          )}
         </span>
         <h4 className={s.wordpack_title}>{item.name}</h4>
         <p>{pluralizeString(item.words.length)}</p>
@@ -29,12 +35,7 @@ export function WordPack({ item }: Props) {
       <div className={s.wordpack_buttons}>
         <Button
           type="primary"
-          styles={{
-            padding: '6px 14px',
-            fontSize: '13px',
-            lineHeight: '19px',
-            fontWeight: '600',
-          }}
+          styles={primaryMiddle}
           onClick={() => console.log('view more')}
         >
           VIEW MORE
