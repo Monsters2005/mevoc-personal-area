@@ -27,19 +27,10 @@ import { getLocationName } from './utils/getLocationName';
 function App() {
   const { pathname } = useLocation();
   const locationName = getLocationName(pathname);
+  const { data: currentUser } = useGetCurrentUserQuery();
 
   const preload = useRef<HTMLDivElement>(null);
   const withSidebar = visiblePaths.includes(pathname.replace('/', '') as Path);
-  // const { data: currentUser } = useGetCurrentUserQuery();
-
-  //! Use effect below is supposed to remove a class which hides all animations on preload
-  //! But it's not working so I'll fix that later 😠
-  // useEffect(() => {
-  //   const node = preload.current; // corresponding DOM node
-  //   if (node) node.className = '';
-  // }, [location]);
-
-  const { data: currentUser } = useGetCurrentUserQuery();
 
   return (
     <div className="App">

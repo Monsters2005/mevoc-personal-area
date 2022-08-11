@@ -6,6 +6,7 @@ import { Loader } from '../../components/UI/Loader/Loader';
 import { centeredLoader } from '../../shared/styles/loader-variations';
 import { useGetCurrentUserQuery } from '../../store/api/userApi';
 import { selectIsAuth } from '../../store/selectors/auth';
+import s from './AuthLayout.module.scss';
 
 export function AuthLayout({
   children,
@@ -21,7 +22,7 @@ export function AuthLayout({
   }, [isAuth, isError]);
 
   return (
-    <div>
+    <div className={s.authlayout_container}>
       {isLoading ? <Loader styles={centeredLoader} size={150} /> : children}
     </div>
   );

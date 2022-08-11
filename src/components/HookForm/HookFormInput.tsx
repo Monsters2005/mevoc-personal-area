@@ -33,7 +33,7 @@ export default function HookFormInput({
     control,
     formState: { errors },
   } = useFormContext();
-
+  console.log(errors[name]);
   return (
     <Controller
       name={name}
@@ -44,7 +44,7 @@ export default function HookFormInput({
           {...rest}
           {...props}
           isError={!!errors[name]}
-          error={errors.multiple && (errors.multiple as FieldError).message}
+          error={errors[name]?.message as string}
         />
       )}
     />
