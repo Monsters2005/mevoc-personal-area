@@ -13,7 +13,7 @@ export function PrivateLayout({
 }: PropsWithChildren<Record<string, unknown>>) {
   const { isLoading, isError } = useGetCurrentUserQuery();
   const isAuth = useSelector(selectIsAuth);
-  const state = useSelector((u: RootState) => u.auth);
+  // const state = useSelector((u: RootState) => u.auth);
   const navigate = useNavigate();
 
   useEffect(() => {

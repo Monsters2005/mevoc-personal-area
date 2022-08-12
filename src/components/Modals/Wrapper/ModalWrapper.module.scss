@@ -1,0 +1,17 @@
+.wrapper {
+  &_container {
+    position: fixed;
+    overflow: hidden;
+
+    z-index: 10000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    padding-bottom: 60px;
+    background: rgba(0, 0, 0, 0.5);
+  }
+}

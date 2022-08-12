@@ -4,6 +4,7 @@ import { Button } from '../../components/UI/Button/Button';
 import { Dropdown } from '../../components/UI/DropDown/Dropdown';
 import { Option } from '../../components/UI/DropDown/types';
 import { Input } from '../../components/UI/Input/Input';
+import { useModal } from '../../context/ModalContext';
 import { PageLayout } from '../../layouts/PageLayout/PageLayout';
 import { list } from '../../mocks/list';
 import { GlobalSvgSelector } from '../../shared/GlobalSvgSelector';
@@ -32,6 +33,8 @@ export default function ListManagementPage() {
     listOptions[0]
   );
 
+  const { states, setModalStates } = useModal();
+
   return (
     <PageLayout title="Lists management">
       <div className={s.listmanagement_container}>
@@ -42,11 +45,14 @@ export default function ListManagementPage() {
               options={listOptions}
               selectedItem={selectedList}
               setSelectedItem={(item: Option | undefined) => setSelectedList(item)}
-              allowNoneSelected={false}
+              allowNoneSelected
               styles={{ width: '250px', marginBottom: '8px' }}
               listStyles={{ width: '350px' }}
             />
-            <Button type="small" onClick={() => console.log('add list')}>
+            <Button
+              type="small"
+              onClick={() => setModalStates({ ...states, addList: true })}
+            >
               <GlobalSvgSelector id="plus-circle" />
             </Button>
           </div>
@@ -66,8 +72,8 @@ export default function ListManagementPage() {
         <div className={s.listmanagement_content}>
           <DashboardWordList
             words={list.words}
-            onAddWord={() => console.log('add word')}
-            onEditWord={() => console.log('edit word')}
+            onAddWord={() => setModalStates({ ...states, addWord: true })}
+            onEditWord={() => setModalStates({ ...states, editWord: true })}
           />
         </div>
       </div>

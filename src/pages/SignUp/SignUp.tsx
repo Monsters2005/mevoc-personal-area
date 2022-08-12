@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { SignUpDto } from '../../@types/dto/auth/signup.dto';
+import { CustomError } from '../../@types/entities/ErrorObject';
+import { NotificationType } from '../../@types/entities/Notification';
 import { SignUpForm } from '../../components/Auth/SignUpForm/SignUpForm';
+import { AuthLayout } from '../../layouts/AuthLayout/AuthLayout';
+import { eventBus, EventTypes } from '../../packages/EventBus';
 import { useSignupMutation } from '../../store/api/authApi';
 import s from './SignUp.module.scss';
 
@@ -32,16 +36,22 @@ export default function SignUpPage() {
 
       goToDashboard();
     } catch (e: unknown) {
-      // event bus notification
+      eventBus.emit(EventTypes.notification, {
+        message: (e as CustomError).data.message,
+        title: 'Error occured',
+        type: NotificationType.DANGER,
+      });
     }
   };
 
   return (
-    <div className={s.signup_container}>
-      <SignUpForm
-        onSubmit={(data: SignUpDto) => register(data)}
-        onLink={() => navigate('/signin')}
-      />
-    </div>
+    <AuthLayout>
+      <div className={s.signup_container}>
+        <SignUpForm
+          onSubmit={(data: SignUpDto) => register(data)}
+          onLink={() => navigate('/signin')}
+        />
+      </div>
+    </AuthLayout>
   );
 }

@@ -7,42 +7,45 @@ import { inputModal } from '../../../shared/styles/input-variations';
 import HookFormInput from '../../HookForm/HookFormInput';
 import schema from './validation';
 import s from './AddList.module.scss';
+import { ModalWrapper } from '../Wrapper/ModalWrapper';
 
 type Props = {
-  onAddWord: SubmitHandler<AddListDto>;
+  onAddList: SubmitHandler<AddListDto>;
 };
 
-export default function AddListModal({ onAddWord }: Props) {
+export default function AddListModal({ onAddList }: Props) {
   const values = useForm<AddListDto>({
     resolver: yupResolver(schema),
   });
 
   const submitHandler = (data: AddListDto) => {
-    onAddWord(data);
+    onAddList(data);
   };
 
   return (
-    <FormProvider {...values}>
-      <ModalLayout
-        title="Add a new list"
-        description="To add a new list just type a title below"
-        btnText="confirm"
-        onClick={() => console.log()}
-      >
-        <div className={s.list_container}>
-          <form
-            className={s.list_form}
-            onSubmit={values.handleSubmit(submitHandler)}
-          >
-            <HookFormInput
-              name="listTitle"
-              placeholder="Your title"
-              styles={inputModal}
-              type="listTitle"
-            />
-          </form>
-        </div>
-      </ModalLayout>
-    </FormProvider>
+    <ModalWrapper>
+      <FormProvider {...values}>
+        <ModalLayout
+          title="Add a new list"
+          description="To add a new list just type a title below"
+          btnText="confirm"
+          onClick={values.handleSubmit(submitHandler)}
+        >
+          <div className={s.list_container}>
+            <form
+              className={s.list_form}
+              onSubmit={values.handleSubmit(submitHandler)}
+            >
+              <HookFormInput
+                name="listTitle"
+                placeholder="Your title"
+                styles={inputModal}
+                type="listTitle"
+              />
+            </form>
+          </div>
+        </ModalLayout>
+      </FormProvider>
+    </ModalWrapper>
   );
 }

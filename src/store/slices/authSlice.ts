@@ -12,7 +12,7 @@ export type AuthState = {
 
 const initialState: AuthState = {
   currentUser: null,
-  isAuthorized: true,
+  isAuthorized: false,
   isFetching: false,
 };
 

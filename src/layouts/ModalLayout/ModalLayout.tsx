@@ -1,6 +1,7 @@
 import React, { CSSProperties, ReactNode } from 'react';
 import { Button } from '../../components/UI/Button/Button';
 import { UISvgSelector } from '../../components/UI/UISvgSelector';
+import { useModal } from '../../context/ModalContext';
 import {
   primaryModal,
   smallModal,
@@ -24,7 +25,14 @@ export default function ModalLayout({
   onClick,
   style,
 }: Props) {
-  const handleCloseModal = () => null;
+  const { states, setModalStates } = useModal();
+  const handleCloseModal = () => {
+    const closed = Object.keys(states).reduce(
+      (accumulator, key) => ({ ...accumulator, [key]: false }),
+      {}
+    );
+    setModalStates(closed);
+  };
 
   return (
     <div className={s.modal_container} style={style}>

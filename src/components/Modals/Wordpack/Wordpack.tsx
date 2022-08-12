@@ -4,6 +4,7 @@ import { Pack } from '../../../@types/entities/WordPack';
 import { WordpackWord } from '../../../@types/entities/WordpackWord';
 import ModalLayout from '../../../layouts/ModalLayout/ModalLayout';
 import { checkIsInArrayById } from '../../../utils/checkIsInArray';
+import { ModalWrapper } from '../Wrapper/ModalWrapper';
 import s from './Wordpack.module.scss';
 
 type Props = {
@@ -58,26 +59,28 @@ export function WordpackModal({ wordpack, onConfirm }: Props) {
   };
 
   return (
-    <ModalLayout
-      title={`Word Pack: ${wordpack.name}`}
-      description="Add the whole word pack at once or individual words"
-      onClick={selectedItems.length ? onConfirm : onAllAdd}
-      btnText={
-        selectedItems.length ? `confirm(${selectedItems.length})` : 'add all'
-      }
-    >
-      <div className={s.modal_container}>
-        <div className={s.modal_items}>
-          {wordpack.words.map(item => (
-            <WordCard
-              key={item.id}
-              item={item}
-              onClick={(word: WordpackWord) => onWordAdd(word)}
-              selected={checkIsInArrayById(item, selectedItems)}
-            />
-          ))}
+    <ModalWrapper>
+      <ModalLayout
+        title={`Word Pack: ${wordpack.name}`}
+        description="Add the whole word pack at once or individual words"
+        onClick={selectedItems.length ? onConfirm : onAllAdd}
+        btnText={
+          selectedItems.length ? `confirm(${selectedItems.length})` : 'add all'
+        }
+      >
+        <div className={s.modal_container}>
+          <div className={s.modal_items}>
+            {wordpack.words.map(item => (
+              <WordCard
+                key={item.id}
+                item={item}
+                onClick={(word: WordpackWord) => onWordAdd(word)}
+                selected={checkIsInArrayById(item, selectedItems)}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </ModalLayout>
+      </ModalLayout>
+    </ModalWrapper>
   );
 }

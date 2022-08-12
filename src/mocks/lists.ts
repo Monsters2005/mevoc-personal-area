@@ -84,6 +84,7 @@ export const lists = [
       },
     ],
     progress: 44,
+    learningLang: 'en',
   },
   {
     name: 'For the test',
@@ -151,5 +152,6 @@ export const lists = [
       },
     ],
     progress: 97,
+    learningLang: 'en',
   },
 ];

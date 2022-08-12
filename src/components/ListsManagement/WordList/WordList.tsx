@@ -21,7 +21,7 @@ export function DashboardWordList({ words, onEditWord, onAddWord }: Props) {
           key={id}
           wordLearning={wordLearning}
           wordNative={wordNative}
-          onEdit={onEditWord}
+          onEditWord={onEditWord}
         />
       ))}
     </div>

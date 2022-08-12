@@ -1,29 +1,24 @@
-
 import React, { useRef } from 'react';
 import { useLocation, Route, Routes } from 'react-router';
-import AddListModal from './components/Modals/ListsManagement/AddList';
-import AddWordModal from './components/Modals/WordManagement/AddWord';
-import EditWordModal from './components/Modals/WordManagement/EditWord';
-import { WordpackModal } from './components/Modals/Wordpack/Wordpack';
+import { ToastContainer } from 'react-toastify';
 
 import { Sidebar } from './components/Sidebar/Sidebar/Sidebar';
-import { Loader } from './components/UI/Loader/Loader';
+import { Notifications } from './components/UI/Notification/Notification';
 import { Path } from './constants/routes';
 import { actions, pages, visiblePaths } from './constants/sidebar';
 import { AuthLayout } from './layouts/AuthLayout/AuthLayout';
-import ModalLayout from './layouts/ModalLayout/ModalLayout';
 import { PrivateLayout } from './layouts/PrivateLayout/PrivateLayout';
-import { wordPack } from './mocks/pack';
 import { DashboardPage } from './pages/Dashboard/Dashboard';
 import ListManagementPage from './pages/ListManagement/ListManagement';
 import { SettingsPage } from './pages/Settings/Settings';
 import { SignInPage } from './pages/SignIn/SignIn';
 import SignUpPage from './pages/SignUp/SignUp';
 import { UserProfilePage } from './pages/UserProfile/UserProfile';
-import { centeredLoader } from './shared/styles/loader-variations';
-import { useSignoutMutation } from './store/api/authApi';
 import { useGetCurrentUserQuery } from './store/api/userApi';
 import { getLocationName } from './utils/getLocationName';
+import 'react-toastify/dist/ReactToastify.css';
+import AddListModal from './components/Modals/ListsManagement/AddList';
+import Modals from './components/Modals/ModalSelector';
 
 function App() {
   const { pathname } = useLocation();
@@ -35,6 +30,9 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
+      <Notifications />
+      <Modals />
       <div className="preload" ref={preload}>
         <div className="main_container">
           {withSidebar ? (
@@ -66,12 +64,10 @@ function App() {
               </PrivateLayout>
             </div>
           ) : (
-            <AuthLayout>
-              <Routes>
-                <Route path="/signup" element={<SignUpPage />} />
-                <Route path="/signin" element={<SignInPage />} />
-              </Routes>
-            </AuthLayout>
+            <Routes>
+              <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/signin" element={<SignInPage />} />
+            </Routes>
           )}
         </div>
       </div>

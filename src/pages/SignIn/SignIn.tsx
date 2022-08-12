@@ -1,8 +1,15 @@
-import React from 'react';
+import { ExecException } from 'child_process';
+import React, { ErrorInfo } from 'react';
 import { useNavigate } from 'react-router';
+import { Exception } from 'sass';
 import { SignInDto } from '../../@types/dto/auth/signin.dto';
 import { Tokens } from '../../@types/dto/auth/tokens.dto';
+import { CustomError } from '../../@types/entities/ErrorObject';
+import { NotificationType } from '../../@types/entities/Notification';
 import { SignInForm } from '../../components/Auth/SignInForm/SignInForm';
+import { SUCCESS_LOGIN } from '../../constants/notificationMessages';
+import { AuthLayout } from '../../layouts/AuthLayout/AuthLayout';
+import { eventBus, EventTypes } from '../../packages/EventBus';
 import { useSigninMutation } from '../../store/api/authApi';
 import s from './SignIn.module.scss';
 
@@ -24,19 +31,30 @@ export function SignInPage() {
           const tokens = result as Tokens;
           window.localStorage.setItem('accessToken', tokens.accessToken);
         });
+      eventBus.emit(EventTypes.notification, {
+        message: SUCCESS_LOGIN,
+        title: 'Success',
+        type: NotificationType.SUCCESS,
+      });
 
       goToDashboard();
     } catch (e: unknown) {
-      // event bus notification
+      eventBus.emit(EventTypes.notification, {
+        message: (e as CustomError).data.message,
+        title: 'Error occured',
+        type: NotificationType.DANGER,
+      });
     }
   };
 
   return (
-    <div className={s.signin_container}>
-      <SignInForm
-        onSubmit={(data: SignInDto) => login(data)}
-        onLink={() => navigate('/signup')}
-      />
-    </div>
+    <AuthLayout>
+      <div className={s.signin_container}>
+        <SignInForm
+          onSubmit={(data: SignInDto) => login(data)}
+          onLink={() => navigate('/signup')}
+        />
+      </div>
+    </AuthLayout>
   );
 }
