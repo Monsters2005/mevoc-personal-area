@@ -5,4 +5,5 @@ export type List = {
   id: number;
   words: Word[];
   progress: number;
+  learningLang: string;
 };

@@ -5,7 +5,7 @@ import { Option } from './types';
 
 type Props = {
   item: Option;
-  selectedItem: Option | null;
+  selectedItem: Option | undefined;
   onClick: (option: Option) => void;
 };
 export function DropdownItem({ item, selectedItem, onClick }: Props) {

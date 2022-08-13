@@ -1,6 +1,8 @@
+import { WordpackWord } from './WordpackWord';
+
 export type Pack = {
   name: string;
   id: number;
-  words: Array<string>;
-  icon: string;
+  words: Array<WordpackWord>;
+  icon?: string;
 };

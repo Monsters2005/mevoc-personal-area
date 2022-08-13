@@ -8,13 +8,13 @@ import s from './WordCard.module.scss';
 type Props = {
   wordLearning: string;
   wordNative: string;
-  onEdit: () => void;
+  onEditWord: () => void;
 };
 
 export function DashboardWordCard({
   wordLearning,
   wordNative,
-  onEdit,
+  onEditWord,
 }: Props) {
   const [selected, setSelected] = useState(false);
 
@@ -31,7 +31,7 @@ export function DashboardWordCard({
         <h3>{makeSuspensionString(wordLearning, 20)}</h3>
         <p>{makeSuspensionString(wordNative, 20)}</p>
       </div>
-      <Button type="small" onClick={onEdit}>
+      <Button type="small" onClick={onEditWord}>
         <ListsManagementSvgSelector id="edit" />
       </Button>
     </div>

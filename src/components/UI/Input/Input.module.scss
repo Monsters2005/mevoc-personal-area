@@ -6,6 +6,15 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  &_label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: rgba($primary-color, 0.7);
+    margin-bottom: 10px;
+  }
   &_top {
     position: relative;
     width: 100%;
@@ -19,7 +28,7 @@
       font-size: 18px;
       line-height: 20px;
 
-      background: #1f2029;
+      background: $base-color;
       border-radius: 10px;
       color: $primary-color;
       border: none;
@@ -52,7 +61,7 @@
   }
   &_content {
     position: absolute;
-    right: 20px;
+    right: 0px;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -60,10 +69,10 @@
     color: $primary-color;
 
     & svg {
-      max-height: 20px;
-      max-width: 20px;
-      min-height: 20px;
-      min-width: 20px;
+      max-height: 25px;
+      max-width: 25px;
+      min-height: 25px;
+      min-width: 25px;
       & path {
         fill: $primary-color;
       }
@@ -75,7 +84,6 @@
     align-items: flex-start;
     width: 100%;
     margin-top: 10px;
-    margin-left: 20px;
     & svg {
       max-height: 24px;
       max-width: 24px;

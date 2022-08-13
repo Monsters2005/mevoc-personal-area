@@ -8,8 +8,8 @@ type Props = {
   isOpen: boolean;
   options: Option[];
   listTitle?: string;
-  selectedItem: Option | null;
-  setSelectedItem: (item: Option | null) => void;
+  selectedItem: Option | undefined;
+  setSelectedItem: (item: Option | undefined) => void;
   allowNoneSelected: boolean;
   listStyles?: CSSProperties;
 };
@@ -30,10 +30,10 @@ export function DropdownList({
     exited: { opacity: 0, zIndex: -10, pointerEvents: 'none' },
   };
 
-  function selectHandler(item: Option | null) {
+  function selectHandler(item: Option | undefined) {
     if (allowNoneSelected) {
       if (item?.id === selectedItem?.id) {
-        setSelectedItem(null);
+        setSelectedItem(undefined);
       } else {
         setSelectedItem(item);
       }
@@ -43,7 +43,7 @@ export function DropdownList({
   }
 
   return (
-    <TransitionWrapper inState={!isOpen} transitionStyles={transitionStyles}>
+    <TransitionWrapper inState={isOpen} transitionStyles={transitionStyles}>
       <div className={s.dropdown_list} style={listStyles}>
         <h3 className={s.dropdown_title}>{listTitle}</h3>
         <div className={s.dropdown_options}>

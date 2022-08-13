@@ -13,6 +13,7 @@ type Props = {
   defaultValue?: string;
   type?: string;
   placeholder?: string;
+  label?: string;
   icon?: ReactNode;
   children?: ReactNode;
   styles?: CSSProperties;
@@ -32,7 +33,6 @@ export default function HookFormInput({
     control,
     formState: { errors },
   } = useFormContext();
-
   return (
     <Controller
       name={name}
@@ -43,7 +43,7 @@ export default function HookFormInput({
           {...rest}
           {...props}
           isError={!!errors[name]}
-          error={errors.multiple && (errors.multiple as FieldError).message}
+          error={errors[name]?.message as string}
         />
       )}
     />

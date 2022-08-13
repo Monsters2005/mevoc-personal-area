@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useOutsideCheck } from '../../../hooks/useOutsideCheck';
 import { CardLayout } from '../../../layouts/CardLayout/CardLayout';
+import { TransitionWrapper } from '../../../layouts/Transition/Transition';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { countPercentage } from '../../../utils/common/countPercentage';
 import { pluralizeString } from '../../../utils/components/pluralizeString';
@@ -28,29 +29,33 @@ export function DashboardDailyProgress({ wordsLearned, words }: Props) {
       description="Current progress on selected lists"
     >
       <div className={s.progress_container}>
-        <CircularProgress
-          progressValue={percentage}
-          circleStroke={10}
-          width={190}
-          height={190}
-          bgColor="#353742"
-          styles={{ marginTop: '60px' }}
-        />
-        <div className={s.progress_words}>
-          {`${wordsLearned} of ${pluralizeString(words)}`}
-        </div>
+        {wordsLearned !== 0 ? (
+          <>
+            <CircularProgress
+              progressValue={percentage}
+              circleStroke={10}
+              width={190}
+              height={190}
+              bgColor="#353742"
+              styles={{ marginTop: '60px' }}
+            />
+            <div className={s.progress_words}>
+              {`${wordsLearned} of ${pluralizeString(words)}`}
+            </div>
+          </>
+        ) : (
+          <div className={s.progress_none}>
+            <p>Here your daily progress will be displayed.</p>
+          </div>
+        )}
         <Button type="small" onClick={() => setIsHintOpen(true)}>
           <GlobalSvgSelector id="question" />
         </Button>
-        {
-          // TODO: Add transition below (react-transition-group)
-          isHintOpen && (
-            <div className={s.progress_hint} ref={hintRef}>
-              Here is your progress on the learned words from the currently
-              active lists.
-            </div>
-          )
-        }
+        <TransitionWrapper inState={isHintOpen}>
+          <div className={s.progress_hint} ref={hintRef}>
+            Your progress on the learned words from the currently active lists.
+          </div>
+        </TransitionWrapper>
       </div>
     </CardLayout>
   );

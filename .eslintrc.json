@@ -24,7 +24,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["src"]
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".d.ts", ".ts", ".tsx"]
       }
     }
   },
@@ -34,7 +35,11 @@
     "import/extensions": "off",
     "semi": ["error", "always"],
     "react/jsx-props-no-spreading": "off",
-    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "indent": [
+      "error",
+      2,
+      { "SwitchCase": 1, "ignoredNodes": ["JSXElement"] }
+    ],
     "arrow-parens": ["error", "as-needed"],
     "prefer-promise-reject-errors": ["error", { "allowEmptyReject": true }],
     "space-before-function-paren": [
@@ -47,6 +52,7 @@
       { "ignoreFunctionalComponents": true }
     ],
     "react/button-has-type": "off",
+    "max-len": "off",
     "comma-dangle": [
       2,
       {
@@ -81,6 +87,9 @@
       }
     ],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "max-len": ["warn", { "code": 120 }]
   }
 }

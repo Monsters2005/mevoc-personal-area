@@ -1,4 +1,4 @@
 export type SignInDto = Readonly<{
-  login: string;
+  email: string;
   password: string;
 }>;

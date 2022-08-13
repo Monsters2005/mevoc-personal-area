@@ -5,9 +5,10 @@ import s from './ActionItems.module.scss';
 
 type Props = {
   item: ActionItem;
+  action: () => void;
 };
 
-export function ActionsItem({ item: { icon, label, action } }: Props) {
+export function ActionsItem({ item: { icon, label }, action }: Props) {
   return (
     <button className={s.bottomblock_button} onClick={action}>
       <span className={s.bottomblock_icon}>

@@ -1,0 +1,21 @@
+.account {
+  &_container {
+    width: 100%;
+    height: 900px;
+
+    display: flex;
+    align-items: flex-start;
+    margin-top: auto;
+  }
+  &_fields {
+    margin-left: 7rem;
+  }
+  &_button {
+    width: 100%;
+
+    display: flex;
+    justify-content: end;
+
+    align-self: flex-end;
+  }
+}

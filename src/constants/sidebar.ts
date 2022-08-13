@@ -1,3 +1,6 @@
+import { useSignoutMutation } from '../store/api/authApi';
+import { Path } from './routes';
+
 export const pages = {
   dashboard: {
     icon: 'house',
@@ -24,14 +27,20 @@ export const pages = {
 export const actions = [
   {
     label: 'Sign Out',
-    action: () => console.log('sign out'),
     icon: 'signout',
     key: 'sign_out',
   },
   {
     label: 'Help',
-    action: () => console.log('help'),
     icon: 'question',
     key: 'help',
   },
+];
+
+export const visiblePaths = [
+  Path.HOME,
+  Path.PROFILE,
+  Path.HELP,
+  Path.LISTS,
+  Path.SETTINGS,
 ];

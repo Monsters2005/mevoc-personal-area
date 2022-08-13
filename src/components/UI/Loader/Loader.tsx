@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 type Props = {
   size?: number;
   color?: string;
   stroke?: number;
+  styles?: CSSProperties;
 };
 
-export function Loader({ size = 150, color = '#FFEBA7', stroke = 3 }: Props) {
+export function Loader({
+  size = 150,
+  color = '#FFEBA7',
+  stroke = 3,
+  styles,
+}: Props) {
   return (
-    <div>
+    <div style={styles}>
       <svg
         width={size}
         height={size}
