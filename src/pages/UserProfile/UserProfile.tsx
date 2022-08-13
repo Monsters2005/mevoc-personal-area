@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { List } from '../../@types/entities/List';
-import { Graph } from '../../components/UI/Graph/Graph';
 import { UserCard } from '../../components/User/Card/Card';
 import { UserListsProgress } from '../../components/User/ListsProgress/ListsProgress';
 import { Statistics } from '../../components/User/Statistics/Statistics';

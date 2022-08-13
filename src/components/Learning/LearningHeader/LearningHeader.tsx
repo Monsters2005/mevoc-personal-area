@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { learningBtn } from '../../../shared/styles/button-variations';
 import { Button } from '../../UI/Button/Button';
 import StagesProgress, {

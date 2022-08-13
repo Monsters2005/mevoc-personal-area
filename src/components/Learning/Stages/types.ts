@@ -11,17 +11,17 @@ export type ActiveAnimation = {
   state: 'incorrect' | 'correct';
 };
 
-type OnStageComplete = (mistakes: number) => void;
+type OnStageComplete<T> = (mistakes: T) => void;
 
 export type StageSelect = {
   word: Word | null;
   currentStage: ProgressStage;
-  onStageComplete: OnStageComplete;
-  onTestComplete: OnStageComplete;
+  onStageComplete: OnStageComplete<number>;
+  onTestComplete: OnStageComplete<number>;
 };
 
 export type Stage = {
   word: Word | null;
   currentStage: ProgressStage;
-  onComplete: OnStageComplete;
+  onComplete: OnStageComplete<number>;
 };

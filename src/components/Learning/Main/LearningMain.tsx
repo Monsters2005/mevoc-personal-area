@@ -6,7 +6,11 @@ import { Queue } from '../../../utils/queue/createQueue';
 import { ProgressStage } from '../../UI/StagesProgress/StagesProgress';
 import CompletionMessage from '../CompletionMessage/CompletionMessage';
 import StageSelector from '../Stages/StageSelector';
-import { MAX_MISTAKES_VALUE } from './Core';
+import {
+  MAX_MISTAKES_VALUE,
+  MAX_MISTAKES_VALUE_TEST,
+  MAX_STAGES,
+} from './Core';
 import s from './LearningMain.module.scss';
 
 type Props = {
@@ -16,6 +20,7 @@ type Props = {
 };
 
 export function LearningMain({ words, stage, updateStages }: Props) {
+  console.log('stage', stage);
   const stageQueue = useMemo(() => new Queue(cloneObj(words) as Word[]), []);
   const results = [
     {
@@ -32,6 +37,8 @@ export function LearningMain({ words, stage, updateStages }: Props) {
     },
   ];
   const [currentWord, setCurrentWord] = useState(stageQueue.getItem());
+  const [passed, setPassed] = useState<Word[] | []>([]);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     stageQueue.enqueueAll(cloneObj(words));
@@ -46,26 +53,46 @@ export function LearningMain({ words, stage, updateStages }: Props) {
   }
 
   function completeWordHandler(mistakes: number) {
-    if (mistakes > MAX_MISTAKES_VALUE) {
-      stageQueue.dequeue();
-      if (currentWord) stageQueue.enqueue(currentWord);
-      setCurrentWord(stageQueue.getItem());
-    } else {
+    if (currentWord) {
+      if (mistakes > MAX_MISTAKES_VALUE) {
+        stageQueue.dequeue();
+        stageQueue.enqueue(currentWord);
+        setCurrentWord(stageQueue.getItem());
+      } else {
+        stageQueue.dequeue();
+        setCurrentWord(stageQueue.getItem());
+        updateProgressStage();
+      }
+    }
+  }
+
+  function completeTestWordHandler(mistakes: number) {
+    if (currentWord) {
+      if (mistakes < MAX_MISTAKES_VALUE_TEST) {
+        setPassed(items => [...items, currentWord]);
+      }
       stageQueue.dequeue();
       setCurrentWord(stageQueue.getItem());
       updateProgressStage();
     }
+
+    if (stage.id === MAX_STAGES && stageQueue.size() === 0) {
+      setIsCompleted(true);
+    }
+
+    // TODO: Call a mutation in the end which would pass the list with passed
+    // words and remove them from the list
   }
 
   return (
     <div className={s.learning_container}>
-      {/* <StageSelector
+      <StageSelector
         word={currentWord}
         currentStage={stage}
         onStageComplete={m => completeWordHandler(m)}
-        onTestComplete={() => console.log()} // onComplete={m => completeWordHandler(m)}
-      /> */}
-      <CompletionMessage progresses={results} />
+        onTestComplete={m => completeTestWordHandler(m)}
+      />
+      {isCompleted && <CompletionMessage progresses={results} />}
     </div>
   );
 }

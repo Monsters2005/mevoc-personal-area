@@ -44,6 +44,7 @@ export default function StageSelector({
           onComplete={onTestComplete}
         />
       );
+
     default:
       return null;
   }

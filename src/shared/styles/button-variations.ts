@@ -8,3 +8,15 @@ export const learningBtn = {
   padding: '2px 10px',
   height: '42px',
 };
+
+export const learningSmallBtn = {
+  fontStyle: 'normal',
+  fontWeight: 700,
+  fontSize: '18px',
+  lineHeight: '27px',
+  letterSpacing: '1px',
+  textTransform: 'uppercase' as const,
+  color: '#1F2029',
+  padding: '4px 0px 4px 8px',
+  marginTop: '20px',
+};

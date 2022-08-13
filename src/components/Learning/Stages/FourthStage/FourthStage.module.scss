@@ -55,5 +55,13 @@
       color: rgba($primary-color, 0.7);
       outline: none;
     }
+    &container {
+      display: flex;
+      align-items: center;
+      & button {
+        margin-left: -50px;
+        height: 40px;
+      }
+    }
   }
 }

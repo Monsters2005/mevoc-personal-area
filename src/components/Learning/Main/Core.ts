@@ -25,7 +25,9 @@ const STAGES_RULES = {
 };
 
 export const MAX_MISTAKES_VALUE = 3;
-export const MAX_TIMER_VALUE = 60;
+export const MAX_MISTAKES_VALUE_TEST = 1;
+export const MAX_TIMER_VALUE = 30;
+export const MAX_STAGES = 4;
 
 export interface LearningEvent {
   word: Word | null;
@@ -102,12 +104,6 @@ export class LearningCore {
     this.pushEvent();
   }
 
-  // startTimer() {
-  //   this.timer = MAX_TIMER_VALUE;
-  //    this.timer > 0 && setInterval(() => setCounter(counter - 1), 1000);
-  //    return () => clearInterval(timer);
-  // }
-
   handleCardPick(item: Letter) {
     this.checkPickedValue(item);
   }
@@ -127,22 +123,23 @@ export class LearningCore {
   }
 
   handleInput(word: string) {
-    if (this.currentCell?.letter === word) {
+    if (this.word?.wordLearning === word) {
       if (this.isCompleted) return;
-      if (this.currentIndex === this.letters.length - 1)
-        this.isCompleted = true;
-      this.currentIndex++;
-      this.currentCell = this.letters[this.currentIndex];
     } else {
-      this.mistakesCount++;
+      this.mistakesCount = MAX_MISTAKES_VALUE_TEST;
     }
+    this.isCompleted = true;
     this.pushEvent();
   }
 
-  handleTimerChange() {}
-
   handleCompletion(func: (mistakes: number) => void) {
-    if (this.isCompleted) func(this.mistakesCount);
+    if (this.stage === MAX_STAGES)
+      if (this.isCompleted) func(this.mistakesCount);
+  }
+
+  handleTestFail() {
+    this.mistakesCount = MAX_MISTAKES_VALUE + 1;
+    this.pushEvent();
   }
 
   private getLetters() {
@@ -159,9 +156,6 @@ export class LearningCore {
   private getCards() {
     function getRandom(obj: LearningCore) {
       const random = shuffleArray([...obj.letters]);
-      // if (compareArrOrder(random, obj.letters)) {
-      //   getRandom(obj);
-      // }
       obj.cards = random;
     }
     getRandom(this);

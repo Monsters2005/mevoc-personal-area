@@ -36,24 +36,20 @@ export function LearningPage() {
 
   return (
     <div className={s.learning_container}>
-      {activeStage && (
-        <>
-          <LearningHeader
-            // TODO: add handler for the function below which will be showing popup and asking if
-            // TODO: user wants to end current learning process
-            onGoBack={() => navigate('/dashboard')}
-            onSkipStages={handleSkipStages}
-            activeStage={activeStage}
-            stages={tempStages}
-            setCurrentStage={item => setActiveStage(item)}
-          />
-          <LearningMain
-            updateStages={handleUpdateStages}
-            stage={activeStage}
-            words={words}
-          />
-        </>
-      )}
+      <LearningHeader
+        // TODO: add handler for the function below which will be showing popup and asking if
+        // TODO: user wants to end current learning process
+        onGoBack={() => navigate('/dashboard')}
+        onSkipStages={handleSkipStages}
+        activeStage={activeStage || tempStages[3]}
+        stages={tempStages}
+        setCurrentStage={item => setActiveStage(item)}
+      />
+      <LearningMain
+        updateStages={handleUpdateStages}
+        stage={activeStage || tempStages[3]}
+        words={words}
+      />
     </div>
   );
 }
