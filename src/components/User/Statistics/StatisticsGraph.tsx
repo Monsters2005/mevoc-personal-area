@@ -4,9 +4,9 @@
 // import { List } from '../../../@types/entities/List';
 // import { Word } from '../../../@types/entities/Word';
 // import { weekdays } from '../../../constants/weekdays';
-// import { checkDateInRange } from '../../../utils/dates/checkDateInRange';
-// import { enumerateDaysBetweenDates } from '../../../utils/dates/enumerateDaysBetweenDates';
-// import { sortArrayByKey } from '../../../utils/common/sortArrayByKey';
+// import { checkDateInRange } from '../../../utils/checkDateInRange';
+// import { enumerateDaysBetweenDates } from '../../../utils/enumerateDaysBetweenDates';
+// import { sortArrayByKey } from '../../../utils/sortArrayByKey';
 // import { Graph } from '../../UI/Graph/Graph';
 // import {
 //   LineChartData,

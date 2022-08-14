@@ -15,6 +15,12 @@ export const lists = [
         id: 1,
         dateLearned: '2020-04-01',
       },
+      {
+        wordLearning: 'insufficiently ',
+        wordNative: 'недостаточно ',
+        id: 1,
+        dateLearned: '2020-04-01',
+      },
 
       {
         wordLearning: 'elitist ',
@@ -68,7 +74,7 @@ export const lists = [
         wordLearning: 'domestic',
         wordNative: 'прислуга',
         id: 10,
-        dateLearned: '2020-04-05',
+        dateLearned: null,
       },
       {
         wordLearning: 'decontextualization ',

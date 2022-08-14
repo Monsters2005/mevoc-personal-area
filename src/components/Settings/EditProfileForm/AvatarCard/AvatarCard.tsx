@@ -1,9 +1,11 @@
 import React from 'react';
 
 import s from './AvatarCard.module.scss';
-// import defaultAvatar from '../../../assets/images/defaultAvatar.png';
+import defaultAvatar from '../../../../assets/images/defaultAvatar.png';
+// import { getMediaLink } from '../../../../utils/getMediaLink';
 import { Button } from '../../../UI/Button/Button';
 import { getMediaLink } from '../../../../utils/components/getMediaLink';
+// import { SettingsSvgSelector } from '../../SettingsSvgSelector';
 
 type Props = {
   avatar: string;
@@ -18,7 +20,7 @@ export function SettingsAvatarCard({
   onDelete,
   onSave,
 }: Props) {
-  const avatarUrl = getMediaLink(avatar);
+  const avatarUrl = getMediaLink(avatar) || defaultAvatar;
 
   return (
     <div className={s.avatarcard_container}>
