@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Pack } from '../../../@types/entities/WordPack';
 import FallbackImgSelector from '../../../assets/FallbackImgSelector';
 import { primaryMiddle } from '../../../shared/styles/button-variations';
-import { pluralizeString } from '../../../utils/pluralizeString';
+import { pluralizeString } from '../../../utils/components/pluralizeString';
 import { Button } from '../../UI/Button/Button';
 import s from './WordPack.module.scss';
 

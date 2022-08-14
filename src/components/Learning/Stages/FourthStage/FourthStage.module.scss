@@ -1,0 +1,67 @@
+@use '@styles/shared/variables.scss' as *;
+
+.fourthstage {
+  &_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-gap: 40px;
+    transition: all 0.4s;
+  }
+  &_wordvisible {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 42px;
+
+    color: $primary-color;
+    user-select: none;
+  }
+  &_timer {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+
+    color: $primary-color;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  &_input {
+    width: 500px;
+    height: 55px;
+
+    background: none;
+    border: 2px solid rgba($primary-color, 0.7);
+
+    padding: 10px;
+    border-radius: 15px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+
+    color: #c4c3ca;
+    outline: none;
+    &::placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+
+      color: rgba($primary-color, 0.7);
+      outline: none;
+    }
+    &container {
+      display: flex;
+      align-items: center;
+      & button {
+        margin-left: -50px;
+        height: 40px;
+      }
+    }
+  }
+}

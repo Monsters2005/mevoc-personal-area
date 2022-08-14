@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ranges } from '../constants/ranges';
+import { ranges } from '../../constants/ranges';
 
 export function getGreetingByTime(time: number) {
   const [greeting, setGreeting] = useState('');

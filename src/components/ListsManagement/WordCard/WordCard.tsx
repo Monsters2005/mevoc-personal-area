@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import { makeSuspensionString } from '../../../utils/makeSuspensionString';
+import { makeSuspensionString } from '../../../utils/common/makeSuspensionString';
 import { Button } from '../../UI/Button/Button';
 import { ListsManagementSvgSelector } from '../ListsManagementSvgSelector';
 import s from './WordCard.module.scss';

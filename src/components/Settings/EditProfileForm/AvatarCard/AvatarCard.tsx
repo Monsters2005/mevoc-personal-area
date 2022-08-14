@@ -2,8 +2,9 @@ import React from 'react';
 
 import s from './AvatarCard.module.scss';
 import defaultAvatar from '../../../../assets/images/defaultAvatar.png';
-import { getMediaLink } from '../../../../utils/getMediaLink';
+// import { getMediaLink } from '../../../../utils/getMediaLink';
 import { Button } from '../../../UI/Button/Button';
+import { getMediaLink } from '../../../../utils/components/getMediaLink';
 // import { SettingsSvgSelector } from '../../SettingsSvgSelector';
 
 type Props = {

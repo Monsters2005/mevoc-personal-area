@@ -8,7 +8,7 @@ import { useModal } from '../../context/ModalContext';
 import { PageLayout } from '../../layouts/PageLayout/PageLayout';
 import { list } from '../../mocks/list';
 import { GlobalSvgSelector } from '../../shared/GlobalSvgSelector';
-import { pluralizeString } from '../../utils/pluralizeString';
+import { pluralizeString } from '../../utils/components/pluralizeString';
 import s from './ListManagement.module.scss';
 
 export default function ListManagementPage() {

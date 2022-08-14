@@ -1,0 +1,129 @@
+@use '@styles/shared/variables.scss' as *;
+
+.firststage {
+  &_wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-gap: 40px;
+    transition: all 0.4s;
+  }
+  &_wordvisible {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 42px;
+
+    color: $primary-color;
+    user-select: none;
+  }
+  &_boxes {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+
+    grid-gap: 15px;
+    transition: all 0.4s;
+    position: relative;
+  }
+  &_card {
+    width: 50px;
+    height: 50px;
+  }
+  &_cardcontainer {
+    width: 50px;
+    height: 50px;
+
+    background: $primary-color;
+    border-radius: 10px;
+    transition: all 0.2s;
+    transition: all 0.4s;
+    &:hover {
+      cursor: pointer;
+      background: rgba($primary-color, 0.7);
+    }
+  }
+  &_complete {
+    position: absolute;
+    right: -60px;
+  }
+  &_letters {
+    display: flex;
+    flex-wrap: wrap;
+
+    grid-gap: 10px;
+    width: 350px;
+  }
+  &_lettercontainer {
+    width: 45px;
+    height: 45px;
+
+    border: 2px solid rgba($primary-color, 0.7);
+    border-radius: 10px;
+    background-color: none;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: transparent;
+    cursor: default;
+    user-select: none;
+    position: relative;
+
+    &_filled {
+      width: 45px;
+      height: 45px;
+
+      background: $primary-color;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 26px;
+      color: $base-color;
+      border: 2px solid rgba($primary-color, 0.7);
+
+      text-transform: uppercase;
+      border-radius: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+    }
+    &_complete {
+      -webkit-transition: background-color 0.3s linear;
+      -ms-transition: background-color 0.3s linear;
+      transition: background-color 0.3s linear;
+      background: $accent-color !important;
+      border: 2px solid rgba($accent-color, 0.7);
+    }
+  }
+  &_cardletter {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+
+    color: $base-color;
+  }
+  &_cardcontainer {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

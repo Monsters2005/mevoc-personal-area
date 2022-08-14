@@ -1,0 +1,19 @@
+.header {
+  &_container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 60px 80px;
+  }
+  &_part {
+    width: 33%;
+    &:nth-child(2) {
+      display: flex;
+      justify-content: center;
+    }
+    &:nth-child(3) {
+      display: flex;
+      justify-content: end;
+    }
+  }
+}

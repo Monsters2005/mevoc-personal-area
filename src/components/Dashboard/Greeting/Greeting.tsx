@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ContentLoader from 'react-content-loader';
-import { getGreetingByTime } from '../../../utils/getGreetingByTime';
+import { getGreetingByTime } from '../../../utils/components/getGreetingByTime';
 import { ContentSkeleton } from '../../UI/ContentLoader/ContentLoader';
 import s from './Greeting.module.scss';
 import { useCurrentDate } from './useCurrentDate';

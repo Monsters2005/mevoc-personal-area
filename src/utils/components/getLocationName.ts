@@ -1,5 +1,5 @@
 import { Location } from 'react-router';
-import { pages } from '../constants/sidebar';
+import { pages } from '../../constants/sidebar';
 
 export function getLocationName(pathname: string) {
   return pathname

@@ -1,0 +1,27 @@
+@use '@styles/shared/variables.scss' as *;
+
+.lettercard {
+  &_container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: $primary-color;
+    border-radius: 10px;
+    transition: all 0.2s;
+    transition: all 0.4s;
+    &:hover {
+      cursor: pointer;
+      background: rgba($primary-color, 0.7);
+    }
+  }
+  &_letter {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+    color: $base-color;
+  }
+}

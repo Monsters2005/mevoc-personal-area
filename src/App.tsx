@@ -3,22 +3,22 @@ import { useLocation, Route, Routes } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
 import { Sidebar } from './components/Sidebar/Sidebar/Sidebar';
-import { Notifications } from './components/UI/Notification/Notification';
-import { Path } from './constants/routes';
-import { actions, pages, visiblePaths } from './constants/sidebar';
 import { AuthLayout } from './layouts/AuthLayout/AuthLayout';
-import { PrivateLayout } from './layouts/PrivateLayout/PrivateLayout';
 import { DashboardPage } from './pages/Dashboard/Dashboard';
+import { LearningPage } from './pages/Learning/Learning';
 import ListManagementPage from './pages/ListManagement/ListManagement';
-import { SettingsPage } from './pages/Settings/Settings';
-import { SignInPage } from './pages/SignIn/SignIn';
-import SignUpPage from './pages/SignUp/SignUp';
-import { UserProfilePage } from './pages/UserProfile/UserProfile';
-import { useGetCurrentUserQuery } from './store/api/userApi';
-import { getLocationName } from './utils/getLocationName';
 import 'react-toastify/dist/ReactToastify.css';
-import AddListModal from './components/Modals/ListsManagement/AddList';
+import { getLocationName } from './utils/components/getLocationName';
+import { useGetCurrentUserQuery } from './store/api/userApi';
+import { Notifications } from './components/UI/Notification/Notification';
 import Modals from './components/Modals/ModalSelector';
+import { PrivateLayout } from './layouts/PrivateLayout/PrivateLayout';
+import { Path } from './constants/routes';
+import { SettingsPage } from './pages/Settings/Settings';
+import SignUpPage from './pages/SignUp/SignUp';
+import { actions, pages, visiblePaths } from './constants/sidebar';
+import { UserProfilePage } from './pages/UserProfile/UserProfile';
+import { SignInPage } from './pages/SignIn/SignIn';
 
 function App() {
   const { pathname } = useLocation();
