@@ -2,6 +2,7 @@
 import React from 'react';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useNavigate } from 'react-router';
 import { countPercentage } from '../../../utils/common/countPercentage';
 import { pluralizeString } from '../../../utils/components/pluralizeString';
 import { useSwiperRef } from '../../../utils/lib/useSwiperRef';
@@ -10,6 +11,9 @@ import { CircularProgress } from '../../UI/CircularProgress/CircularProgress';
 import { LearningSvgSelector } from '../LearningSvgSelector';
 import { btnStyles } from '../Stages/FirstStage/FirstStage';
 import s from './CompletionMessage.module.scss';
+import '../../../styles/lib/swiper.scss';
+import { resultMessages } from '../../../constants/resultMessages';
+import { Path } from '../../../constants/routes';
 
 type ListProgress = {
   words: number;
@@ -40,13 +44,15 @@ export default function CompletionMessage({ progresses }: Props) {
   const [prevEl, prevElRef] = useSwiperRef<HTMLButtonElement>();
   const [nextEl, nextElRef] = useSwiperRef<HTMLButtonElement>();
 
+  const isProgress = progresses.filter(item => item.wordsLearned !== 0).length !== 0;
+  const message = resultMessages.find(item => item.isProgress === isProgress);
+
+  const navigate = useNavigate();
+
   return (
     <div className={s.completion_container}>
-      <h3 className={s.completion_title}>Congratulations!</h3>
-      <h6 className={s.completion_description}>
-        You have successfully completed the learning of few lists, here is your
-        progress:
-      </h6>
+      <h3 className={s.completion_title}>{message?.title}</h3>
+      <h6 className={s.completion_description}>{message?.message}</h6>
 
       <div className={s.completion_progresses}>
         <button type="button" className={s.completion_btn} ref={prevElRef}>
@@ -88,7 +94,7 @@ export default function CompletionMessage({ progresses }: Props) {
       <Button
         styles={{ ...btnStyles, padding: '6px 14px', marginTop: '30px' }}
         type="primary"
-        onClick={() => console.log()}
+        onClick={() => navigate(`/${Path.HOME}`)}
       >
         finish
       </Button>

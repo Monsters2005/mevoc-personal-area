@@ -6,15 +6,14 @@ type Props = {
 };
 
 export default function ModalProvider({ children }: Props) {
-  const {
-    states: { ...state },
-  } = useModal();
+  const { currentModal: data } = useModal();
 
-  const [states, setModalStates] = useState<Record<string, boolean>>({
-    ...state,
-  });
+  const [currentModal, setCurrentModal] = useState<ReactNode | null>(data);
 
-  const stateMemo = useMemo(() => ({ states, setModalStates }), [states]);
+  const stateMemo = useMemo(
+    () => ({ currentModal, setCurrentModal }),
+    [currentModal]
+  );
 
   return (
     <ModalContext.Provider value={stateMemo}>{children}</ModalContext.Provider>

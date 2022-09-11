@@ -17,7 +17,6 @@ export function DashboardWordCard({
   onEditWord,
 }: Props) {
   const [selected, setSelected] = useState(false);
-
   return (
     <div
       onClick={() => setSelected(!selected)}

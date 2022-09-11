@@ -57,3 +57,31 @@ export const btnInputSettings = {
   padding: '5px 10px',
   marginRight: '20px',
 };
+
+export const learningBtn = {
+  fontStyle: 'normal',
+  fontWeight: 500,
+  fontSize: '16px',
+  lineHeight: '24px',
+  color: 'rgba(196, 195, 202, 0.7)',
+  textTransform: 'capitalize' as const,
+  padding: '2px 10px',
+  height: '42px',
+};
+
+export const startBtn = {
+  padding: '11px 25px',
+  fontStyle: 'normal',
+  fontWeight: 700,
+  fontSize: '18px',
+  lineHeight: '27px',
+  display: 'flex',
+  alignItems: 'center',
+  textAlign: 'center' as const,
+  letterSpacing: '1px',
+  textTransform: 'uppercase' as const,
+  alignSelf: 'flex-end',
+  position: 'absolute' as const,
+  right: '50px',
+  bottom: '80px',
+};

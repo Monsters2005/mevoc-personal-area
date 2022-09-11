@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Pack } from '../../../@types/entities/WordPack';
 import { WordpackWord } from '../../../@types/entities/WordpackWord';
 import ModalLayout from '../../../layouts/ModalLayout/ModalLayout';
-import { checkIsInArrayById } from '../../../utils/checkIsInArray';
+import { checkIsInArrayById } from '../../../utils/common/checkIsInArray';
 import { ModalWrapper } from '../Wrapper/ModalWrapper';
 import s from './Wordpack.module.scss';
 

@@ -29,7 +29,6 @@ export function ForgotPasswordForm({ onSubmit, isLetterSent }: Props) {
   const submitHandler = (data: ForgotPasswordDto) => {
     onSubmit(data);
     values.setValue('email', data.email);
-    console.log(values.getValues());
   };
 
   const confirmHandler = () => {

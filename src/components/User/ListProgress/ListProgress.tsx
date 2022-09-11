@@ -27,7 +27,7 @@ export function ListProgress({ item, active, onClick }: Props) {
     >
       <div className={s.list_progress}>
         <CircularProgress
-          progressValue={item.progress}
+          progressValue={item?.progress || 0}
           width={60}
           height={60}
           percentStyles={{ fontSize: '14px' }}

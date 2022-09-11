@@ -8,6 +8,8 @@ import HookFormInput from '../../HookForm/HookFormInput';
 import schema from './validation';
 import s from './AddList.module.scss';
 import { ModalWrapper } from '../Wrapper/ModalWrapper';
+import { useGetCurrentUserQuery } from '../../../store/api/userApi';
+import { user } from '../../../mocks/user';
 
 type Props = {
   onAddList: SubmitHandler<AddListDto>;
@@ -17,9 +19,10 @@ export default function AddListModal({ onAddList }: Props) {
   const values = useForm<AddListDto>({
     resolver: yupResolver(schema),
   });
+  const { data: currentUser } = useGetCurrentUserQuery();
 
   const submitHandler = (data: AddListDto) => {
-    onAddList(data);
+    onAddList({ ...data, userId: currentUser?.id || 0 });
   };
 
   return (

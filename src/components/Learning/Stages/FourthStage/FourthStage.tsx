@@ -6,7 +6,7 @@ import { TransitionWrapper } from '../../../../layouts/Transition/Transition';
 import { Button } from '../../../UI/Button/Button';
 import { Input } from '../../../UI/Input/Input';
 import { LearningSvgSelector } from '../../LearningSvgSelector';
-import { LearningCore, LearningEvent } from '../../Main/Core';
+import { LearningCore, LearningEvent, MAX_TIMER_VALUE } from '../../Main/Core';
 import { Stage } from '../types';
 import s from './FourthStage.module.scss';
 import { useCountdown } from './useCountdown';
@@ -28,7 +28,7 @@ export default function FourthStage({
 
   const [colorAlarm, setColorAlarm] = useState(false);
   const [value, setValue] = useState('');
-  const { minutes, seconds, setSeconds } = useCountdown(0, 15);
+  const { minutes, seconds, setSeconds } = useCountdown(0, MAX_TIMER_VALUE);
   const inputRef = createRef<HTMLInputElement>();
 
   const handleCompletion = () => {
@@ -38,7 +38,7 @@ export default function FourthStage({
 
   useEffect(() => {
     start();
-    setSeconds(15);
+    setSeconds(MAX_TIMER_VALUE);
     inputRef?.current?.focus();
     setValue('');
   }, [word]);

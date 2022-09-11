@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: center;
 
-    background: rgba(42, 43, 56, 0.25);
+    background: $element-color;
     backdrop-filter: blur(45px);
     border-radius: 25px;
     user-select: none;

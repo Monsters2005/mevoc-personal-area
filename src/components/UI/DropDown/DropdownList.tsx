@@ -6,7 +6,7 @@ import { TransitionWrapper } from '../../../layouts/Transition/Transition';
 
 type Props = {
   isOpen: boolean;
-  options: Option[];
+  options: Option[] | undefined;
   listTitle?: string;
   selectedItem: Option | undefined;
   setSelectedItem: (item: Option | undefined) => void;
@@ -47,7 +47,7 @@ export function DropdownList({
       <div className={s.dropdown_list} style={listStyles}>
         <h3 className={s.dropdown_title}>{listTitle}</h3>
         <div className={s.dropdown_options}>
-          {options.map(item => (
+          {options?.map(item => (
             <DropdownItem
               item={item}
               key={item.id}

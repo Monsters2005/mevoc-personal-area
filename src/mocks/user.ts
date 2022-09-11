@@ -1,7 +1,8 @@
 import moment from 'moment';
+import { User } from '../@types/entities/User';
 import { lists } from './lists';
 
-export const user = {
+export const user: User = {
   firstName: 'Karina',
   lastName: 'Carmichael',
   username: 'perfechate',
@@ -15,4 +16,13 @@ export const user = {
   confirmed_hash: '',
   confirmed: true,
   lists,
+  id: 0,
+  settings: {
+    safety: {
+      twoFactAuth: {
+        textMessage: false,
+        authApp: false,
+      },
+    },
+  },
 };

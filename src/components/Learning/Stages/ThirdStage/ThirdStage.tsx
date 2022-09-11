@@ -82,7 +82,9 @@ export default function ThirdStage({ word, currentStage, onComplete }: Stage) {
         {learningState.isCompleted && (
           <Button
             type="primary"
-            onClick={() => onComplete(learningState.mistakesCount)}
+            onClick={() => {
+              learning.handleCompletion(onComplete);
+            }}
             styles={btnStyles}
           >
             Next

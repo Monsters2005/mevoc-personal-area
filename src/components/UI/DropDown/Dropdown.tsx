@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { CSSProperties, SetStateAction, useState } from 'react';
 import { UISvgSelector } from '../../../assets/icons/UI/SvgSelector';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
+import { makeSuspensionString } from '../../../utils/common/makeSuspensionString';
 import s from './Dropdown.module.scss';
 import { DropdownList } from './DropdownList';
 import { Option } from './types';
@@ -9,7 +10,7 @@ import { Option } from './types';
 type DropdownProps = {
   listTitle?: string;
   label?: string;
-  options: Option[];
+  options: Option[] | undefined;
   selectedItem: Option | undefined;
   setSelectedItem: (item: Option | undefined) => void;
   allowNoneSelected: boolean;
@@ -58,7 +59,7 @@ export function Dropdown({
             {selectedItem ? (
               <>
                 {selectedItem.icon}
-                <p>{selectedItem.value}</p>
+                <p>{makeSuspensionString(selectedItem.value, 13)}</p>
               </>
             ) : (
               <p>None selected</p>

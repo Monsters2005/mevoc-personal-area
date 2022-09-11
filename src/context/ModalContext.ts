@@ -1,23 +1,13 @@
-import React, {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useContext,
-} from 'react';
+import React, { createContext, ReactNode, useContext } from 'react';
 
 type ModalType = {
-  states: Record<string, boolean>;
-  setModalStates: Dispatch<SetStateAction<Record<string, boolean>>>;
+  currentModal: null | ReactNode;
+  setCurrentModal: (item: ReactNode | null) => void;
 };
 
 const defaultState: ModalType = {
-  states: {
-    addWord: false,
-    editWord: false,
-    addList: false,
-    wordpackPreview: false,
-  },
-  setModalStates: () => null,
+  currentModal: null,
+  setCurrentModal: () => null,
 };
 
 export const ModalContext = createContext(defaultState);

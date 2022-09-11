@@ -11,7 +11,7 @@ import { selectIsAuth } from '../../store/selectors/auth';
 export function PrivateLayout({
   children,
 }: PropsWithChildren<Record<string, unknown>>) {
-  const { isLoading, isError } = useGetCurrentUserQuery();
+  const { isLoading, isError, data: user } = useGetCurrentUserQuery();
   const isAuth = useSelector(selectIsAuth);
   // const state = useSelector((u: RootState) => u.auth);
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export function PrivateLayout({
     if (isError || !isAuth) {
       navigate('/signin');
     }
-  }, [isAuth, isError]);
+  }, [isAuth, isError, isLoading, user]);
 
   return (
     <div>

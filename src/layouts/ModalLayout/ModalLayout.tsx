@@ -25,13 +25,14 @@ export default function ModalLayout({
   onClick,
   style,
 }: Props) {
-  const { states, setModalStates } = useModal();
+  const { setCurrentModal } = useModal();
   const handleCloseModal = () => {
-    const closed = Object.keys(states).reduce(
-      (accumulator, key) => ({ ...accumulator, [key]: false }),
-      {}
-    );
-    setModalStates(closed);
+    setCurrentModal(null);
+  };
+
+  const handleOnClick = () => {
+    onClick();
+    handleCloseModal();
   };
 
   return (
@@ -47,7 +48,7 @@ export default function ModalLayout({
       </div>
       <div className={s.modal_children}>{children}</div>
 
-      <Button styles={primaryModal} onClick={onClick} type="primary">
+      <Button styles={primaryModal} onClick={handleOnClick} type="primary">
         {btnText}
       </Button>
     </div>

@@ -133,8 +133,7 @@ export class LearningCore {
   }
 
   handleCompletion(func: (mistakes: number) => void) {
-    if (this.stage === MAX_STAGES)
-      if (this.isCompleted) func(this.mistakesCount);
+    if (this.isCompleted) func(this.mistakesCount);
   }
 
   handleTestFail() {

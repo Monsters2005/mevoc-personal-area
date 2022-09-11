@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { CardLayout } from '../../../layouts/CardLayout/CardLayout';
 import { Button } from '../../UI/Button/Button';
@@ -10,6 +10,7 @@ import {
   primarySmallLists,
   primarySmallNoLists,
 } from '../../../shared/styles/button-variations';
+import { list } from '../../../mocks/list';
 
 type Props = {
   onAddList: () => void;
@@ -17,11 +18,15 @@ type Props = {
 };
 
 export function DashboardActiveLists({ onAddList, lists }: Props) {
-  const [items, setItems] = useState(lists);
+  const [items, setItems] = useState<List[] | null>(null);
+
+  useEffect(() => {
+    if (lists) setItems(lists);
+  }, [lists]);
 
   const onDragEnd = ({ destination, source }: DropResult) => {
     if (!destination) return;
-    const newItems = items && reorderArray(items, source.index, destination.index);
+    const newItems = (items && reorderArray(items, source.index, destination.index)) || [];
     setItems(newItems);
   };
 
@@ -36,11 +41,11 @@ export function DashboardActiveLists({ onAddList, lists }: Props) {
           Add
         </Button>
         <div className={s.activelists_container}>
-          {items ? (
+          {items?.length ? (
             <Droppable droppableId="droppable-list">
               {provided => (
                 <div ref={provided.innerRef} {...provided.droppableProps}>
-                  {items.map((item, index) => (
+                  {items?.map((item, index) => (
                     <DashboardActiveList
                       item={item}
                       index={index}

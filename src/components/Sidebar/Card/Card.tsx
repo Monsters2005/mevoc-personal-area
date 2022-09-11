@@ -7,7 +7,7 @@ import { Page } from '../Sidebar/types';
 type Props = {
   page: Page;
   onClick: () => void;
-  active: string | number | symbol;
+  active: string | null;
 };
 
 export function SidebarCard({ page, onClick, active }: Props) {

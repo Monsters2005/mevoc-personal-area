@@ -13,21 +13,19 @@ import { useSignoutMutation } from '../../../store/api/authApi';
 import { Path } from '../../../constants/routes';
 import s from './Sidebar.module.scss';
 import { ContentSkeleton } from '../../UI/ContentLoader/ContentLoader';
+import { eventBus, EventTypes } from '../../../packages/EventBus';
+import { CustomError } from '../../../@types/entities/ErrorObject';
+import { NotificationType } from '../../../@types/entities/Notification';
+import { useGetCurrentUserQuery } from '../../../store/api/userApi';
 
 type Props<T> = {
   pages: T;
-  defaultActive: keyof T;
   actions: ActionItem[];
-  user: User | undefined;
 };
 
-export function Sidebar<T extends Pages>({
-  pages,
-  defaultActive,
-  actions,
-  user,
-}: Props<T>) {
+export function Sidebar<T extends Pages>({ pages, actions }: Props<T>) {
   const navigate = useNavigate();
+  const { data: user } = useGetCurrentUserQuery();
   const sortedPages = Object.keys(pages).map(key => ({
     icon: pages[key].icon,
     name: pages[key].name,
@@ -40,8 +38,12 @@ export function Sidebar<T extends Pages>({
     try {
       signOut();
       localStorage.removeItem('accessToken');
-    } catch {
-      // event bus notification
+    } catch (e) {
+      eventBus.emit(EventTypes.notification, {
+        message: (e as CustomError).data.message,
+        title: 'Failed to sign out',
+        type: NotificationType.DANGER,
+      });
     }
   };
 
@@ -61,7 +63,7 @@ export function Sidebar<T extends Pages>({
             style={{ marginTop: '50px' }}
           />
         )}
-        <SidebarNavigation pages={sortedPages} defaultActive={defaultActive} />
+        <SidebarNavigation pages={sortedPages} />
         <SidebarActionItems
           items={actions}
           onSignOut={handleSignOut}

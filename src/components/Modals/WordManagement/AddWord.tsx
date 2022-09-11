@@ -28,7 +28,7 @@ export default function AddWordModal({ onAddWord }: Props) {
         <ModalLayout
           title="Add a new word"
           btnText="Add"
-          onClick={() => console.log()}
+          onClick={values.handleSubmit(submitHandler)}
         >
           <div className={s.wordmanage_container}>
             <form
@@ -43,10 +43,10 @@ export default function AddWordModal({ onAddWord }: Props) {
                 label="Native language"
               />
               <HookFormInput
-                name="wordNative"
+                name="wordLearning"
                 placeholder="Your word"
                 styles={inputModal}
-                type="wordNative"
+                type="wordLearning"
                 label="Learning language"
               />
             </form>

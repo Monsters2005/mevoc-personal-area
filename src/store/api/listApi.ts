@@ -7,24 +7,31 @@ const path = Path.LIST;
 
 export const listApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    getListById: builder.query<List, Id>({
+    getListsByUserId: builder.query<List[], Id>({
       query: id => ({
         url: `${path}/${id}`,
         method: 'GET',
       }),
+      providesTags: result => (result
+        ? [
+          ...result.map(({ id }) => ({ type: 'List' as const, id })),
+          { type: 'List', id: 'LIST' },
+        ]
+        : [{ type: 'List', id: 'LIST' }]),
     }),
-    getAllLists: builder.query<List[], void>({
-      query: () => ({
-        url: path,
-        method: 'GET',
-      }),
-    }),
+    // getListByListId: builder.query<List[], void>({
+    //   query: id => ({
+    //     url: `${path}/${id}`,
+    //     method: 'GET',
+    //   }),
+    // }),
     createList: builder.mutation<List, Partial<List>>({
       query: body => ({
         url: path,
         method: 'POST',
         body,
       }),
+      invalidatesTags: [{ type: 'List', id: 'LIST' }],
     }),
     updateList: builder.mutation<List, Partial<List> & Pick<List, 'id'>>({
       query(body) {
@@ -47,7 +54,7 @@ export const listApi = baseApi.injectEndpoints({
 export const {
   useCreateListMutation,
   useDeleteListMutation,
-  useGetAllListsQuery,
-  useGetListByIdQuery,
   useUpdateListMutation,
+  // useGetListByListIdQuery,
+  useGetListsByUserIdQuery,
 } = listApi;

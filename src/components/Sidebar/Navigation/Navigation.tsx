@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SidebarCard } from '../Card/Card';
 import s from './Navigation.module.scss';
 import { Page } from '../Sidebar/types';
+import { getLocationName } from '../../../utils/components/getLocationName';
 
 type Props = {
   pages: Page[];
-  defaultActive: string | number | symbol;
 };
 
-export function SidebarNavigation({ pages, defaultActive }: Props) {
-  const [active, setActive] = useState(defaultActive);
+export function SidebarNavigation({ pages }: Props) {
+  const { pathname } = useLocation();
+
+  const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    const locationName = getLocationName(pathname);
+    setActive(locationName);
+  }, [pathname]);
 
   function pageHandler(page: Page) {
     return () => setActive(page.key);

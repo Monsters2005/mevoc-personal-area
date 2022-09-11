@@ -7,16 +7,17 @@ import { UserListsProgress } from '../../components/User/ListsProgress/ListsProg
 import { Statistics } from '../../components/User/Statistics/Statistics';
 import { PageLayout } from '../../layouts/PageLayout/PageLayout';
 import { lists } from '../../mocks/lists';
+import { useGetListsByUserIdQuery } from '../../store/api/listApi';
+import { useGetCurrentUserQuery } from '../../store/api/userApi';
 import s from './UserProfile.module.scss';
 
-type Props = {
-  user: User | undefined;
-};
+export function UserProfilePage() {
+  const { data: user } = useGetCurrentUserQuery();
 
-export function UserProfilePage({ user }: Props) {
-  const [activeList, setActiveList] = useState<List | undefined>(
-    user?.lists && user.lists[0]
-  );
+  const { data: userLists = [] } = useGetListsByUserIdQuery(user?.id || 0, {
+    skip: !user?.id,
+  });
+  const [activeList, setActiveList] = useState<List>(userLists[0]);
 
   return (
     <PageLayout title="User Profle">
@@ -37,26 +38,13 @@ export function UserProfilePage({ user }: Props) {
         <div className={s.profilepage_listsinfo}>
           <div className={s.profilepage_graph}>
             <div className="stats-connect">
-              {activeList ? (
-                <Statistics list={activeList} />
-              ) : (
-                <ContentSkeleton
-                  type="area"
-                  width={670}
-                  height={400}
-                  bgColor="#4F4E60"
-                  fgColor="#7a798f"
-                  style={{
-                    marginTop: '-25px',
-                  }}
-                />
-              )}
+              <Statistics list={lists[0]} />
             </div>
           </div>
           <div className={s.profilepage_lists}>
             {activeList ? (
               <UserListsProgress
-                lists={lists}
+                lists={userLists}
                 active={activeList}
                 setActive={(list: List) => setActiveList(list)}
               />

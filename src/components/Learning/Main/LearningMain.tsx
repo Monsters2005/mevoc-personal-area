@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Word } from '../../../@types/entities/Word';
+import { TransitionWrapper } from '../../../layouts/Transition/Transition';
 import { cloneObj } from '../../../utils/common/cloneObj';
 import { countPercentage } from '../../../utils/common/countPercentage';
 import { Queue } from '../../../utils/queue/createQueue';
+import { ModalWrapper } from '../../Modals/Wrapper/ModalWrapper';
 import { ProgressStage } from '../../UI/StagesProgress/StagesProgress';
 import CompletionMessage from '../CompletionMessage/CompletionMessage';
 import StageSelector from '../Stages/StageSelector';
@@ -20,19 +22,18 @@ type Props = {
 };
 
 export function LearningMain({ words, stage, updateStages }: Props) {
-  console.log('stage', stage);
   const stageQueue = useMemo(() => new Queue(cloneObj(words) as Word[]), []);
   const results = [
     {
       name: 'for the test',
       words: 10,
-      wordsLearned: 6,
+      wordsLearned: 0,
       id: 1,
     },
     {
       name: 'whatever',
       words: 16,
-      wordsLearned: 6,
+      wordsLearned: 0,
       id: 2,
     },
   ];
@@ -92,7 +93,11 @@ export function LearningMain({ words, stage, updateStages }: Props) {
         onStageComplete={m => completeWordHandler(m)}
         onTestComplete={m => completeTestWordHandler(m)}
       />
-      {isCompleted && <CompletionMessage progresses={results} />}
+      <TransitionWrapper inState={isCompleted}>
+        <ModalWrapper>
+          <CompletionMessage progresses={results} />
+        </ModalWrapper>
+      </TransitionWrapper>
     </div>
   );
 }
