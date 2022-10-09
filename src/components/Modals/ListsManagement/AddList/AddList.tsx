@@ -1,15 +1,14 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { AddListDto } from '../../../@types/dto/list/add.dto';
-import ModalLayout from '../../../layouts/ModalLayout/ModalLayout';
-import { inputModal } from '../../../shared/styles/input-variations';
-import HookFormInput from '../../HookForm/HookFormInput';
+import { AddListDto } from '../../../../@types/dto/list/add.dto';
+import ModalLayout from '../../../../layouts/ModalLayout/ModalLayout';
+import { inputModal } from '../../../../shared/styles/input-variations';
+import HookFormInput from '../../../HookForm/HookFormInput';
 import schema from './validation';
 import s from './AddList.module.scss';
-import { ModalWrapper } from '../Wrapper/ModalWrapper';
-import { useGetCurrentUserQuery } from '../../../store/api/userApi';
-import { user } from '../../../mocks/user';
+import { ModalWrapper } from '../../Wrapper/ModalWrapper';
+import { useGetCurrentUserQuery } from '../../../../store/api/userApi';
 
 type Props = {
   onAddList: SubmitHandler<AddListDto>;

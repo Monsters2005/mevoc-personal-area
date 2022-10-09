@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  accentColors,
+  currentTheme,
+  textColor,
+  textSizes,
+} from '../../../../constants/settings';
 // import {
 //   accentColors,
 //   currentTheme,
@@ -8,6 +14,7 @@ import React from 'react';
 import { MultiSelector } from '../../../UI/MultiSelector/MultiSelector';
 // import { SettingsColorSelect } from '../../ColorSelect/ColorSelect';
 import s from './Appearance.module.scss';
+import { SettingsColorSelect } from './ColorSelect/ColorSelect';
 
 export default function AppearanceTab() {
   // TODO: User should be received from the context which will have a data about
@@ -23,7 +30,7 @@ export default function AppearanceTab() {
       <div className={s.appearance_sections}>
         <div className={s.appearance_section}>
           <h3 className={s.appearance_title}>Current Theme</h3>
-          {/* <div className={s.appearance_content}>
+          <div className={s.appearance_content}>
             <MultiSelector
               options={currentTheme}
               defaultActive="dark"
@@ -59,7 +66,7 @@ export default function AppearanceTab() {
               defaultActive="normal"
               onClick={onTextColorSelect}
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { useSignoutMutation } from '../store/api/authApi';
 import { Path } from './routes';
 
@@ -34,6 +35,25 @@ export const actions = [
     label: 'Help',
     icon: 'question',
     key: 'help',
+  },
+];
+
+export const profileActions: Partial<{
+  value: string;
+  path: string;
+  key: string;
+  func: () => void;
+  icon: ReactNode;
+}>[] = [
+  {
+    value: 'View profile',
+    path: '/user-profile',
+    key: 'view',
+  },
+  {
+    value: 'Edit profile',
+    path: '/settings',
+    key: 'edit',
   },
 ];
 

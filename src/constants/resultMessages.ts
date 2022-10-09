@@ -9,6 +9,6 @@ export const resultMessages = [
     isProgress: true,
     title: 'Congratulations!',
     message:
-      'You have successfully completed the learning of few lists, here is your progress:',
+      'You have successfully completed the learning, here is your progress:',
   },
 ];
