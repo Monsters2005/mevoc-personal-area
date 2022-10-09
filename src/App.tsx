@@ -1,5 +1,7 @@
-import React, { useRef } from 'react';
-import { useLocation, Route, Routes } from 'react-router';
+import React, { useEffect, useRef } from 'react';
+import {
+  useLocation, Route, Routes, useNavigate,
+} from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
 import { Sidebar } from './components/Sidebar/Sidebar/Sidebar';
@@ -16,12 +18,23 @@ import SignUpPage from './pages/SignUp/SignUp';
 import { actions, pages, visiblePaths } from './constants/sidebar';
 import { UserProfilePage } from './pages/UserProfile/UserProfile';
 import { SignInPage } from './pages/SignIn/SignIn';
+import { useGetCurrentUserQuery } from './store/api/userApi';
+import { Loader } from './components/UI/Loader/Loader';
+import { TransitionWrapper } from './layouts/Transition/Transition';
 
 function App() {
   const { pathname } = useLocation();
+  const path = pathname.replace('/', '');
+
+  const navigate = useNavigate();
+  const { data: user } = useGetCurrentUserQuery();
 
   const preload = useRef<HTMLDivElement>(null);
-  const withSidebar = visiblePaths.includes(pathname.replace('/', '') as Path);
+  const withSidebar = visiblePaths.includes(path as Path);
+
+  useEffect(() => {
+    if (pathname === '/') navigate(Path.HOME);
+  }, [pathname]);
 
   return (
     <div className="App">

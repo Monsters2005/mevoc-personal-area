@@ -1,4 +1,3 @@
-export type EditWordDto = {
-  wordNative: string;
-  wordLearning: string;
-};
+import { Word } from '../../entities/Word';
+
+export type EditWordDto = Partial<Word>;
