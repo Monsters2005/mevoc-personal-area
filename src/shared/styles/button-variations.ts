@@ -85,3 +85,17 @@ export const startBtn = {
   right: '50px',
   bottom: '80px',
 };
+
+export const settingsActionBtn = {
+  fontWeight: '700',
+  fontSize: '15px',
+  lineHeight: '19px',
+  padding: '10px 16px',
+};
+
+export const settingsCancelBtn = {
+  fontWeight: '700',
+  fontSize: '15px',
+  lineHeight: '19px',
+  padding: '10px 20px',
+};
