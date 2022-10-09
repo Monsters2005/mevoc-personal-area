@@ -14,11 +14,12 @@ export const listApi = baseApi.injectEndpoints({
       }),
       providesTags: result => (result
         ? [
-          ...result.map(({ id }) => ({ type: 'List' as const, id })),
+          ...result.map(({ id }) => ({ type: 'List', id } as const)),
           { type: 'List', id: 'LIST' },
         ]
         : [{ type: 'List', id: 'LIST' }]),
     }),
+
     // getListByListId: builder.query<List[], void>({
     //   query: id => ({
     //     url: `${path}/${id}`,
@@ -31,7 +32,11 @@ export const listApi = baseApi.injectEndpoints({
         method: 'POST',
         body,
       }),
-      invalidatesTags: [{ type: 'List', id: 'LIST' }],
+      invalidatesTags: [
+        { type: 'List', id: 'LIST' },
+        { type: 'User', id: 'LIST' },
+        { type: 'Word', id: 'LIST' },
+      ],
     }),
     updateList: builder.mutation<List, Partial<List> & Pick<List, 'id'>>({
       query(body) {
@@ -41,12 +46,22 @@ export const listApi = baseApi.injectEndpoints({
           body,
         };
       },
+      invalidatesTags: [
+        { type: 'List', id: 'LIST' },
+        { type: 'User', id: 'LIST' },
+        { type: 'Word', id: 'LIST' },
+      ],
     }),
     deleteList: builder.mutation<List, Id>({
       query: id => ({
         url: `${path}/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: [
+        { type: 'List', id: 'LIST' },
+        { type: 'User', id: 'LIST' },
+        { type: 'Word', id: 'LIST' },
+      ],
     }),
   }),
 });

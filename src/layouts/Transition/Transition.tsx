@@ -17,10 +17,10 @@ type Props = {
 };
 
 const defaultTransitionStyles = {
-  entering: { opacity: 1, zIndex: 1 },
-  entered: { opacity: 1, zIndex: 1 },
+  entering: { opacity: 1, zIndex: 100 },
+  entered: { opacity: 1, zIndex: 100 },
   exiting: { opacity: 0 },
-  exited: { opacity: 0, zIndex: -100 },
+  exited: { opacity: 0, zIndex: -1000 },
 };
 
 export function TransitionWrapper({

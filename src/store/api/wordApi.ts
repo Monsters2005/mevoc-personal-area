@@ -32,7 +32,10 @@ export const wordApi = baseApi.injectEndpoints({
         method: 'POST',
         body,
       }),
-      invalidatesTags: [{ type: 'Word', id: 'LIST' }],
+      invalidatesTags: [
+        { type: 'List', id: 'LIST' },
+        { type: 'Word', id: 'LIST' },
+      ],
     }),
     updateWord: builder.mutation<Word, Partial<Word> & Pick<Word, 'id'>>({
       query(body) {
@@ -42,6 +45,10 @@ export const wordApi = baseApi.injectEndpoints({
           body,
         };
       },
+      invalidatesTags: [
+        { type: 'List', id: 'LIST' },
+        { type: 'Word', id: 'LIST' },
+      ],
     }),
   }),
 });
