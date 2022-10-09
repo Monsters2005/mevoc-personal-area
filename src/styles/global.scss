@@ -24,6 +24,8 @@ body {
   font-family: $font;
   background: $base-color;
   background-image: url('../assets/images/background.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 input:-webkit-autofill,

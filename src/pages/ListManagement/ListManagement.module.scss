@@ -21,4 +21,14 @@
   &_content {
     margin-top: 30px;
   }
+  &_list {
+    &_addition {
+      position: relative;
+    }
+    &_actions {
+      position: absolute;
+      top: 30px;
+      right: 0px;
+    }
+  }
 }

@@ -4,6 +4,7 @@
   &_container {
     width: 100%;
     margin-top: auto;
+    z-index: 100000 !important;
   }
   &_button {
     width: 100%;
@@ -59,7 +60,7 @@
     font-size: 16px;
     line-height: 24px;
 
-    color: rgba($primary-color, 0.7);
+    color: rgba($primary-color, 0.7) !important;
     margin: 2px 0 0 13px;
   }
 }

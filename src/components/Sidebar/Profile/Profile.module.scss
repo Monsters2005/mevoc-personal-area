@@ -8,6 +8,13 @@
     align-items: center;
 
     margin-top: 50px;
+    position: relative;
+  }
+  &_actions {
+    position: absolute;
+
+    top: 60px;
+    right: 0px;
   }
   &_avatar {
     border-radius: 100px;
