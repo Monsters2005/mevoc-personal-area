@@ -1,16 +1,16 @@
 import { List } from './List';
 
 export type User = {
-  id: number;
+  id: number | undefined;
   firstName: string;
   lastName: string;
   username: string;
   avatar: string;
-  langLearning: string;
-  langNative: string;
+  learningLang: string;
+  nativeLang: string;
   location: string;
   dob: Date;
-  emailAdress: string;
+  email: string;
   phoneNumber: string;
   confirmed_hash: string;
   confirmed: boolean;
