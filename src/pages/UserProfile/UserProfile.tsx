@@ -18,9 +18,10 @@ export function UserProfilePage() {
     skip: !user?.id,
   });
   const [activeList, setActiveList] = useState<List>(userLists[0]);
+  console.log('activeList', activeList);
 
   return (
-    <PageLayout title="User Profle">
+    <PageLayout styles={{ height: '100%' }} title="User Profle">
       <div className={s.profilepage_container}>
         <div className={s.profilepage_userinfo}>
           {user ? (
@@ -38,11 +39,11 @@ export function UserProfilePage() {
         <div className={s.profilepage_listsinfo}>
           <div className={s.profilepage_graph}>
             <div className="stats-connect">
-              <Statistics list={lists[0]} />
+              <Statistics list={activeList} />
             </div>
           </div>
           <div className={s.profilepage_lists}>
-            {activeList ? (
+            {userLists ? (
               <UserListsProgress
                 lists={userLists}
                 active={activeList}

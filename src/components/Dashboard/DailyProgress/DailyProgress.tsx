@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Word } from '../../../@types/entities/Word';
 import { useActiveLists } from '../../../context/ActiveLists';
 import { useOutsideCheck } from '../../../hooks/useOutsideCheck';
@@ -19,11 +19,16 @@ export function DashboardDailyProgress() {
   const { data: user } = useGetCurrentUserQuery();
   const { data: userLists } = useGetListsByUserIdQuery(user?.id || 0);
 
-  const words = currentLists
-    .map(arr => arr.words)
-    .reduce((a, b) => a.concat(b), []);
-  const wordsAll = words.length;
-  const wordsLearned = words.filter(el => el.dateLearned).length;
+  const [words, setWords] = useState<Word[] | []>([]);
+
+  useEffect(() => {
+    setWords(
+      currentLists.map(arr => arr.words).reduce((a, b) => a.concat(b), [])
+    );
+  }, [currentLists]);
+
+  const wordsAll = words?.length || 0;
+  const wordsLearned = words?.filter((el: Word) => el.dateLearned).length || 0;
 
   const [isHintOpen, setIsHintOpen] = useState(false);
   const percentage = countPercentage(wordsLearned, wordsAll);

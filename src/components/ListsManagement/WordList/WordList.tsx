@@ -32,21 +32,30 @@ export function DashboardWordList({ selectedList }: Props) {
   const [words, setWords] = useState<Word[] | []>([]);
 
   const handleWord = async (data: CreateWordDto) => {
-    try {
-      await createWord({
-        wordNative: data.wordNative,
-        wordLearning: data.wordLearning,
-        dateLearned: null,
-        listId: selectedList,
-      });
+    if (selectedList !== 0) {
+      try {
+        await createWord({
+          wordNative: data.wordNative,
+          wordLearning: data.wordLearning,
+          dateLearned: null,
+          listId: selectedList,
+        });
+        eventBus.emit(EventTypes.notification, {
+          message: 'Added a new word',
+          title: 'Success',
+          type: NotificationType.SUCCESS,
+        });
+        refetchListWords();
+      } catch (e) {
+        eventBus.emit(EventTypes.notification, {
+          message: (e as CustomError).data.message,
+          title: 'Failed to create a new word',
+          type: NotificationType.DANGER,
+        });
+      }
+    } else {
       eventBus.emit(EventTypes.notification, {
-        message: 'Added a new word',
-        title: 'Success',
-        type: NotificationType.SUCCESS,
-      });
-    } catch (e) {
-      eventBus.emit(EventTypes.notification, {
-        message: (e as CustomError).data.message,
+        message: 'Please select a list to add a word',
         title: 'Failed to create a new word',
         type: NotificationType.DANGER,
       });
@@ -69,13 +78,8 @@ export function DashboardWordList({ selectedList }: Props) {
       >
         <ListsManagementSvgSelector id="plus" />
       </button>
-      {words.map(({ wordNative, wordLearning, id }: Word) => (
-        <DashboardWordCard
-          key={id}
-          wordLearning={wordLearning}
-          wordNative={wordNative}
-          onEditWord={() => console.log()}
-        />
+      {words.map((word: Word) => (
+        <DashboardWordCard key={word.id} word={word} />
       ))}
     </div>
   );

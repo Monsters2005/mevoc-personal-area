@@ -11,17 +11,16 @@ type Props = {
   list: List;
 };
 
-//! Files imported were moved in incoming merge, have to return them back later
-
 export function Statistics({ list }: Props) {
   const [dates, setDates] = useState<Dates>({
     startDate: moment(new Date(Date.now() - 604800000)),
     endDate: moment(new Date(Date.now())),
   });
+  console.log('dates', dates);
 
   return (
     <CardLayout
-      title={list.name}
+      title={list?.name}
       description="Current Learning Progress"
       bgColor="#282936"
     >

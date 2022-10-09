@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Draggable } from 'react-beautiful-dnd';
+import { useLocation } from 'react-router';
 import s from './ActiveList.module.scss';
 import { pluralizeString } from '../../../utils/components/pluralizeString';
 import { List } from '../../../@types/entities/List';
@@ -13,17 +14,21 @@ type Props = {
 };
 
 export function DashboardActiveList({ item, index }: Props) {
+  const { pathname } = useLocation();
+  const { currentLists, setCurrentLists } = useActiveLists();
   const [selected, setSelected] = useState(false);
   const { data: listWords } = useGetWordsByListIdQuery(item?.id || 0);
 
-  const { currentLists, setCurrentLists } = useActiveLists();
-
   function selectList() {
     setSelected(state => !state);
-    if (selected) setCurrentLists(currentLists.filter(el => el.id !== item.id));
-    if (!selected) setCurrentLists([...currentLists, item]);
-    // TODO: pass the funciton here which actully selects a specific list
+    if (selected) setCurrentLists((state: List[] | []) => state.filter(el => el.id !== item.id));
+    if (!selected) setCurrentLists((state: List[] | []) => [...state, item]);
   }
+
+  useEffect(() => {
+    setSelected(!!currentLists.find((el: List) => el.id === item.id));
+  }, [pathname, currentLists]);
+
   return (
     <Draggable draggableId={item.id.toString()} index={index}>
       {(provided, snapshot) => (

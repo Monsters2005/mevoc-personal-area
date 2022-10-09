@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { getMediaLink } from '../../../utils/components/getMediaLink';
 import s from './Profile.module.scss';
 import { User } from '../../../@types/entities/User';
 import FallbackImgSelector from '../../../assets/FallbackImgSelector';
+import { Button } from '../../UI/Button/Button';
+import ActionsDropdown, {
+  DropdownItem,
+} from '../../UI/ActionsDropdown/ActionsDropdown';
+import { profileActions } from '../../../constants/sidebar';
+import { useOutsideCheck } from '../../../hooks/useOutsideCheck';
 
 type Props = {
   user: Partial<User>;
@@ -15,6 +22,21 @@ export function SidebarProfile({
   },
 }: Props) {
   const avatarUrl = avatar && getMediaLink(avatar);
+  const [expandOpen, setExpandOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const actionItems = profileActions.map(item => {
+    item.func = () => navigate(item.path || '');
+    delete item.path;
+    return item;
+  });
+
+  const menuRef = useRef(null);
+
+  useOutsideCheck(menuRef, () => {
+    setExpandOpen(false);
+  });
 
   return (
     <div className={s.profile_container}>
@@ -32,9 +54,20 @@ export function SidebarProfile({
           {username}
         </p>
       </div>
-      <button className={s.profile_expand}>
+      <Button
+        ref={menuRef}
+        styles={{ marginLeft: 'auto' }}
+        type="small"
+        onClick={() => setExpandOpen(state => !state)}
+      >
         <GlobalSvgSelector id="expand" />
-      </button>
+      </Button>
+      <div className={s.profile_actions} ref={menuRef}>
+        <ActionsDropdown
+          isOpen={expandOpen}
+          items={actionItems as DropdownItem[]}
+        />
+      </div>
     </div>
   );
 }

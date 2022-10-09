@@ -24,7 +24,11 @@ export function PrivateLayout({
 
   return (
     <div>
-      {isLoading ? <Loader styles={centeredLoader} size={150} /> : children}
+      {isLoading || !user ? (
+        <Loader styles={centeredLoader} size={150} />
+      ) : (
+        children
+      )}
     </div>
   );
 }

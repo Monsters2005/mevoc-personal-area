@@ -9,7 +9,11 @@ type Props = {
 export default function ActiveListsProvider({ children }: Props) {
   const { currentLists: data } = useActiveLists();
 
-  const [currentLists, setCurrentLists] = useState<List[] | []>(data);
+  const [currentLists, setLists] = useState<List[] | []>(data);
+
+  const setCurrentLists = (items: List[] | []) => {
+    setLists(items);
+  };
 
   const stateMemo = useMemo(
     () => ({ currentLists, setCurrentLists }),

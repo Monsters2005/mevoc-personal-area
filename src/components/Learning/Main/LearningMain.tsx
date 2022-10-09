@@ -1,8 +1,20 @@
+import moment from 'moment';
 import React, { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { List } from '../../../@types/entities/List';
 import { Word } from '../../../@types/entities/Word';
+import { Path } from '../../../constants/routes';
+import { useActiveLists } from '../../../context/ActiveLists';
 import { TransitionWrapper } from '../../../layouts/Transition/Transition';
+import { useGetListsByUserIdQuery } from '../../../store/api/listApi';
+import { useGetCurrentUserQuery } from '../../../store/api/userApi';
+import {
+  useGetWordsByListIdQuery,
+  useUpdateWordMutation,
+} from '../../../store/api/wordApi';
 import { cloneObj } from '../../../utils/common/cloneObj';
 import { countPercentage } from '../../../utils/common/countPercentage';
+import { mergeArrays } from '../../../utils/common/mergeArrays';
 import { Queue } from '../../../utils/queue/createQueue';
 import { ModalWrapper } from '../../Modals/Wrapper/ModalWrapper';
 import { ProgressStage } from '../../UI/StagesProgress/StagesProgress';
@@ -18,25 +30,20 @@ import s from './LearningMain.module.scss';
 type Props = {
   stage: ProgressStage;
   updateStages: (item: ProgressStage | null) => void;
-  words: Word[];
 };
 
-export function LearningMain({ words, stage, updateStages }: Props) {
+export function LearningMain({ stage, updateStages }: Props) {
+  const { currentLists } = useActiveLists();
+
+  const { data: user } = useGetCurrentUserQuery();
+  const { refetch: refetchUserLists } = useGetListsByUserIdQuery(
+    user?.id || 0
+  );
+
+  const [updateWord] = useUpdateWordMutation();
+
+  const words = mergeArrays(currentLists.map(el => el.words));
   const stageQueue = useMemo(() => new Queue(cloneObj(words) as Word[]), []);
-  const results = [
-    {
-      name: 'for the test',
-      words: 10,
-      wordsLearned: 0,
-      id: 1,
-    },
-    {
-      name: 'whatever',
-      words: 16,
-      wordsLearned: 0,
-      id: 2,
-    },
-  ];
   const [currentWord, setCurrentWord] = useState(stageQueue.getItem());
   const [passed, setPassed] = useState<Word[] | []>([]);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -45,6 +52,18 @@ export function LearningMain({ words, stage, updateStages }: Props) {
     stageQueue.enqueueAll(cloneObj(words));
     setCurrentWord(stageQueue.getItem());
   }, [stage]);
+
+  useEffect(() => {
+    if (isCompleted && passed.length !== 0) {
+      passed.forEach((item: { id: number }) => {
+        updateWord({
+          id: item.id,
+          dateLearned: moment(new Date()).format('YYYY-MM-DD').toString(),
+        });
+      });
+    }
+    refetchUserLists();
+  }, [isCompleted]);
 
   function updateProgressStage() {
     stage.progress = Math.round(
@@ -70,7 +89,7 @@ export function LearningMain({ words, stage, updateStages }: Props) {
   function completeTestWordHandler(mistakes: number) {
     if (currentWord) {
       if (mistakes < MAX_MISTAKES_VALUE_TEST) {
-        setPassed(items => [...items, currentWord]);
+        setPassed((items: any) => [...items, currentWord]);
       }
       stageQueue.dequeue();
       setCurrentWord(stageQueue.getItem());
@@ -80,10 +99,27 @@ export function LearningMain({ words, stage, updateStages }: Props) {
     if (stage.id === MAX_STAGES && stageQueue.size() === 0) {
       setIsCompleted(true);
     }
-
-    // TODO: Call a mutation in the end which would pass the list with passed
-    // words and remove them from the list
   }
+
+  function getResults(items: Word[]) {
+    const results = currentLists.map((item, i) => {
+      const learned = item.words.filter(el => {
+        console.log(items, el);
+        return items.find(word => word.id === el.id);
+      });
+
+      return {
+        name: item.name,
+        id: i,
+        words: item.words.length,
+        wordsLearned: learned.length,
+      };
+    });
+
+    return results;
+  }
+
+  const summary = passed ? getResults(passed) : [];
 
   return (
     <div className={s.learning_container}>
@@ -95,7 +131,7 @@ export function LearningMain({ words, stage, updateStages }: Props) {
       />
       <TransitionWrapper inState={isCompleted}>
         <ModalWrapper>
-          <CompletionMessage progresses={results} />
+          <CompletionMessage progresses={summary} />
         </ModalWrapper>
       </TransitionWrapper>
     </div>

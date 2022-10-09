@@ -17,8 +17,8 @@ export function UserCard({
     lastName,
     avatar,
     location,
-    langLearning,
-    langNative,
+    learningLang,
+    nativeLang,
   },
 }: Props) {
   const avatarUrl = avatar && getMediaLink(avatar);
@@ -42,11 +42,11 @@ export function UserCard({
 
         <LanguageField
           label="Native Language"
-          language={langNative || 'English'}
+          language={nativeLang || 'English'}
         />
         <LanguageField
           label="Currently Learning"
-          language={langLearning || 'English'}
+          language={learningLang || 'English'}
         />
       </div>
     </div>

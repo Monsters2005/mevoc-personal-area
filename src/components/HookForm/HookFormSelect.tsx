@@ -9,6 +9,7 @@ type Props = {
   defaultSelected: Option;
   label: string;
   name: string;
+  search?: boolean;
 };
 
 export default function HookFormSelect({
@@ -16,6 +17,7 @@ export default function HookFormSelect({
   defaultSelected,
   label,
   name,
+  search,
   ...props
 }: Props) {
   const {
@@ -43,6 +45,7 @@ export default function HookFormSelect({
             isError={!!errors[name]}
             error={errors.multiple && (errors.multiple as FieldError).message}
             styles={dropdownStyles}
+            searchBar={search}
           />
         )}
         control={control}

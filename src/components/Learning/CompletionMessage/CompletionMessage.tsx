@@ -23,7 +23,7 @@ type ListProgress = {
 };
 
 type Props = {
-  progresses: ListProgress[];
+  progresses: ListProgress[] | [];
 };
 
 function WordsInfo({
@@ -40,6 +40,12 @@ function WordsInfo({
   );
 }
 
+const buttonStyles = {
+  width: '50px',
+  height: '50px',
+  margin: 'auto 0',
+};
+
 export default function CompletionMessage({ progresses }: Props) {
   const [prevEl, prevElRef] = useSwiperRef<HTMLButtonElement>();
   const [nextEl, nextElRef] = useSwiperRef<HTMLButtonElement>();
@@ -55,12 +61,17 @@ export default function CompletionMessage({ progresses }: Props) {
       <h6 className={s.completion_description}>{message?.message}</h6>
 
       <div className={s.completion_progresses}>
-        <button type="button" className={s.completion_btn} ref={prevElRef}>
+        <Button
+          styles={buttonStyles}
+          type="small"
+          ref={prevElRef}
+          onClick={() => null}
+        >
           <LearningSvgSelector id="arrow-left" />
-        </button>
+        </Button>
         <Swiper
           modules={[Navigation]}
-          navigation={{ prevEl, nextEl }}
+          navigation={progresses.length > 1 && { prevEl, nextEl }}
           slidesPerView={1}
         >
           {progresses.map((item: ListProgress) => {
@@ -87,9 +98,14 @@ export default function CompletionMessage({ progresses }: Props) {
             );
           })}
         </Swiper>
-        <button type="button" className={s.completion_btn} ref={nextElRef}>
+        <Button
+          styles={buttonStyles}
+          type="small"
+          ref={nextElRef}
+          onClick={() => null}
+        >
           <LearningSvgSelector id="arrow-right" />
-        </button>
+        </Button>
       </div>
       <Button
         styles={{ ...btnStyles, padding: '6px 14px', marginTop: '30px' }}

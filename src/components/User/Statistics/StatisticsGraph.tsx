@@ -22,7 +22,7 @@ type Props = {
 };
 
 export function StatisticsGraph({ list, dateRange }: Props) {
-  const filteredWordList = list.words.filter(el => el.dateLearned);
+  const filteredWordList = list?.words.filter(el => el.dateLearned) || [];
   const sortedByDates = sortArrayByKey(filteredWordList, 'dateLearned');
   const datesObj = fillRange(sortedByDates);
 

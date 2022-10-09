@@ -1,5 +1,7 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
 import { User } from '../../@types/entities/User';
 import { DashboardActiveLists } from '../../components/Dashboard/ActiveLists/ActiveLists';
@@ -11,6 +13,7 @@ import { Dropdown } from '../../components/UI/DropDown/Dropdown';
 import { Option } from '../../components/UI/DropDown/types';
 import { languages } from '../../constants/languages';
 import { Path } from '../../constants/routes';
+import { useActiveLists } from '../../context/ActiveLists';
 import { useModal } from '../../context/ModalContext';
 import { wordPack } from '../../mocks/pack';
 import { startBtn } from '../../shared/styles/button-variations';
@@ -20,10 +23,12 @@ import s from './Dashboard.module.scss';
 
 export function DashboardPage() {
   const { data: user } = useGetCurrentUserQuery();
-  const { data: userLists } = useGetListsByUserIdQuery(user?.id || 0);
+  const { data: userLists, refetch: refetchUserLists } =
+    useGetListsByUserIdQuery(user?.id || 0);
+  const { currentLists } = useActiveLists();
 
   const langOption =
-    languages.find(item => item.name === user?.langNative) || languages[0];
+    languages.find(item => item.name === user?.nativeLang) || languages[0];
   const [lang, setLang] = useState<Option | undefined>(langOption);
 
   const navigate = useNavigate();
@@ -31,6 +36,8 @@ export function DashboardPage() {
   const handleListAdd = () => {
     navigate(`/${Path.LISTS}`);
   };
+
+  console.log('date', moment(new Date()).format('YYYY-MM-DD').toString());
 
   return (
     <div className={s.dashboardpage_container}>
@@ -64,6 +71,7 @@ export function DashboardPage() {
             type="primary"
             styles={startBtn}
             onClick={() => navigate(`/${Path.LEARNING}`)}
+            disabled={!currentLists.find(el => el.words.length > 0)}
           >
             start learning
           </Button>
