@@ -1,6 +1,10 @@
 import classNames from 'classnames';
-import React, { CSSProperties, SetStateAction, useState } from 'react';
+import React, {
+  CSSProperties, SetStateAction, useRef, useState,
+} from 'react';
 import { UISvgSelector } from '../../../assets/icons/UI/SvgSelector';
+import { useOutsideCheck } from '../../../hooks/useOutsideCheck';
+import { TransitionWrapper } from '../../../layouts/Transition/Transition';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { makeSuspensionString } from '../../../utils/common/makeSuspensionString';
 import s from './Dropdown.module.scss';
@@ -19,6 +23,7 @@ type DropdownProps = {
   side?: 'left' | 'right';
   isError?: boolean;
   error?: string;
+  searchBar?: boolean;
 };
 
 export function Dropdown({
@@ -33,8 +38,23 @@ export function Dropdown({
   isError,
   error,
   listStyles,
+  searchBar,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [result, setResult] = useState<Option[] | undefined>(options);
+
+  const transitionStyles = {
+    entering: { opacity: 1, zIndex: 100 },
+    entered: { opacity: 1, zIndex: 10 },
+    exiting: { opacity: 0, zIndex: 10, pointerEvents: 'none' },
+    exited: { opacity: 0, zIndex: -10, pointerEvents: 'none' },
+  };
+
+  const dropdownRef = useRef(null);
+
+  useOutsideCheck(dropdownRef, () => {
+    setIsOpen(false);
+  });
 
   return (
     <>
@@ -72,16 +92,23 @@ export function Dropdown({
             <UISvgSelector id="arrow-down" />
           </div>
         </button>
+        <TransitionWrapper
+          inState={isOpen}
+          transitionStyles={transitionStyles}
+        >
+          <DropdownList
+            setIsOpen={(bool: SetStateAction<boolean>) => setIsOpen(bool)}
+            selectedItem={selectedItem}
+            setSelectedItem={setSelectedItem}
+            options={searchBar ? result : options}
+            setResult={(elems: Option[]) => setResult(elems)}
+            listTitle={listTitle}
+            allowNoneSelected={allowNoneSelected}
+            searchBar={searchBar}
+            listStyles={listStyles}
+          />
+        </TransitionWrapper>
 
-        <DropdownList
-          isOpen={isOpen}
-          selectedItem={selectedItem}
-          setSelectedItem={setSelectedItem}
-          options={options}
-          listTitle={listTitle}
-          allowNoneSelected={allowNoneSelected}
-          listStyles={listStyles}
-        />
         {isError && (
           <div className={s.dropdown_error}>
             <GlobalSvgSelector id="error" />

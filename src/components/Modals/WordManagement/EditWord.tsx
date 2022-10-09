@@ -37,7 +37,7 @@ export default function EditWordModal({
         <ModalLayout
           title="Edit a word"
           btnText="Edit"
-          onClick={() => console.log()}
+          onClick={values.handleSubmit(submitHandler)}
         >
           <div className={s.wordmanage_container}>
             <form
@@ -53,10 +53,10 @@ export default function EditWordModal({
                 defaultValue={wordNative}
               />
               <HookFormInput
-                name="wordNative"
+                name="wordLearning"
                 placeholder="Your word"
                 styles={inputModal}
-                type="wordNative"
+                type="wordLearning"
                 label="Learning language"
                 defaultValue={wordLearning}
               />

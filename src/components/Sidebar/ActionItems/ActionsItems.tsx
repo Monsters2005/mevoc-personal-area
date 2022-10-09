@@ -12,8 +12,14 @@ type Props = {
 export function SidebarActionItems({ items, onGoToHelp, onSignOut }: Props) {
   return (
     <div className={s.bottomblock_container}>
-      <ActionsItem item={items[0]} action={onSignOut} />
-      <ActionsItem item={items[1]} action={onGoToHelp} />
+      <ActionsItem
+        item={items.find(el => el.key === 'sign_out') || items[0]}
+        action={onSignOut}
+      />
+      <ActionsItem
+        item={items.find(el => el.key === 'help') || items[0]}
+        action={onGoToHelp}
+      />
     </div>
   );
 }
