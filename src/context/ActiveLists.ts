@@ -1,11 +1,10 @@
 import React, { createContext, useContext } from 'react';
-import { Callback } from 'yup/lib/types';
 import { List } from '../@types/entities/List';
 
 type ActiveLists = {
   currentLists: List[] | [];
   setCurrentLists: any;
-  // (item: List[] | []) => void
+  //! remove any for fucks sake
 };
 
 const defaultState: ActiveLists = {

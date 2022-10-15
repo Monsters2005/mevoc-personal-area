@@ -5,6 +5,7 @@ import { CustomError } from '../../../@types/entities/ErrorObject';
 import { NotificationType } from '../../../@types/entities/Notification';
 import { Word } from '../../../@types/entities/Word';
 import { useModal } from '../../../context/ModalContext';
+import { useSelectedWords } from '../../../context/SelectedWords';
 import { eventBus, EventTypes } from '../../../packages/EventBus';
 import { useUpdateWordMutation } from '../../../store/api/wordApi';
 import { makeSuspensionString } from '../../../utils/common/makeSuspensionString';
@@ -15,39 +16,29 @@ import s from './WordCard.module.scss';
 
 type Props = {
   word: Word;
+  onEditWord: (data: EditWordDto, word: Word) => void;
 };
 
-export function DashboardWordCard({ word }: Props) {
+export function DashboardWordCard({ word, onEditWord }: Props) {
+  const { selectedWords, setSelectedWords } = useSelectedWords();
   const [selected, setSelected] = useState(false);
   const { setCurrentModal } = useModal();
-  const [updateWord] = useUpdateWordMutation();
-
-  console.log('word', word.wordLearning);
 
   const handleEdit = (data: EditWordDto) => {
-    const newWord = { ...data, id: word.id, dateLearned: word.dateLearned };
-    if (JSON.stringify(newWord) !== JSON.stringify(word)) {
-      try {
-        updateWord(newWord);
-        eventBus.emit(EventTypes.notification, {
-          message: 'The word was updated.',
-          title: 'Success',
-          type: NotificationType.SUCCESS,
-        });
-      } catch (e) {
-        eventBus.emit(EventTypes.notification, {
-          message: (e as CustomError).data.message,
-          title: 'Failed to update the word',
-          type: NotificationType.DANGER,
-        });
-      }
-    }
+    onEditWord(data, word);
   };
 
   return (
     <div
-      onClick={() => setSelected(!selected)}
-      onKeyPress={() => setSelected(!selected)}
+      onClick={e => {
+        if (e.currentTarget !== e.target) return;
+        if (selected) {
+          setSelectedWords(selectedWords.filter(el => el.id !== word.id));
+        } else {
+          setSelectedWords([...selectedWords, word]);
+        }
+        setSelected(prev => !prev);
+      }}
       role="presentation"
       className={classNames(s.wordcard_container, {
         [s.wordcard_active]: selected,

@@ -1,0 +1,128 @@
+@use '@styles/shared/variables.scss' as *;
+
+.steps {
+  &-container {
+    display: flex;
+    align-items: center;
+  }
+  &-item {
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+    &-round {
+      width: 130px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.2s;
+      position: relative;
+
+      cursor: pointer;
+      user-select: none;
+
+      & span {
+        width: 33px;
+        height: 33px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 2px solid;
+        border-radius: 50px;
+        transition: all 0.2s;
+
+        & b {
+          font-size: 1.1em;
+          font-style: normal;
+          font-weight: 600;
+
+          padding: 0;
+          margin: 0;
+          transition: all 0.2s;
+        }
+      }
+
+      & p {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 0.9em;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        transition: all 0.2s;
+      }
+    }
+    &-state {
+      &-inactive {
+        & span {
+          border-color: #353742;
+          & b {
+            color: #353742;
+          }
+        }
+        & p {
+          color: #353742;
+        }
+      }
+      &-active {
+        & span {
+          border-color: $primary-color;
+
+          & b {
+            color: $primary-color;
+          }
+        }
+        & p {
+          color: $primary-color;
+        }
+      }
+      &-complete {
+        & span {
+          border-color: rgba($primary-color, 0.6);
+
+          & b {
+            color: rgba($primary-color, 0.6);
+          }
+        }
+        & p {
+          color: rgba($primary-color, 0.6);
+        }
+      }
+    }
+  }
+  &-line {
+    &-container {
+      width: 88px;
+      height: 2px;
+
+      background: #353742;
+      position: absolute;
+      left: 66%;
+      top: 20%;
+
+      display: flex;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    &-common {
+      height: 2px;
+      width: 100%;
+      background: rgba($primary-color, 0.6);
+      border: none;
+      transition: all 0.4s;
+
+      margin: 0;
+      padding: 0;
+    }
+    &-inactive {
+      transform: translateX(-100px);
+    }
+    &-complete {
+      transform: translateX(0);
+    }
+  }
+}

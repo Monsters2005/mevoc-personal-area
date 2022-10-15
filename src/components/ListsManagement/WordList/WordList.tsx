@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CreateWordDto } from '../../../@types/dto/word/create.dto';
+import { EditWordDto } from '../../../@types/dto/word/edit.dto';
 import { CustomError } from '../../../@types/entities/ErrorObject';
 import { NotificationType } from '../../../@types/entities/Notification';
 import { Word } from '../../../@types/entities/Word';
@@ -9,6 +10,7 @@ import { useGetCurrentUserQuery } from '../../../store/api/userApi';
 import {
   useCreateWordMutation,
   useGetWordsByListIdQuery,
+  useUpdateWordMutation,
 } from '../../../store/api/wordApi';
 import AddWordModal from '../../Modals/WordManagement/AddWord';
 import { ListsManagementSvgSelector } from '../ListsManagementSvgSelector';
@@ -29,6 +31,7 @@ export function DashboardWordList({ selectedList }: Props) {
     skip: !currentUser?.id,
   });
   const [createWord] = useCreateWordMutation();
+  const [updateWord] = useUpdateWordMutation();
   const [words, setWords] = useState<Word[] | []>([]);
 
   const handleWord = async (data: CreateWordDto) => {
@@ -62,6 +65,27 @@ export function DashboardWordList({ selectedList }: Props) {
     }
   };
 
+  const handleEdit = (data: EditWordDto, word: Word) => {
+    const newWord = { ...data, id: word.id, dateLearned: word.dateLearned };
+    if (JSON.stringify(newWord) !== JSON.stringify(word)) {
+      try {
+        updateWord(newWord);
+        eventBus.emit(EventTypes.notification, {
+          message: 'The word was updated.',
+          title: 'Success',
+          type: NotificationType.SUCCESS,
+        });
+        refetchListWords();
+      } catch (e) {
+        eventBus.emit(EventTypes.notification, {
+          message: (e as CustomError).data.message,
+          title: 'Failed to update the word',
+          type: NotificationType.DANGER,
+        });
+      }
+    }
+  };
+
   useEffect(() => {
     if (wordsData) setWords(wordsData);
   }, [wordsData]);
@@ -79,7 +103,7 @@ export function DashboardWordList({ selectedList }: Props) {
         <ListsManagementSvgSelector id="plus" />
       </button>
       {words.map((word: Word) => (
-        <DashboardWordCard key={word.id} word={word} />
+        <DashboardWordCard key={word.id} word={word} onEditWord={handleEdit} />
       ))}
     </div>
   );

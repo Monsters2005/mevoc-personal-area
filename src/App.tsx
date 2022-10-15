@@ -21,6 +21,7 @@ import { SignInPage } from './pages/SignIn/SignIn';
 import { useGetCurrentUserQuery } from './store/api/userApi';
 import { Loader } from './components/UI/Loader/Loader';
 import { TransitionWrapper } from './layouts/Transition/Transition';
+import SelectedWordsProvider from './providers/SelectedWordsProvider';
 
 function App() {
   const { pathname } = useLocation();
@@ -52,7 +53,11 @@ function App() {
                     <Route path={Path.HOME} element={<DashboardPage />} />
                     <Route
                       path={Path.LISTS}
-                      element={<ListManagementPage />}
+                      element={(
+                        <SelectedWordsProvider>
+                          <ListManagementPage />
+                        </SelectedWordsProvider>
+                      )}
                     />
                     <Route path={Path.PROFILE} element={<UserProfilePage />} />
                     <Route path={Path.SETTINGS} element={<SettingsPage />} />

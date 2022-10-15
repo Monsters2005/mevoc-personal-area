@@ -6,6 +6,7 @@ import { CustomError } from '../../@types/entities/ErrorObject';
 import { List } from '../../@types/entities/List';
 import { NotificationType } from '../../@types/entities/Notification';
 import { User } from '../../@types/entities/User';
+import { Word } from '../../@types/entities/Word';
 import { DashboardWordList } from '../../components/ListsManagement/WordList/WordList';
 import AddListModal from '../../components/Modals/ListsManagement/AddList/AddList';
 import RenameListModal from '../../components/Modals/ListsManagement/RenameList/RenameList';
@@ -19,6 +20,7 @@ import { Dropdown } from '../../components/UI/DropDown/Dropdown';
 import { Option } from '../../components/UI/DropDown/types';
 import { Input } from '../../components/UI/Input/Input';
 import { useModal } from '../../context/ModalContext';
+import { useSelectedWords } from '../../context/SelectedWords';
 import { useOutsideCheck } from '../../hooks/useOutsideCheck';
 import { PageLayout } from '../../layouts/PageLayout/PageLayout';
 import { list } from '../../mocks/list';
@@ -35,6 +37,8 @@ import { pluralizeString } from '../../utils/components/pluralizeString';
 import s from './ListManagement.module.scss';
 
 export default function ListManagementPage() {
+  const { selectedWords } = useSelectedWords();
+
   const [options, setOptions] = useState<Option[] | []>([]);
   const [selectedList, setSelectedList] = useState<List | null>(null);
   const [expandOpen, setExpandOpen] = useState<Number | null>(null);
@@ -169,6 +173,38 @@ export default function ListManagementPage() {
     }
   };
 
+  const handleDeleteWords = async () => {
+    console.log('obj', {
+      ...selectedList,
+      id: selectedList?.id || 0,
+      words: selectedList?.words.filter(
+        (o1: Word) => !selectedWords.some(o2 => o1.id === o2.id)
+      ),
+    });
+
+    try {
+      await updateList({
+        ...selectedList,
+        id: selectedList?.id || 0,
+        words: selectedList?.words.filter(
+          (o1: Word) => !selectedWords.some(o2 => o1.id === o2.id)
+        ),
+      });
+      refetchUserLists();
+      eventBus.emit(EventTypes.notification, {
+        message: 'Selected words were deleted',
+        title: 'Success',
+        type: NotificationType.SUCCESS,
+      });
+    } catch (e) {
+      eventBus.emit(EventTypes.notification, {
+        message: 'Failed to delete selected words',
+        title: 'Error occured',
+        type: NotificationType.DANGER,
+      });
+    }
+  };
+
   return (
     <PageLayout title="Lists management">
       <div className={s.listmanagement_container}>
@@ -210,7 +246,7 @@ export default function ListManagementPage() {
             >
               <GlobalSvgSelector id="search" />
             </Input>
-            <Button type="small" onClick={() => console.log('remove word')}>
+            <Button type="small" onClick={handleDeleteWords}>
               <GlobalSvgSelector id="delete" />
             </Button>
           </div>
