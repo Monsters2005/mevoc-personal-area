@@ -9,6 +9,7 @@ import schema from './validation';
 import s from './AddList.module.scss';
 import { ModalWrapper } from '../../Wrapper/ModalWrapper';
 import { useGetCurrentUserQuery } from '../../../../store/api/userApi';
+import { useModal } from '../../../../context/ModalContext';
 
 type Props = {
   onAddList: SubmitHandler<AddListDto>;
@@ -19,9 +20,11 @@ export default function AddListModal({ onAddList }: Props) {
     resolver: yupResolver(schema),
   });
   const { data: currentUser } = useGetCurrentUserQuery();
+  const { setCurrentModal } = useModal();
 
   const submitHandler = (data: AddListDto) => {
     onAddList({ ...data, userId: currentUser?.id || 0 });
+    setCurrentModal(null);
   };
 
   return (

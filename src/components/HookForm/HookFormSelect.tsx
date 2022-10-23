@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from 'react';
+import React, { CSSProperties, SetStateAction, useState } from 'react';
 import { Controller, FieldError, useFormContext } from 'react-hook-form';
 import { dropdownStyles } from '../../shared/styles/dropdown-variations';
 import { Dropdown } from '../UI/DropDown/Dropdown';
@@ -10,6 +10,8 @@ type Props = {
   label: string;
   name: string;
   search?: boolean;
+  styles?: CSSProperties;
+  listStyles?: CSSProperties;
 };
 
 export default function HookFormSelect({
@@ -18,6 +20,8 @@ export default function HookFormSelect({
   label,
   name,
   search,
+  styles,
+  listStyles,
   ...props
 }: Props) {
   const {
@@ -25,6 +29,8 @@ export default function HookFormSelect({
     formState: { errors },
   } = useFormContext();
   const [state, setState] = useState<Option | undefined>(defaultSelected);
+
+  console.log(styles);
 
   return (
     <div>
@@ -44,7 +50,8 @@ export default function HookFormSelect({
             label={label}
             isError={!!errors[name]}
             error={errors.multiple && (errors.multiple as FieldError).message}
-            styles={dropdownStyles}
+            styles={styles || dropdownStyles}
+            listStyles={listStyles}
             searchBar={search}
           />
         )}

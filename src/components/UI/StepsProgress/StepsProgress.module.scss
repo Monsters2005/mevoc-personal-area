@@ -1,16 +1,16 @@
 @use '@styles/shared/variables.scss' as *;
 
 .steps {
-  &-container {
+  &_container {
     display: flex;
     align-items: center;
   }
-  &-item {
+  &_item {
     &-container {
       display: flex;
       align-items: center;
     }
-    &-round {
+    &_round {
       width: 130px;
 
       display: flex;
@@ -56,8 +56,8 @@
         transition: all 0.2s;
       }
     }
-    &-state {
-      &-inactive {
+    &_state {
+      &_inactive {
         & span {
           border-color: #353742;
           & b {
@@ -68,34 +68,34 @@
           color: #353742;
         }
       }
-      &-active {
+      &_active {
         & span {
-          border-color: $primary-color;
+          border-color: $accent-color;
 
           & b {
-            color: $primary-color;
+            color: $accent-color;
           }
         }
         & p {
-          color: $primary-color;
+          color: $accent-color;
         }
       }
-      &-complete {
+      &_complete {
         & span {
-          border-color: rgba($primary-color, 0.6);
+          border-color: rgba($accent-color, 0.6);
 
           & b {
-            color: rgba($primary-color, 0.6);
+            color: rgba($accent-color, 0.6);
           }
         }
         & p {
-          color: rgba($primary-color, 0.6);
+          color: rgba($accent-color, 0.6);
         }
       }
     }
   }
-  &-line {
-    &-container {
+  &_line {
+    &_container {
       width: 88px;
       height: 2px;
 
@@ -108,20 +108,20 @@
       align-items: center;
       overflow-x: hidden;
     }
-    &-common {
+    &_common {
       height: 2px;
       width: 100%;
-      background: rgba($primary-color, 0.6);
+      background: rgba($accent-color, 0.6);
       border: none;
       transition: all 0.4s;
 
       margin: 0;
       padding: 0;
     }
-    &-inactive {
+    &_inactive {
       transform: translateX(-100px);
     }
-    &-complete {
+    &_complete {
       transform: translateX(0);
     }
   }

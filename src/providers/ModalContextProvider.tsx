@@ -1,5 +1,6 @@
 import React, { ReactNode, useMemo, useState } from 'react';
 import { ModalContext, useModal } from '../context/ModalContext';
+import { TransitionWrapper } from '../layouts/Transition/Transition';
 
 type Props = {
   children: ReactNode;
@@ -16,6 +17,10 @@ export default function ModalProvider({ children }: Props) {
   );
 
   return (
-    <ModalContext.Provider value={stateMemo}>{children}</ModalContext.Provider>
+    <ModalContext.Provider value={stateMemo}>
+      {/* <TransitionWrapper inState={!!currentModal}> */}
+      {children}
+      {/* </TransitionWrapper> */}
+    </ModalContext.Provider>
   );
 }

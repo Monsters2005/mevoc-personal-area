@@ -1,9 +1,9 @@
+import classNames from 'classnames';
 import React from 'react';
-import './StepsProgress.module.scss';
+import s from './StepsProgress.module.scss';
 
 export type Step = {
   index: number;
-  value: string;
 };
 
 type StepsProps = {
@@ -20,7 +20,7 @@ type StepProps = {
 };
 
 function StepItem({
-  item: { index, value },
+  item: { index },
   activeStep,
   setActiveStep,
   length,
@@ -29,25 +29,22 @@ function StepItem({
     <div
       role="presentation"
       onClick={() => setActiveStep(index)}
-      className={`steps-item-round ${
-        index > activeStep && 'steps-item-state-inactive'
-      }
-          ${index === activeStep && 'steps-item-state-active'}
-          ${index < activeStep && 'steps-item-state-complete'}
-      `}
+      className={classNames(s.steps_item_round, {
+        [s.steps_item_state_inactive]: index > activeStep,
+        [s.steps_item_state_active]: index === activeStep,
+        [s.steps_item_state_complete]: index < activeStep,
+      })}
     >
       <span>
         <b>{index}</b>
       </span>
-      <p>{value}</p>
       {length !== index && (
-        <div className="steps-line-container">
+        <div className={s.steps_line_container}>
           <hr
-            className={`steps-line-common ${
-              index < activeStep
-                ? 'steps-line-complete'
-                : 'steps-line-inactive'
-            }`}
+            className={classNames(s.steps_line_common, {
+              [s.steps_line_complete]: index < activeStep,
+              [s.steps_line_inactive]: index >= activeStep,
+            })}
           />
         </div>
       )}
@@ -61,9 +58,9 @@ export default function StepsProgress({
   setActiveStep,
 }: StepsProps) {
   return (
-    <div className="steps-container">
+    <div className={s.steps_container}>
       {steps.map((item: Step) => (
-        <div className="steps-item-container" key={item.index}>
+        <div className={s.steps_item_container} key={item.index}>
           <StepItem
             length={steps.length}
             item={item}

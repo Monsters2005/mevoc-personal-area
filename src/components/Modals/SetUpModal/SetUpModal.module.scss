@@ -1,0 +1,51 @@
+@use '@styles/shared/variables.scss' as *;
+
+.setup {
+  &_container {
+    width: 628px;
+    height: 526px;
+    left: 2px;
+    top: 0px;
+
+    background-color: #2a2b38;
+    background-image: url('../../../assets/images/background.svg');
+    border-radius: 10px;
+
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  &_title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: $primary-color;
+  }
+  &_subtitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    max-width: 450px;
+
+    margin: 0;
+    padding: 0;
+
+    color: rgba($primary-color, 0.7);
+  }
+  &_progress {
+    margin-top: 25px;
+  }
+  &_content {
+    margin-top: 30px;
+    &_container {
+      display: flex;
+      flex-direction: column;
+      grid-gap: 20px;
+    }
+  }
+}

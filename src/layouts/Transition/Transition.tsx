@@ -16,7 +16,7 @@ type Props = {
   transitionStyles?: State;
 };
 
-const defaultTransitionStyles = {
+const defaultTransitionStyles: State = {
   entering: { opacity: 1, zIndex: 100 },
   entered: { opacity: 1, zIndex: 100 },
   exiting: { opacity: 0 },

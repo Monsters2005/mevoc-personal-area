@@ -8,6 +8,7 @@ import { DashboardActiveLists } from '../../components/Dashboard/ActiveLists/Act
 import { DashboardDailyProgress } from '../../components/Dashboard/DailyProgress/DailyProgress';
 import { DashboardGreeting } from '../../components/Dashboard/Greeting/Greeting';
 import { DashboardWordPacks } from '../../components/Dashboard/WordPacks/WordPacks';
+import SetUpModal from '../../components/Modals/SetUpModal/SetUpModal';
 import { Button } from '../../components/UI/Button/Button';
 import { Dropdown } from '../../components/UI/DropDown/Dropdown';
 import { Option } from '../../components/UI/DropDown/types';
@@ -26,6 +27,7 @@ export function DashboardPage() {
   const { data: userLists, refetch: refetchUserLists } =
     useGetListsByUserIdQuery(user?.id || 0);
   const { currentLists } = useActiveLists();
+  const { setCurrentModal } = useModal();
 
   const langOption =
     languages.find(item => item.name === user?.nativeLang) || languages[0];
@@ -37,7 +39,16 @@ export function DashboardPage() {
     navigate(`/${Path.LISTS}`);
   };
 
-  console.log('date', moment(new Date()).format('YYYY-MM-DD').toString());
+  useEffect(() => {
+    if (user)
+      setCurrentModal(
+        <SetUpModal
+          onFillData={() =>
+            console.log('update the user fields with data from the popups')
+          }
+        />
+      );
+  }, [user]);
 
   return (
     <div className={s.dashboardpage_container}>

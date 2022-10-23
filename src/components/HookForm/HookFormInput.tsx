@@ -43,6 +43,7 @@ export default function HookFormInput({
           {...rest}
           {...props}
           isError={!!errors[name]}
+          // value={defaultValue}
           error={errors[name]?.message as string}
         />
       )}

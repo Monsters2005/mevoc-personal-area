@@ -45,6 +45,7 @@
     transition: all 0.1s;
     margin-top: 10px;
     z-index: -11;
+    font-size: 18px;
 
     &:hover {
       background: rgba($active-color, 0.1);
@@ -65,7 +66,6 @@
       & p {
         font-style: normal;
         font-weight: 500;
-        font-size: 18px;
         line-height: 27px;
 
         color: $primary-color;
