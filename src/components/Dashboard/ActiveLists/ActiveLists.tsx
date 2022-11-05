@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+import { merge } from 'lodash';
 import { CardLayout } from '../../../layouts/CardLayout/CardLayout';
 import { Button } from '../../UI/Button/Button';
 import { DashboardActiveList } from '../ActiveList/ActiveList';
@@ -10,7 +11,9 @@ import {
   primarySmallLists,
   primarySmallNoLists,
 } from '../../../shared/styles/button-variations';
-import { list } from '../../../mocks/list';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
+import translations from '../Dashboard.i18n.json';
+import common from '../../UI/Common.i18n.json';
 
 type Props = {
   onAddList: () => void;
@@ -30,15 +33,17 @@ export function DashboardActiveLists({ onAddList, lists }: Props) {
     setItems(newItems);
   };
 
+  const { t } = useLocalTranslation(merge(translations, common));
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <CardLayout title="Active Lists">
+      <CardLayout title={t('activeLists')}>
         <Button
           type="primary"
           onClick={() => onAddList()}
           styles={items ? primarySmallLists : primarySmallNoLists}
         >
-          Add
+          {t('add')}
         </Button>
         <div className={s.activelists_container}>
           {items?.length ? (
@@ -58,7 +63,7 @@ export function DashboardActiveLists({ onAddList, lists }: Props) {
             </Droppable>
           ) : (
             <div className={s.activelists_none}>
-              <p>You don’t have any added lists at the moment.</p>
+              <p>{t('noLists')}</p>
             </div>
           )}
         </div>

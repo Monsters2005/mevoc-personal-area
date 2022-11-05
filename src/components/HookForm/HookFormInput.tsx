@@ -33,6 +33,7 @@ export default function HookFormInput({
     control,
     formState: { errors },
   } = useFormContext();
+  console.log(!!errors[name]);
   return (
     <Controller
       name={name}

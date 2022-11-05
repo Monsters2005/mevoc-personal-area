@@ -1,0 +1,74 @@
+{
+  "en": {
+    "activeLists": "Active Lists",
+    "yourProgress": "Your progress",
+    "progressSubtitle": "Current progress on selected lists",
+    "noLists": "You don’t have any added lists at the moment.",
+    "noProgress": "Your progress on the learned words from the currently active lists.",
+    "wordPacks": "Word packs",
+    "progressHint": "Here your progress from the selected lists will be displayed.",
+    "dailySelect": "Please select lists to see the progress.",
+    "outOf": "Out of",
+    "startLearning": "Start learning"
+  },
+  "ru": {
+    "activeLists": "Выбранные списки",
+    "yourProgress": "Ваш прогресс",
+    "progressSubtitle": "Текущий прогресс в выбранных списках",
+    "noLists": "В данный момент у вас нет добавленных списков",
+    "noProgress": "Ваш прогресс в выученных словах из текущих активных списков",
+    "wordPacks": "Наборы слов",
+    "progressHint": "Здесь будет отображаться ваш прогресс из выбранных списков",
+    "dailySelect": "Пожалуйста, выберите списки, чтобы увидеть прогресс",
+    "outOf": "Из",
+    "startLearning": "Начать обучение"
+  },
+  "de": {
+    "activeLists": "Aktive Listen",
+    "yourProgress": "Dein Fortschritt",
+    "progressSubtitle": "Aktueller Fortschritt auf ausgewählten Listen",
+    "noLists": "Sie haben im Moment keine hinzugefügten Listen",
+    "noProgress": "Ihr Fortschritt bei den gelernten Wörtern aus den derzeit aktiven Listen",
+    "wordPacks": "Wortpakete",
+    "progressHint": "Hier wird Ihr Fortschritt aus den ausgewählten Listen angezeigt",
+    "dailySelect": "Bitte wählen Sie Listen aus, um den Fortschritt zu sehen",
+    "outOf": "Aus",
+    "startLearning": "beginne zu lernen"
+  },
+  "fr": {
+    "activeLists": "Listes actives",
+    "yourProgress": "Votre progression",
+    "progressSubtitle": "Progression actuelle sur les listes sélectionnées",
+    "noLists": "Vous n'avez aucune liste ajoutée pour le moment",
+    "noProgress": "Votre progression sur les mots appris des listes actuellement actives",
+    "wordPacks": "Packs de mots",
+    "progressHint": "Votre progression dans les listes sélectionnées sera affichée ici",
+    "dailySelect": "Veuillez sélectionner des listes pour voir la progression",
+    "outOf": "hors de",
+    "startLearning": "Commencer à apprendre"
+  },
+  "es": {
+    "activeLists": "Listas activas",
+    "yourProgress": "Tu progreso",
+    "progressSubtitle": "Progreso actual en las listas seleccionadas",
+    "noLists": "No tienes ninguna lista agregada en este momento",
+    "noProgress": "Tu progreso en las palabras aprendidas de las listas actualmente activas",
+    "wordPacks": "Paquetes de palabras",
+    "progressHint": "Aquí se mostrará tu progreso de las listas seleccionadas",
+    "dailySelect": "Por favor seleccione listas para ver el progreso",
+    "outOf": "Fuera de",
+    "startLearning": "comienza a aprender"
+  },
+  "se": {
+    "activeLists": "Aktiva listor",
+    "yourProgress": "Dina framsteg",
+    "progressSubtitle": "Aktuella framsteg på valda listor",
+    "noLists": "Du har inga tillagda listor för tillfället",
+    "noProgress": "Dina framsteg med de inlärda orden från de för närvarande aktiva listorna",
+    "wordPacks": "Ordpaket",
+    "progressHint": "Här kommer dina framsteg från de valda listorna att visas",
+    "dailySelect": "Välj listor för att se framstegen",
+    "outOf": "Out of",
+    "startLearning": "börja lära sig"
+  }
+}

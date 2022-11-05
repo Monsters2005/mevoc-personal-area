@@ -1,4 +1,9 @@
-import React, { CSSProperties, SetStateAction, useState } from 'react';
+import React, {
+  CSSProperties,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
 import { Controller, FieldError, useFormContext } from 'react-hook-form';
 import { dropdownStyles } from '../../shared/styles/dropdown-variations';
 import { Dropdown } from '../UI/DropDown/Dropdown';
@@ -28,9 +33,12 @@ export default function HookFormSelect({
     control,
     formState: { errors },
   } = useFormContext();
+  console.log(defaultSelected);
   const [state, setState] = useState<Option | undefined>(defaultSelected);
 
-  console.log(styles);
+  useEffect(() => {
+    setState(defaultSelected);
+  }, [defaultSelected]);
 
   return (
     <div>

@@ -3,10 +3,11 @@ import classNames from 'classnames';
 import { Draggable } from 'react-beautiful-dnd';
 import { useLocation } from 'react-router';
 import s from './ActiveList.module.scss';
-import { pluralizeString } from '../../../utils/components/pluralizeString';
 import { List } from '../../../@types/entities/List';
 import { useGetWordsByListIdQuery } from '../../../store/api/wordApi';
 import { useActiveLists } from '../../../context/ActiveLists';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
+import common from '../../UI/Common.i18n.json';
 
 type Props = {
   item: List;
@@ -18,6 +19,7 @@ export function DashboardActiveList({ item, index }: Props) {
   const { currentLists, setCurrentLists } = useActiveLists();
   const [selected, setSelected] = useState(false);
   const { data: listWords } = useGetWordsByListIdQuery(item?.id || 0);
+  const { t } = useLocalTranslation(common);
 
   function selectList() {
     setSelected(state => !state);
@@ -51,7 +53,11 @@ export function DashboardActiveList({ item, index }: Props) {
           </button>
           <div className={s.activelist_content}>
             <h4 className={s.activvelist_title}>{item.name}</h4>
-            <p>{pluralizeString(listWords?.length || 0)}</p>
+            <p>
+              {`${listWords?.length || 0} ${t(
+                `word${(listWords?.length || 0) !== 1 ? 's' : ''}`
+              )}`}
+            </p>
           </div>
         </div>
       )}

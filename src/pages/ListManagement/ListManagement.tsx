@@ -33,8 +33,11 @@ import {
   useUpdateListMutation,
 } from '../../store/api/listApi';
 import { useGetCurrentUserQuery } from '../../store/api/userApi';
-import { pluralizeString } from '../../utils/components/pluralizeString';
 import s from './ListManagement.module.scss';
+import common from '../../components/UI/Common.i18n.json';
+import notifTransl from '../Notifications.i18n.json';
+import { useLocalTranslation } from '../../hooks/useLocalTranslation';
+import { merge } from 'lodash';
 
 export default function ListManagementPage() {
   const { selectedWords } = useSelectedWords();
@@ -59,6 +62,7 @@ export default function ListManagementPage() {
   useOutsideCheck(menuRef, () => {
     setExpandOpen(null);
   });
+  const { t } = useLocalTranslation(merge(common, notifTransl));
 
   const listActionItems = [
     {
@@ -84,7 +88,9 @@ export default function ListManagementPage() {
       (el: List): Option => ({
         value: el.name,
         id: el.id,
-        details: pluralizeString(el.words?.length),
+        details: `${el.words?.length} ${t(
+          `word${el.words?.length !== 1 ? 's' : ''}`
+        )}`,
         addition: (
           <div className={s.listmanagement_list_addition}>
             <Button
@@ -101,7 +107,7 @@ export default function ListManagementPage() {
             >
               <ActionsDropdown
                 isOpen={expandOpen === el.id}
-                items={listActionItems as DropdownItem[]}
+                items={listActionItems}
               />
             </div>
           </div>
@@ -124,14 +130,14 @@ export default function ListManagementPage() {
       }).unwrap();
       refetchUserLists();
       eventBus.emit(EventTypes.notification, {
-        message: 'Added a new list',
-        title: 'Success',
+        message: t('listAdd'),
+        title: t('success'),
         type: NotificationType.SUCCESS,
       });
     } catch (e) {
       eventBus.emit(EventTypes.notification, {
         message: (e as CustomError).data.message,
-        title: 'Failed to create a new list',
+        title: t('listAddFail'),
         type: NotificationType.DANGER,
       });
     }
@@ -142,14 +148,14 @@ export default function ListManagementPage() {
       await updateList({ id: data.id || 0, name: data.name });
       refetchUserLists();
       eventBus.emit(EventTypes.notification, {
-        message: `Renamed a list to "${data.name}"`,
-        title: 'Success',
+        message: `${t('listRename')} "${data.name}"`,
+        title: t('success'),
         type: NotificationType.SUCCESS,
       });
     } catch (e) {
       eventBus.emit(EventTypes.notification, {
-        message: 'Failed to rename a list',
-        title: 'Error occured',
+        message: t('listRenameFail'),
+        title: t('error'),
         type: NotificationType.DANGER,
       });
     }
@@ -160,14 +166,14 @@ export default function ListManagementPage() {
       await deleteList(data.id || 0);
       refetchUserLists();
       eventBus.emit(EventTypes.notification, {
-        message: `List "${data.name}" was deleted`,
-        title: 'Success',
+        message: t('listDelete'),
+        title: t('success'),
         type: NotificationType.SUCCESS,
       });
     } catch (e) {
       eventBus.emit(EventTypes.notification, {
-        message: 'Failed to delete a list',
-        title: 'Error occured',
+        message: t('listDeleteFail'),
+        title: t('error'),
         type: NotificationType.DANGER,
       });
     }
@@ -192,14 +198,14 @@ export default function ListManagementPage() {
       });
       refetchUserLists();
       eventBus.emit(EventTypes.notification, {
-        message: 'Selected words were deleted',
-        title: 'Success',
+        message: t('wordsDelete'),
+        title: t('success'),
         type: NotificationType.SUCCESS,
       });
     } catch (e) {
       eventBus.emit(EventTypes.notification, {
-        message: 'Failed to delete selected words',
-        title: 'Error occured',
+        message: t('wordsDeleteFail'),
+        title: t('error'),
         type: NotificationType.DANGER,
       });
     }

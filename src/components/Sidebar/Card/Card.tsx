@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import { SidebarSvgSelector } from '../SidebarSvgSelector';
 import s from './Card.module.scss';
 import { Page } from '../Sidebar/types';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
+import translations from '../Sidebar/Sidebar.i18n.json';
 
 type Props = {
   page: Page;
@@ -11,6 +13,8 @@ type Props = {
 };
 
 export function SidebarCard({ page, onClick, active }: Props) {
+  const { t } = useLocalTranslation(translations);
+
   return (
     <button
       className={classNames(s.card_container, {
@@ -21,7 +25,7 @@ export function SidebarCard({ page, onClick, active }: Props) {
       <span className={s.card_icon}>
         <SidebarSvgSelector id={page.icon} />
       </span>
-      <p className={s.card_name}>{page.name}</p>
+      <p className={s.card_name}>{t(page.key)}</p>
     </button>
   );
 }

@@ -13,7 +13,7 @@ export function SidebarActionItems({ items, onGoToHelp, onSignOut }: Props) {
   return (
     <div className={s.bottomblock_container}>
       <ActionsItem
-        item={items.find(el => el.key === 'sign_out') || items[0]}
+        item={items.find(el => el.key === 'signOut') || items[0]}
         action={onSignOut}
       />
       <ActionsItem

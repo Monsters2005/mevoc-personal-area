@@ -4,7 +4,6 @@ import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useNavigate } from 'react-router';
 import { countPercentage } from '../../../utils/common/countPercentage';
-import { pluralizeString } from '../../../utils/components/pluralizeString';
 import { useSwiperRef } from '../../../utils/lib/useSwiperRef';
 import { Button } from '../../UI/Button/Button';
 import { CircularProgress } from '../../UI/CircularProgress/CircularProgress';
@@ -14,6 +13,8 @@ import s from './CompletionMessage.module.scss';
 import '../../../styles/lib/swiper.scss';
 import { resultMessages } from '../../../constants/resultMessages';
 import { Path } from '../../../constants/routes';
+import common from '../../UI/Common.i18n.json';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 
 type ListProgress = {
   words: number;
@@ -33,9 +34,13 @@ function WordsInfo({
   words: number;
   wordsLearned: number;
 }) {
+  const { t } = useLocalTranslation(common);
+
   return (
     <div className={s.completion_words}>
-      {`${wordsLearned} of ${pluralizeString(words)}`}
+      {`${wordsLearned} ${t('outOf')} ${`${words} ${t(
+        `word${words !== 1 ? 's' : ''}`
+      )}`}`}
     </div>
   );
 }

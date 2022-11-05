@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import s from './ListProgress.module.scss';
-import { pluralizeString } from '../../../utils/components/pluralizeString';
 import { List } from '../../../@types/entities/List';
 import { CircularProgress } from '../../UI/CircularProgress/CircularProgress';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
+import common from '../../UI/Common.i18n.json';
 
 type Props = {
   item: List;
@@ -17,6 +18,7 @@ export function ListProgress({ item, active, onClick }: Props) {
       onClick(list);
     };
   }
+  const { t } = useLocalTranslation(common);
 
   return (
     <button
@@ -38,7 +40,11 @@ export function ListProgress({ item, active, onClick }: Props) {
       </div>
       <div className={s.list_content}>
         <h4>{item.name}</h4>
-        <p>{pluralizeString(item.words.length)}</p>
+        <p>
+          {`${item.words.length} ${t(
+            `word${item.words.length !== 1 ? 's' : ''}`
+          )}`}
+        </p>
       </div>
     </button>
   );

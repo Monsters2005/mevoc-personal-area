@@ -1,0 +1,44 @@
+{
+  "en": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening",
+    "night": "Good night",
+    "todayIs": "Today is"
+  },
+  "ru": {
+    "morning": "Доброе утро",
+    "afternoon": "Добрый день",
+    "evening": "Добрый вечер",
+    "night": "Доброй ночи",
+    "todayIs": "Сегодня"
+  },
+  "de": {
+    "morning": "Guten Morgen",
+    "afternoon": "Guten Nachmittag",
+    "evening": "Guten Abend",
+    "night": "Gute Nacht",
+    "todayIs": "Heute ist"
+  },
+  "fr": {
+    "morning": "Bonjour",
+    "afternoon": "Bon après-midi",
+    "evening": "Bonsoir",
+    "night": "Bonne nuit",
+    "todayIs": "Aujourd'hui est"
+  },
+  "es": {
+    "morning": "Buenos dias",
+    "afternoon": "Buenas tardes",
+    "evening": "Buenas noches",
+    "night": "Buenas noches",
+    "todayIs": "Hoy es"
+  },
+  "se": {
+    "morning": "God morgon",
+    "afternoon": "God eftermiddag",
+    "evening": "God kväll",
+    "night": "Godnatt",
+    "todayIs": "Idag är"
+  }
+}

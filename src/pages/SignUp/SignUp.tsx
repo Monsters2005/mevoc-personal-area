@@ -8,6 +8,8 @@ import { AuthLayout } from '../../layouts/AuthLayout/AuthLayout';
 import { eventBus, EventTypes } from '../../packages/EventBus';
 import { useSignupMutation } from '../../store/api/authApi';
 import s from './SignUp.module.scss';
+import notifTransl from '../Notifications.i18n.json';
+import { useLocalTranslation } from '../../hooks/useLocalTranslation';
 
 type Tokens = {
   accessToken: string;
@@ -18,6 +20,7 @@ export default function SignUpPage() {
   const navigate = useNavigate();
   const [signUp] = useSignupMutation();
   const goToDashboard = () => navigate('/dashboard');
+  const { t } = useLocalTranslation(notifTransl);
 
   const register = async (data: SignUpDto) => {
     const dataObj: SignUpDto = {
@@ -38,7 +41,7 @@ export default function SignUpPage() {
     } catch (e: unknown) {
       eventBus.emit(EventTypes.notification, {
         message: (e as CustomError).data.message,
-        title: 'Error occured',
+        title: t('errorMsg'),
         type: NotificationType.DANGER,
       });
     }

@@ -11,7 +11,6 @@
     cursor: pointer;
     border-radius: 10px;
 
-    font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -92,6 +91,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    top: 20px;
 
     &::before {
       content: '';
@@ -118,7 +118,6 @@
   .CalendarMonth_caption,
   .CalendarMonth_caption_1 {
     & strong {
-      font-family: 'Montserrat';
       font-style: normal;
       font-weight: 500;
       font-size: 18px;
@@ -393,7 +392,6 @@
     background: transparent;
     cursor: pointer;
     width: 300px;
-    font-family: Poppins;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -480,7 +478,6 @@
   .CalendarMonth_caption,
   .CalendarMonth_caption_1 {
     & strong {
-      font-family: 'Montserrat';
       font-style: normal;
       font-weight: 500;
       font-size: 18px;

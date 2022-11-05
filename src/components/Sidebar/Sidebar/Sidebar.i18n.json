@@ -1,0 +1,62 @@
+{
+  "en": {
+    "dashboard": "Dashboard",
+    "listsManagement": "List Management",
+    "userProfile": "User Profile",
+    "settings": "Settings",
+    "signOut": "Sign Out",
+    "help": "Help",
+    "viewProfile": "View a profile",
+    "editProfile": "Edit a profile"
+  },
+  "ru": {
+    "dashboard": "Панель управления",
+    "listsManagement": "Управление списками",
+    "userProfile": "Профиль",
+    "settings": "Настройки",
+    "signOut": "Выйти",
+    "help": "Помощь",
+    "viewProfile": "Просмотреть профиль",
+    "editProfile": "Редактировать профиль"
+  },
+  "de": {
+    "dashboard": "Armaturenbrett",
+    "listsManagement": "Listenverwaltung",
+    "userProfile": "Benutzerprofil",
+    "settings": "Einstellungen",
+    "signOut": "Austragen",
+    "help": "Hilfe",
+    "viewProfile": "Profil anzeigen",
+    "editProfile": "Profil bearbeiten"
+  },
+  "fr": {
+    "dashboard": "Tableau de bord",
+    "listsManagement": "Gestion des listes",
+    "userProfile": "Profil de l'utilisateur",
+    "settings": "Réglages",
+    "signOut": "Se déconnecter",
+    "help": "Aider",
+    "viewProfile": "Voir le profil",
+    "editProfile": "Editer le profil"
+  },
+  "es": {
+    "dashboard": "Tablero",
+    "listsManagement": "Gestión de listas",
+    "userProfile": "Perfil del usuario",
+    "settings": "Ajustes",
+    "signOut": "Desconectar",
+    "help": "Ayuda",
+    "viewProfile": "Ver perfil",
+    "editProfile": "Editar perfil"
+  },
+  "se": {
+    "dashboard": "Instrumentbräda",
+    "listsManagement": "Listhantering",
+    "userProfile": "Användarprofil",
+    "settings": "inställningar",
+    "signOut": "Logga ut",
+    "help": "Hjälp",
+    "viewProfile": "Visa profil",
+    "editProfile": "Redigera profil"
+  }
+}

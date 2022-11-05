@@ -1,8 +1,9 @@
 /* eslint-disable */
+import { merge } from 'lodash';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
+import { NotificationType } from '../../@types/entities/Notification';
 import { User } from '../../@types/entities/User';
 import { DashboardActiveLists } from '../../components/Dashboard/ActiveLists/ActiveLists';
 import { DashboardDailyProgress } from '../../components/Dashboard/DailyProgress/DailyProgress';
@@ -16,11 +17,18 @@ import { languages } from '../../constants/languages';
 import { Path } from '../../constants/routes';
 import { useActiveLists } from '../../context/ActiveLists';
 import { useModal } from '../../context/ModalContext';
+import { useLocalTranslation } from '../../hooks/useLocalTranslation';
 import { wordPack } from '../../mocks/pack';
+import { eventBus, EventTypes } from '../../packages/EventBus';
 import { startBtn } from '../../shared/styles/button-variations';
 import { useGetListsByUserIdQuery } from '../../store/api/listApi';
-import { useGetCurrentUserQuery } from '../../store/api/userApi';
+import {
+  useGetCurrentUserQuery,
+  useUpdateUserMutation,
+} from '../../store/api/userApi';
 import s from './Dashboard.module.scss';
+import translations from '../../components/Dashboard/Dashboard.i18n.json';
+import notifTransl from '../../pages/Notifications.i18n.json';
 
 export function DashboardPage() {
   const { data: user } = useGetCurrentUserQuery();
@@ -28,6 +36,7 @@ export function DashboardPage() {
     useGetListsByUserIdQuery(user?.id || 0);
   const { currentLists } = useActiveLists();
   const { setCurrentModal } = useModal();
+  const [updateUser] = useUpdateUserMutation();
 
   const langOption =
     languages.find(item => item.name === user?.nativeLang) || languages[0];
@@ -39,15 +48,32 @@ export function DashboardPage() {
     navigate(`/${Path.LISTS}`);
   };
 
+  const { t } = useLocalTranslation(merge(translations, notifTransl));
+
+  const onFillData = async (data: Partial<User>) => {
+    try {
+      await updateUser({ ...data, id: user?.id });
+      eventBus.emit(EventTypes.notification, {
+        message: t('setUp'),
+        title: t('allSet'),
+        type: NotificationType.SUCCESS,
+      });
+    } catch {
+      eventBus.emit(EventTypes.notification, {
+        message: t('setUpFail'),
+        title: t('error'),
+        type: NotificationType.DANGER,
+      });
+    }
+  };
+
   useEffect(() => {
-    if (user)
-      setCurrentModal(
-        <SetUpModal
-          onFillData={() =>
-            console.log('update the user fields with data from the popups')
-          }
-        />
-      );
+    if (user) {
+      const { lastName, location, nativeLang, learningLang } = user;
+      if (!lastName || !location || !nativeLang || !learningLang) {
+        setCurrentModal(<SetUpModal onFillData={onFillData} />);
+      }
+    }
   }, [user]);
 
   return (
@@ -84,7 +110,7 @@ export function DashboardPage() {
             onClick={() => navigate(`/${Path.LEARNING}`)}
             disabled={!currentLists.find(el => el.words.length > 0)}
           >
-            start learning
+            {t('startLearning')}
           </Button>
         </div>
       </div>

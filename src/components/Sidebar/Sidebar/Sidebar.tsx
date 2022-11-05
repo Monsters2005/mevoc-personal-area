@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import ContentLoader from 'react-content-loader';
 import { SidebarActionItems } from '../ActionItems/ActionsItems';
 import { SidebarNavigation } from '../Navigation/Navigation';
 import { SidebarProfile } from '../Profile/Profile';
@@ -8,7 +7,6 @@ import { SidebarProfile } from '../Profile/Profile';
 import { Logo } from '../../UI/Logo/Logo';
 
 import { ActionItem, Pages } from './types';
-import { User } from '../../../@types/entities/User';
 import { useSignoutMutation } from '../../../store/api/authApi';
 import { Path } from '../../../constants/routes';
 import s from './Sidebar.module.scss';
@@ -17,6 +15,8 @@ import { eventBus, EventTypes } from '../../../packages/EventBus';
 import { CustomError } from '../../../@types/entities/ErrorObject';
 import { NotificationType } from '../../../@types/entities/Notification';
 import { useGetCurrentUserQuery } from '../../../store/api/userApi';
+import translations from '../../../pages/Notifications.i18n.json';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 
 type Props<T> = {
   pages: T;
@@ -24,6 +24,7 @@ type Props<T> = {
 };
 
 export function Sidebar<T extends Pages>({ pages, actions }: Props<T>) {
+  const { t } = useLocalTranslation(translations);
   const navigate = useNavigate();
   const { data: user } = useGetCurrentUserQuery();
   const sortedPages = Object.keys(pages).map(key => ({
@@ -41,7 +42,7 @@ export function Sidebar<T extends Pages>({ pages, actions }: Props<T>) {
     } catch (e) {
       eventBus.emit(EventTypes.notification, {
         message: (e as CustomError).data.message,
-        title: 'Failed to sign out',
+        title: t('error'),
         type: NotificationType.DANGER,
       });
     }

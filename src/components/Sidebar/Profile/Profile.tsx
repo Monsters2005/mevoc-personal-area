@@ -11,6 +11,7 @@ import ActionsDropdown, {
 } from '../../UI/ActionsDropdown/ActionsDropdown';
 import { profileActions } from '../../../constants/sidebar';
 import { useOutsideCheck } from '../../../hooks/useOutsideCheck';
+import { ActionItem } from '../Sidebar/types';
 
 type Props = {
   user: Partial<User>;
@@ -63,10 +64,7 @@ export function SidebarProfile({
         <GlobalSvgSelector id="expand" />
       </Button>
       <div className={s.profile_actions} ref={menuRef}>
-        <ActionsDropdown
-          isOpen={expandOpen}
-          items={actionItems as DropdownItem[]}
-        />
+        <ActionsDropdown isOpen={expandOpen} items={actionItems} />
       </div>
     </div>
   );

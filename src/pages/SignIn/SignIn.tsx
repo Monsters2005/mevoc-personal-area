@@ -12,11 +12,14 @@ import { AuthLayout } from '../../layouts/AuthLayout/AuthLayout';
 import { eventBus, EventTypes } from '../../packages/EventBus';
 import { useSigninMutation } from '../../store/api/authApi';
 import s from './SignIn.module.scss';
+import notifTransl from '../Notifications.i18n.json';
+import { useLocalTranslation } from '../../hooks/useLocalTranslation';
 
 export function SignInPage() {
   const navigate = useNavigate();
   const [signIn] = useSigninMutation();
   const goToDashboard = () => navigate('/dashboard');
+  const { t } = useLocalTranslation(notifTransl);
 
   const login = async (data: SignInDto) => {
     const dataObj: SignInDto = {
@@ -33,7 +36,7 @@ export function SignInPage() {
         });
       eventBus.emit(EventTypes.notification, {
         message: SUCCESS_LOGIN,
-        title: 'Success',
+        title: t('success'),
         type: NotificationType.SUCCESS,
       });
 
@@ -41,7 +44,7 @@ export function SignInPage() {
     } catch (e: unknown) {
       eventBus.emit(EventTypes.notification, {
         message: (e as CustomError).data.message,
-        title: 'Error occured',
+        title: t('error'),
         type: NotificationType.DANGER,
       });
     }

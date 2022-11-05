@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { merge } from 'lodash';
 import { Word } from '../../../@types/entities/Word';
 import { useActiveLists } from '../../../context/ActiveLists';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 import { useOutsideCheck } from '../../../hooks/useOutsideCheck';
 import { CardLayout } from '../../../layouts/CardLayout/CardLayout';
 import { TransitionWrapper } from '../../../layouts/Transition/Transition';
@@ -9,9 +11,10 @@ import { useGetListsByUserIdQuery } from '../../../store/api/listApi';
 import { useGetCurrentUserQuery } from '../../../store/api/userApi';
 import { useGetWordsByListIdQuery } from '../../../store/api/wordApi';
 import { countPercentage } from '../../../utils/common/countPercentage';
-import { pluralizeString } from '../../../utils/components/pluralizeString';
 import { Button } from '../../UI/Button/Button';
 import { CircularProgress } from '../../UI/CircularProgress/CircularProgress';
+import translations from '../Dashboard.i18n.json';
+import common from '../../UI/Common.i18n.json';
 import s from './DailyProgress.module.scss';
 
 export function DashboardDailyProgress() {
@@ -34,6 +37,7 @@ export function DashboardDailyProgress() {
   const percentage = countPercentage(wordsLearned, wordsAll);
 
   const hintRef = useRef(null);
+  const { t } = useLocalTranslation(merge(translations, common));
 
   useOutsideCheck(hintRef, () => {
     setIsHintOpen(false);
@@ -41,8 +45,9 @@ export function DashboardDailyProgress() {
 
   return (
     <CardLayout
-      title="Your Progress"
-      description="Current progress on selected lists"
+      styles={{ width: '370px' }}
+      title={t('yourProgress')}
+      description={t('progressSubtitle')}
     >
       <div className={s.progress_container}>
         {currentLists.length !== 0 ? ( // eslint-disable-line no-nested-ternary
@@ -56,26 +61,31 @@ export function DashboardDailyProgress() {
               styles={{ marginTop: '60px' }}
             />
             <div className={s.progress_words}>
-              {`${wordsLearned} of ${pluralizeString(wordsAll)}`}
+              {`${wordsLearned} ${t('outOf')} ${`${wordsLearned || 0} ${t(
+                `word${wordsLearned !== 1 ? 's' : ''}`
+              )}`}
+            `}
             </div>
           </>
         ) : userLists?.length === 0 ? (
           <div className={s.progress_none}>
-            <p>
-              Here your progress from the selected lists will be displayed.
-            </p>
+            <p>{t('progressHint')}</p>
           </div>
         ) : (
           <div className={s.progress_none}>
-            <p>Please select lists to see the progress.</p>
+            <p>{t('dailySelect')}</p>
           </div>
         )}
-        <Button type="small" onClick={() => setIsHintOpen(true)}>
+        <Button
+          type="small"
+          styles={{ position: 'absolute', right: '20px', bottom: '15px' }}
+          onClick={() => setIsHintOpen(true)}
+        >
           <GlobalSvgSelector id="question" />
         </Button>
         <TransitionWrapper inState={isHintOpen}>
           <div className={s.progress_hint} ref={hintRef}>
-            Your progress on the learned words from the currently active lists.
+            {t('noProgress')}
           </div>
         </TransitionWrapper>
       </div>

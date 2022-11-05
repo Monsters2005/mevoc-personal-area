@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { ActionItem } from '../components/UI/ActionsDropdown/ActionsDropdown';
 import { useSignoutMutation } from '../store/api/authApi';
 import { Path } from './routes';
 
@@ -29,7 +30,7 @@ export const actions = [
   {
     label: 'Sign Out',
     icon: 'signout',
-    key: 'sign_out',
+    key: 'signOut',
   },
   {
     label: 'Help',
@@ -38,22 +39,16 @@ export const actions = [
   },
 ];
 
-export const profileActions: Partial<{
-  value: string;
-  path: string;
-  key: string;
-  func: () => void;
-  icon: ReactNode;
-}>[] = [
+export const profileActions: ActionItem[] = [
   {
-    value: 'View profile',
     path: '/user-profile',
-    key: 'view',
+    key: 'viewProfile',
+    func: () => null,
   },
   {
-    value: 'Edit profile',
     path: '/settings',
-    key: 'edit',
+    key: 'editProfile',
+    func: () => null,
   },
 ];
 

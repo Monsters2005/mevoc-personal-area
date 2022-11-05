@@ -18,9 +18,6 @@ import SignUpPage from './pages/SignUp/SignUp';
 import { actions, pages, visiblePaths } from './constants/sidebar';
 import { UserProfilePage } from './pages/UserProfile/UserProfile';
 import { SignInPage } from './pages/SignIn/SignIn';
-import { useGetCurrentUserQuery } from './store/api/userApi';
-import { Loader } from './components/UI/Loader/Loader';
-import { TransitionWrapper } from './layouts/Transition/Transition';
 import SelectedWordsProvider from './providers/SelectedWordsProvider';
 
 function App() {
@@ -28,7 +25,6 @@ function App() {
   const path = pathname.replace('/', '');
 
   const navigate = useNavigate();
-  const { data: user } = useGetCurrentUserQuery();
 
   const preload = useRef<HTMLDivElement>(null);
   const withSidebar = visiblePaths.includes(path as Path);

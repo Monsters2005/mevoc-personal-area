@@ -2,8 +2,7 @@
 
 .progress {
   &_container {
-    width: 290px;
-
+    width: 320px;
     & button {
       margin-left: auto;
     }
@@ -21,6 +20,7 @@
     line-height: 120%;
 
     color: rgba($primary-color, 0.7);
+    text-transform: lowercase;
   }
   &_hint {
     width: 300px;
@@ -35,19 +35,7 @@
 
     color: rgba($primary-color, 0.7);
     position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 13px 28px 13px;
-      border-color: transparent transparent $element-color transparent;
-      top: -16px;
-      right: 21px;
-    }
+    margin-top: 35px;
   }
   &_none {
     width: 100%;
@@ -60,6 +48,7 @@
 
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
 
     color: rgba(196, 195, 202, 0.7);

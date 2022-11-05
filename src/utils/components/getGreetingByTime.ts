@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ranges } from '../../constants/ranges';
+import { timeRanges } from '../../constants/ranges';
 
 export function getGreetingByTime(time: number) {
   const [greeting, setGreeting] = useState('');
@@ -10,9 +10,9 @@ export function getGreetingByTime(time: number) {
 
   useEffect(() => {
     function getGreeting() {
-      for (let i = 0; i < ranges.length; i++) {
-        if (checkRange(time, ranges[i].min, ranges[i].max)) {
-          setGreeting(ranges[i].output);
+      for (let i = 0; i < timeRanges.length; i++) {
+        if (checkRange(time, timeRanges[i].min, timeRanges[i].max)) {
+          setGreeting(timeRanges[i].output);
         }
       }
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import { SettignsProfileFormDto } from '../../../../@types/dto/settings/profileform.dto';
 import { NotificationType } from '../../../../@types/entities/Notification';
 import { User } from '../../../../@types/entities/User';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
 import { eventBus, EventTypes } from '../../../../packages/EventBus';
 import { primaryMiddle } from '../../../../shared/styles/button-variations';
 import {
@@ -12,10 +13,12 @@ import { Button } from '../../../UI/Button/Button';
 import { SettingsAvatarCard } from '../../EditProfileForm/AvatarCard/AvatarCard';
 import { SettingsInputGroup } from '../../EditProfileForm/InputGroup/InputGroup';
 import s from './Account.module.scss';
+import translations from '../../../../pages/Notifications.i18n.json';
 
 export function AccountTab() {
   const { data: user, refetch: refetchUserData } = useGetCurrentUserQuery();
   const [updateUser] = useUpdateUserMutation();
+  const { t } = useLocalTranslation(translations);
 
   // TODO: User should be received from the context which will have a data about current user
   // TODO: signed in
@@ -28,15 +31,15 @@ export function AccountTab() {
     try {
       await updateUser({ ...data, id: user?.id });
       eventBus.emit(EventTypes.notification, {
-        message: 'Your account information was updated.',
-        title: 'Success',
+        message: t('accountInfoUpdate'),
+        title: t('success'),
         type: NotificationType.SUCCESS,
       });
       refetchUserData();
     } catch (e) {
       eventBus.emit(EventTypes.notification, {
-        message: 'An error occured. Please try again.',
-        title: 'Failed to update your account information',
+        message: t('error'),
+        title: t('accountInfoUpdateFail'),
         type: NotificationType.DANGER,
       });
     }

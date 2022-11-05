@@ -16,6 +16,8 @@ import AddWordModal from '../../Modals/WordManagement/AddWord';
 import { ListsManagementSvgSelector } from '../ListsManagementSvgSelector';
 import { DashboardWordCard } from '../WordCard/WordCard';
 import s from './WordList.module.scss';
+import translations from '../../../pages/Notifications.i18n.json';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 
 type Props = {
   // words: Word[];
@@ -33,6 +35,7 @@ export function DashboardWordList({ selectedList }: Props) {
   const [createWord] = useCreateWordMutation();
   const [updateWord] = useUpdateWordMutation();
   const [words, setWords] = useState<Word[] | []>([]);
+  const { t } = useLocalTranslation(translations);
 
   const handleWord = async (data: CreateWordDto) => {
     if (selectedList !== 0) {
@@ -44,22 +47,22 @@ export function DashboardWordList({ selectedList }: Props) {
           listId: selectedList,
         });
         eventBus.emit(EventTypes.notification, {
-          message: 'Added a new word',
-          title: 'Success',
+          message: t('wordAdd'),
+          title: t('success'),
           type: NotificationType.SUCCESS,
         });
         refetchListWords();
       } catch (e) {
         eventBus.emit(EventTypes.notification, {
           message: (e as CustomError).data.message,
-          title: 'Failed to create a new word',
+          title: t('wordAddFail'),
           type: NotificationType.DANGER,
         });
       }
     } else {
       eventBus.emit(EventTypes.notification, {
-        message: 'Please select a list to add a word',
-        title: 'Failed to create a new word',
+        message: t('wordAddListFail'),
+        title: t('wordAddFail'),
         type: NotificationType.DANGER,
       });
     }
@@ -71,15 +74,15 @@ export function DashboardWordList({ selectedList }: Props) {
       try {
         updateWord(newWord);
         eventBus.emit(EventTypes.notification, {
-          message: 'The word was updated.',
-          title: 'Success',
+          message: t('wordUpdate'),
+          title: t('success'),
           type: NotificationType.SUCCESS,
         });
         refetchListWords();
       } catch (e) {
         eventBus.emit(EventTypes.notification, {
           message: (e as CustomError).data.message,
-          title: 'Failed to update the word',
+          title: t('wordUpdateFail'),
           type: NotificationType.DANGER,
         });
       }

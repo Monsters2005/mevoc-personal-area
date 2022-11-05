@@ -48,4 +48,10 @@
       grid-gap: 20px;
     }
   }
+  &_buttons {
+    display: flex;
+    align-items: center;
+    grid-gap: 14px;
+    margin-top: 30px;
+  }
 }

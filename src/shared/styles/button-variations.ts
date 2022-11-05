@@ -12,7 +12,6 @@ export const primarySmallLists = {
   fontSize: '13px',
   lineHeight: '19px',
   padding: '10px 16px',
-  width: '65px',
   height: '30px',
   position: 'absolute' as const,
   right: '25px',

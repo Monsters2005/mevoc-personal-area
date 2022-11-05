@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { Pack } from '../../../@types/entities/WordPack';
 import FallbackImgSelector from '../../../assets/FallbackImgSelector';
 import { primaryMiddle } from '../../../shared/styles/button-variations';
-import { pluralizeString } from '../../../utils/components/pluralizeString';
 import { Button } from '../../UI/Button/Button';
 import s from './WordPack.module.scss';
+import common from '../../UI/Common.i18n.json';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 
 type Props = {
   item: Pack;
@@ -13,6 +14,7 @@ type Props = {
 
 export function WordPack({ item }: Props) {
   const [added, setAdded] = useState(false);
+  const { t } = useLocalTranslation(common);
 
   function addWordPack() {
     setAdded(!added);
@@ -30,7 +32,11 @@ export function WordPack({ item }: Props) {
           )}
         </span>
         <h4 className={s.wordpack_title}>{item.name}</h4>
-        <p>{pluralizeString(item.words.length)}</p>
+        <p>
+          {`${item.words.length} ${t(
+            `word${item.words.length !== 1 ? 's' : ''}`
+          )}`}
+        </p>
       </div>
       <div className={s.wordpack_buttons}>
         <Button
@@ -38,7 +44,7 @@ export function WordPack({ item }: Props) {
           styles={primaryMiddle}
           onClick={() => console.log('view more')}
         >
-          VIEW MORE
+          {t('viewMore')}
         </Button>
 
         <button

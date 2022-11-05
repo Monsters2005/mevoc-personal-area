@@ -17,6 +17,7 @@ const baseNotification: ToastOptions = {
     borderRadius: '20px',
     padding: '10px 10px',
     marginLeft: '-100px',
+    zIndex: 1000000000000000,
   },
 };
 

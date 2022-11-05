@@ -2,7 +2,7 @@
 
 .actions {
   &_container {
-    width: 150px;
+    min-width: 150px;
     height: fit-content;
 
     background: $element-color;
@@ -38,6 +38,7 @@
 
       margin: 0;
       padding: 0;
+      white-space: none;
     }
   }
 }
