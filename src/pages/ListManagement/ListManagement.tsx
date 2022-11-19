@@ -36,6 +36,8 @@ import { useGetCurrentUserQuery } from '../../store/api/userApi';
 import s from './ListManagement.module.scss';
 import common from '../../components/UI/Common.i18n.json';
 import notifTransl from '../Notifications.i18n.json';
+import sidebar from '../../components/Sidebar/Sidebar/Sidebar.i18n.json';
+import lists from './Lists.i18n.json';
 import { useLocalTranslation } from '../../hooks/useLocalTranslation';
 import { merge } from 'lodash';
 
@@ -62,11 +64,13 @@ export default function ListManagementPage() {
   useOutsideCheck(menuRef, () => {
     setExpandOpen(null);
   });
-  const { t } = useLocalTranslation(merge(common, notifTransl));
+  const { t } = useLocalTranslation(
+    merge(common, notifTransl, sidebar, lists)
+  );
 
   const listActionItems = [
     {
-      value: 'Rename',
+      value: t('rename'),
       func: () => {
         setCurrentModal(
           <RenameListModal
@@ -77,7 +81,7 @@ export default function ListManagementPage() {
       key: 'rename',
     },
     {
-      value: 'Delete',
+      value: t('delete'),
       func: () => handleDelete,
       key: 'delete',
     },
@@ -212,12 +216,12 @@ export default function ListManagementPage() {
   };
 
   return (
-    <PageLayout title="Lists management">
+    <PageLayout title={t('listsManagement')}>
       <div className={s.listmanagement_container}>
         <div className={s.listmanagement_header}>
           <div className={s.listmanagement_lists}>
             <Dropdown
-              listTitle="Your lists"
+              listTitle={t('yourLists')}
               options={options}
               selectedItem={
                 options &&
@@ -247,7 +251,7 @@ export default function ListManagementPage() {
           <div className={s.listmanagement_control}>
             <Input
               name="search"
-              placeholder="Search the word.."
+              placeholder={t('search')}
               styles={{ padding: '14px 10px 13px 15px', width: '300px' }}
             >
               <GlobalSvgSelector id="search" />

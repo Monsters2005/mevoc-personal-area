@@ -1,4 +1,5 @@
 import React from 'react';
+import { merge } from 'lodash';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { AddListDto } from '../../../../@types/dto/list/add.dto';
@@ -10,12 +11,16 @@ import s from './AddList.module.scss';
 import { ModalWrapper } from '../../Wrapper/ModalWrapper';
 import { useGetCurrentUserQuery } from '../../../../store/api/userApi';
 import { useModal } from '../../../../context/ModalContext';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
+import lists from '../../../../pages/ListManagement/Lists.i18n.json';
+import common from '../../../UI/Common.i18n.json';
 
 type Props = {
   onAddList: SubmitHandler<AddListDto>;
 };
 
 export default function AddListModal({ onAddList }: Props) {
+  const { t } = useLocalTranslation(merge(lists, common));
   const values = useForm<AddListDto>({
     resolver: yupResolver(schema),
   });
@@ -31,9 +36,9 @@ export default function AddListModal({ onAddList }: Props) {
     <ModalWrapper>
       <FormProvider {...values}>
         <ModalLayout
-          title="Add a new list"
-          description="To add a new list just type a title below"
-          btnText="confirm"
+          title={t('modalAddListTitle')}
+          description={t('modalAddListDescr')}
+          btnText={t('save')}
           onClick={values.handleSubmit(submitHandler)}
         >
           <div className={s.list_container}>
@@ -43,7 +48,7 @@ export default function AddListModal({ onAddList }: Props) {
             >
               <HookFormInput
                 name="listTitle"
-                placeholder="Your title"
+                placeholder={t('modalAddListInputTitle')}
                 styles={inputModal}
                 type="listTitle"
               />

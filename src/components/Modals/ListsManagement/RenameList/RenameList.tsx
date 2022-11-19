@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
+import { merge } from 'lodash';
 import { FormProvider, useForm } from 'react-hook-form';
 import { List } from '../../../../@types/entities/List';
 import ModalLayout from '../../../../layouts/ModalLayout/ModalLayout';
@@ -8,12 +9,17 @@ import { ModalWrapper } from '../../Wrapper/ModalWrapper';
 import schema from './validation';
 import s from './RenameList.module.scss';
 import { inputModal } from '../../../../shared/styles/input-variations';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
+import lists from '../../../../pages/ListManagement/Lists.i18n.json';
+import common from '../../../UI/Common.i18n.json';
 
 type Props = {
   onRenameList: (data: Partial<List>) => void;
 };
 
 export default function RenameListModal({ onRenameList }: Props) {
+  const { t } = useLocalTranslation(merge(lists, common));
+
   const values = useForm<Partial<List>>({
     resolver: yupResolver(schema),
   });
@@ -26,9 +32,9 @@ export default function RenameListModal({ onRenameList }: Props) {
     <ModalWrapper>
       <FormProvider {...values}>
         <ModalLayout
-          title="Add a new list"
-          description="To add a new list just type a title below"
-          btnText="confirm"
+          title={t('modalRenameListTitle')}
+          description={t('modalRenameListDescr')}
+          btnText={t('save')}
           onClick={values.handleSubmit(submitHandler)}
         >
           <div className={s.list_container}>
@@ -38,7 +44,7 @@ export default function RenameListModal({ onRenameList }: Props) {
             >
               <HookFormInput
                 name="name"
-                placeholder="New name"
+                placeholder={t('modalRenameListInputTitle')}
                 styles={inputModal}
                 type="listTitle"
               />

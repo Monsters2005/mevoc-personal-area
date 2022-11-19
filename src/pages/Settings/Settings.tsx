@@ -4,6 +4,7 @@ import { TabOption, Tabs } from '../../components/UI/Tabs/Tabs';
 import { PageLayout } from '../../layouts/PageLayout/PageLayout';
 import { user } from '../../mocks/user';
 import s from './Settings.module.scss';
+import sidebar from '../../components/Sidebar/Sidebar/Sidebar.i18n.json';
 
 const settingsTabs = {
   account: {

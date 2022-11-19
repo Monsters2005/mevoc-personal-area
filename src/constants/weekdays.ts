@@ -1,1 +1,1 @@
-export const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+export const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];

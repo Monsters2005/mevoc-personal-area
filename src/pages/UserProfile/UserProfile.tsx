@@ -10,6 +10,8 @@ import { lists } from '../../mocks/lists';
 import { useGetListsByUserIdQuery } from '../../store/api/listApi';
 import { useGetCurrentUserQuery } from '../../store/api/userApi';
 import s from './UserProfile.module.scss';
+import sidebar from '../../components/Sidebar/Sidebar/Sidebar.i18n.json';
+import { useLocalTranslation } from '../../hooks/useLocalTranslation';
 
 export function UserProfilePage() {
   const { data: user } = useGetCurrentUserQuery();
@@ -18,10 +20,10 @@ export function UserProfilePage() {
     skip: !user?.id,
   });
   const [activeList, setActiveList] = useState<List>(userLists[0]);
-  console.log('activeList', activeList);
+  const { t } = useLocalTranslation(sidebar);
 
   return (
-    <PageLayout styles={{ height: '100%' }} title="User Profle">
+    <PageLayout styles={{ height: '100%' }} title={t('userProfile')}>
       <div className={s.profilepage_container}>
         <div className={s.profilepage_userinfo}>
           {user ? (

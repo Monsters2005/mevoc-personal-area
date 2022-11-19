@@ -52,7 +52,7 @@ export function SettingsColorPicker({
         <div className={s.colorpicker_hex}>
           <input
             value={customColor}
-            prefix="#"
+            // prefix={'#'}
             onChange={e => handleInput(e)}
           />
         </div>

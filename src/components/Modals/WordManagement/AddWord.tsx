@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
+import { merge } from 'lodash';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { CreateWordDto } from '../../../@types/dto/word/create.dto';
 import ModalLayout from '../../../layouts/ModalLayout/ModalLayout';
@@ -8,12 +9,17 @@ import HookFormInput from '../../HookForm/HookFormInput';
 import { ModalWrapper } from '../Wrapper/ModalWrapper';
 import schema from './addValidation';
 import s from './WordManagement.module.scss';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
+import lists from '../../../pages/ListManagement/Lists.i18n.json';
+import common from '../../UI/Common.i18n.json';
 
 type Props = {
   onAddWord: SubmitHandler<CreateWordDto>;
 };
 
 export default function AddWordModal({ onAddWord }: Props) {
+  const { t } = useLocalTranslation(merge(lists, common));
+
   const values = useForm<CreateWordDto>({
     resolver: yupResolver(schema),
   });
@@ -26,8 +32,8 @@ export default function AddWordModal({ onAddWord }: Props) {
     <ModalWrapper>
       <FormProvider {...values}>
         <ModalLayout
-          title="Add a new word"
-          btnText="Add"
+          title={t('modalAddWordTitle')}
+          btnText={t('add')}
           onClick={values.handleSubmit(submitHandler)}
         >
           <div className={s.wordmanage_container}>
@@ -37,17 +43,17 @@ export default function AddWordModal({ onAddWord }: Props) {
             >
               <HookFormInput
                 name="wordNative"
-                placeholder="Your word"
+                placeholder={t('modalAddWordInputTitle')}
                 styles={inputModal}
                 type="wordNative"
-                label="Native language"
+                label={t('nativeLang')}
               />
               <HookFormInput
                 name="wordLearning"
-                placeholder="Your word"
+                placeholder={t('modalAddWordInputTitle')}
                 styles={inputModal}
                 type="wordLearning"
-                label="Learning language"
+                label={t('learningLang')}
               />
             </form>
           </div>

@@ -1,0 +1,50 @@
+{
+  "en": {
+    "english": "english",
+    "russian": "russian",
+    "german": "german",
+    "french": "french",
+    "spanish": "spanish",
+    "swedish": "swedish"
+  },
+  "ru": {
+    "english": "английский",
+    "russian": "русский",
+    "german": "немецкий",
+    "french": "французский",
+    "spanish": "испанский",
+    "swedish": "шведский"
+  },
+  "de": {
+    "english": "Englisch",
+    "russian": "Russisch",
+    "german": "deutsch",
+    "french": "französisch",
+    "spanish": "Spanisch",
+    "swedish": "Schwedisch"
+  },
+  "fr": {
+    "english": "Anglais",
+    "russian": "russe",
+    "german": "allemand",
+    "french": "français",
+    "spanish": "Espagnol",
+    "swedish": "suédois"
+  },
+  "es": {
+    "english": "inglés",
+    "russian": "ruso",
+    "german": "alemán",
+    "french": "francés",
+    "spanish": "español",
+    "swedish": "sueco"
+  },
+  "se": {
+    "english": "engelsk",
+    "russian": "ryska",
+    "german": "tysk",
+    "french": "franska",
+    "spanish": "spanska",
+    "swedish": "svenska"
+  }
+}

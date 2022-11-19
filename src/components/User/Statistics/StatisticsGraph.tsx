@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { List } from '../../../@types/entities/List';
 import { Word } from '../../../@types/entities/Word';
 import { weekdays } from '../../../constants/weekdays';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 import { sortArrayByKey } from '../../../utils/common/sortArrayByKey';
 import { checkDateInRange } from '../../../utils/dates/checkDateInRange';
 import { enumerateDaysBetweenDates } from '../../../utils/dates/enumerateDaysBetweenDates';
@@ -15,6 +16,7 @@ import {
 } from '../../UI/Graph/types';
 import { Dates } from '../Calendar/types';
 import s from './Statistics.module.scss';
+import usertr from '../../../pages/UserProfile/UserProfile.i18n.json';
 
 type Props = {
   list: List;
@@ -25,6 +27,7 @@ export function StatisticsGraph({ list, dateRange }: Props) {
   const filteredWordList = list?.words.filter(el => el.dateLearned) || [];
   const sortedByDates = sortArrayByKey(filteredWordList, 'dateLearned');
   const datesObj = fillRange(sortedByDates);
+  const { t } = useLocalTranslation(usertr);
 
   function fillRange(obj: Record<string, Word[]>) {
     const dates = [];
@@ -66,7 +69,7 @@ export function StatisticsGraph({ list, dateRange }: Props) {
     Object.entries(obj).forEach(([key]) => arr.push(key));
     const labels = arr.map(el => {
       const d = new Date(el).getDay();
-      return Number.isNaN(d) ? null : weekdays[d];
+      return Number.isNaN(d) ? null : t(weekdays[d]);
     });
     return labels;
   }
@@ -130,6 +133,11 @@ export function StatisticsGraph({ list, dateRange }: Props) {
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          font: {
+            family: 'Poppins',
+          },
+        },
       },
 
       tooltip: {

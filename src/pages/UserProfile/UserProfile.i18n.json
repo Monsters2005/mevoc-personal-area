@@ -1,0 +1,74 @@
+{
+  "en": {
+    "graphDescr": "Current Learning Progress",
+    "currentlyLearning": "Currently Learning",
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat",
+    "sun": "Sun",
+    "hidden": "Hidden"
+  },
+  "ru": {
+    "graphDescr": "Текущий прогресс обучения",
+    "currentlyLearning": "Сейчас изучает",
+    "mon": "Пн",
+    "tue": "Вт",
+    "wed": "Ср",
+    "thu": "Чт",
+    "fri": "Пт",
+    "sat": "Сб",
+    "sun": "Вс",
+    "hidden": "Скрыто"
+  },
+  "de": {
+    "graphDescr": "Aktueller Lernfortschritt",
+    "currentlyLearning": "Lerne Gerade",
+    "mon": "Mon",
+    "tue": "Die",
+    "wed": "Mit",
+    "thu": "Don",
+    "fri": "Fre",
+    "sat": "Sam",
+    "sun": "Son",
+    "hidden": "Versteckt"
+  },
+  "fr": {
+    "graphDescr": "Progrès d'apprentissage actuel",
+    "currentlyLearning": "En cours d'apprentissage",
+    "mon": "Lun",
+    "tue": "Mar",
+    "wed": "Mer",
+    "thu": "Jeu",
+    "fri": "Ven",
+    "sat": "Sam",
+    "sun": "Dim",
+    "hidden": "caché"
+  },
+  "es": {
+    "graphDescr": "Progreso de aprendizaje actual",
+    "currentlyLearning": "Actualmente Aprendiendo",
+    "mon": "Lun",
+    "tue": "Mar",
+    "wed": "Mie",
+    "thu": "Jue",
+    "fri": "Vie",
+    "sat": "Sab",
+    "sun": "Dom",
+    "hidden": "esta escondido"
+  },
+  "se": {
+    "graphDescr": "Aktuella inlärningsframsteg",
+    "currentlyLearning": "Lär för närvarande",
+    "mon": "Mån",
+    "tue": "Tis",
+    "wed": "Ons",
+    "thu": "Tor",
+    "fri": "Fre",
+    "sat": "Lör",
+    "sun": "Sön",
+    "hidden": "det är dolt"
+  }
+}

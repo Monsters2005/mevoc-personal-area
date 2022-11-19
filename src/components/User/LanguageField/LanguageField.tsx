@@ -5,9 +5,10 @@ import s from './LanguageField.module.scss';
 type Props = {
   label: string;
   language: string;
+  value: string;
 };
 
-export function LanguageField({ label, language }: Props) {
+export function LanguageField({ label, language, value }: Props) {
   return (
     <div className={s.language_container}>
       <h5>{label}</h5>
@@ -15,7 +16,7 @@ export function LanguageField({ label, language }: Props) {
         <div className={s.language_flag}>
           <Flag name={language} />
         </div>
-        <span>{language}</span>
+        <span>{value}</span>
       </div>
     </div>
   );

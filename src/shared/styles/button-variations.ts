@@ -33,7 +33,7 @@ export const primarySmallNoLists = {
 
 export const primaryModal = {
   fontStyle: 'normal',
-  fontWeight: '600',
+  fontWeight: '700',
   fontSize: '13px',
   lineHeight: '20px',
   letterSpacing: '1px',
