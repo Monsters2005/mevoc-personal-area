@@ -33,7 +33,6 @@ export default function HookFormSelect({
     control,
     formState: { errors },
   } = useFormContext();
-  console.log(defaultSelected);
   const [state, setState] = useState<Option | undefined>(defaultSelected);
 
   useEffect(() => {

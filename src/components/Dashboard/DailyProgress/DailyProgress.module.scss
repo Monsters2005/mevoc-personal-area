@@ -3,6 +3,9 @@
 .progress {
   &_container {
     width: 320px;
+    @media screen and (max-width: 1450px) {
+      width: 300px;
+    }
     & button {
       margin-left: auto;
     }
@@ -21,6 +24,9 @@
 
     color: rgba($primary-color, 0.7);
     text-transform: lowercase;
+    @media screen and (max-width: 1450px) {
+      width: 300px;
+    }
   }
   &_hint {
     width: 300px;
@@ -36,6 +42,11 @@
     color: rgba($primary-color, 0.7);
     position: relative;
     margin-top: 35px;
+
+    @media screen and (max-width: 1450px) {
+      margin-top: 45px;
+      font-size: 12px;
+    }
   }
   &_none {
     width: 100%;
@@ -52,5 +63,9 @@
     text-align: center;
 
     color: rgba(196, 195, 202, 0.7);
+    @media screen and (max-width: 1450px) {
+      font-size: 13px;
+      height: 230px;
+    }
   }
 }

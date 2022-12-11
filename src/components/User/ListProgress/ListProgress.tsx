@@ -23,7 +23,7 @@ export function ListProgress({ item, active, onClick }: Props) {
   return (
     <button
       className={classNames(s.list_container, {
-        [s.list_active]: active.id === item.id,
+        [s.list_active]: active?.id === item?.id,
       })}
       onClick={selectHandler(item)}
     >

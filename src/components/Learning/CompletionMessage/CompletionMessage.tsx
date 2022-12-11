@@ -1,5 +1,5 @@
-/* eslint-disable import/no-unresolved */
 import React from 'react';
+import { merge } from 'lodash';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useNavigate } from 'react-router';
@@ -15,6 +15,8 @@ import { resultMessages } from '../../../constants/resultMessages';
 import { Path } from '../../../constants/routes';
 import common from '../../UI/Common.i18n.json';
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
+import learning from '../Learning.i18n.json';
+import dashboard from '../../Dashboard/Dashboard.i18n.json';
 
 type ListProgress = {
   words: number;
@@ -34,7 +36,7 @@ function WordsInfo({
   words: number;
   wordsLearned: number;
 }) {
-  const { t } = useLocalTranslation(common);
+  const { t } = useLocalTranslation(merge(common, dashboard, learning));
 
   return (
     <div className={s.completion_words}>
@@ -55,6 +57,7 @@ export default function CompletionMessage({ progresses }: Props) {
   const [prevEl, prevElRef] = useSwiperRef<HTMLButtonElement>();
   const [nextEl, nextElRef] = useSwiperRef<HTMLButtonElement>();
 
+  const { t } = useLocalTranslation(merge(common, dashboard, learning));
   const isProgress = progresses.filter(item => item.wordsLearned !== 0).length !== 0;
   const message = resultMessages.find(item => item.isProgress === isProgress);
 
@@ -62,8 +65,8 @@ export default function CompletionMessage({ progresses }: Props) {
 
   return (
     <div className={s.completion_container}>
-      <h3 className={s.completion_title}>{message?.title}</h3>
-      <h6 className={s.completion_description}>{message?.message}</h6>
+      <h3 className={s.completion_title}>{t(message?.title ?? '')}</h3>
+      <h6 className={s.completion_description}>{t(message?.message ?? '')}</h6>
 
       <div className={s.completion_progresses}>
         <Button
@@ -117,7 +120,7 @@ export default function CompletionMessage({ progresses }: Props) {
         type="primary"
         onClick={() => navigate(`/${Path.HOME}`)}
       >
-        finish
+        {t('finish')}
       </Button>
     </div>
   );

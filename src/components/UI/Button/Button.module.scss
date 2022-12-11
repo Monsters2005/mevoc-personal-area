@@ -10,7 +10,6 @@
     border: none;
 
     font-style: normal;
-    letter-spacing: 1px;
     text-transform: uppercase;
 
     color: #1f2029;
@@ -44,6 +43,7 @@
     font-style: normal;
     letter-spacing: 1px;
     text-transform: uppercase;
+    white-space: nowrap;
 
     transition: all 0.1s;
     color: rgba($primary-color, 0.7);

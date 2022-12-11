@@ -16,7 +16,7 @@ import s from './Account.module.scss';
 import translations from '../../../../pages/Notifications.i18n.json';
 
 export function AccountTab() {
-  const { data: user, refetch: refetchUserData } = useGetCurrentUserQuery();
+  const { data: user } = useGetCurrentUserQuery();
   const [updateUser] = useUpdateUserMutation();
   const { t } = useLocalTranslation(translations);
 
@@ -35,7 +35,6 @@ export function AccountTab() {
         title: t('success'),
         type: NotificationType.SUCCESS,
       });
-      refetchUserData();
     } catch (e) {
       eventBus.emit(EventTypes.notification, {
         message: t('error'),

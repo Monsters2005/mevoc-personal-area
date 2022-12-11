@@ -1,18 +1,28 @@
-import { useInRouterContext } from 'react-router';
 import { get } from 'lodash';
+import { useEffect, useState } from 'react';
 import { LanguageLocale } from '../constants/locale';
-import { useGetCurrentUserQuery } from '../store/api/userApi';
+import { LSKeys } from '../constants/LSKeys';
+import { eventBus, EventTypes } from '../packages/EventBus';
+import { useLocalStorage } from './useLocalStorage';
 
 type Locale = Record<string, string | object>;
 type LocalConfig = Record<string, Locale>;
 
 export const useLocalTranslation = (config: LocalConfig) => {
-  const { data: user } = useGetCurrentUserQuery();
-  const lang = user?.nativeLang || 'English';
+  const [currentLang, setCurrentLang] = useLocalStorage(
+    LSKeys.UI_LANGUAGE,
+    'English'
+  );
 
-  const locale: keyof LocalConfig = LanguageLocale[lang as keyof typeof LanguageLocale];
-  console.log(lang, config[locale]);
+  useEffect(() => {
+    const setlangCb = (lang: string) => setCurrentLang(() => lang);
+    eventBus.on(EventTypes.setLang, setlangCb);
+    return () => eventBus.off(EventTypes.setLang, setlangCb);
+  }, []);
+
+  const locale: keyof LocalConfig = LanguageLocale[currentLang as keyof typeof LanguageLocale];
   return {
     t: (str: string) => get(config[locale], str) as string,
+    lang: currentLang,
   };
 };

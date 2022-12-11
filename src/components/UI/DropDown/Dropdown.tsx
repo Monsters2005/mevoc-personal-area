@@ -2,11 +2,12 @@ import classNames from 'classnames';
 import React, {
   CSSProperties, SetStateAction, useRef, useState,
 } from 'react';
-import { UISvgSelector } from '../../../assets/icons/UI/SvgSelector';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 import { useOutsideCheck } from '../../../hooks/useOutsideCheck';
 import { TransitionWrapper } from '../../../layouts/Transition/Transition';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import { makeSuspensionString } from '../../../utils/common/makeSuspensionString';
+import { UISvgSelector } from '../UISvgSelector';
 import s from './Dropdown.module.scss';
 import { DropdownList } from './DropdownList';
 import { Option } from './types';
@@ -42,7 +43,6 @@ export function Dropdown({
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [result, setResult] = useState<Option[] | undefined>(options);
-
   const transitionStyles = {
     entering: { opacity: 1, zIndex: 100 },
     entered: { opacity: 1, zIndex: 10 },

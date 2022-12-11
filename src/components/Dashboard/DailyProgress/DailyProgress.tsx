@@ -61,8 +61,8 @@ export function DashboardDailyProgress() {
               styles={{ marginTop: '60px' }}
             />
             <div className={s.progress_words}>
-              {`${wordsLearned} ${t('outOf')} ${`${wordsLearned || 0} ${t(
-                `word${wordsLearned !== 1 ? 's' : ''}`
+              {`${wordsLearned} ${t('outOf')} ${`${wordsAll || 0} ${t(
+                `word${wordsAll !== 1 ? 's' : ''}`
               )}`}
             `}
             </div>

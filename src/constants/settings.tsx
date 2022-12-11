@@ -3,41 +3,41 @@ import { SettingsSvgSelector } from '../components/Settings/SettingsSvgSelector'
 
 export const currentTheme = {
   dark: {
-    value: 'Dark',
+    value: 'dark',
     icon: <SettingsSvgSelector id="moon" />,
   },
   light: {
-    value: 'Light',
+    value: 'light',
     icon: <SettingsSvgSelector id="sun" />,
   },
 };
 
 export const textSizes = {
   small: {
-    value: 'Small',
+    value: 'small',
     icon: <SettingsSvgSelector id="text-small" />,
   },
   medium: {
-    value: 'Normal',
+    value: 'normal',
     icon: <SettingsSvgSelector id="text-medium" />,
   },
   large: {
-    value: 'Large',
+    value: 'large',
     icon: <SettingsSvgSelector id="text-large" />,
   },
 };
 
 export const textColor = {
   dark: {
-    value: 'Dark',
+    value: 'dark',
     icon: <SettingsSvgSelector id="text-dark" />,
   },
   normal: {
-    value: 'Normal',
+    value: 'normal',
     icon: <SettingsSvgSelector id="text-normal" />,
   },
   light: {
-    value: 'Light',
+    value: 'light',
     icon: <SettingsSvgSelector id="text-light" />,
   },
 };

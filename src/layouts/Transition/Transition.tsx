@@ -4,6 +4,7 @@ import { Transition } from 'react-transition-group';
 export type StateParam = {
   opacity: number;
   zIndex?: number;
+  pointerEvents?: string;
 };
 
 type State = Record<string, StateParam>;
@@ -19,8 +20,8 @@ type Props = {
 const defaultTransitionStyles: State = {
   entering: { opacity: 1, zIndex: 100 },
   entered: { opacity: 1, zIndex: 100 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0, zIndex: -1000 },
+  exiting: { opacity: 0, zIndex: -1000, pointerEvents: 'none' as const },
+  exited: { opacity: 0, zIndex: -1000, pointerEvents: 'none' as const },
 };
 
 export function TransitionWrapper({
@@ -33,7 +34,7 @@ export function TransitionWrapper({
   const defaultStyle = {
     transition: `all ${duration}ms ease-in-out `,
     opacity: 0,
-    zIndex: -1,
+    zIndex: -10,
   };
 
   const nodeRef = useRef(null);
@@ -43,11 +44,13 @@ export function TransitionWrapper({
       {(state: keyof State) => (
         <div
           ref={nodeRef}
-          style={{
-            ...styles,
-            ...defaultStyle,
-            ...transitionStyles[state],
-          }}
+          style={
+            {
+              ...styles,
+              ...defaultStyle,
+              ...transitionStyles[state],
+            } as CSSProperties
+          }
         >
           {children}
         </div>

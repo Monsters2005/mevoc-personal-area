@@ -1,20 +1,17 @@
 import React from 'react';
+import classNames from 'classnames';
 import {
   accentColors,
   currentTheme,
   textColor,
   textSizes,
 } from '../../../../constants/settings';
-// import {
-//   accentColors,
-//   currentTheme,
-//   textColor,
-//   textSizes,
-// } from '../../../../constants/settings';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
 import { MultiSelector } from '../../../UI/MultiSelector/MultiSelector';
-// import { SettingsColorSelect } from '../../ColorSelect/ColorSelect';
 import s from './Appearance.module.scss';
 import { SettingsColorSelect } from './ColorSelect/ColorSelect';
+import settings from '../../../../pages/Settings/Settings.i18n.json';
+import { useIsMounted } from '../../../../hooks/useDelay';
 
 export default function AppearanceTab() {
   // TODO: User should be received from the context which will have a data about
@@ -25,11 +22,13 @@ export default function AppearanceTab() {
   const onTextSizeSelect = () => console.log();
   const onTextColorSelect = () => console.log();
 
+  const { t } = useLocalTranslation(settings);
+
   return (
     <div className={s.appearance_container}>
       <div className={s.appearance_sections}>
         <div className={s.appearance_section}>
-          <h3 className={s.appearance_title}>Current Theme</h3>
+          <h3 className={s.appearance_title}>{t('currentTheme')}</h3>
           <div className={s.appearance_content}>
             <MultiSelector
               options={currentTheme}
@@ -39,7 +38,7 @@ export default function AppearanceTab() {
           </div>
         </div>
         <div className={s.appearance_section}>
-          <h3 className={s.appearance_title}>Accent Color</h3>
+          <h3 className={s.appearance_title}>{t('accentColor')}</h3>
           <div className={s.appearance_content}>
             <SettingsColorSelect
               defaultSelected={accentColors[0]}
@@ -49,7 +48,7 @@ export default function AppearanceTab() {
           </div>
         </div>
         <div className={s.appearance_section}>
-          <h3 className={s.appearance_title}>Text Size</h3>
+          <h3 className={s.appearance_title}>{t('textSize')}</h3>
           <div className={s.appearance_content}>
             <MultiSelector
               options={textSizes}
@@ -59,7 +58,7 @@ export default function AppearanceTab() {
           </div>
         </div>
         <div className={s.appearance_section}>
-          <h3 className={s.appearance_title}>Text Color</h3>
+          <h3 className={s.appearance_title}>{t('textColor')}</h3>
           <div className={s.appearance_content}>
             <MultiSelector
               options={textColor}

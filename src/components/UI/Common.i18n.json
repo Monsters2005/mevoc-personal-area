@@ -6,6 +6,8 @@
     "cancel": "Cancel",
     "save": "Save",
     "verify": "Verify",
+    "delete": "Delete",
+    "edit": "Edit",
     "viewMore": "View more",
     "select": "Select",
     "user": "User",
@@ -19,11 +21,14 @@
     "nativeLang": "Native language",
     "learningLang": "Learning language",
     "language": "Language",
-    "languages": "Languages"
+    "languages": "Languages",
+    "noneSelected": "None selected"
   },
   "ru": {
     "word": "Слово",
     "words": "Слов",
+    "delete": "Удалить",
+    "edit": "Редактировать",
     "add": "Добавить",
     "cancel": "Отменить",
     "save": "Сохранить",
@@ -41,11 +46,14 @@
     "nativeLang": "Родной язык",
     "learningLang": "Изучаемый язык",
     "language": "Язык",
-    "languages": "Языки"
+    "languages": "Языки",
+    "noneSelected": "Не выбрано"
   },
   "de": {
     "word": "Wort",
     "words": "Wörter",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
     "add": "hinzufügen",
     "cancel": "Abbrechen",
     "save": "sparen",
@@ -63,11 +71,14 @@
     "nativeLang": "Muttersprache",
     "learningLang": "Sprache lernen",
     "language": "Sprache",
-    "languages": "Sprachen"
+    "languages": "Sprachen",
+    "noneSelected": ""
   },
   "fr": {
     "word": "mot",
     "words": "mots",
+    "delete": "Effacer",
+    "edit": "Éditer",
     "add": "ajouter",
     "cancel": "annuler",
     "save": "enregistrer",
@@ -85,11 +96,14 @@
     "nativeLang": "langue maternelle",
     "learningLang": "apprendre une langue",
     "language": "Langue",
-    "languages": "langues"
+    "languages": "langues",
+    "noneSelected": ""
   },
   "es": {
     "word": "palabra",
     "words": "palabras",
+    "delete": "Borrar",
+    "edit": "Editar",
     "add": "agregar",
     "cancel": "cancelar",
     "save": "ahorrar",
@@ -107,11 +121,14 @@
     "nativeLang": " lengua materna",
     "learningLang": "aprendiendo idioma",
     "language": "idioma",
-    "languages": "idiomas"
+    "languages": "idiomas",
+    "noneSelected": ""
   },
   "se": {
     "word": "ord",
     "words": "ord",
+    "delete": "Radera",
+    "edit": "Redigera",
     "add": "  Lägg till",
     "cancel": "Avbryt",
     "save": "spara",
@@ -129,6 +146,7 @@
     "nativeLang": "modersmål",
     "learningLang": "lära sig språk",
     "language": "språk",
-    "languages": "språk"
+    "languages": "språk",
+    "noneSelected": ""
   }
 }

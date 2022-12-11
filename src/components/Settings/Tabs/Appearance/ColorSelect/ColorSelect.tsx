@@ -36,8 +36,6 @@ export function SettingsColorSelect({
     setCustomIsOpened(value);
   }
 
-  console.log('color', color);
-
   return (
     <div className={s.colorpicker_container}>
       <div className={s.colorpicker_pallete}>

@@ -1,5 +1,5 @@
 import { ExecException } from 'child_process';
-import React, { ErrorInfo } from 'react';
+import React, { ErrorInfo, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Exception } from 'sass';
 import { SignInDto } from '../../@types/dto/auth/signin.dto';
@@ -14,12 +14,25 @@ import { useSigninMutation } from '../../store/api/authApi';
 import s from './SignIn.module.scss';
 import notifTransl from '../Notifications.i18n.json';
 import { useLocalTranslation } from '../../hooks/useLocalTranslation';
+import Cookies from '../../components/Auth/Cookies/Cookies';
+import { Logo } from '../../components/UI/Logo/Logo';
+import { Dropdown } from '../../components/UI/DropDown/Dropdown';
+import { languages } from '../../constants/languages';
+import { Option } from '../../components/UI/DropDown/types';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { LSKeys } from '../../constants/LSKeys';
 
 export function SignInPage() {
   const navigate = useNavigate();
   const [signIn] = useSigninMutation();
   const goToDashboard = () => navigate('/dashboard');
+  const langOption = languages[0];
+  const [lang, setLang] = useState<Option | undefined>(langOption);
   const { t } = useLocalTranslation(notifTransl);
+  const [_, setLangDef] = useLocalStorage<string>(
+    LSKeys.UI_LANGUAGE,
+    'English'
+  );
 
   const login = async (data: SignInDto) => {
     const dataObj: SignInDto = {
@@ -41,6 +54,8 @@ export function SignInPage() {
       });
 
       goToDashboard();
+      setLangDef('English');
+      eventBus.emit(EventTypes.setLang, 'English');
     } catch (e: unknown) {
       eventBus.emit(EventTypes.notification, {
         message: (e as CustomError).data.message,
@@ -53,10 +68,29 @@ export function SignInPage() {
   return (
     <AuthLayout>
       <div className={s.signin_container}>
+        <span className="logo">
+          <Logo />
+        </span>
+        <span className="language-select">
+          <Dropdown
+            listTitle="Languages"
+            options={languages}
+            selectedItem={lang}
+            setSelectedItem={(item: Option | undefined) => {
+              setLang(item);
+              setLangDef(item?.value);
+              eventBus.emit(EventTypes.setLang, item?.value || 'English');
+            }}
+            allowNoneSelected={false}
+            styles={{ width: '200px' }}
+            listStyles={{ width: '300px', left: '-6.2rem' }}
+          />
+        </span>
         <SignInForm
           onSubmit={(data: SignInDto) => login(data)}
           onLink={() => navigate('/signup')}
         />
+        <Cookies />
       </div>
     </AuthLayout>
   );

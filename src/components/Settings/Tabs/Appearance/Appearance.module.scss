@@ -8,8 +8,7 @@
 
     grid-gap: 45px;
   }
-  &_section {
-  }
+
   &_title {
     font-style: normal;
     font-weight: 500;
@@ -18,5 +17,6 @@
 
     color: #c4c3ca;
     margin-bottom: 25px;
+    text-transform: capitalize;
   }
 }

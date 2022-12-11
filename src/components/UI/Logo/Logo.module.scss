@@ -7,6 +7,9 @@
     transition: all 0.3s;
     opacity: 0.8;
     & svg {
+      @media screen and (max-width: 1450px) {
+        transform: scale(0.9);
+      }
       & g {
         & rect:nth-child(1) {
           transition: all 0.3s;
@@ -43,11 +46,20 @@
     margin-left: 15px;
 
     color: $accent-color;
+
+    @media screen and (max-width: 1450px) {
+      font-size: 24px;
+      margin-left: 10px;
+    }
     & b {
       font-weight: 500;
       font-size: 28px;
       line-height: 100%;
       color: $active-color;
+
+      @media screen and (max-width: 1450px) {
+        font-size: 24px;
+      }
     }
   }
 }

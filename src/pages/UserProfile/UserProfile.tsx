@@ -23,7 +23,7 @@ export function UserProfilePage() {
   const { t } = useLocalTranslation(sidebar);
 
   return (
-    <PageLayout styles={{ height: '100%' }} title={t('userProfile')}>
+    <PageLayout styles={{ height: '95vh' }} title={t('userProfile')}>
       <div className={s.profilepage_container}>
         <div className={s.profilepage_userinfo}>
           {user ? (

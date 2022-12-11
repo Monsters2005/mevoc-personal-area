@@ -14,6 +14,7 @@ export const userApi = baseApi.injectEndpoints({
         url: `${path}/me`,
         method: 'GET',
       }),
+      providesTags: [{ type: 'User' }],
     }),
     getAllUsers: builder.query<User[], void>({
       query: () => ({
@@ -47,6 +48,7 @@ export const userApi = baseApi.injectEndpoints({
           body,
         };
       },
+      invalidatesTags: ['User'],
     }),
   }),
 });

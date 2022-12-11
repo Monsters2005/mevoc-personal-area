@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
+import { useIsMounted } from '../../../../../hooks/useDelay';
 import { hexToRgb } from '../../../../../utils/lib/hexToRgb';
 import { SettingsSvgSelector } from '../../../SettingsSvgSelector';
 
@@ -19,6 +20,7 @@ export function SettingsColorPicker({
 }: Props) {
   const [customColor, setCustomColor] = useState(color);
   const rgbColor = hexToRgb(color);
+  const isMounted = useIsMounted();
 
   function handleSaveCustom() {
     setCustomSelected(customColor, false);
@@ -44,6 +46,7 @@ export function SettingsColorPicker({
     <div
       className={classNames(
         s.colorpicker_select,
+        !isMounted && 'remove-animation',
         isOpen ? s.colorpicker_select__open : s.colorpicker_select__closed
       )}
     >

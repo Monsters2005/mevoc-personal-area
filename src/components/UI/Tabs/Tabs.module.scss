@@ -23,6 +23,8 @@
     color: rgba($primary-color, 0.7);
     transition: all 0.1s;
 
+    text-transform: capitalize;
+
     &:hover {
       background: rgba($active-color, 0.1);
       cursor: pointer;

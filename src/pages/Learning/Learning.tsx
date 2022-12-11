@@ -12,10 +12,20 @@ import { mergeArrays } from '../../utils/common/mergeArrays';
 import { cloneObj } from '../../utils/common/cloneObj';
 import { useActiveLists } from '../../context/ActiveLists';
 import { Path } from '../../constants/routes';
+import { useLocalTranslation } from '../../hooks/useLocalTranslation';
+import learningTr from '../../components/Learning/Learning.i18n.json';
 
 export function LearningPage() {
   const navigate = useNavigate();
-  const [tempStages, setTempStages] = useState(cloneObj(stages));
+  const { t } = useLocalTranslation(learningTr);
+  const [tempStages, setTempStages] = useState(
+    cloneObj(stages).map(
+      (item: { id: number; progress: number; name?: string }) => ({
+        ...item,
+        name: item.name ? t(item.name) : `${t('stage')} ${item.id}`,
+      })
+    )
+  );
   const [activeStage, setActiveStage] = useState<ProgressStage | null>(
     tempStages[0]
   );

@@ -29,7 +29,6 @@ export function SidebarProfile({
 
   const actionItems = profileActions.map(item => {
     item.func = () => navigate(item.path || '');
-    delete item.path;
     return item;
   });
 
@@ -63,7 +62,11 @@ export function SidebarProfile({
       >
         <GlobalSvgSelector id="expand" />
       </Button>
-      <div className={s.profile_actions} ref={menuRef}>
+      <div
+        className={s.profile_actions}
+        ref={menuRef}
+        style={{ zIndex: expandOpen ? 1000 : -1000 }}
+      >
         <ActionsDropdown isOpen={expandOpen} items={actionItems} />
       </div>
     </div>

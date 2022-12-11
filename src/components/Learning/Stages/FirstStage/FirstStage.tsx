@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
 import KeyListener from '../../../../layouts/KeyListener/KeyListener';
 import { Button } from '../../../UI/Button/Button';
 
@@ -8,6 +9,7 @@ import { LearningCore, LearningEvent } from '../../Main/Core';
 import { LetterBox } from '../LetterBox/LetterBox';
 import { LetterCard } from '../LetterCard/LetterCard';
 import { Stage } from '../types';
+import learningTr from '../../Learning.i18n.json';
 
 import s from './FirstStage.module.scss';
 
@@ -24,6 +26,7 @@ export const btnStyles = {
 };
 
 export default function FirstStage({ word, currentStage, onComplete }: Stage) {
+  const { t } = useLocalTranslation(learningTr);
   const [learningState, setLearningState] = useState({} as LearningEvent);
   function changeLearningState(e: LearningEvent) {
     setLearningState(e);
@@ -98,7 +101,7 @@ export default function FirstStage({ word, currentStage, onComplete }: Stage) {
             onClick={() => onComplete(learningState.mistakesCount)}
             styles={btnStyles}
           >
-            Next
+            {t('next')}
             <LearningSvgSelector id="arrow-right" />
           </Button>
         )}

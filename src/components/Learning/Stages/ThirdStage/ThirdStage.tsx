@@ -1,6 +1,7 @@
 import React, {
   createRef, useEffect, useMemo, useState,
 } from 'react';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
 import KeyListener from '../../../../layouts/KeyListener/KeyListener';
 import { Button } from '../../../UI/Button/Button';
 import { Loader } from '../../../UI/Loader/Loader';
@@ -9,10 +10,12 @@ import { LearningCore, LearningEvent } from '../../Main/Core';
 import { btnStyles } from '../FirstStage/FirstStage';
 import { LetterBox } from '../LetterBox/LetterBox';
 import { Stage } from '../types';
+import learningTr from '../../Learning.i18n.json';
 import s from './ThirdStage.module.scss';
 
 export default function ThirdStage({ word, currentStage, onComplete }: Stage) {
   const areaRef = createRef<HTMLDivElement>();
+  const { t } = useLocalTranslation(learningTr);
 
   const [learningState, setLearningState] = useState({} as LearningEvent);
   function changeLearningState(e: LearningEvent) {
@@ -76,7 +79,7 @@ export default function ThirdStage({ word, currentStage, onComplete }: Stage) {
           )}
           <div className={s.thirdstage_info}>
             <LearningSvgSelector id="keyboard" />
-            <p>Use your keyboard to type the word</p>
+            <p>{t('keyboardText')}</p>
           </div>
         </div>
         {learningState.isCompleted && (
@@ -87,7 +90,7 @@ export default function ThirdStage({ word, currentStage, onComplete }: Stage) {
             }}
             styles={btnStyles}
           >
-            Next
+            {t('next')}
             <LearningSvgSelector id="arrow-right" />
           </Button>
         )}

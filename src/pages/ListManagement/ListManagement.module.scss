@@ -1,6 +1,14 @@
 .listmanagement {
   &_container {
     width: 100%;
+    position: relative;
+  }
+  &_nolists {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 10%;
   }
   &_header {
     display: flex;

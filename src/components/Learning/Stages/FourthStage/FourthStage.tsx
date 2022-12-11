@@ -1,6 +1,7 @@
 import React, {
   createRef, useEffect, useMemo, useRef, useState,
 } from 'react';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
 import KeyListener from '../../../../layouts/KeyListener/KeyListener';
 import { TransitionWrapper } from '../../../../layouts/Transition/Transition';
 import { Button } from '../../../UI/Button/Button';
@@ -10,12 +11,14 @@ import { LearningCore, LearningEvent, MAX_TIMER_VALUE } from '../../Main/Core';
 import { Stage } from '../types';
 import s from './FourthStage.module.scss';
 import { useCountdown } from './useCountdown';
+import learningTr from '../../Learning.i18n.json';
 
 export default function FourthStage({
   word,
   currentStage,
   onComplete,
 }: Stage) {
+  const { t } = useLocalTranslation(learningTr);
   const [learningState, setLearningState] = useState({} as LearningEvent);
   function changeLearningState(e: LearningEvent) {
     setLearningState(e);
@@ -79,7 +82,7 @@ export default function FourthStage({
         <div className={s.fourthstage_inputcontainer}>
           <input
             className={s.fourthstage_input}
-            placeholder="Type your answer here"
+            placeholder={t('inputText')}
             ref={inputRef}
             value={value}
             onChange={e => {

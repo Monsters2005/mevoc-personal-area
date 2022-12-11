@@ -28,6 +28,7 @@
     line-height: 21px;
 
     color: rgba($primary-color, 0.7);
+    text-transform: capitalize;
   }
 
   &_active {
@@ -43,7 +44,7 @@
     border: none;
 
     transition: all 0.1s;
-    margin-top: 10px;
+    // margin-top: 10px;
     z-index: -11;
     font-size: 18px;
 

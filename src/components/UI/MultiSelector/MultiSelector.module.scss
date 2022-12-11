@@ -49,6 +49,7 @@
       line-height: 20px;
 
       transition: all 0.1s;
+      text-transform: capitalize;
       color: rgba($primary-color, 0.7);
     }
 
@@ -91,6 +92,6 @@
     left: 5px;
     z-index: 0;
 
-    transition: all 0.7s;
+    transition: all 0.4s;
   }
 }

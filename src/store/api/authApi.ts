@@ -35,6 +35,11 @@ export const authApi = baseApi.injectEndpoints({
         url: `${path}/${Path.SIGN_OUT}`,
         method: 'POST',
       }),
+      onQueryStarted(_, api) {
+        api.queryFulfilled.then(() => {
+          api.dispatch(authApi.util.resetApiState());
+        });
+      },
     }),
     refresh: builder.mutation<Tokens, void>({
       query: () => ({

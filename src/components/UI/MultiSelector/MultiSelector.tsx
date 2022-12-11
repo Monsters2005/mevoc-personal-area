@@ -1,7 +1,10 @@
 import React, { CSSProperties, ReactNode, useState } from 'react';
+import { merge } from 'lodash';
 import classNames from 'classnames';
 import s from './MultiSelector.module.scss';
 import { useOffset } from './useOffset';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
+import settings from '../../../pages/Settings/Settings.i18n.json';
 
 export type MultiSelectorOption = {
   value: string;
@@ -24,6 +27,8 @@ export function MultiSelector<T extends MultiSelectorObject>({
   defaultActive,
   onClick,
 }: Props<T>) {
+  const { t } = useLocalTranslation(merge(settings));
+
   const transformOptions = Object.keys(options).map((key: string) => ({
     value: options[key].value,
     label: key,
@@ -58,7 +63,7 @@ export function MultiSelector<T extends MultiSelectorObject>({
           onClick={buttonHandler(item, i)}
         >
           <span>{item.icon}</span>
-          <p>{item.value}</p>
+          <p>{t(item.value)}</p>
         </button>
       ))}
       <span

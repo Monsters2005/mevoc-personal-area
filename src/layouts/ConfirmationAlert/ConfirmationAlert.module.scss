@@ -1,0 +1,77 @@
+@use '@styles/shared/variables.scss' as *;
+
+.confirmation {
+  &_container {
+    display: flex;
+    flex-direction: column;
+
+    width: 500px;
+    height: 170px;
+
+    background: $element-color;
+    border-radius: 19px;
+
+    padding: 25px 15px;
+    position: relative;
+  }
+  &_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 80%;
+    grid-gap: 15px;
+  }
+  &_info {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 8px;
+
+    & h3 {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 27px;
+
+      color: $primary-color;
+
+      margin: 0;
+      padding: 0;
+    }
+
+    & p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+
+      color: rgba($primary-color, 0.7);
+
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &_footer {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: auto;
+
+    & span {
+      display: flex;
+      align-items: center;
+      grid-gap: 10px;
+
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+
+      color: rgba($primary-color, 0.7);
+      user-select: none;
+    }
+  }
+}

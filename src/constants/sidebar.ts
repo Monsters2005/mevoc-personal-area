@@ -41,12 +41,12 @@ export const actions = [
 
 export const profileActions: ActionItem[] = [
   {
-    path: '/user-profile',
+    path: Path.PROFILE,
     key: 'viewProfile',
     func: () => null,
   },
   {
-    path: '/settings',
+    path: Path.SETTINGS,
     key: 'editProfile',
     func: () => null,
   },

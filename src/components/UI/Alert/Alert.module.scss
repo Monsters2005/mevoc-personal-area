@@ -1,0 +1,56 @@
+@use '@styles/shared/variables.scss' as *;
+
+.alert {
+  &_container {
+    width: 500px;
+    height: 258px;
+
+    background: $element-color;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 20px;
+
+    @media screen and (max-width: 1450px) {
+      width: 450px;
+      padding: 15px;
+      height: 200px;
+    }
+    & svg {
+      @media screen and (max-width: 1450px) {
+        width: 50px;
+        margin-top: -10px;
+      }
+    }
+  }
+  &_title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 24px;
+    color: $primary-color;
+    @media screen and (max-width: 1450px) {
+      font-size: 16px;
+      margin: -5px 0 0 0;
+      padding: 0;
+    }
+  }
+  &_text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: center;
+
+    color: rgba($primary-color, 0.7);
+    @media screen and (max-width: 1450px) {
+      font-size: 13px;
+      margin: 4px;
+      padding: 0;
+    }
+  }
+}

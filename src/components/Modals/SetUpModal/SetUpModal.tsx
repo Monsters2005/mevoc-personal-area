@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import schema from './validation';
@@ -17,6 +17,9 @@ import { eventBus, EventTypes } from '../../../packages/EventBus';
 import { useModal } from '../../../context/ModalContext';
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 import translations from '../../../pages/Notifications.i18n.json';
+import { LanguageConfirmationAlert } from '../Alerts/Alerts';
+import { LSKeys } from '../../../constants/LSKeys';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 
 type Props = {
   onFillData: SubmitHandler<Partial<User>>;
@@ -114,10 +117,33 @@ export default function SetUpModal({ onFillData }: Props) {
     resolver: yupResolver(schema),
   });
   const { setCurrentModal } = useModal();
+  const [lang] = useLocalStorage<string>(LSKeys.UI_LANGUAGE, 'English');
+  const [langFlag, setLangFlag] = useLocalStorage<boolean>(
+    LSKeys.FLAG_LANGUAGE,
+    false
+  );
 
   const submitHandler = (data: Partial<User>) => {
     onFillData({ ...data });
-    setCurrentModal(null);
+    if (
+      languages.find(
+        el => el.value === data.nativeLang && lang !== data.nativeLang && !langFlag
+      )
+    ) {
+      setCurrentModal(
+        <LanguageConfirmationAlert
+          onDontShow={() => {
+            setLangFlag(true);
+            eventBus.emit(EventTypes.setFlag, 'true');
+          }}
+          onConfirm={() => {
+            eventBus.emit(EventTypes.setLang, data.nativeLang || 'English');
+          }}
+        />
+      );
+    } else {
+      setCurrentModal(null);
+    }
   };
   const { t } = useLocalTranslation(translations);
 

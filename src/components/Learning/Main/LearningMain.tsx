@@ -35,11 +35,6 @@ type Props = {
 export function LearningMain({ stage, updateStages }: Props) {
   const { currentLists } = useActiveLists();
 
-  const { data: user } = useGetCurrentUserQuery();
-  const { refetch: refetchUserLists } = useGetListsByUserIdQuery(
-    user?.id || 0
-  );
-
   const [updateWord] = useUpdateWordMutation();
 
   const words = mergeArrays(currentLists.map(el => el.words));
@@ -62,7 +57,6 @@ export function LearningMain({ stage, updateStages }: Props) {
         });
       });
     }
-    refetchUserLists();
   }, [isCompleted]);
 
   function updateProgressStage() {
@@ -103,10 +97,7 @@ export function LearningMain({ stage, updateStages }: Props) {
 
   function getResults(items: Word[]) {
     const results = currentLists.map((item, i) => {
-      const learned = item.words.filter(el => {
-        console.log(items, el);
-        return items.find(word => word.id === el.id);
-      });
+      const learned = item.words.filter(el => items.find(word => word.id === el.id));
 
       return {
         name: item.name,

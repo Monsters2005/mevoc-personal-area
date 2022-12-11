@@ -1,7 +1,7 @@
 export const inputForm = {
   width: '100%',
   fontWeight: 500,
-  fontSize: '14px',
+  fontSize: '15px',
   lineHeight: '21px',
 };
 

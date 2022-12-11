@@ -95,3 +95,20 @@ input:-webkit-autofill:active {
 .page_container {
   width: 100%;
 }
+
+.remove-animation {
+  z-index: -100 !important;
+  opacity: 0 !important;
+}
+
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.language-select {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}

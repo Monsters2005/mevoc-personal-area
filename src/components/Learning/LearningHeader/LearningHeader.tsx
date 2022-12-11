@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 import { learningBtn } from '../../../shared/styles/button-variations';
 import { Button } from '../../UI/Button/Button';
 import StagesProgress, {
@@ -6,6 +7,7 @@ import StagesProgress, {
 } from '../../UI/StagesProgress/StagesProgress';
 import { LearningSvgSelector } from '../LearningSvgSelector';
 import s from './LearningHeader.module.scss';
+import learning from '../Learning.i18n.json';
 
 type Props = {
   onGoBack: () => void;
@@ -22,12 +24,14 @@ export function LearningHeader({
   setCurrentStage,
   activeStage,
 }: Props) {
+  const { t } = useLocalTranslation(learning);
+
   return (
     <div className={s.header_container}>
       <div className={s.header_part}>
         <Button styles={learningBtn} type="secondary" onClick={onGoBack}>
           <LearningSvgSelector id="arrow-left" />
-          Go back
+          {t('goBack')}
         </Button>
       </div>
       <div className={s.header_part}>
@@ -39,7 +43,7 @@ export function LearningHeader({
       </div>
       <div className={s.header_part}>
         <Button styles={learningBtn} type="secondary" onClick={onSkipStages}>
-          Move To The Test
+          {t('moveTo')}
           <LearningSvgSelector id="arrow-right" />
         </Button>
       </div>

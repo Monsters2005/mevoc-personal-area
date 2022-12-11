@@ -22,9 +22,9 @@ export const wordApi = baseApi.injectEndpoints({
       providesTags: result => (result
         ? [
           ...result.map(({ id }) => ({ type: 'Word' as const, id })),
-          { type: 'Word', id: 'LIST' },
+          'Word',
         ]
-        : [{ type: 'Word', id: 'LIST' }]),
+        : ['Word']),
     }),
     createWord: builder.mutation<Word, CreateWordDto>({
       query: body => ({
@@ -32,10 +32,7 @@ export const wordApi = baseApi.injectEndpoints({
         method: 'POST',
         body,
       }),
-      invalidatesTags: [
-        { type: 'List', id: 'LIST' },
-        { type: 'Word', id: 'LIST' },
-      ],
+      invalidatesTags: ['Word'],
     }),
     updateWord: builder.mutation<Word, Partial<Word> & Pick<Word, 'id'>>({
       query(body) {
@@ -45,10 +42,7 @@ export const wordApi = baseApi.injectEndpoints({
           body,
         };
       },
-      invalidatesTags: [
-        { type: 'List', id: 'LIST' },
-        { type: 'Word', id: 'LIST' },
-      ],
+      invalidatesTags: ['Word'],
     }),
   }),
 });

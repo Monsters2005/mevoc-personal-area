@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { merge } from 'lodash';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -28,27 +27,27 @@ import {
 } from '../../store/api/userApi';
 import s from './Dashboard.module.scss';
 import translations from '../../components/Dashboard/Dashboard.i18n.json';
-import notifTransl from '../../pages/Notifications.i18n.json';
+import notifTransl from '../Notifications.i18n.json';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { LSKeys } from '../../constants/LSKeys';
 
 export function DashboardPage() {
   const { data: user } = useGetCurrentUserQuery();
-  const { data: userLists, refetch: refetchUserLists } =
-    useGetListsByUserIdQuery(user?.id || 0);
+  const { data: userLists } = useGetListsByUserIdQuery(user?.id || 0);
   const { currentLists } = useActiveLists();
   const { setCurrentModal } = useModal();
   const [updateUser] = useUpdateUserMutation();
 
-  const langOption =
-    languages.find(item => item.name === user?.nativeLang) || languages[0];
-  const [lang, setLang] = useState<Option | undefined>(langOption);
+  const { t, lang } = useLocalTranslation(merge(translations, notifTransl));
+
+  const langOptionObj = languages.find(item => item.value === lang);
+  const [langOption, setLangOption] = useState<Option | undefined>(langOptionObj);
 
   const navigate = useNavigate();
 
   const handleListAdd = () => {
     navigate(`/${Path.LISTS}`);
   };
-
-  const { t } = useLocalTranslation(merge(translations, notifTransl));
 
   const onFillData = async (data: Partial<User>) => {
     try {
@@ -69,12 +68,18 @@ export function DashboardPage() {
 
   useEffect(() => {
     if (user) {
-      const { lastName, location, nativeLang, learningLang } = user;
+      const {
+        lastName, location, nativeLang, learningLang,
+      } = user;
       if (!lastName || !location || !nativeLang || !learningLang) {
         setCurrentModal(<SetUpModal onFillData={onFillData} />);
       }
     }
   }, [user]);
+
+  useEffect(() => {
+    setLangOption(langOptionObj);
+  }, [langOptionObj, lang]);
 
   return (
     <div className={s.dashboardpage_container}>
@@ -86,8 +91,11 @@ export function DashboardPage() {
           <Dropdown
             listTitle="Languages"
             options={languages}
-            selectedItem={lang}
-            setSelectedItem={(item: Option | undefined) => setLang(item)}
+            selectedItem={langOption}
+            setSelectedItem={(item: Option | undefined) => {
+              eventBus.emit(EventTypes.setLang, item?.value ?? '');
+              setLangOption(item);
+            }}
             allowNoneSelected={false}
             styles={{ width: '200px' }}
             listStyles={{ width: '300px', left: '-6.2rem' }}

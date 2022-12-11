@@ -55,6 +55,7 @@
     cursor: default;
 
     display: flex;
+    margin-top: 20px;
   }
 
   .DayPicker_transitionContainer,
@@ -71,7 +72,7 @@
   .DateRangePicker_picker_1,
   .DateRangePicker_picker__directionLeft,
   .DateRangePicker_picker__directionLeft_2 {
-    top: 0 !important;
+    top: 0px !important;
     left: 220px !important;
     position: absolute;
     background-color: $element-light-color;
@@ -362,7 +363,6 @@
   .DayPicker__withBorder,
   .DayPicker__withBorder_3 {
     border-radius: 10px;
-    margin-top: -23px;
   }
 }
 

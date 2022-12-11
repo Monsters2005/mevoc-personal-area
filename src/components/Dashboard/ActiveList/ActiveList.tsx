@@ -42,12 +42,13 @@ export function DashboardActiveList({ item, index }: Props) {
             [s.activelist_selected]: selected,
             [s.activelist_dragging]: snapshot.isDragging,
           })}
+          onClick={selectList}
+          role="presentation"
         >
           <button
             className={classNames(s.activelist_checkbox, {
               [s.activelist_checkbox_selected]: selected,
             })}
-            onClick={selectList}
           >
             <span />
           </button>

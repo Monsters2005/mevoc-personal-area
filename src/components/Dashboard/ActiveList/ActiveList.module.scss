@@ -14,12 +14,19 @@
 
     transition: background 0.1s;
     cursor: default;
+
+    @media screen and (max-width: 1450px) {
+      padding: 6px 8px;
+    }
   }
   &_dragging {
     background: lighten($element-light-color, 5);
   }
   &_content {
     margin-left: 10px;
+    @media screen and (max-width: 1450px) {
+      margin-left: 6px;
+    }
     & h4 {
       font-style: normal;
       font-weight: 500;
@@ -29,6 +36,9 @@
       color: $primary-color;
       margin: 0;
       padding: 0;
+      @media screen and (max-width: 1450px) {
+        font-size: 14px;
+      }
     }
     & p {
       font-style: normal;
@@ -40,6 +50,10 @@
       text-transform: lowercase;
       margin: 0;
       padding: 0;
+      @media screen and (max-width: 1450px) {
+        font-size: 11px;
+        margin-top: -2px;
+      }
     }
   }
 
@@ -52,6 +66,9 @@
     border-radius: 100px;
     position: relative;
     transition: all 0.3s;
+    @media screen and (max-width: 1450px) {
+      transform: scale(0.85);
+    }
     &:hover {
       cursor: pointer;
     }

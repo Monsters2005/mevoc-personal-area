@@ -1,4 +1,3 @@
-/* eslint-disable */
 export enum Path {
   HOME = 'dashboard',
 

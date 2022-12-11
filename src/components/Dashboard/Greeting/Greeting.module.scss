@@ -11,6 +11,10 @@
       line-height: 51px;
 
       color: $primary-color;
+
+      @media screen and (max-width: 1450px) {
+        font-size: 28px;
+      }
     }
     & p {
       font-style: normal;
@@ -21,6 +25,9 @@
       color: rgba($primary-color, 0.7);
       margin: 0;
       padding: 0;
+      @media screen and (max-width: 1450px) {
+        font-size: 19px;
+      }
     }
   }
 }

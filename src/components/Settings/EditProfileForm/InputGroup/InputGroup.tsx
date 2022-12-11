@@ -1,11 +1,13 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import moment, { lang } from 'moment';
 import React, { useCallback, useEffect } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { merge } from 'lodash';
+import moment from 'moment';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { SettignsProfileFormDto } from '../../../../@types/dto/settings/profileform.dto';
 import { User } from '../../../../@types/entities/User';
 import { countries } from '../../../../constants/countries';
 import { languages } from '../../../../constants/languages';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
 import {
   btnInputSettings,
   primarySmallLists,
@@ -17,9 +19,10 @@ import HookFormInput from '../../../HookForm/HookFormInput';
 import HookFormSelect from '../../../HookForm/HookFormSelect';
 import { Button } from '../../../UI/Button/Button';
 import { SettingsSvgSelector } from '../../SettingsSvgSelector';
-// import { SettingsSvgSelector } from '../../SettingsSvgSelector';
 import s from './InputGroup.module.scss';
 import schema from './validation';
+import settings from '../../../../pages/Settings/Settings.i18n.json';
+import common from '../../../UI/Common.i18n.json';
 
 type Props = {
   user: User;
@@ -43,13 +46,14 @@ export function SettingsInputGroup({
   onVerifyEmail,
   onSave,
 }: Props) {
+  const { t } = useLocalTranslation(merge(settings, common));
+
   const values = useForm<SettignsProfileFormDto>({
     resolver: yupResolver(schema),
   });
 
   const submitHandler = (data: SettignsProfileFormDto) => {
     onSave(data);
-    console.log('data', data);
   };
 
   const revertValues = () => {
@@ -74,7 +78,7 @@ export function SettingsInputGroup({
               <HookFormInput
                 name="firstName"
                 defaultValue={firstName}
-                label="First Name"
+                label={t('firstName')}
                 styles={{
                   ...inputSettings,
                   width: '300px',
@@ -84,7 +88,7 @@ export function SettingsInputGroup({
               <HookFormInput
                 name="lastName"
                 defaultValue={lastName}
-                label="Last Name"
+                label={t('lastName')}
                 styles={{
                   ...inputSettings,
                   width: '300px',
@@ -96,7 +100,7 @@ export function SettingsInputGroup({
               <HookFormInput
                 name="username"
                 defaultValue={username}
-                label="Username"
+                label={t('username')}
                 styles={{ ...inputSettings, width: '300px' }}
               />
               <HookFormDatePicker
@@ -111,7 +115,7 @@ export function SettingsInputGroup({
               <HookFormInput
                 name="email"
                 defaultValue={email}
-                label="Email Adress"
+                label={t('emailAdress')}
                 styles={{ ...inputSettings, width: '100%' }}
               >
                 {confirmed ? (
@@ -125,7 +129,7 @@ export function SettingsInputGroup({
                     type="primary"
                     onClick={() => onVerifyEmail(email)}
                   >
-                    Verify
+                    {t('verify')}
                   </Button>
                 )}
               </HookFormInput>
@@ -134,13 +138,13 @@ export function SettingsInputGroup({
               <HookFormInput
                 name="phoneNumber"
                 defaultValue={phoneNumber}
-                label="Phone Number"
+                label={t('phoneNumber')}
                 styles={{ ...inputSettings, width: '300px' }}
               />
               <HookFormSelect
                 options={countries}
                 defaultSelected={countries[87]}
-                label="Location"
+                label={t('location')}
                 name="location"
                 search
               />
@@ -158,7 +162,7 @@ export function SettingsInputGroup({
                     )
                   ]
                 }
-                label="Native Language"
+                label={t('nativeLang')}
                 name="nativeLang"
               />
               <HookFormSelect
@@ -171,7 +175,7 @@ export function SettingsInputGroup({
                     )
                   ]
                 }
-                label="Learning Language"
+                label={t('learningLang')}
                 name="learningLang"
               />
             </div>
@@ -184,14 +188,14 @@ export function SettingsInputGroup({
             onClick={revertValues}
             type="secondary"
           >
-            Cancel
+            {t('cancel')}
           </Button>
           <Button
             styles={settingsActionBtn}
             onClick={values.handleSubmit(submitHandler)}
             type="primary"
           >
-            Save
+            {t('save')}
           </Button>
         </div>
       </div>

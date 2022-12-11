@@ -1,5 +1,3 @@
-import { Position } from 'postcss';
-
 export const primaryMiddle = {
   padding: '6px 14px',
   fontSize: '13px',
@@ -48,7 +46,6 @@ export const smallModal = {
 };
 
 export const btnInputSettings = {
-  fontFamily: 'Poppins',
   fontStyle: 'normal',
   fontWeight: 600,
   lineHeight: '20px',

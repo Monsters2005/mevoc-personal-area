@@ -20,16 +20,13 @@ import translations from '../../../pages/Notifications.i18n.json';
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 
 type Props = {
-  // words: Word[];
-  // onAddWord: () => void;
-  // onEditWord: () => void;
   selectedList: number;
 };
 
 export function DashboardWordList({ selectedList }: Props) {
   const { data: currentUser } = useGetCurrentUserQuery();
   const { setCurrentModal } = useModal();
-  const { data: wordsData = [], refetch: refetchListWords } = useGetWordsByListIdQuery(selectedList, {
+  const { data: wordsData = [] } = useGetWordsByListIdQuery(selectedList, {
     skip: !currentUser?.id,
   });
   const [createWord] = useCreateWordMutation();
@@ -51,7 +48,6 @@ export function DashboardWordList({ selectedList }: Props) {
           title: t('success'),
           type: NotificationType.SUCCESS,
         });
-        refetchListWords();
       } catch (e) {
         eventBus.emit(EventTypes.notification, {
           message: (e as CustomError).data.message,
@@ -78,7 +74,6 @@ export function DashboardWordList({ selectedList }: Props) {
           title: t('success'),
           type: NotificationType.SUCCESS,
         });
-        refetchListWords();
       } catch (e) {
         eventBus.emit(EventTypes.notification, {
           message: (e as CustomError).data.message,

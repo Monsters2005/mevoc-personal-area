@@ -7,7 +7,7 @@
 
     background: $element-light-color;
     backdrop-filter: blur(45px);
-    border-radius: 10px;
+    border-radius: 15px;
 
     margin: 0;
     padding: 30px 25px;
@@ -17,6 +17,12 @@
     align-items: center;
 
     margin-left: 45px;
+
+    @media screen and (max-width: 1450px) {
+      margin-left: 35px;
+      width: 200px;
+      height: 263px;
+    }
   }
   &_container:first-child {
     margin-left: 0;
@@ -37,6 +43,10 @@
       margin: 0;
       padding: 0;
       text-transform: lowercase;
+
+      @media screen and (max-width: 1450px) {
+        font-size: 10px;
+      }
     }
   }
   &_icon {
@@ -52,12 +62,21 @@
 
     border-radius: 150px;
     margin-top: 10px;
-
-    & img {
+    @media screen and (max-width: 1450px) {
+      width: 71px;
+      height: 71px;
+    }
+    & svg {
       min-width: 45px;
       min-height: 45px;
       max-width: 45px;
       max-height: 45px;
+      @media screen and (max-width: 1450px) {
+        min-width: 40px;
+        min-height: 40px;
+        max-width: 40px;
+        max-height: 40px;
+      }
     }
   }
   &_title {
@@ -70,6 +89,9 @@
     margin: 0;
     margin-top: 10px;
     padding: 0;
+    @media screen and (max-width: 1450px) {
+      font-size: 14px;
+    }
   }
   &_buttons {
     display: flex;
@@ -92,7 +114,10 @@
 
     transition: all 0.2s;
     margin-left: 10px;
-
+    @media screen and (max-width: 1450px) {
+      width: 22px;
+      height: 22px;
+    }
     & span {
       position: relative;
       &::before {

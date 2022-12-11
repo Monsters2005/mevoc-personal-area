@@ -3,11 +3,15 @@ import { Notification } from '../@types/entities/Notification';
 export enum EventTypes {
   notification = 'notification',
   removeNotification = 'removeNotification',
+  setLang = 'setLSItem',
+  setFlag = 'setFlagItem',
 }
 
 type EventArguments = {
   [EventTypes.notification]: Notification;
   [EventTypes.removeNotification]: string;
+  [EventTypes.setLang]: string;
+  [EventTypes.setFlag]: string;
 };
 
 type EventListenerCallback<T extends EventTypes> = (
@@ -17,6 +21,8 @@ type EventListenerCallback<T extends EventTypes> = (
 const listeners: Record<EventTypes, EventListenerCallback<EventTypes>[]> = {
   [EventTypes.notification]: [],
   [EventTypes.removeNotification]: [],
+  [EventTypes.setLang]: [],
+  [EventTypes.setFlag]: [],
 };
 
 class EventBus {

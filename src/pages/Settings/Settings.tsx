@@ -1,35 +1,37 @@
 import React, { useState } from 'react';
+import { merge } from 'lodash';
 import SettingsTab from '../../components/Settings/Tabs/Tab/SettingsTab';
 import { TabOption, Tabs } from '../../components/UI/Tabs/Tabs';
 import { PageLayout } from '../../layouts/PageLayout/PageLayout';
-import { user } from '../../mocks/user';
 import s from './Settings.module.scss';
 import sidebar from '../../components/Sidebar/Sidebar/Sidebar.i18n.json';
-
-const settingsTabs = {
-  account: {
-    value: 'Account',
-  },
-  appearance: {
-    value: 'Appearance',
-  },
-  notifications: {
-    value: 'Notifications',
-  },
-  security: {
-    value: 'Security',
-  },
-};
+import settings from './Settings.i18n.json';
+import { useLocalTranslation } from '../../hooks/useLocalTranslation';
 
 export function SettingsPage() {
   const [activeTab, setActiveTab] = useState('account');
+  const { t } = useLocalTranslation(merge(sidebar, settings));
 
+  const settingsTabs = {
+    account: {
+      value: t('account'),
+    },
+    appearance: {
+      value: t('appearance'),
+    },
+    notifications: {
+      value: t('notifications'),
+    },
+    security: {
+      value: t('security'),
+    },
+  };
   const handleTabChange = (tab: TabOption) => {
     if (tab.label) setActiveTab(tab.label);
   };
 
   return (
-    <PageLayout title="Settings" styles={{ height: 'fit-content' }}>
+    <PageLayout title={t('settings')} styles={{ height: 'fit-content' }}>
       <div className={s.settingspage_container}>
         <div className={s.settingspage_header}>
           <Tabs

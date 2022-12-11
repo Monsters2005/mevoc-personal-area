@@ -40,6 +40,9 @@ import sidebar from '../../components/Sidebar/Sidebar/Sidebar.i18n.json';
 import lists from './Lists.i18n.json';
 import { useLocalTranslation } from '../../hooks/useLocalTranslation';
 import { merge } from 'lodash';
+import Alert from '../../components/UI/Alert/Alert';
+import { UISvgSelector } from '../../components/UI/UISvgSelector';
+import { notLists } from '../../constants/alerts';
 
 export default function ListManagementPage() {
   const { selectedWords } = useSelectedWords();
@@ -50,10 +53,12 @@ export default function ListManagementPage() {
 
   const { setCurrentModal } = useModal();
   const { data: currentUser } = useGetCurrentUserQuery();
-  const { data: userLists = [], refetch: refetchUserLists } =
-    useGetListsByUserIdQuery(currentUser?.id || 0, {
+  const { data: userLists = [] } = useGetListsByUserIdQuery(
+    currentUser?.id || 0,
+    {
       skip: !currentUser?.id,
-    });
+    }
+  );
 
   const [createList] = useCreateListMutation();
   const [updateList] = useUpdateListMutation();
@@ -79,11 +84,13 @@ export default function ListManagementPage() {
         );
       },
       key: 'rename',
+      path: null,
     },
     {
       value: t('delete'),
       func: () => handleDelete,
       key: 'delete',
+      path: null,
     },
   ];
 
@@ -132,7 +139,6 @@ export default function ListManagementPage() {
         learningLang: 'en',
         userId: data.userId,
       }).unwrap();
-      refetchUserLists();
       eventBus.emit(EventTypes.notification, {
         message: t('listAdd'),
         title: t('success'),
@@ -150,7 +156,6 @@ export default function ListManagementPage() {
   const handleRename = async (data: Partial<List>) => {
     try {
       await updateList({ id: data.id || 0, name: data.name });
-      refetchUserLists();
       eventBus.emit(EventTypes.notification, {
         message: `${t('listRename')} "${data.name}"`,
         title: t('success'),
@@ -168,7 +173,6 @@ export default function ListManagementPage() {
   const handleDelete = async (data: Partial<List>) => {
     try {
       await deleteList(data.id || 0);
-      refetchUserLists();
       eventBus.emit(EventTypes.notification, {
         message: t('listDelete'),
         title: t('success'),
@@ -184,14 +188,6 @@ export default function ListManagementPage() {
   };
 
   const handleDeleteWords = async () => {
-    console.log('obj', {
-      ...selectedList,
-      id: selectedList?.id || 0,
-      words: selectedList?.words.filter(
-        (o1: Word) => !selectedWords.some(o2 => o1.id === o2.id)
-      ),
-    });
-
     try {
       await updateList({
         ...selectedList,
@@ -200,7 +196,6 @@ export default function ListManagementPage() {
           (o1: Word) => !selectedWords.some(o2 => o1.id === o2.id)
         ),
       });
-      refetchUserLists();
       eventBus.emit(EventTypes.notification, {
         message: t('wordsDelete'),
         title: t('success'),
@@ -262,7 +257,17 @@ export default function ListManagementPage() {
           </div>
         </div>
         <div className={s.listmanagement_content}>
-          <DashboardWordList selectedList={selectedList?.id || 0} />
+          {selectedList ? (
+            <DashboardWordList selectedList={selectedList?.id || 0} />
+          ) : (
+            <div className={s.listmanagement_nolists}>
+              <Alert
+                icon={<UISvgSelector id={notLists.icon} />}
+                title={notLists.title}
+                text={notLists.text}
+              />
+            </div>
+          )}
         </div>
       </div>
     </PageLayout>

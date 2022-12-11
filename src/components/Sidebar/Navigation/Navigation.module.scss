@@ -6,6 +6,10 @@
     flex-direction: column;
 
     margin-top: 30px;
+
+    @media screen and (max-width: 1450px) {
+      margin-top: 20px;
+    }
   }
   &_content {
     & a {

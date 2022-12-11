@@ -10,6 +10,13 @@ import { useSignupMutation } from '../../store/api/authApi';
 import s from './SignUp.module.scss';
 import notifTransl from '../Notifications.i18n.json';
 import { useLocalTranslation } from '../../hooks/useLocalTranslation';
+import Cookies from '../../components/Auth/Cookies/Cookies';
+import { Logo } from '../../components/UI/Logo/Logo';
+import { Dropdown } from '../../components/UI/DropDown/Dropdown';
+import { Option } from '../../components/UI/DropDown/types';
+import { languages } from '../../constants/languages';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { LSKeys } from '../../constants/LSKeys';
 
 type Tokens = {
   accessToken: string;
@@ -20,7 +27,13 @@ export default function SignUpPage() {
   const navigate = useNavigate();
   const [signUp] = useSignupMutation();
   const goToDashboard = () => navigate('/dashboard');
+  const langOption = languages[0];
+  const [lang, setLang] = useState<Option | undefined>(langOption);
   const { t } = useLocalTranslation(notifTransl);
+  const [_, setLangDef] = useLocalStorage<string>(
+    LSKeys.UI_LANGUAGE,
+    'English'
+  );
 
   const register = async (data: SignUpDto) => {
     const dataObj: SignUpDto = {
@@ -38,6 +51,8 @@ export default function SignUpPage() {
         });
 
       goToDashboard();
+      setLangDef('English');
+      eventBus.emit(EventTypes.setLang, 'English');
     } catch (e: unknown) {
       eventBus.emit(EventTypes.notification, {
         message: (e as CustomError).data.message,
@@ -50,10 +65,29 @@ export default function SignUpPage() {
   return (
     <AuthLayout>
       <div className={s.signup_container}>
+        <span className="logo">
+          <Logo />
+        </span>
+        <span className="language-select">
+          <Dropdown
+            listTitle="Languages"
+            options={languages}
+            selectedItem={lang}
+            setSelectedItem={(item: Option | undefined) => {
+              setLang(item);
+              setLangDef(item?.value);
+              eventBus.emit(EventTypes.setLang, item?.value || 'English');
+            }}
+            allowNoneSelected={false}
+            styles={{ width: '200px' }}
+            listStyles={{ width: '300px', left: '-6.2rem' }}
+          />
+        </span>
         <SignUpForm
           onSubmit={(data: SignUpDto) => register(data)}
           onLink={() => navigate('/signin')}
         />
+        <Cookies />
       </div>
     </AuthLayout>
   );

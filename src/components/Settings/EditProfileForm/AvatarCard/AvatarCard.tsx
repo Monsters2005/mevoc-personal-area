@@ -6,7 +6,9 @@ import defaultAvatar from '../../../../assets/images/defaultAvatar.png';
 import { Button } from '../../../UI/Button/Button';
 import { getMediaLink } from '../../../../utils/components/getMediaLink';
 import { SettingsSvgSelector } from '../../SettingsSvgSelector';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
 // import { SettingsSvgSelector } from '../../SettingsSvgSelector';
+import common from '../../../UI/Common.i18n.json';
 
 type Props = {
   avatar: string | undefined;
@@ -22,6 +24,7 @@ export function SettingsAvatarCard({
   onSave,
 }: Props) {
   const avatarUrl = getMediaLink(avatar || '') || defaultAvatar;
+  const { t } = useLocalTranslation(common);
 
   return (
     <div className={s.avatarcard_container}>
@@ -32,11 +35,11 @@ export function SettingsAvatarCard({
       <div className={s.avatarcard_buttons}>
         <Button type="secondary" onClick={onDelete}>
           <SettingsSvgSelector id="delete" />
-          Delete Avatar
+          {`${t('delete')} ${t('avatar')}`}
         </Button>
         <Button type="secondary" onClick={onEdit}>
           <SettingsSvgSelector id="edit" />
-          Edit avatar
+          {`${t('edit')} ${t('avatar')}`}
         </Button>
       </div>
     </div>

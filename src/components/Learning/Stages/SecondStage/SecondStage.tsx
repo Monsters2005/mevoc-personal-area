@@ -9,12 +9,15 @@ import { LearningCore, LearningEvent } from '../../Main/Core';
 import { btnStyles } from '../FirstStage/FirstStage';
 import { Button } from '../../../UI/Button/Button';
 import KeyListener from '../../../../layouts/KeyListener/KeyListener';
+import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
+import learningTr from '../../Learning.i18n.json';
 
 export default function SecondStage({
   word,
   currentStage,
   onComplete,
 }: Stage) {
+  const { t } = useLocalTranslation(learningTr);
   const [learningState, setLearningState] = useState({} as LearningEvent);
   function changeLearningState(e: LearningEvent) {
     setLearningState(e);
@@ -89,7 +92,7 @@ export default function SecondStage({
             onClick={() => onComplete(learningState.mistakesCount)}
             styles={btnStyles}
           >
-            Next
+            {t('next')}
             <LearningSvgSelector id="arrow-right" />
           </Button>
         )}

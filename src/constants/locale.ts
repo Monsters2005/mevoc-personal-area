@@ -8,10 +8,22 @@ export const LanguageLocale = {
 };
 
 export const dateLocale = {
-  English: 'en-US',
-  Russian: 'ru-RU',
-  German: 'de-DE',
-  French: 'fr-FR',
-  Spanish: 'es-ES',
-  Swedish: 'sv-SE',
+  en: {
+    dateLocale: 'en-US',
+  },
+  ru: {
+    dateLocale: 'ru-RU',
+  },
+  de: {
+    dateLocale: 'de-DE',
+  },
+  fr: {
+    dateLocale: 'fr-FR',
+  },
+  es: {
+    dateLocale: 'es-ES',
+  },
+  se: {
+    dateLocale: 'sv-SE',
+  },
 };

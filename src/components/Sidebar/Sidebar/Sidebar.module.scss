@@ -13,6 +13,11 @@
     z-index: 900;
     top: 0;
     left: 0;
+
+    @media screen and (max-width: 1450px) {
+      min-width: 340px;
+      max-width: 340px;
+    }
   }
   &_content {
     width: 100%;
@@ -23,5 +28,9 @@
     align-items: flex-start;
 
     padding: 55px 40px;
+
+    @media screen and (max-width: 1450px) {
+      padding: 35px 30px;
+    }
   }
 }

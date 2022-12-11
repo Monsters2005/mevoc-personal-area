@@ -9,13 +9,14 @@ export type DropdownItem = {
   icon?: ReactNode;
   value: string;
   func: () => void;
+  path: string | null;
 };
 
 export type ActionItem = {
   icon?: ReactNode;
   key: string;
   func: () => void;
-  path?: string;
+  path: string | null;
 };
 
 type Props = {
@@ -23,9 +24,11 @@ type Props = {
   isOpen: boolean;
 };
 
-function ActionsDropdownItem({ icon, func, value }: DropdownItem) {
+function ActionsDropdownItem({
+  icon, func, value, path,
+}: DropdownItem) {
   const { t } = useLocalTranslation(translations);
-  console.log(value);
+
   return (
     <button type="button" onClick={func} className={s.actions_item}>
       <span>{icon}</span>
@@ -35,12 +38,18 @@ function ActionsDropdownItem({ icon, func, value }: DropdownItem) {
 }
 
 export default function ActionsDropdown({ items, isOpen }: Props) {
-  console.log('items', items);
   return (
     <TransitionWrapper inState={isOpen}>
       <div className={s.actions_container}>
-        {items.map(({ icon, func, key }) => (
-          <ActionsDropdownItem icon={icon} func={func} value={key} />
+        {items.map(({
+          icon, func, key, path,
+        }) => (
+          <ActionsDropdownItem
+            path={path}
+            icon={icon}
+            func={func}
+            value={key}
+          />
         ))}
       </div>
     </TransitionWrapper>

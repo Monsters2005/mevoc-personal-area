@@ -31,6 +31,10 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
+
+    @media screen and (max-width: 1450px) {
+      transform: scale(0.9);
+    }
   }
   &__svg__wrapper {
     position: absolute;

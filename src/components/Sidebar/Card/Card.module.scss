@@ -13,6 +13,10 @@
 
     background: none;
     border: none;
+
+    @media screen and (max-width: 1450px) {
+      padding: 7px 12px;
+    }
     &:hover {
       background: rgba($active-color, 0.1);
       cursor: pointer;
@@ -38,6 +42,11 @@
 
     color: rgba($primary-color, 0.7);
     margin: 2px 0 0 13px;
+
+    @media screen and (max-width: 1450px) {
+      margin: 2px 0 0 9px;
+      font-size: 14px;
+    }
   }
   &_icon {
     min-width: 30px;
@@ -49,6 +58,13 @@
     align-items: center;
     justify-content: center;
     transition: all 0.1s;
+
+    @media screen and (max-width: 1450px) {
+      min-width: 25px;
+      min-height: 25px;
+      max-width: 25px;
+      max-height: 25px;
+    }
 
     & svg {
       & path {
