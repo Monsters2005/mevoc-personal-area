@@ -6,10 +6,18 @@
     display: flex;
     align-items: flex-start;
     margin-top: auto;
+
+    @media screen and (max-width: 1450px) {
+      flex-direction: column;
+    }
   }
   &_fields {
     margin-left: 4rem;
     width: 100%;
+
+    @media screen and (max-width: 1450px) {
+      margin-left: 2rem;
+    }
   }
   &_button {
     width: 100%;

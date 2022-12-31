@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { merge } from 'lodash';
 import moment from 'moment';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { useMediaQuery } from 'react-responsive';
 import { SettignsProfileFormDto } from '../../../../@types/dto/settings/profileform.dto';
 import { User } from '../../../../@types/entities/User';
 import { countries } from '../../../../constants/countries';
@@ -23,6 +24,7 @@ import s from './InputGroup.module.scss';
 import schema from './validation';
 import settings from '../../../../pages/Settings/Settings.i18n.json';
 import common from '../../../UI/Common.i18n.json';
+import { dropdownStyles } from '../../../../shared/styles/dropdown-variations';
 
 type Props = {
   user: User;
@@ -69,6 +71,8 @@ export function SettingsInputGroup({
     });
   };
 
+  const isSmallScreen = useMediaQuery({ maxWidth: '1100px' });
+
   return (
     <FormProvider {...values}>
       <div className={s.inputgroup_container}>
@@ -81,7 +85,7 @@ export function SettingsInputGroup({
                 label={t('firstName')}
                 styles={{
                   ...inputSettings,
-                  width: '300px',
+                  width: isSmallScreen ? '100%' : '300px',
                   textTransform: 'capitalize',
                 }}
               />
@@ -91,7 +95,7 @@ export function SettingsInputGroup({
                 label={t('lastName')}
                 styles={{
                   ...inputSettings,
-                  width: '300px',
+                  width: isSmallScreen ? '100%' : '300px',
                   textTransform: 'capitalize',
                 }}
               />
@@ -101,7 +105,10 @@ export function SettingsInputGroup({
                 name="username"
                 defaultValue={username}
                 label={t('username')}
-                styles={{ ...inputSettings, width: '300px' }}
+                styles={{
+                  ...inputSettings,
+                  width: isSmallScreen ? '100%' : '300px',
+                }}
               />
               <HookFormDatePicker
                 label="Date Of Birth"
@@ -139,13 +146,20 @@ export function SettingsInputGroup({
                 name="phoneNumber"
                 defaultValue={phoneNumber}
                 label={t('phoneNumber')}
-                styles={{ ...inputSettings, width: '300px' }}
+                styles={{
+                  ...inputSettings,
+                  width: isSmallScreen ? '100%' : '300px',
+                }}
               />
               <HookFormSelect
                 options={countries}
                 defaultSelected={countries[87]}
                 label={t('location')}
                 name="location"
+                styles={{
+                  ...dropdownStyles,
+                  width: isSmallScreen ? '100%' : '300px',
+                }}
                 search
               />
             </div>
@@ -154,6 +168,10 @@ export function SettingsInputGroup({
             <div className={s.inputgroup_doublerow}>
               <HookFormSelect
                 options={languages}
+                styles={{
+                  ...dropdownStyles,
+                  width: isSmallScreen ? '100%' : '300px',
+                }}
                 defaultSelected={
                   languages[
                     languages.indexOf(
@@ -167,6 +185,10 @@ export function SettingsInputGroup({
               />
               <HookFormSelect
                 options={languages}
+                styles={{
+                  ...dropdownStyles,
+                  width: isSmallScreen ? '100%' : '300px',
+                }}
                 defaultSelected={
                   languages[
                     languages.indexOf(

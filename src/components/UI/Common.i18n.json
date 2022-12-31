@@ -22,7 +22,9 @@
     "learningLang": "Learning language",
     "language": "Language",
     "languages": "Languages",
-    "noneSelected": "None selected"
+    "noneSelected": "None selected",
+    "notImplementedTitle": "Not implemented yet",
+    "notImplementedText": "In the beta version this feature is not available yet. Work is in progress on it now."
   },
   "ru": {
     "word": "Слово",
@@ -47,7 +49,9 @@
     "learningLang": "Изучаемый язык",
     "language": "Язык",
     "languages": "Языки",
-    "noneSelected": "Не выбрано"
+    "noneSelected": "Не выбрано",
+    "notImplementedTitle": "Еще не реализовано",
+    "notImplementedText": "В бета-версии эта функция пока недоступна. Над ней сейчас ведутся работы."
   },
   "de": {
     "word": "Wort",
@@ -72,7 +76,9 @@
     "learningLang": "Sprache lernen",
     "language": "Sprache",
     "languages": "Sprachen",
-    "noneSelected": ""
+    "noneSelected": "Nichts ausgewählt",
+    "notImplementedTitle": "Noch nicht implementiert",
+    "notImplementedText": "In der Beta-Version ist diese Funktion noch nicht verfügbar. Daran wird jetzt gearbeitet."
   },
   "fr": {
     "word": "mot",
@@ -97,7 +103,9 @@
     "learningLang": "apprendre une langue",
     "language": "Langue",
     "languages": "langues",
-    "noneSelected": ""
+    "noneSelected": "Aucune sélection",
+    "notImplementedTitle": "Pas encore mis en œuvre",
+    "notImplementedText": "Dans la version bêta, cette fonctionnalité n'est pas encore disponible. Des travaux y sont actuellement en cours."
   },
   "es": {
     "word": "palabra",
@@ -122,7 +130,9 @@
     "learningLang": "aprendiendo idioma",
     "language": "idioma",
     "languages": "idiomas",
-    "noneSelected": ""
+    "noneSelected": "Ninguna seleccionada",
+    "notImplementedTitle": "Aún sin implementar",
+    "notImplementedText": "En la versión beta, esta función aún no está disponible. Se está trabajando en ello ahora."
   },
   "se": {
     "word": "ord",
@@ -147,6 +157,8 @@
     "learningLang": "lära sig språk",
     "language": "språk",
     "languages": "språk",
-    "noneSelected": ""
+    "noneSelected": "Ingen vald",
+    "notImplementedTitle": "Inte implementerat ännu",
+    "notImplementedText": "I betaversionen är denna funktion inte tillgänglig ännu. Arbete pågår med det nu."
   }
 }

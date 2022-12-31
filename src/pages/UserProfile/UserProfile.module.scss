@@ -2,6 +2,10 @@
   &_container {
     display: flex;
     grid-gap: 30px;
+
+    @media screen and (max-width: 1898px) {
+      flex-direction: column;
+    }
   }
   &_listsinfo {
     display: flex;

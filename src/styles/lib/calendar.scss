@@ -77,6 +77,11 @@
     position: absolute;
     background-color: $element-light-color;
     border-radius: 10px;
+
+    @media screen and (max-width: 1500px) {
+      left: -160px !important;
+      top: 70px !important;
+    }
   }
 
   .DayPicker,

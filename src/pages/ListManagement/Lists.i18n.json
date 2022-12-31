@@ -12,7 +12,9 @@
     "modalRenameListInputTitle": "New name",
     "modalAddWordTitle": "Add a new word",
     "modalAddWordInputTitle": "Your word",
-    "modalEditWordTitle": "Edit a word"
+    "modalEditWordTitle": "Edit a word",
+    "noListsTitle": "You have no lists",
+    "noListsText": "In order to make this section available and add a word, you should create a list first."
   },
   "ru": {
     "yourLists": "Ваши списки",
@@ -27,7 +29,9 @@
     "modalRenameListInputTitle": "Новое имя",
     "modalAddWordTitle": "Добавить новое слово",
     "modalAddWordInputTitle": "Ваше слово",
-    "modalEditWordTitle": "Редактировать слово"
+    "modalEditWordTitle": "Редактировать слово",
+    "noListsTitle": "У вас нет списков",
+    "noListsText": "Чтобы сделать этот раздел доступным и добавить слово, вы должны сначала создать список."
   },
   "de": {
     "yourLists": "Ihre Listen",
@@ -42,7 +46,9 @@
     "modalRenameListInputTitle": "Neuer Name",
     "modalAddWordTitle": "Neues Wort hinzufügen",
     "modalAddWordInputTitle": "Dein Wort",
-    "modalEditWordTitle": "Bearbeite ein Wort"
+    "modalEditWordTitle": "Bearbeite ein Wort",
+    "noListsTitle": "Sie haben keine Listen",
+    "noListsText": "Um diesen Abschnitt verfügbar zu machen und ein Wort hinzuzufügen, sollten Sie zuerst eine Liste erstellen."
   },
   "fr": {
     "yourLists": "Vos listes",
@@ -57,7 +63,9 @@
     "modalRenameListInputTitle": "Nouveau nom",
     "modalAddWordTitle": "Ajouter un nouveau mot",
     "modalAddWordInputTitle": "Votre parole",
-    "modalEditWordTitle": "Modifier un mot"
+    "modalEditWordTitle": "Modifier un mot",
+    "noListsTitle": "Vous n'avez pas de listes",
+    "noListsText": "Afin de rendre cette section disponible et d'ajouter un mot, vous devez d'abord créer une liste."
   },
   "es": {
     "yourLists": "Tus listas",
@@ -72,7 +80,9 @@
     "modalRenameListInputTitle": "Nuevo nombre",
     "modalAddWordTitle": "Añadir una nueva palabra",
     "modalAddWordInputTitle": "Tu palabra",
-    "modalEditWordTitle": "Editar una palabra"
+    "modalEditWordTitle": "Editar una palabra",
+    "noListsTitle": "No tienes listas",
+    "noListsText": "Para que esta sección esté disponible y agregue una palabra, primero debe crear una lista."
   },
   "se": {
     "yourLists": "Dina listor",
@@ -87,6 +97,8 @@
     "modalRenameListInputTitle": "Nytt namn",
     "modalAddWordTitle": "Lägg till ett nytt ord",
     "modalAddWordInputTitle": "Ditt ord",
-    "modalEditWordTitle": "Redigera ett ord"
+    "modalEditWordTitle": "Redigera ett ord",
+    "noListsTitle": "Du har inga listor",
+    "noListsText": "För att göra det här avsnittet tillgängligt och lägga till ett ord bör du först skapa en lista."
   }
 }

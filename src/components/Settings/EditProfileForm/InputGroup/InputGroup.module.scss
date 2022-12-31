@@ -4,7 +4,12 @@
   &_container {
     display: flex;
     flex-direction: column;
+    grid-gap: 20px;
     width: 100%;
+
+    @media screen and (max-width: 1280px) {
+      grid-gap: 40px;
+    }
   }
   &_form {
     display: flex;
@@ -14,6 +19,10 @@
 
     width: 640px;
     height: 100%;
+
+    @media screen and (max-width: 1100px) {
+      width: 100%;
+    }
   }
   &_buttons {
     display: flex;
@@ -31,6 +40,10 @@
   &_doublerow {
     display: flex;
     justify-content: space-between;
+    @media screen and (max-width: 1100px) {
+      flex-direction: column;
+      grid-gap: 10px;
+    }
   }
   &_addcontent {
     display: flex;

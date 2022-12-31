@@ -9,5 +9,9 @@
   }
   &_content {
     padding: 0.5rem 2rem;
+
+    @media screen and (max-width: 1450px) {
+      padding: 0.3rem 1.5rem;
+    }
   }
 }

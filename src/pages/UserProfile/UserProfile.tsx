@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { List } from '../../@types/entities/List';
 import { User } from '../../@types/entities/User';
 import { ContentSkeleton } from '../../components/UI/ContentLoader/ContentLoader';
@@ -21,9 +22,13 @@ export function UserProfilePage() {
   });
   const [activeList, setActiveList] = useState<List>(userLists[0]);
   const { t } = useLocalTranslation(sidebar);
+  const isSmallScreen = useMediaQuery({ maxWidth: '1900px' });
 
   return (
-    <PageLayout styles={{ height: '95vh' }} title={t('userProfile')}>
+    <PageLayout
+      styles={{ height: isSmallScreen ? 'fit-content' : '95vh' }}
+      title={t('userProfile')}
+    >
       <div className={s.profilepage_container}>
         <div className={s.profilepage_userinfo}>
           {user ? (

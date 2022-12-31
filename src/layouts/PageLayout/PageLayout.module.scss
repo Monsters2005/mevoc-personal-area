@@ -17,6 +17,10 @@
     margin: auto auto;
 
     transition: height 0.2s;
+
+    @media screen and (max-width: 1901px) {
+      width: 96%;
+    }
   }
   &_title {
     font-style: normal;
@@ -27,9 +31,15 @@
     color: $primary-color;
     margin: 0;
     padding: 0;
+    @media screen and (max-width: 1450px) {
+      font-size: 20px;
+    }
   }
   &_content {
     width: 100%;
     margin-top: 30px;
+    @media screen and (max-width: 1450px) {
+      margin-top: 20px;
+    }
   }
 }

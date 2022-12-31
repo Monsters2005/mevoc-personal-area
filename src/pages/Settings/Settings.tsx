@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { merge } from 'lodash';
 import SettingsTab from '../../components/Settings/Tabs/Tab/SettingsTab';
 import { TabOption, Tabs } from '../../components/UI/Tabs/Tabs';
@@ -30,8 +31,13 @@ export function SettingsPage() {
     if (tab.label) setActiveTab(tab.label);
   };
 
+  const isSmallScreen = useMediaQuery({ maxWidth: '1100px' });
+
   return (
-    <PageLayout title={t('settings')} styles={{ height: 'fit-content' }}>
+    <PageLayout
+      title={t('settings')}
+      styles={{ height: isSmallScreen ? '1330px' : 'fit-content' }}
+    >
       <div className={s.settingspage_container}>
         <div className={s.settingspage_header}>
           <Tabs

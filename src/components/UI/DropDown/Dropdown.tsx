@@ -11,6 +11,7 @@ import { UISvgSelector } from '../UISvgSelector';
 import s from './Dropdown.module.scss';
 import { DropdownList } from './DropdownList';
 import { Option } from './types';
+import common from '../Common.i18n.json';
 
 type DropdownProps = {
   listTitle?: string;
@@ -43,6 +44,7 @@ export function Dropdown({
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [result, setResult] = useState<Option[] | undefined>(options);
+  const { t } = useLocalTranslation(common);
   const transitionStyles = {
     entering: { opacity: 1, zIndex: 100 },
     entered: { opacity: 1, zIndex: 10 },
@@ -82,7 +84,7 @@ export function Dropdown({
                 <p>{makeSuspensionString(selectedItem.value, 13)}</p>
               </>
             ) : (
-              <p>None selected</p>
+              <p>{t('noneSelected')}</p>
             )}
           </div>
           <div

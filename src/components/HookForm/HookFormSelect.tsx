@@ -57,7 +57,7 @@ export default function HookFormSelect({
             label={label}
             isError={!!errors[name]}
             error={errors.multiple && (errors.multiple as FieldError).message}
-            styles={styles || dropdownStyles}
+            styles={styles}
             listStyles={listStyles}
             searchBar={search}
           />

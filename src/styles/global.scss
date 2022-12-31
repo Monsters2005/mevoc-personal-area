@@ -90,6 +90,10 @@ input:-webkit-autofill:active {
   width: 100%;
   padding-left: 360px;
   margin-top: 30px;
+
+  @media screen and (max-width: 1450px) {
+    padding-left: 330px;
+  }
 }
 
 .page_container {
