@@ -263,8 +263,8 @@ export default function ListManagementPage() {
             <div className={s.listmanagement_nolists}>
               <Alert
                 icon={<UISvgSelector id={notLists.icon} />}
-                title={notLists.title}
-                text={notLists.text}
+                title={t(notLists.title)}
+                text={t(notLists.text)}
               />
             </div>
           )}

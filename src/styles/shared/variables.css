@@ -1,0 +1,26 @@
+.light-mode {
+  --primary-color: #373737;
+  --accent-color: #755fff;
+  --accent-color-hover: #ffefb9;
+  --base-color: #ffffff;
+  --element-color: #e4e4e4;
+  --element-light-color: #ffffff;
+  --ui-dark: #d2d8ff;
+  --ui-light: #ededfd;
+  --active-color: #eae7ff;
+  --font: 'Poppins', 'Montserrat';
+  --font-logo: 'Rubik';
+}
+.dark-mode {
+  --primary-color: hsl(249, 6%, 78%);
+  --accent-color: #ffeba7;
+  --accent-color-hover: #ffefb9;
+  --base-color: #1f2029;
+  --element-color: #2a2b38;
+  --element-light-color: #282936;
+  --ui-dark: #353742;
+  --ui-light: #373744;
+  --active-color: #eae7ff;
+  --font: 'Poppins', 'Montserrat';
+  --font-logo: 'Rubik';
+}
