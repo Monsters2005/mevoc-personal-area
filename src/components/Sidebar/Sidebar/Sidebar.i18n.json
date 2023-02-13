@@ -7,7 +7,10 @@
     "signOut": "Sign Out",
     "help": "Help",
     "viewProfile": "View a profile",
-    "editProfile": "Edit a profile"
+    "editProfile": "Edit a profile",
+    "yourLists": "Your lists",
+    "rename": "Rename",
+    "delete": "Delete"
   },
   "ru": {
     "dashboard": "Панель управления",
@@ -17,7 +20,10 @@
     "signOut": "Выйти",
     "help": "Помощь",
     "viewProfile": "Просмотреть профиль",
-    "editProfile": "Редактировать профиль"
+    "editProfile": "Редактировать профиль",
+    "yourLists": "Ваши списки",
+    "rename": "Переименовать",
+    "delete": "Удалить"
   },
   "de": {
     "dashboard": "Armaturenbrett",
@@ -27,7 +33,10 @@
     "signOut": "Austragen",
     "help": "Hilfe",
     "viewProfile": "Profil anzeigen",
-    "editProfile": "Profil bearbeiten"
+    "editProfile": "Profil bearbeiten",
+    "yourLists": "Ihre Listen",
+    "rename": "Umbenennen",
+    "delete": "Löschen"
   },
   "fr": {
     "dashboard": "Tableau de bord",
@@ -37,9 +46,14 @@
     "signOut": "Se déconnecter",
     "help": "Aider",
     "viewProfile": "Voir le profil",
-    "editProfile": "Editer le profil"
+    "editProfile": "Editer le profil",
+    "yourLists": "Vos listes",
+    "rename": "Renommer",
+    "delete": "Effacer"
   },
   "es": {
+    "yourLists": "Tus listas",
+    "rename": "Rebautizar",
     "dashboard": "Tablero",
     "listsManagement": "Gestión de listas",
     "userProfile": "Perfil del usuario",
@@ -47,7 +61,8 @@
     "signOut": "Desconectar",
     "help": "Ayuda",
     "viewProfile": "Ver perfil",
-    "editProfile": "Editar perfil"
+    "editProfile": "Editar perfil",
+    "delete": "Borrar"
   },
   "se": {
     "dashboard": "Instrumentbräda",
@@ -57,6 +72,8 @@
     "signOut": "Logga ut",
     "help": "Hjälp",
     "viewProfile": "Visa profil",
-    "editProfile": "Redigera profil"
+    "editProfile": "Redigera profil",
+    "rename": "Döp om",
+    "delete": "Radera"
   }
 }

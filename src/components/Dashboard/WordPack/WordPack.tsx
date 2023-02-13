@@ -7,6 +7,14 @@ import { Button } from '../../UI/Button/Button';
 import s from './WordPack.module.scss';
 import common from '../../UI/Common.i18n.json';
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
+import { WordpackModal } from '../../Modals/Wordpack/Wordpack';
+import { useModal } from '../../../context/ModalContext';
+import { AddListDto } from '../../../@types/dto/list/add.dto';
+import { useCreateListMutation } from '../../../store/api/listApi';
+import { EventTypes, eventBus } from '../../../packages/EventBus';
+import { NotificationType } from '../../../@types/entities/Notification';
+import { CustomError } from '../../../@types/entities/ErrorObject';
+import { useGetCurrentUserQuery } from '../../../store/api/userApi';
 
 type Props = {
   item: Pack;
@@ -15,10 +23,40 @@ type Props = {
 export function WordPack({ item }: Props) {
   const [added, setAdded] = useState(false);
   const { t } = useLocalTranslation(common);
+  const { setCurrentModal } = useModal();
+  const { data: currentUser } = useGetCurrentUserQuery();
 
-  function addWordPack() {
+  const [createList] = useCreateListMutation();
+
+  const handleList = async (data: AddListDto) => {
+    try {
+      await createList({
+        name: data.listTitle,
+        learningLang: 'en',
+        userId: data.userId,
+        words: data.words,
+      }).unwrap();
+      eventBus.emit(EventTypes.notification, {
+        message: t('listAdd'),
+        title: t('success'),
+        type: NotificationType.SUCCESS,
+      });
+    } catch (e) {
+      eventBus.emit(EventTypes.notification, {
+        message: (e as CustomError).data.message,
+        title: t('listAddFail'),
+        type: NotificationType.DANGER,
+      });
+    }
+  };
+
+  function addHandler() {
     setAdded(!added);
-    // TODO: pass the funciton here which actully adds a specific list
+    handleList({
+      listTitle: item.name,
+      userId: currentUser?.id || 0,
+      words: item.words.map(word => ({ ...word, dateLearned: null })),
+    });
   }
 
   return (
@@ -42,7 +80,9 @@ export function WordPack({ item }: Props) {
         <Button
           type="primary"
           styles={primaryMiddle}
-          onClick={() => console.log('view more')}
+          onClick={() => setCurrentModal(
+            <WordpackModal onConfirm={() => addHandler()} wordpack={item} />
+          )}
         >
           {t('viewMore')}
         </Button>
@@ -51,7 +91,7 @@ export function WordPack({ item }: Props) {
           className={classNames(s.wordpack_add, {
             [s.wordpack_added]: added,
           })}
-          onClick={addWordPack}
+          onClick={addHandler}
         >
           <span />
         </button>

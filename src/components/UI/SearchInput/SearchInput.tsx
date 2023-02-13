@@ -45,15 +45,6 @@ export default function SearchInput<T extends string>({
       <span className={s.searchinput_icon}>
         <GlobalSvgSelector id="search" />
       </span>
-      {/* <div className={s.searchinput_list}>
-        {results ? (
-          results.map((item: T) => {
-            return <div className={s.searchinput_list_item}> {item} </div>;
-          })
-        ) : (
-          <p>Nothing found</p>
-        )}
-      </div> */}
     </div>
   );
 }

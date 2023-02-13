@@ -1,13 +1,9 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { EditWordDto } from '../../../@types/dto/word/edit.dto';
-import { CustomError } from '../../../@types/entities/ErrorObject';
-import { NotificationType } from '../../../@types/entities/Notification';
 import { Word } from '../../../@types/entities/Word';
 import { useModal } from '../../../context/ModalContext';
 import { useSelectedWords } from '../../../context/SelectedWords';
-import { eventBus, EventTypes } from '../../../packages/EventBus';
-import { useUpdateWordMutation } from '../../../store/api/wordApi';
 import { makeSuspensionString } from '../../../utils/common/makeSuspensionString';
 import EditWordModal from '../../Modals/WordManagement/EditWord';
 import { Button } from '../../UI/Button/Button';

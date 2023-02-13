@@ -29,6 +29,7 @@ export function DashboardWordList({ selectedList }: Props) {
   const { data: wordsData = [] } = useGetWordsByListIdQuery(selectedList, {
     skip: !currentUser?.id,
   });
+
   const [createWord] = useCreateWordMutation();
   const [updateWord] = useUpdateWordMutation();
   const [words, setWords] = useState<Word[] | []>([]);

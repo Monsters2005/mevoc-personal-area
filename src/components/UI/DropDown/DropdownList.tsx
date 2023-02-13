@@ -55,8 +55,14 @@ export function DropdownList({
       <h3 className={s.dropdown_title}>{listTitle}</h3>
       {options && searchBar && (
         <SearchInput
-          items={options.map(el => el.value)}
-          setItems={items => setResult(options.filter(el => items.includes(el.value)))}
+          items={JSON.parse(JSON.stringify(options)).map(
+            (el: Option) => el.value
+          )}
+          setItems={items => {
+            setResult(
+              JSON.parse(JSON.stringify(options)).filter((el: Option) => items.includes(el.value))
+            );
+          }}
           size="small"
           placeholder=""
         />

@@ -49,6 +49,7 @@ export default function ActionsDropdown({ items, isOpen }: Props) {
             icon={icon}
             func={func}
             value={key}
+            key={key}
           />
         ))}
       </div>

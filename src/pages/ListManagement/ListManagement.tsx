@@ -75,7 +75,7 @@ export default function ListManagementPage() {
 
   const listActionItems = [
     {
-      value: t('rename'),
+      value: 'rename',
       func: () => {
         setCurrentModal(
           <RenameListModal
@@ -87,7 +87,7 @@ export default function ListManagementPage() {
       path: null,
     },
     {
-      value: t('delete'),
+      value: 'delete',
       func: () => handleDelete,
       key: 'delete',
       path: null,

@@ -14,10 +14,7 @@ const getItem = <T>(key: string, initialValue: T) => {
 export function useLocalStorage<T>(key: string, initialValue?: T) {
   const [state, setState] = useState(() => getItem(key, initialValue || ''));
 
-  console.log('state inside: ', state);
-
   useEffect(() => {
-    console.log('state: ', state, key);
     localStorage.setItem(key, JSON.stringify(state));
   }, [state]);
 
