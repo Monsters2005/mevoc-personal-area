@@ -3,7 +3,7 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { List } from '../../../@types/entities/List';
 import { Word } from '../../../@types/entities/Word';
-import { weekdays } from '../../../constants/weekdays';
+import { weekdays } from '../../../constants/kit/weekdays';
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 import { sortArrayByKey } from '../../../utils/common/sortArrayByKey';
 import { checkDateInRange } from '../../../utils/dates/checkDateInRange';

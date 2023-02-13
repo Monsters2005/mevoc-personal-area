@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flag } from '../components/UI/Flag/Flag';
+import { Flag } from '../../components/UI/Flag/Flag';
 
 export const languages = [
   {

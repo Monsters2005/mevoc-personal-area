@@ -67,7 +67,6 @@ export function WordpackModal({ wordpack, onConfirm }: Props) {
   };
 
   const { data: currentUser } = useGetCurrentUserQuery();
-
   const [createList] = useCreateListMutation();
 
   const handleList = async (data: AddListDto) => {

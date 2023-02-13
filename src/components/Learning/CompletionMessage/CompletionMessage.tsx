@@ -11,7 +11,7 @@ import { LearningSvgSelector } from '../LearningSvgSelector';
 import { btnStyles } from '../Stages/FirstStage/FirstStage';
 import s from './CompletionMessage.module.scss';
 import '../../../styles/lib/swiper.scss';
-import { resultMessages } from '../../../constants/resultMessages';
+import { resultMessages } from '../../../constants/kit/resultMessages';
 import { Path } from '../../../constants/routes';
 import common from '../../UI/Common.i18n.json';
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';

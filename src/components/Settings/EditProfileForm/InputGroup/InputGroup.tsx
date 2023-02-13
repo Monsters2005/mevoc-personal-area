@@ -6,8 +6,8 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useMediaQuery } from 'react-responsive';
 import { SettignsProfileFormDto } from '../../../../@types/dto/settings/profileform.dto';
 import { User } from '../../../../@types/entities/User';
-import { countries } from '../../../../constants/countries';
-import { languages } from '../../../../constants/languages';
+import { countries } from '../../../../constants/kit/countries';
+import { languages } from '../../../../constants/kit/languages';
 import { useLocalTranslation } from '../../../../hooks/useLocalTranslation';
 import {
   btnInputSettings,

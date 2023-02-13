@@ -14,7 +14,7 @@ import Cookies from '../../components/Auth/Cookies/Cookies';
 import { Logo } from '../../components/UI/Logo/Logo';
 import { Dropdown } from '../../components/UI/DropDown/Dropdown';
 import { Option } from '../../components/UI/DropDown/types';
-import { languages } from '../../constants/languages';
+import { languages } from '../../constants/kit/languages';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { LSKeys } from '../../constants/LSKeys';
 

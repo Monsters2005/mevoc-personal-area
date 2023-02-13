@@ -12,7 +12,7 @@ import SetUpModal from '../../components/Modals/SetUpModal/SetUpModal';
 import { Button } from '../../components/UI/Button/Button';
 import { Dropdown } from '../../components/UI/DropDown/Dropdown';
 import { Option } from '../../components/UI/DropDown/types';
-import { languages } from '../../constants/languages';
+import { languages } from '../../constants/kit/languages';
 import { Path } from '../../constants/routes';
 import { useActiveLists } from '../../context/ActiveLists';
 import { useModal } from '../../context/ModalContext';
