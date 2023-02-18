@@ -10,7 +10,8 @@ import { CircularProgress } from '../../UI/CircularProgress/CircularProgress';
 import { LearningSvgSelector } from '../LearningSvgSelector';
 import { btnStyles } from '../Stages/FirstStage/FirstStage';
 import s from './CompletionMessage.module.scss';
-import '../../../styles/lib/swiper.scss';
+import '../../../styles/lib/wordpack-swiper.scss';
+import '../../../styles/lib/onboarding-swiper.scss';
 import { resultMessages } from '../../../constants/kit/resultMessages';
 import { Path } from '../../../constants/routes';
 import common from '../../UI/Common.i18n.json';
@@ -77,35 +78,37 @@ export default function CompletionMessage({ progresses }: Props) {
         >
           <LearningSvgSelector id="arrow-left" />
         </Button>
-        <Swiper
-          modules={[Navigation]}
-          navigation={progresses.length > 1 && { prevEl, nextEl }}
-          slidesPerView={1}
-        >
-          {progresses.map((item: ListProgress) => {
-            const progress = countPercentage(item.wordsLearned, item.words);
-            return (
-              <SwiperSlide key={item.id}>
-                <div className={s.completion_progress}>
-                  <CircularProgress
-                    width={200}
-                    height={200}
-                    progressValue={progress}
-                    bgColor="#353742"
-                    circleStroke={10}
-                    asset={(
-                      <WordsInfo
-                        words={item.words}
-                        wordsLearned={item.wordsLearned}
-                      />
-                    )}
-                  />
-                </div>
-                <p className={s.completion_listname}>{item.name}</p>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+        <div className="onboarding-swiper">
+          <Swiper
+            modules={[Navigation]}
+            navigation={progresses.length > 1 && { prevEl, nextEl }}
+            slidesPerView={1}
+          >
+            {progresses.map((item: ListProgress) => {
+              const progress = countPercentage(item.wordsLearned, item.words);
+              return (
+                <SwiperSlide key={item.id}>
+                  <div className={s.completion_progress}>
+                    <CircularProgress
+                      width={200}
+                      height={200}
+                      progressValue={progress}
+                      bgColor="#353742"
+                      circleStroke={10}
+                      asset={(
+                        <WordsInfo
+                          words={item.words}
+                          wordsLearned={item.wordsLearned}
+                        />
+                      )}
+                    />
+                  </div>
+                  <p className={s.completion_listname}>{item.name}</p>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
         <Button
           styles={buttonStyles}
           type="small"

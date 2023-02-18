@@ -1,0 +1,24 @@
+.onboarding-slider {
+  .swiper {
+    width: 240px;
+    height: 230px !important;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .swiper-wrapper {
+    width: 240px !important;
+    height: 240px !important;
+    display: flex;
+  }
+
+  .swiper-slide {
+    width: 240px !important;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
+  }
+}

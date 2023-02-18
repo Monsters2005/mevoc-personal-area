@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 
 const getItem = <T>(key: string, initialValue: T) => {
   try {

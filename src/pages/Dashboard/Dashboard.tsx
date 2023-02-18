@@ -30,6 +30,7 @@ import translations from '../../components/Dashboard/Dashboard.i18n.json';
 import notifTransl from '../Notifications.i18n.json';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { LSKeys } from '../../constants/LSKeys';
+import useWordpacks from '../../hooks/useWordpacks';
 
 export function DashboardPage() {
   const { data: user } = useGetCurrentUserQuery();
@@ -39,6 +40,7 @@ export function DashboardPage() {
   const [updateUser] = useUpdateUserMutation();
 
   const { t, lang } = useLocalTranslation(merge(translations, notifTransl));
+  const wordpacks = useWordpacks();
 
   const langOptionObj = languages.find(item => item.value === lang);
   const [langOption, setLangOption] = useState<Option | undefined>(langOptionObj);
@@ -81,6 +83,8 @@ export function DashboardPage() {
     setLangOption(langOptionObj);
   }, [langOptionObj, lang]);
 
+  console.log('wordpacks', wordpacks);
+
   return (
     <div className={s.dashboardpage_container}>
       <div className={s.dashboardpage_header}>
@@ -111,7 +115,7 @@ export function DashboardPage() {
           <DashboardDailyProgress />
         </div>
         <div className={s.dashboardpage_row}>
-          <DashboardWordPacks packs={[wordPack]} />
+          <DashboardWordPacks packs={wordpacks} />
           <Button
             type="primary"
             styles={startBtn}

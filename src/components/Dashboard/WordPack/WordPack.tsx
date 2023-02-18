@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import { Pack } from '../../../@types/entities/WordPack';
+import { Pack, PackEnriched } from '../../../@types/entities/WordPack';
 import FallbackImgSelector from '../../../assets/FallbackImgSelector';
 import { primaryMiddle } from '../../../shared/styles/button-variations';
 import { Button } from '../../UI/Button/Button';
@@ -15,9 +15,11 @@ import { EventTypes, eventBus } from '../../../packages/EventBus';
 import { NotificationType } from '../../../@types/entities/Notification';
 import { CustomError } from '../../../@types/entities/ErrorObject';
 import { useGetCurrentUserQuery } from '../../../store/api/userApi';
+import WordpackImgSelector from '../../../assets/WordpackImgSelector';
+import useWordpack from '../../../hooks/useWordpacks';
 
 type Props = {
-  item: Pack;
+  item: PackEnriched;
 };
 
 export function WordPack({ item }: Props) {
@@ -25,7 +27,6 @@ export function WordPack({ item }: Props) {
   const { t } = useLocalTranslation(common);
   const { setCurrentModal } = useModal();
   const { data: currentUser } = useGetCurrentUserQuery();
-
   const [createList] = useCreateListMutation();
 
   const handleList = async (data: AddListDto) => {
@@ -55,7 +56,7 @@ export function WordPack({ item }: Props) {
     handleList({
       listTitle: item.name,
       userId: currentUser?.id || 0,
-      words: item.words.map(word => ({ ...word, dateLearned: null })),
+      words: item.words,
     });
   }
 
@@ -64,15 +65,15 @@ export function WordPack({ item }: Props) {
       <div className={s.wordpack_info}>
         <span className={s.wordpack_icon}>
           {item.icon ? (
-            <img src={item.icon} alt={item.name} />
+            <WordpackImgSelector id={item.icon} />
           ) : (
             <FallbackImgSelector id="wordpack-cover" />
           )}
         </span>
         <h4 className={s.wordpack_title}>{item.name}</h4>
         <p>
-          {`${item.words.length} ${t(
-            `word${item.words.length !== 1 ? 's' : ''}`
+          {`${item.words?.length} ${t(
+            `word${item.words?.length !== 1 ? 's' : ''}`
           )}`}
         </p>
       </div>

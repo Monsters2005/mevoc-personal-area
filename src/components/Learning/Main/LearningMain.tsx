@@ -6,8 +6,6 @@ import { Word } from '../../../@types/entities/Word';
 import { Path } from '../../../constants/routes';
 import { useActiveLists } from '../../../context/ActiveLists';
 import { TransitionWrapper } from '../../../layouts/Transition/Transition';
-import { useGetListsByUserIdQuery } from '../../../store/api/listApi';
-import { useGetCurrentUserQuery } from '../../../store/api/userApi';
 import {
   useGetWordsByListIdQuery,
   useUpdateWordMutation,

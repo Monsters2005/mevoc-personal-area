@@ -1,4 +1,4 @@
-export const foodWordpack = {
+const foodWordpack = {
   name: 'Food',
   id: 1,
   icon: 'food',
@@ -22,7 +22,7 @@ export const foodWordpack = {
   ],
 };
 
-export const natureWordpack = {
+const natureWordpack = {
   name: 'Nature',
   id: 2,
   icon: 'nature',
@@ -50,7 +50,7 @@ export const natureWordpack = {
   ],
 };
 
-export const seasonsWordpack = {
+const seasonsWordpack = {
   name: 'Seasons',
   id: 3,
   icon: 'seasons',
@@ -76,10 +76,10 @@ export const seasonsWordpack = {
   ],
 };
 
-export const cosmosWordpack = {
+const cosmosWordpack = {
   name: 'Cosmsos',
   id: 4,
-  icon: 'comsos',
+  icon: 'cosmos',
   words: [
     { id: 1, word: 'planet' },
     { id: 2, word: 'star' },
@@ -98,7 +98,7 @@ export const cosmosWordpack = {
   ],
 };
 
-export const technologyWordpack = {
+const technologyWordpack = {
   name: 'Technology',
   id: 5,
   icon: 'technology',
@@ -121,7 +121,7 @@ export const technologyWordpack = {
   ],
 };
 
-export const animalsWordpack = {
+const animalsWordpack = {
   name: 'Animals',
   id: 6,
   icon: 'animals',
@@ -144,7 +144,7 @@ export const animalsWordpack = {
   ],
 };
 
-export const sportsWordpack = {
+const sportsWordpack = {
   name: 'Sports',
   id: 7,
   icon: 'sports',
@@ -167,7 +167,7 @@ export const sportsWordpack = {
   ],
 };
 
-export const transportationWordpack = {
+const transportationWordpack = {
   name: 'Transportation',
   id: 8,
   icon: 'transportation',
@@ -189,3 +189,14 @@ export const transportationWordpack = {
     { id: 15, word: 'space shuttle' },
   ],
 };
+
+export const wordpacks = [
+  transportationWordpack,
+  sportsWordpack,
+  animalsWordpack,
+  technologyWordpack,
+  cosmosWordpack,
+  seasonsWordpack,
+  natureWordpack,
+  foodWordpack,
+];

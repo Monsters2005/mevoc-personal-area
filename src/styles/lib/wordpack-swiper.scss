@@ -1,0 +1,22 @@
+.wordpacks-slider {
+  .swiper {
+    width: auto !important;
+    height: 300px !important;
+    display: flex;
+    overflow: hidden;
+  }
+  .swiper-wrapper {
+    width: 1010px !important;
+    height: auto !important;
+    display: flex;
+    margin-top: -20px;
+  }
+  .swiper-slide {
+    width: 250px !important;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+}

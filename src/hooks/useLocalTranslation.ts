@@ -1,5 +1,5 @@
 import { get } from 'lodash';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { LanguageLocale } from '../constants/locale';
 import { LSKeys } from '../constants/LSKeys';
 import { eventBus, EventTypes } from '../packages/EventBus';

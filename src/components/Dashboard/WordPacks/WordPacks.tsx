@@ -1,13 +1,15 @@
 import React, { ReactNode } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import s from './WordPacks.module.scss';
 import { CardLayout } from '../../../layouts/CardLayout/CardLayout';
 import { WordPack } from '../WordPack/WordPack';
-import { Pack } from '../../../@types/entities/WordPack';
+import { Pack, PackEnriched } from '../../../@types/entities/WordPack';
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 import translations from '../Dashboard.i18n.json';
+import '../../../styles/lib/wordpack-swiper.scss';
 
 type Props = {
-  packs: Pack[];
+  packs: PackEnriched[];
 };
 
 export function DashboardWordPacks({ packs }: Props) {
@@ -16,9 +18,15 @@ export function DashboardWordPacks({ packs }: Props) {
   return (
     <CardLayout title={t('wordPacks')}>
       <div className={s.wordpacks_container}>
-        {packs.map(item => (
-          <WordPack key={item.id} item={item} />
-        ))}
+        <div className="wordpacks-slider">
+          <Swiper slidesPerView={5}>
+            {packs.map(item => (
+              <SwiperSlide>
+                <WordPack key={item.id} item={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </CardLayout>
   );

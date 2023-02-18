@@ -1,7 +1,10 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import { Pack } from '../../../@types/entities/WordPack';
-import { WordpackWord } from '../../../@types/entities/WordpackWord';
+import { Pack, PackEnriched } from '../../../@types/entities/WordPack';
+import {
+  WordpackWord,
+  WordpackWordEnriched,
+} from '../../../@types/entities/WordpackWord';
 import ModalLayout from '../../../layouts/ModalLayout/ModalLayout';
 import { checkIsInArrayById } from '../../../utils/common/checkIsInArray';
 import { ModalWrapper } from '../Wrapper/ModalWrapper';
@@ -14,16 +17,17 @@ import { NotificationType } from '../../../@types/entities/Notification';
 import { CustomError } from '../../../@types/entities/ErrorObject';
 import common from '../../UI/Common.i18n.json';
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
+import useWordpack from '../../../hooks/useWordpacks';
 
 type Props = {
-  wordpack: Pack;
+  wordpack: PackEnriched;
   onConfirm: () => void;
 };
 
 type WordProps = {
-  item: WordpackWord;
+  item: WordpackWordEnriched;
   selected: boolean;
-  onClick: (item: WordpackWord) => void;
+  onClick: (item: WordpackWordEnriched) => void;
 };
 
 function WordCard({ item, selected, onClick }: WordProps) {
@@ -51,10 +55,12 @@ function WordCard({ item, selected, onClick }: WordProps) {
 }
 
 export function WordpackModal({ wordpack, onConfirm }: Props) {
-  const [selectedItems, setSelected] = useState<WordpackWord[] | []>([]);
+  const [selectedItems, setSelected] = useState<WordpackWordEnriched[] | []>(
+    []
+  );
   const { t } = useLocalTranslation(common);
 
-  const onWordAdd = (item: WordpackWord) => {
+  const onWordAdd = (item: WordpackWordEnriched) => {
     const isSelected = checkIsInArrayById(item, selectedItems);
     if (isSelected) {
       setSelected(selected => selected.filter(el => el.id !== item.id));
@@ -95,7 +101,7 @@ export function WordpackModal({ wordpack, onConfirm }: Props) {
     handleList({
       listTitle: wordpack.name,
       userId: currentUser?.id || 0,
-      words: selectedItems.map(word => ({ ...word, dateLearned: null })),
+      words: wordpack.words,
     });
   };
 
@@ -115,7 +121,7 @@ export function WordpackModal({ wordpack, onConfirm }: Props) {
               <WordCard
                 key={item.id}
                 item={item}
-                onClick={(word: WordpackWord) => onWordAdd(word)}
+                onClick={(word: WordpackWordEnriched) => onWordAdd(word)}
                 selected={checkIsInArrayById(item, selectedItems)}
               />
             ))}
