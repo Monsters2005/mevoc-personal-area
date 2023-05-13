@@ -138,6 +138,7 @@ export default function ListManagementPage() {
         name: data.listTitle,
         learningLang: 'en',
         userId: data.userId,
+        words: [],
       }).unwrap();
       eventBus.emit(EventTypes.notification, {
         message: t('listAdd'),
