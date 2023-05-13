@@ -1,5 +1,3 @@
-@use '@styles/shared/variables.scss' as *;
-
 .firststage {
   &_wrapper {
     height: 100%;
@@ -22,7 +20,7 @@
     font-size: 28px;
     line-height: 42px;
 
-    color: $primary-color;
+    color: rgb(var(--primary-color));
     user-select: none;
   }
   &_boxes {
@@ -42,13 +40,13 @@
     width: 50px;
     height: 50px;
 
-    background: $primary-color;
+    background: rgb(var(--primary-color));
     border-radius: 10px;
     transition: all 0.2s;
     transition: all 0.4s;
     &:hover {
       cursor: pointer;
-      background: rgba($primary-color, 0.7);
+      background: rgba(var(--primary-color), 0.7);
     }
   }
   &_complete {
@@ -66,7 +64,7 @@
     width: 45px;
     height: 45px;
 
-    border: 2px solid rgba($primary-color, 0.7);
+    border: 2px solid rgba(var(--primary-color), 0.7);
     border-radius: 10px;
     background-color: none;
 
@@ -87,13 +85,13 @@
       width: 45px;
       height: 45px;
 
-      background: $primary-color;
+      background: rgb(var(--primary-color));
       font-style: normal;
       font-weight: 600;
       font-size: 26px;
       line-height: 26px;
-      color: $base-color;
-      border: 2px solid rgba($primary-color, 0.7);
+      color: rgb(var(--base-color));
+      border: 2px solid rgba(var(--primary-color), 0.7);
 
       text-transform: uppercase;
       border-radius: 10px;
@@ -107,8 +105,8 @@
       -webkit-transition: background-color 0.3s linear;
       -ms-transition: background-color 0.3s linear;
       transition: background-color 0.3s linear;
-      background: $accent-color !important;
-      border: 2px solid rgba($accent-color, 0.7);
+      background: rgb(var(--accent-color)) !important;
+      border: 2px solid rgba(var(--accent-color), 0.7);
     }
   }
   &_cardletter {
@@ -117,7 +115,7 @@
     font-size: 32px;
     line-height: 48px;
 
-    color: $base-color;
+    color: rgb(var(--base-color));
   }
   &_cardcontainer {
     width: 50px;

@@ -1,10 +1,8 @@
-@use '@styles/shared/variables.scss' as *;
-
 .svg {
   display: block;
   height: 40px;
   width: 40px;
-  color: $accent-color; /* SVG path use currentColor to inherit this */
+  color: rgb(var(--accent-color));
 }
 
 .circle {

@@ -1,1 +1,15 @@
 @use 'global' as *;
+
+:root {
+  --primary-color: 196, 195, 202;
+  --accent-color: 255, 235, 167;
+  --accent-color-hover: #f3e0a1;
+  --base-color: 31, 32, 41;
+  --element-color: 42, 43, 56;
+  --element-light-color: 40, 41, 54;
+  --ui-dark: 53, 55, 66;
+  --ui-light: 55, 55, 68;
+  --active-color: 234, 231, 255;
+  --font: 'Poppins', 'Montserrat';
+  --font-logo: 'Rubik';
+}

@@ -1,12 +1,10 @@
-@use '@styles/shared/variables.scss' as *;
-
 .sidebar {
   &_container {
     min-width: 360px;
     max-width: 360px;
     height: 100vh;
 
-    background: rgba($element-color, 0.1);
+    background: rgba(var(--element-color), 0.1);
     backdrop-filter: blur(30px);
 
     position: fixed;

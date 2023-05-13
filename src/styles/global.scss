@@ -1,12 +1,12 @@
 @use '~normalize.css' as *;
 @use './shared/fonts.scss';
-@use './shared/variables.scss' as *;
+@use './shared/variables.css' as *;
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: $font;
+  font-family: 'Poppins', 'Montserrat';
 }
 
 h1,
@@ -20,8 +20,8 @@ a {
 }
 
 body {
-  font-family: $font;
-  background: $base-color;
+  font-family: 'Poppins', 'Montserrat';
+  background: rgb(var(--base-color));
   background-image: url('../assets/images/background.svg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,8 +31,8 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 10px 10px 10px 1000px $base-color inset;
-  -webkit-text-fill-color: $primary-color !important;
+  -webkit-box-shadow: 10px 10px 10px 1000px rgb(var(--base-color)) inset;
+  -webkit-text-fill-color: rgb(var(--primary-color)) !important;
   -webkit-background-clip: text;
   -webkit-font-feature-settings: off;
 }
@@ -42,7 +42,7 @@ input:-webkit-autofill:active {
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
-    font-family: $font !important;
+    font-family: 'Poppins', 'Montserrat' !important;
   }
 }
 
@@ -52,12 +52,12 @@ input:-webkit-autofill:active {
 }
 
 ::-webkit-scrollbar-track {
-  background: $ui-light;
+  background: rgb(var(--ui-light));
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $accent-color;
+  background: rgb(var(--accent-color));
   border-radius: 10px;
 }
 

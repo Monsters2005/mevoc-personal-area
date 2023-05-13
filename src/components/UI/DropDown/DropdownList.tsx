@@ -44,14 +44,8 @@ export function DropdownList({
     }
   }
 
-  const dropdownRef = useRef(null);
-
-  useOutsideCheck(dropdownRef, () => {
-    setIsOpen(false);
-  });
-
   return (
-    <div ref={dropdownRef} className={s.dropdown_list} style={listStyles}>
+    <div className={s.dropdown_list} style={listStyles}>
       <h3 className={s.dropdown_title}>{listTitle}</h3>
       {options && searchBar && (
         <SearchInput

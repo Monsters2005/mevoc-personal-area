@@ -1,13 +1,13 @@
 .light-mode {
-  --primary-color: #373737;
-  --accent-color: #755fff;
-  --accent-color-hover: #ffefb9;
+  --primary-color: rgb(55, 55, 55);
+  --accent-color: #4bb0c6;
+  --accent-color-hover: #3998ad;
   --base-color: #ffffff;
   --element-color: #e4e4e4;
   --element-light-color: #ffffff;
-  --ui-dark: #d2d8ff;
-  --ui-light: #ededfd;
-  --active-color: #eae7ff;
+  --ui-dark: #d2f6ff;
+  --ui-light: #edfbfd;
+  --active-color: #e7fdff;
   --font: 'Poppins', 'Montserrat';
   --font-logo: 'Rubik';
 }

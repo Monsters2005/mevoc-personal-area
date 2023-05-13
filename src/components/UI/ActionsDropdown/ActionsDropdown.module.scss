@@ -1,11 +1,9 @@
-@use '@styles/shared/variables.scss' as *;
-
 .actions {
   &_container {
     min-width: 150px;
     height: fit-content;
 
-    background: $element-color;
+    background: rgb(var(--element-color));
     border-radius: 10px;
     padding: 8px 8px;
 
@@ -23,7 +21,7 @@
     border-radius: 5px;
 
     &:hover {
-      background: rgba($active-color, 0.1);
+      background: rgba(var(--active-color), 0.1);
       cursor: pointer;
     }
 

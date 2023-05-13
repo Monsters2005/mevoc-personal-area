@@ -18,7 +18,7 @@ type Props<T> = {
   styles?: CSSProperties;
   options: MultiSelectorObject;
   defaultActive: keyof T;
-  onClick: (active: MultiSelectorOption) => void;
+  onClick: (active: string) => void;
 };
 
 export function MultiSelector<T extends MultiSelectorObject>({
@@ -48,7 +48,7 @@ export function MultiSelector<T extends MultiSelectorObject>({
     return () => {
       if (item.label) setActive(item.label);
       recalcOffset(i);
-      onClick(item);
+      onClick(item.value);
     };
   }
 

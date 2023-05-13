@@ -12,13 +12,36 @@ import s from './Appearance.module.scss';
 import { SettingsColorSelect } from './ColorSelect/ColorSelect';
 import settings from '../../../../pages/Settings/Settings.i18n.json';
 import { useIsMounted } from '../../../../hooks/useDelay';
+import { hexToRgb } from '../../../../utils/lib/hexToRgb';
+import { darkTheme, lightTheme } from '../../../../constants/kit/themes';
+
+type Color = {
+  label: string;
+  value: string;
+  key: number;
+};
 
 export default function AppearanceTab() {
-  // TODO: User should be received from the context which will have a data about
-  // TODO: current user signed in
-  // TODO: Add logic to all functions below
-  const onThemeSelect = () => console.log();
-  const onColorSelect = () => console.log();
+  const root = document.documentElement.style;
+
+  const onThemeSelect = (st: string) => {
+    if (st === 'light') {
+      Object.entries(lightTheme)
+        .map(([key, value]) => [key, value])
+        .forEach(([key, value]) => root.setProperty(key, value));
+    }
+    if (st === 'dark') {
+      Object.entries(darkTheme)
+        .map(([key, value]) => [key, value])
+        .forEach(([key, value]) => root.setProperty(key, value));
+    }
+  };
+
+  const onColorSelect = (color: Color) => {
+    const rgb = hexToRgb(color.value);
+    const numericValues = [rgb?.r, rgb?.g, rgb?.b].join(',');
+    root.setProperty('--accent-color', numericValues);
+  };
   const onTextSizeSelect = () => console.log();
   const onTextColorSelect = () => console.log();
 

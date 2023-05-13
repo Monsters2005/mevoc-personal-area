@@ -1,11 +1,9 @@
-@use '@styles/shared/variables.scss' as *;
-
 .modal {
   &_container {
     width: fit-content;
     height: fit-content;
 
-    background: $element-color;
+    background: rgb(var(--element-color));
     border-radius: 19px;
 
     display: flex;

@@ -33,8 +33,9 @@ export function TransitionWrapper({
 }: Props) {
   const defaultStyle = {
     transition: `all ${duration}ms ease-in-out `,
+    position: 'relative',
     opacity: 0,
-    zIndex: -10,
+    zIndex: 0,
   };
 
   const nodeRef = useRef(null);

@@ -1,5 +1,3 @@
-@use '@styles/shared/variables.scss' as *;
-
 .steps {
   &_container {
     display: flex;
@@ -70,26 +68,26 @@
       }
       &_active {
         & span {
-          border-color: $accent-color;
+          border-color: rgb(var(--accent-color));
 
           & b {
-            color: $accent-color;
+            color: rgb(var(--accent-color));
           }
         }
         & p {
-          color: $accent-color;
+          color: rgb(var(--accent-color));
         }
       }
       &_complete {
         & span {
-          border-color: rgba($accent-color, 0.6);
+          border-color: rgba(var(--accent-color), 0.6);
 
           & b {
-            color: rgba($accent-color, 0.6);
+            color: rgba(var(--accent-color), 0.6);
           }
         }
         & p {
-          color: rgba($accent-color, 0.6);
+          color: rgba(var(--accent-color), 0.6);
         }
       }
     }
@@ -111,7 +109,7 @@
     &_common {
       height: 2px;
       width: 100%;
-      background: rgba($accent-color, 0.6);
+      background: rgba(var(--accent-color), 0.6);
       border: none;
       transition: all 0.4s;
 

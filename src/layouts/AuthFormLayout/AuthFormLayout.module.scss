@@ -1,14 +1,13 @@
-@use '@styles/shared/variables.scss' as *;
-
 .formlayout {
   width: 440px;
   height: fit-content;
 
-  background: url('../../assets/images/form-background.svg'), $element-color;
+  background: url('../../assets/images/form-background.svg'),
+    rgb(var(--element-color));
   background-repeat: no-repeat;
   background-size: cover;
 
-  border-radius: 6px;
+  border-radius: 15px;
 
   display: flex;
   flex-direction: column;
@@ -18,7 +17,7 @@
   overflow: hidden;
   padding: 30px 0;
 
-  grid-gap: 30px;
+  grid-gap: 40px;
   transition: all 0.2s;
 
   &_content {
@@ -35,7 +34,7 @@
     font-size: 24px;
     line-height: 36px;
 
-    color: $primary-color;
+    color: rgb(var(--primary-color));
     margin: 0;
   }
   &_bottom {
@@ -53,10 +52,10 @@
     align-items: center;
     text-align: center;
 
-    color: rgba($primary-color, 0.7);
+    color: rgba(var(--primary-color), 0.7);
     transition: all 0.1s;
     &:hover {
-      color: $primary-color;
+      color: rgb(var(--primary-color));
       cursor: pointer;
     }
   }

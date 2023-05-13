@@ -34,6 +34,7 @@ export function SettingsColorSelect({
   function handleCustomSelect(item: string, value: boolean) {
     setColor(item);
     setCustomIsOpened(value);
+    onClick({ value: item, key: 0, label: '' });
   }
 
   return (

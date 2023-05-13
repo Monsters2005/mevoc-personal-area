@@ -30,8 +30,13 @@ export default function ThirdStage({ word, currentStage, onComplete }: Stage) {
 
   useEffect(() => {
     start();
+    console.log('focus');
     areaRef?.current?.focus();
   }, [word]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', e => learning.handleKeyPick(e));
+  }, []);
 
   return (
     <KeyListener
@@ -45,7 +50,6 @@ export default function ThirdStage({ word, currentStage, onComplete }: Stage) {
     >
       <div
         className={s.thirdstage_wrapper}
-        onKeyDown={e => learning.handleKeyPick(e)}
         tabIndex={0}
         role="button"
         ref={areaRef}

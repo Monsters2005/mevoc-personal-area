@@ -1,5 +1,3 @@
-@use '@styles/shared/variables.scss' as *;
-
 .wordlist {
   &_container {
     width: 100%;
@@ -14,13 +12,13 @@
     width: 290px;
     height: 80px;
 
-    background: rgba($active-color, 0.1);
+    background: rgba(var(--active-color), 0.1);
 
     border-radius: 10px;
     border: none;
     transition: all 0.2s;
     &:hover {
-      background: rgba($active-color, 0.2);
+      background: rgba(var(--active-color), 0.2);
       cursor: pointer;
     }
   }

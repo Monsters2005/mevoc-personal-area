@@ -1,5 +1,3 @@
-@use '@styles/shared/variables.scss' as *;
-
 .colorpicker {
   &_select {
     width: 270px;
@@ -164,7 +162,7 @@
     width: 43.44px;
     height: 43.67px;
 
-    background: $element-light-color;
+    background: rgb(var(--element-light-color));
     border: none;
 
     border-radius: 10px;
@@ -174,10 +172,10 @@
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
-      background: lighten($element-light-color, 2);
+      background: hsl(var(--accent-color), calc(100% - 2%));
     }
     &_opened {
-      background: rgba($active-color, 0.1);
+      background: rgba(var(--active-color), 0.1);
     }
   }
 }
