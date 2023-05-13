@@ -58,6 +58,7 @@
   &_progress {
     width: 200px;
     height: 200px;
+    margin-top: 10px;
   }
   &_progresses {
     display: flex;
@@ -72,5 +73,6 @@
     color: #c4c3ca;
     margin-bottom: -10px;
     text-transform: capitalize;
+    text-align: center;
   }
 }

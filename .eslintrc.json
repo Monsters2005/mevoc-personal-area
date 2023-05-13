@@ -90,6 +90,7 @@
     "no-param-reassign": ["error", { "props": false }],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
+    "no-nested-ternary": "off",
     "max-len": ["warn", { "code": 120 }]
   }
 }

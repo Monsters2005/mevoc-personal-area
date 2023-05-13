@@ -1,10 +1,8 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import { Pack, PackEnriched } from '../../../@types/entities/WordPack';
-import {
-  WordpackWord,
-  WordpackWordEnriched,
-} from '../../../@types/entities/WordpackWord';
+import { merge } from 'lodash';
+import { PackEnriched } from '../../../@types/entities/WordPack';
+import { WordpackWordEnriched } from '../../../@types/entities/WordpackWord';
 import ModalLayout from '../../../layouts/ModalLayout/ModalLayout';
 import { checkIsInArrayById } from '../../../utils/common/checkIsInArray';
 import { ModalWrapper } from '../Wrapper/ModalWrapper';
@@ -15,9 +13,10 @@ import { AddListDto } from '../../../@types/dto/list/add.dto';
 import { EventTypes, eventBus } from '../../../packages/EventBus';
 import { NotificationType } from '../../../@types/entities/Notification';
 import { CustomError } from '../../../@types/entities/ErrorObject';
-import common from '../../UI/Common.i18n.json';
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
-import useWordpack from '../../../hooks/useWordpacks';
+import common from '../../UI/Common.i18n.json';
+import notifTransl from '../../../pages/Notifications.i18n.json';
+import lists from '../../../pages/ListManagement/Lists.i18n.json';
 
 type Props = {
   wordpack: PackEnriched;
@@ -58,7 +57,7 @@ export function WordpackModal({ wordpack, onConfirm }: Props) {
   const [selectedItems, setSelected] = useState<WordpackWordEnriched[] | []>(
     []
   );
-  const { t } = useLocalTranslation(common);
+  const { t } = useLocalTranslation(merge(common, notifTransl, lists));
 
   const onWordAdd = (item: WordpackWordEnriched) => {
     const isSelected = checkIsInArrayById(item, selectedItems);
@@ -101,7 +100,7 @@ export function WordpackModal({ wordpack, onConfirm }: Props) {
     handleList({
       listTitle: wordpack.name,
       userId: currentUser?.id || 0,
-      words: wordpack.words,
+      words: selectedItems,
     });
   };
 

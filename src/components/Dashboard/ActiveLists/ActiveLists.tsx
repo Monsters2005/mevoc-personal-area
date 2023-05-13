@@ -14,14 +14,21 @@ import {
 import { useLocalTranslation } from '../../../hooks/useLocalTranslation';
 import translations from '../Dashboard.i18n.json';
 import common from '../../UI/Common.i18n.json';
+import { useGetListsByUserIdQuery } from '../../../store/api/listApi';
+import { useGetCurrentUserQuery } from '../../../store/api/userApi';
 
 type Props = {
   onAddList: () => void;
-  lists: List[] | null | undefined;
 };
 
-export function DashboardActiveLists({ onAddList, lists }: Props) {
-  const [items, setItems] = useState<List[] | null>(null);
+export function DashboardActiveLists({ onAddList }: Props) {
+  const [items, setItems] = useState<List[] | undefined>(undefined);
+  const { data: user } = useGetCurrentUserQuery();
+  const { data: lists, isLoading } = useGetListsByUserIdQuery(user?.id || 0, {
+    skip: !user?.id,
+  });
+
+  console.log(isLoading);
 
   useEffect(() => {
     if (lists) setItems(lists);
@@ -41,10 +48,17 @@ export function DashboardActiveLists({ onAddList, lists }: Props) {
         <Button
           type="primary"
           onClick={() => onAddList()}
-          styles={items ? primarySmallLists : primarySmallNoLists}
+          styles={
+            typeof items === 'undefined' || isLoading
+              ? { display: 'none' }
+              : !items?.length
+                ? primarySmallNoLists
+                : primarySmallLists
+          }
         >
           {t('add')}
         </Button>
+
         <div className={s.activelists_container}>
           {items?.length ? (
             <Droppable droppableId="droppable-list">

@@ -16,6 +16,7 @@ export type ActionItem = {
   icon?: ReactNode;
   key: string;
   func: () => void;
+  value?: string;
   path: string | null;
 };
 

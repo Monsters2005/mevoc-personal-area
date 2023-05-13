@@ -66,6 +66,7 @@ export function Dropdown({
         </label>
       )}
       <div
+        ref={dropdownRef}
         className={classNames(s.dropdown_container, {
           [s.dropdown_container_right]: side === 'right',
         })}

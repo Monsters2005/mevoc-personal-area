@@ -73,27 +73,6 @@ export default function ListManagementPage() {
     merge(common, notifTransl, sidebar, lists)
   );
 
-  const listActionItems = [
-    {
-      value: 'rename',
-      func: () => {
-        setCurrentModal(
-          <RenameListModal
-            onRenameList={(data: Partial<List>) => handleRename(data)}
-          />
-        );
-      },
-      key: 'rename',
-      path: null,
-    },
-    {
-      value: 'delete',
-      func: () => handleDelete,
-      key: 'delete',
-      path: null,
-    },
-  ];
-
   useEffect(() => {
     const listOptions = userLists.map(
       (el: List): Option => ({
@@ -118,7 +97,28 @@ export default function ListManagementPage() {
             >
               <ActionsDropdown
                 isOpen={expandOpen === el.id}
-                items={listActionItems}
+                items={[
+                  {
+                    value: 'rename',
+                    func: () => {
+                      setCurrentModal(
+                        <RenameListModal
+                          onRenameList={(data: Partial<List>) =>
+                            handleRename({ ...data, id: el.id })
+                          }
+                        />
+                      );
+                    },
+                    key: 'rename',
+                    path: null,
+                  },
+                  {
+                    value: 'delete',
+                    func: () => handleDelete({ id: el.id }),
+                    key: 'delete',
+                    path: null,
+                  },
+                ]}
               />
             </div>
           </div>
@@ -154,6 +154,7 @@ export default function ListManagementPage() {
   };
 
   const handleRename = async (data: Partial<List>) => {
+    console.log('ok');
     try {
       await updateList({ id: data.id || 0, name: data.name });
       eventBus.emit(EventTypes.notification, {

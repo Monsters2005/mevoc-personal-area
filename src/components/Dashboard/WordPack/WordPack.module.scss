@@ -2,8 +2,10 @@
 
 .wordpack {
   &_container {
-    width: 217px;
-    height: 283px;
+    min-width: 217px;
+    min-height: 283px;
+    max-width: 217px;
+    max-height: 283px;
 
     background: $element-light-color;
     backdrop-filter: blur(45px);

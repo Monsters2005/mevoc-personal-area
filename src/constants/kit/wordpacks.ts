@@ -77,7 +77,7 @@ const seasonsWordpack = {
 };
 
 const cosmosWordpack = {
-  name: 'Cosmsos',
+  name: 'Cosmos',
   id: 4,
   icon: 'cosmos',
   words: [
@@ -184,9 +184,7 @@ const transportationWordpack = {
     { id: 10, word: 'subway' },
     { id: 11, word: 'ferry' },
     { id: 12, word: 'helicopter' },
-    { id: 13, word: 'hot air balloon' },
-    { id: 14, word: 'rocket' },
-    { id: 15, word: 'space shuttle' },
+    { id: 13, word: 'rocket' },
   ],
 };
 

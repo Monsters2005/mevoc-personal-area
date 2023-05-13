@@ -4,6 +4,7 @@ import React, {
   FocusEventHandler,
   FormEventHandler,
   ReactNode,
+  Ref,
 } from 'react';
 import { GlobalSvgSelector } from '../../../shared/GlobalSvgSelector';
 import s from './Input.module.scss';
@@ -24,6 +25,7 @@ type Props = {
   isError?: boolean;
   error?: string;
   label?: string;
+  ref?: (inputElement: HTMLElement) => void;
 };
 
 export function Input({
@@ -42,6 +44,7 @@ export function Input({
   isError,
   error,
   label,
+  ref,
   ...props
 }: Props) {
   return (

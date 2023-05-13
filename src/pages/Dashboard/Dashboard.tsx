@@ -17,10 +17,8 @@ import { Path } from '../../constants/routes';
 import { useActiveLists } from '../../context/ActiveLists';
 import { useModal } from '../../context/ModalContext';
 import { useLocalTranslation } from '../../hooks/useLocalTranslation';
-import { wordPack } from '../../mocks/pack';
 import { eventBus, EventTypes } from '../../packages/EventBus';
 import { startBtn } from '../../shared/styles/button-variations';
-import { useGetListsByUserIdQuery } from '../../store/api/listApi';
 import {
   useGetCurrentUserQuery,
   useUpdateUserMutation,
@@ -28,13 +26,10 @@ import {
 import s from './Dashboard.module.scss';
 import translations from '../../components/Dashboard/Dashboard.i18n.json';
 import notifTransl from '../Notifications.i18n.json';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { LSKeys } from '../../constants/LSKeys';
 import useWordpacks from '../../hooks/useWordpacks';
 
 export function DashboardPage() {
   const { data: user } = useGetCurrentUserQuery();
-  const { data: userLists } = useGetListsByUserIdQuery(user?.id || 0);
   const { currentLists } = useActiveLists();
   const { setCurrentModal } = useModal();
   const [updateUser] = useUpdateUserMutation();
@@ -83,8 +78,6 @@ export function DashboardPage() {
     setLangOption(langOptionObj);
   }, [langOptionObj, lang]);
 
-  console.log('wordpacks', wordpacks);
-
   return (
     <div className={s.dashboardpage_container}>
       <div className={s.dashboardpage_header}>
@@ -108,14 +101,11 @@ export function DashboardPage() {
       </div>
       <div className={s.dashboardpage_grid}>
         <div className={s.dashboardpage_row}>
-          <DashboardActiveLists
-            lists={userLists || null}
-            onAddList={handleListAdd}
-          />
+          <DashboardActiveLists onAddList={handleListAdd} />
           <DashboardDailyProgress />
         </div>
         <div className={s.dashboardpage_row}>
-          <DashboardWordPacks packs={wordpacks} />
+          {!!wordpacks.length && <DashboardWordPacks packs={wordpacks} />}
           <Button
             type="primary"
             styles={startBtn}

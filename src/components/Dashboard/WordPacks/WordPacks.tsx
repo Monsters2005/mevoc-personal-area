@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import s from './WordPacks.module.scss';
 import { CardLayout } from '../../../layouts/CardLayout/CardLayout';
 import { WordPack } from '../WordPack/WordPack';
@@ -18,15 +17,9 @@ export function DashboardWordPacks({ packs }: Props) {
   return (
     <CardLayout title={t('wordPacks')}>
       <div className={s.wordpacks_container}>
-        <div className="wordpacks-slider">
-          <Swiper slidesPerView={5}>
-            {packs.map(item => (
-              <SwiperSlide>
-                <WordPack key={item.id} item={item} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+        {packs.map(item => (
+          <WordPack key={item.id} item={item} />
+        ))}
       </div>
     </CardLayout>
   );
