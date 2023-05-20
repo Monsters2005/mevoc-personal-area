@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import {
   accentColors,
@@ -14,6 +14,11 @@ import settings from '../../../../pages/Settings/Settings.i18n.json';
 import { useIsMounted } from '../../../../hooks/useDelay';
 import { hexToRgb } from '../../../../utils/lib/hexToRgb';
 import { darkTheme, lightTheme } from '../../../../constants/kit/themes';
+import { useLocalStorage } from '../../../../hooks/useLocalStorage';
+import {
+  useGetCurrentUserQuery,
+  useUpdateUserMutation,
+} from '../../../../store/api/userApi';
 
 type Color = {
   label: string;
@@ -23,18 +28,11 @@ type Color = {
 
 export default function AppearanceTab() {
   const root = document.documentElement.style;
+  const { data: user } = useGetCurrentUserQuery();
+  const [update] = useUpdateUserMutation();
 
   const onThemeSelect = (st: string) => {
-    if (st === 'light') {
-      Object.entries(lightTheme)
-        .map(([key, value]) => [key, value])
-        .forEach(([key, value]) => root.setProperty(key, value));
-    }
-    if (st === 'dark') {
-      Object.entries(darkTheme)
-        .map(([key, value]) => [key, value])
-        .forEach(([key, value]) => root.setProperty(key, value));
-    }
+    update({ theme: st, id: user?.id });
   };
 
   const onColorSelect = (color: Color) => {
@@ -55,7 +53,7 @@ export default function AppearanceTab() {
           <div className={s.appearance_content}>
             <MultiSelector
               options={currentTheme}
-              defaultActive="dark"
+              defaultActive="light"
               onClick={onThemeSelect}
             />
           </div>

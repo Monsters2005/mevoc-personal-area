@@ -7,7 +7,7 @@
   --element-light-color: #ffffff;
   --ui-dark: #d2f6ff;
   --ui-light: #edfbfd;
-  --active-color: #e7fdff;
+  --active-color: hwb(0 19% 81%);
   --font: 'Poppins', 'Montserrat';
   --font-logo: 'Rubik';
 }

@@ -29,13 +29,15 @@ export default function ThirdStage({ word, currentStage, onComplete }: Stage) {
   const start = () => learning.start();
 
   useEffect(() => {
+    console.log('started');
+    areaRef.current?.focus();
     start();
-    console.log('focus');
-    areaRef?.current?.focus();
   }, [word]);
 
   useEffect(() => {
-    document.addEventListener('keydown', e => learning.handleKeyPick(e));
+    if (areaRef.current) {
+      areaRef.current.addEventListener('keydown', e => learning.handleKeyPick(e));
+    }
   }, []);
 
   return (

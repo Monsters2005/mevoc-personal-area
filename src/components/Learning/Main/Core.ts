@@ -101,6 +101,7 @@ export class LearningCore {
     this.currentIndex = 0;
     this.currentCell = this.letters[this.currentIndex];
     this.pushEvent();
+    console.log(this);
   }
 
   handleCardPick(item: Letter) {
@@ -110,14 +111,23 @@ export class LearningCore {
   handleKeyPick(item: KeyboardEvent | any) {
     const keyPressed = this.currentCell?.letter.toUpperCase();
     if (this.isCompleted) return;
-    console.log(this.currentCell, this.currentCell?.letter);
-    console.log(this.letters);
-    console.log(keyPressed, item.key);
+    console.log('cell', this.currentCell, 'letter', this.currentCell?.letter);
+    console.log('letters', this.letters);
+    console.log('expected', keyPressed, 'key pressed', item.key);
     if (item.key.toUpperCase() === keyPressed) {
-      if (this.currentIndex === this.letters.length - 1)
+      if (this.currentIndex === this.letters.length - 1) {
+        console.log('completed');
+        console.log(
+          'this.currentIndex',
+          this.currentIndex,
+          'this.letters.length - 1',
+          this.letters.length - 1
+        );
         this.isCompleted = true;
+      }
       this.currentIndex++;
       this.currentCell = this.letters[this.currentIndex];
+      console.log('otherwise');
     } else {
       this.mistakesCount++;
     }

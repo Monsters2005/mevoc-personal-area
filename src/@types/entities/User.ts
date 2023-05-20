@@ -15,6 +15,10 @@ export type User = {
   confirmed_hash: string;
   confirmed: boolean;
   lists: List[];
+  textColor: string;
+  textSize: string;
+  accentColor: string;
+  theme: string;
   settings: {
     safety: {
       twoFactAuth: {

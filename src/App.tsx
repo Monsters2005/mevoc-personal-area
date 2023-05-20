@@ -19,6 +19,7 @@ import { actions, pages, visiblePaths } from './constants/sidebar';
 import { UserProfilePage } from './pages/UserProfile/UserProfile';
 import { SignInPage } from './pages/SignIn/SignIn';
 import SelectedWordsProvider from './providers/SelectedWordsProvider';
+import PersonalizationLayout from './layouts/PersonalizationLayout/PersonalizationLayout';
 
 function App() {
   const { pathname } = useLocation();
@@ -43,22 +44,27 @@ function App() {
           {withSidebar ? (
             <div className="page_container">
               <PrivateLayout>
-                <Sidebar pages={pages} actions={actions} />
-                <div className="page_content">
-                  <Routes>
-                    <Route path={Path.HOME} element={<DashboardPage />} />
-                    <Route
-                      path={Path.LISTS}
-                      element={(
-                        <SelectedWordsProvider>
-                          <ListManagementPage />
-                        </SelectedWordsProvider>
-                      )}
-                    />
-                    <Route path={Path.PROFILE} element={<UserProfilePage />} />
-                    <Route path={Path.SETTINGS} element={<SettingsPage />} />
-                  </Routes>
-                </div>
+                <PersonalizationLayout>
+                  <Sidebar pages={pages} actions={actions} />
+                  <div className="page_content">
+                    <Routes>
+                      <Route path={Path.HOME} element={<DashboardPage />} />
+                      <Route
+                        path={Path.LISTS}
+                        element={(
+                          <SelectedWordsProvider>
+                            <ListManagementPage />
+                          </SelectedWordsProvider>
+                        )}
+                      />
+                      <Route
+                        path={Path.PROFILE}
+                        element={<UserProfilePage />}
+                      />
+                      <Route path={Path.SETTINGS} element={<SettingsPage />} />
+                    </Routes>
+                  </div>
+                </PersonalizationLayout>
               </PrivateLayout>
             </div>
           ) : (

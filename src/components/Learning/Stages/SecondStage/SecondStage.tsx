@@ -35,7 +35,7 @@ export default function SecondStage({
 
   return (
     <KeyListener
-      state={learningState.isCompleted}
+      state={!learningState.isCompleted}
       listeners={[
         {
           key: 'Enter',

@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '../../@types/entities/User';
-import { user } from '../../mocks/user';
 import { authApi } from '../api/authApi';
 import { userApi } from '../api/userApi';
 

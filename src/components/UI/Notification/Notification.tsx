@@ -9,10 +9,10 @@ import { NotficationsSvgSelector } from './NotificationsSvgSelector';
 const baseNotification: ToastOptions = {
   icon: false,
   theme: 'dark',
-  autoClose: 5000,
+  autoClose: false,
   hideProgressBar: true,
   style: {
-    width: '400px',
+    maxWidth: '400px',
     background: '#2A2B38',
     borderRadius: '20px',
     padding: '10px 10px',
