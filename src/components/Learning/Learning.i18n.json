@@ -2,6 +2,7 @@
   "en": {
     "goBack": "Go back",
     "moveTo": "Move to the test ",
+    "complete": "Finish the test",
     "failMsg": "Nice try!",
     "failText": "Unfortunately, there is no progress for now, but we are sure you will do better next time.",
     "succMsg": "Congratulations!",
@@ -19,6 +20,7 @@
   "ru": {
     "goBack": "Вернуться",
     "moveTo": "Перейти к тесту",
+    "complete": "Завершить тест",
     "failMsg": "Хорошая попытка!",
     "failText": "К сожалению, на данный момент прогресса нет, но мы уверены, что в следующий раз вы справитесь лучше.",
     "succMsg": "Поздравляем!",
@@ -36,6 +38,7 @@
   "de": {
     "goBack": "Gehen Sie zurück",
     "moveTo": "Wechseln Sie zum Test",
+    "complete": "Beenden Sie den Test",
     "failMsg": "Netter Versuch!",
     "failText": "Leider gibt es im Moment keine Fortschritte, aber wir sind sicher, dass Sie es beim nächsten Mal besser machen werden.",
     "succMsg": "Herzliche Glückwünsche!",
@@ -53,6 +56,7 @@
   "fr": {
     "goBack": "Retour",
     "moveTo": "Passer au test",
+    "complete": "Terminer l'essai",
     "failMsg": "Bien essayé!",
     "failText": "Malheureusement, il n'y a pas de progrès pour l'instant, mais nous sommes sûrs que vous ferez mieux la prochaine fois.",
     "succMsg": "Toutes nos félicitations!",
@@ -70,6 +74,7 @@
   "es": {
     "goBack": "Volver",
     "moveTo": "Pasar a la prueba",
+    "complete": "terminar la prueba",
     "failMsg": "¡Buen intento!",
     "failText": "Desafortunadamente, no hay progreso por ahora, pero estamos seguros de que lo harás mejor la próxima vez.",
     "succMsg": "¡Felicidades!",
@@ -87,6 +92,7 @@
   "se": {
     "goBack": "Gå tillbaka",
     "moveTo": "Gå till testet",
+    "complete": "Avsluta testet",
     "failMsg": "Bra försök!",
     "failText": "Tyvärr är det inga framsteg just nu, men vi är säkra på att du kommer att göra bättre nästa gång.",
     "succMsg": "Grattis!",

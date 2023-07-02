@@ -50,6 +50,11 @@
     height: 30px;
     transition: all 0.3s;
     opacity: 0;
+    & svg {
+      path {
+        fill: rgb(var(--accent-color));
+      }
+    }
     &_completion {
       opacity: 100;
     }

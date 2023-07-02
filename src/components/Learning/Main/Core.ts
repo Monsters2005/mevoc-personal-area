@@ -26,7 +26,7 @@ const STAGES_RULES = {
 
 export const MAX_MISTAKES_VALUE = 3;
 export const MAX_MISTAKES_VALUE_TEST = 1;
-export const MAX_TIMER_VALUE = 30;
+export const MAX_TIMER_VALUE = 15;
 export const MAX_STAGES = 4;
 
 export interface LearningEvent {
