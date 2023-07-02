@@ -13,7 +13,7 @@ type Color = {
 };
 
 type Props = {
-  defaultSelected: Color;
+  defaultSelected: string;
   onClick: (color: Color) => void;
   colors: Color[];
 };
@@ -24,7 +24,9 @@ export function SettingsColorSelect({
   colors,
 }: Props) {
   const [customIsOpened, setCustomIsOpened] = useState(false);
-  const [color, setColor] = useState(defaultSelected.value);
+  const [color, setColor] = useState(defaultSelected);
+
+  console.log(defaultSelected);
 
   function handleSelect(item: Color) {
     setColor(item.value);

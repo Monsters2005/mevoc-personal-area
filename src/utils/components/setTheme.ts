@@ -1,4 +1,5 @@
 import { darkTheme, lightTheme } from '../../constants/kit/themes';
+import { hexToRgb } from '../lib/colorTransform';
 
 export const onThemeSelect = (st: string) => {
   const root = document.documentElement.style;
@@ -13,4 +14,9 @@ export const onThemeSelect = (st: string) => {
       .map(([key, value]) => [key, value])
       .forEach(([key, value]) => root.setProperty(key, value));
   }
+};
+
+export const onColorSelect = (numericValues: string) => {
+  const root = document.documentElement.style;
+  root.setProperty('--accent-color', numericValues);
 };

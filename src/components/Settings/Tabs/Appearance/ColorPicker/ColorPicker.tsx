@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import { useIsMounted } from '../../../../../hooks/useDelay';
-import { hexToRgb } from '../../../../../utils/lib/hexToRgb';
+import { hexToRgb } from '../../../../../utils/lib/colorTransform';
 import { SettingsSvgSelector } from '../../../SettingsSvgSelector';
 
 import s from './ColorPicker.module.scss';
