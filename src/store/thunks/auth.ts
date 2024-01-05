@@ -6,9 +6,7 @@ import { EventTypes, eventBus } from '../../packages/EventBus';
 import { SUCCESS_LOGIN } from '../../constants/notificationMessages';
 import { NotificationType } from '../../@types/entities/Notification';
 import { CustomError } from '../../@types/entities/ErrorObject';
-import { useLocalTranslation } from '../../hooks/useLocalTranslation';
 import { Tokens } from '../../@types/dto/auth/tokens.dto';
-import { Path } from '../../constants/routes';
 import { LSKeys } from '../../constants/LSKeys';
 
 export const loginHandler = createAsyncThunk(
@@ -34,7 +32,6 @@ export const loginHandler = createAsyncThunk(
         type: NotificationType.SUCCESS,
       });
 
-      /* window.location.href = `/${Path.HOME}`; */
       localStorage.setItem(LSKeys.UI_LANGUAGE, 'English');
       eventBus.emit(EventTypes.setLang, 'English');
     } catch (e: unknown) {

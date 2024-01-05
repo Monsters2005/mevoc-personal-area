@@ -25,7 +25,6 @@ export function SecurityTab() {
   const { data: user } = useGetCurrentUserQuery();
   const [setQrCode] = useMfaQRMutation();
   const [toggleMfa] = useToggleMfaMutation();
-  const [enabled, setEnabled] = useState(false);
   const [qrCode, setQrCodeUrl] = useState<null | string>(null);
   const { t } = useLocalTranslation(settings);
   const [code, setCode] = useState('');
@@ -39,16 +38,12 @@ export function SecurityTab() {
       ) => {
         if ('data' in value && 'url' in value.data) {
           setQrCodeUrl(value?.data?.url || '');
-          /* setEnabled(true); */
         } else {
           eventBus.emit(EventTypes.notification, {
             message: t('errorQRCodeBody'),
             title: t('errorQRCodeTitle'),
             type: NotificationType.DANGER,
           });
-          /* setEnabled(false); */
-          // Handle error case
-          /* console.error('Error fetching QR code:', value.error); */
         }
       }
     );
@@ -56,12 +51,6 @@ export function SecurityTab() {
 
   return (
     <div className={s.security_container}>
-      {/*     <Alert
-        icon={<UISvgSelector id={notImplemented.icon />}
-        title={t(notImplemented.title)}
-        text={t(notImplemented.text)}
-      /> */}
-
       <div className={s.security_sections}>
         <div className={s.security_section}>
           <h3 className={s.security_title}>{t('authTwoAuthTitle')}</h3>
