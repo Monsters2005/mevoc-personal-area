@@ -19,6 +19,11 @@
       height: 200px;
     }
     & svg {
+      & path {
+        border-color: rgb(var(--accent-color));
+        stroke: rgb(var(--accent-color));
+        fill: rgb(var(--accent-color));
+      }
       @media screen and (max-width: 1450px) {
         width: 50px;
         margin-top: -10px;

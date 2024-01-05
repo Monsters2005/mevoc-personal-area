@@ -12,6 +12,15 @@ import s from './Appearance.module.scss';
 import { SettingsColorSelect } from './ColorSelect/ColorSelect';
 import settings from '../../../../pages/Settings/Settings.i18n.json';
 import { hexToRgb } from '../../../../utils/lib/hexToRgb';
+import { useIsMounted } from '../../../../hooks/useDelay';
+import { hexToRgb, rgbToHex } from '../../../../utils/lib/colorTransform';
+import {
+  darkTheme,
+  defaultColorValues,
+  lightTheme,
+} from '../../../../constants/kit/themes';
+import { useLocalStorage } from '../../../../hooks/useLocalStorage';
+        
 import {
   useGetCurrentUserQuery,
   useUpdateUserMutation,
@@ -24,7 +33,6 @@ type Color = {
 };
 
 export default function AppearanceTab() {
-  const root = document.documentElement.style;
   const { data: user } = useGetCurrentUserQuery();
   const [update] = useUpdateUserMutation();
 
@@ -35,8 +43,9 @@ export default function AppearanceTab() {
   const onColorSelect = (color: Color) => {
     const rgb = hexToRgb(color.value);
     const numericValues = [rgb?.r, rgb?.g, rgb?.b].join(',');
-    root.setProperty('--accent-color', numericValues);
+    update({ accentColor: numericValues, id: user?.id });
   };
+
   const onTextSizeSelect = () => console.log();
   const onTextColorSelect = () => console.log();
 
@@ -45,12 +54,12 @@ export default function AppearanceTab() {
   return (
     <div className={s.appearance_container}>
       <div className={s.appearance_sections}>
-        <div className={s.appearance_section}>
+        <div className={classNames(s.appearance_section, s.inactive)}>
           <h3 className={s.appearance_title}>{t('currentTheme')}</h3>
           <div className={s.appearance_content}>
             <MultiSelector
               options={currentTheme}
-              defaultActive="light"
+              defaultActive={defaultColorValues.theme}
               onClick={onThemeSelect}
             />
           </div>
@@ -59,13 +68,15 @@ export default function AppearanceTab() {
           <h3 className={s.appearance_title}>{t('accentColor')}</h3>
           <div className={s.appearance_content}>
             <SettingsColorSelect
-              defaultSelected={accentColors[0]}
+              defaultSelected={rgbToHex(
+                user?.accentColor || defaultColorValues.accentColor
+              )}
               onClick={onColorSelect}
               colors={accentColors}
             />
           </div>
         </div>
-        <div className={s.appearance_section}>
+        <div className={s.inactive}>
           <h3 className={s.appearance_title}>{t('textSize')}</h3>
           <div className={s.appearance_content}>
             <MultiSelector
@@ -75,7 +86,7 @@ export default function AppearanceTab() {
             />
           </div>
         </div>
-        <div className={s.appearance_section}>
+        <div className={s.inactive}>
           <h3 className={s.appearance_title}>{t('textColor')}</h3>
           <div className={s.appearance_content}>
             <MultiSelector

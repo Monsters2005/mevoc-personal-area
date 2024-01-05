@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect } from 'react';
 import { useGetCurrentUserQuery } from '../../store/api/userApi';
-import { onThemeSelect } from '../../utils/components/setTheme';
+import { onColorSelect, onThemeSelect } from '../../utils/components/setTheme';
+import { defaultColorValues } from '../../constants/kit/themes';
 
 export default function PersonalizationLayout({
   children,
@@ -10,8 +11,9 @@ export default function PersonalizationLayout({
   const { data: user } = useGetCurrentUserQuery();
 
   useEffect(() => {
-    onThemeSelect(user?.theme || 'dark');
-  }, [user?.theme]);
+    onThemeSelect(user?.theme || defaultColorValues.theme);
+    onColorSelect(user?.accentColor || defaultColorValues.accentColor);
+  }, [user?.theme, user?.accentColor]);
 
   return <div>{children}</div>;
 }

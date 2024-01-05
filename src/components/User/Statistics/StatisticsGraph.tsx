@@ -17,6 +17,9 @@ import {
 import { Dates } from '../Calendar/types';
 import s from './Statistics.module.scss';
 import usertr from '../../../pages/UserProfile/UserProfile.i18n.json';
+import { useGetCurrentUserQuery } from '../../../store/api/userApi';
+import { rgbToHex } from '../../../utils/lib/colorTransform';
+import { defaultColorValues } from '../../../constants/kit/themes';
 
 type Props = {
   list: List;
@@ -28,6 +31,7 @@ export function StatisticsGraph({ list, dateRange }: Props) {
   const sortedByDates = sortArrayByKey(filteredWordList, 'dateLearned');
   const datesObj = fillRange(sortedByDates);
   const { t } = useLocalTranslation(usertr);
+  const { data: user } = useGetCurrentUserQuery();
 
   function fillRange(obj: Record<string, Word[]>) {
     const dates = [];
@@ -76,6 +80,9 @@ export function StatisticsGraph({ list, dateRange }: Props) {
 
   const graphData = getGraphData(datesObj, dateRange);
   const labels = getGraphLabels(datesObj);
+  const accentColor = rgbToHex(
+    user?.accentColor || defaultColorValues.accentColor
+  );
 
   const data: LineChartData = {
     labels,
@@ -84,13 +91,13 @@ export function StatisticsGraph({ list, dateRange }: Props) {
         type: 'line',
         label: 'Dataset 1',
         data: graphData,
-        borderColor: '#FFEBA7',
-        backgroundColor: '#FFEBA7',
+        borderColor: accentColor,
+        backgroundColor: accentColor,
         borderWidth: 3,
         cubicInterpolationMode: 'monotone',
         tension: 0.5,
         pointRadius: 4,
-        pointBorderColor: '#FFEBA7',
+        pointBorderColor: accentColor,
         pointBackgroundColor: '#FFFFFF',
         pointBorderWidth: 2,
       },

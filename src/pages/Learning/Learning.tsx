@@ -50,6 +50,14 @@ export function LearningPage() {
     setTempStages(updStages);
   };
 
+  const handleComplete = () => {
+    const updStages = tempStages.map((el: ProgressStage) => {
+      if (el.id === 4) el.progress = 100;
+      return el;
+    });
+    setTempStages(updStages);
+  };
+
   return (
     <div className={s.learning_container}>
       {currentLists.length > 0 && (
@@ -58,6 +66,7 @@ export function LearningPage() {
             // TODO: add handler for the function below which will be showing popup and asking if
             // TODO: user wants to end current learning process
             onGoBack={() => navigate('/dashboard')}
+            onComplete={handleComplete}
             onSkipStages={handleSkipStages}
             activeStage={activeStage || tempStages[3]}
             stages={tempStages}

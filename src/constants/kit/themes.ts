@@ -21,3 +21,8 @@ export const darkTheme = {
   '--ui-light': '55, 55, 68',
   '--active-color': '234, 231, 255',
 };
+
+export const defaultColorValues = {
+  theme: 'dark',
+  accentColor: '255, 235, 167',
+};

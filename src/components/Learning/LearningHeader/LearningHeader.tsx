@@ -15,6 +15,7 @@ type Props = {
   stages: ProgressStage[];
   activeStage: ProgressStage;
   setCurrentStage: (item: ProgressStage | null) => void;
+  onComplete: () => void;
 };
 
 export function LearningHeader({
@@ -22,6 +23,7 @@ export function LearningHeader({
   onSkipStages,
   stages,
   setCurrentStage,
+  onComplete,
   activeStage,
 }: Props) {
   const { t } = useLocalTranslation(learning);
@@ -42,10 +44,23 @@ export function LearningHeader({
         />
       </div>
       <div className={s.header_part}>
-        <Button styles={learningBtn} type="secondary" onClick={onSkipStages}>
-          {t('moveTo')}
-          <LearningSvgSelector id="arrow-right" />
-        </Button>
+        {
+          activeStage.id !== 4 && (
+            <Button
+              styles={learningBtn}
+              type="secondary"
+              onClick={onSkipStages}
+            >
+              {t('moveTo')}
+              <LearningSvgSelector id="arrow-right" />
+            </Button>
+          )
+          //  : (
+          //   <Button styles={learningBtn} type="secondary" onClick={onSkipStages}>
+          //     {t('complete')}
+          //   </Button>
+          // )
+        }
       </div>
     </div>
   );
