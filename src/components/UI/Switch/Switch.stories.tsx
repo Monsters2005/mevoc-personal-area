@@ -17,7 +17,7 @@ export const DefaultState = Template.bind({});
 
 DefaultState.args = {
   defaultChecked: true,
-  onChange: state => {
-    console.log(state);
+  onChange: () => {
+    console.log();
   },
 };

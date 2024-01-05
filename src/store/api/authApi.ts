@@ -29,6 +29,7 @@ export const authApi = baseApi.injectEndpoints({
           body,
         };
       },
+      transformResponse: (response: { data: Tokens }, meta, arg) => response.data,
     }),
     signout: builder.mutation<void, void>({
       query: () => ({
@@ -76,6 +77,20 @@ export const authApi = baseApi.injectEndpoints({
         body,
       }),
     }),
+    mfaQR: builder.mutation<{ url: string }, void>({
+      query: () => ({
+        url: `${path}/mfa/qr`,
+        method: 'POST',
+      }),
+    }),
+    mfaCode: builder.mutation<{ valid: boolean }, { token: string }>({
+      query: body => ({
+        url: `${path}/mfa/code`,
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: ['Mfa'],
+    }),
   }),
 });
 
@@ -87,4 +102,6 @@ export const {
   useForgotPasswordMutation,
   useChangePasswordMutation,
   useVerifyMutation,
+  useMfaQRMutation,
+  useMfaCodeMutation,
 } = authApi;

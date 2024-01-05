@@ -13,7 +13,7 @@ export const userApi = baseApi.injectEndpoints({
         url: `${path}/me`,
         method: 'GET',
       }),
-      providesTags: [{ type: 'User' }],
+      providesTags: [{ type: 'User' }, 'Mfa'],
     }),
     getAllUsers: builder.query<User[], void>({
       query: () => ({
@@ -49,6 +49,16 @@ export const userApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ['User'],
     }),
+    toggleMfa: builder.mutation<void, { code: string }>({
+      query: body => ({
+        url: `${path}/me/mfa`,
+        method: 'PUT',
+        body: {
+          code: body.code,
+        },
+      }),
+      invalidatesTags: ['Mfa'],
+    }),
   }),
 });
 
@@ -59,4 +69,5 @@ export const {
   useDeleteUserMutation,
   useGetUserByIdQuery,
   useUpdateUserMutation,
+  useToggleMfaMutation,
 } = userApi;

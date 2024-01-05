@@ -155,7 +155,6 @@ export default function ListManagementPage() {
   };
 
   const handleRename = async (data: Partial<List>) => {
-    console.log('ok');
     try {
       await updateList({ id: data.id || 0, name: data.name });
       eventBus.emit(EventTypes.notification, {

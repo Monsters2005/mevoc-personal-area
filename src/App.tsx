@@ -20,6 +20,7 @@ import { UserProfilePage } from './pages/UserProfile/UserProfile';
 import { SignInPage } from './pages/SignIn/SignIn';
 import SelectedWordsProvider from './providers/SelectedWordsProvider';
 import PersonalizationLayout from './layouts/PersonalizationLayout/PersonalizationLayout';
+import { TFAuthPage } from './pages/TFAuth/TFAuth';
 
 function App() {
   const { pathname } = useLocation();
@@ -69,6 +70,7 @@ function App() {
             </div>
           ) : (
             <Routes>
+              <Route path={Path.TFAUTH} element={<TFAuthPage />} />
               <Route path="/learning" element={<LearningPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/signin" element={<SignInPage />} />

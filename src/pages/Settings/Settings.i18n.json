@@ -21,7 +21,14 @@
     "textMsgTitle": "Text message",
     "textMsgContent": "Use your mobile phone to receive a text message with an authentication code to enter when you log in to Mevoc.",
     "authAppTitle": "Authentication app",
-    "authAppContent": "Use a mobile authentication app to get a verification code to enter every time you log in to Mevoc."
+    "authAppContent": "Use a mobile authentication app to get a verification code to enter every time you log in to Mevoc.",
+    "errorQRCodeTitle": "An error occurred",
+    "errorQRCodeBody": "Something went wrong while trying to set your two-factor authentication. Please try again.",
+    "authTitle": "Authentication app",
+    "authTFBody": "Use a mobile authentication app to get a verification code to enter every time you log in to Mevoc.",
+    "authTwoAuthTitle": "Two-factor authentication",
+    "qrAddTitle": "Your QR Code",
+    "qrAddBody": "Scan this QR-code to add Mevoc to your preferred authenticator app."
   },
   "ru": {
     "account": "Аккаунт",
@@ -45,7 +52,14 @@
     "textMsgTitle": "Текстовое сообщение",
     "textMsgContent": "Используйте свой мобильный телефон, чтобы получить текстовое сообщение с кодом аутентификации, который необходимо ввести при входе в систему Mevoc.",
     "authAppTitle": "Приложение для аутентификации",
-    "authAppContent": "Используйте мобильное приложение для аутентификации, чтобы получать код подтверждения, который нужно вводить каждый раз при входе в Mevoc."
+    "authAppContent": "Используйте мобильное приложение для аутентификации, чтобы получать код подтверждения, который нужно вводить каждый раз при входе в Mevoc.",
+    "errorQRCodeTitle": "An error occurred",
+    "errorQRCodeBody": "Something went wrong while trying to set your two-factor authentication. Please try again.",
+    "authTitle": "Приложение для аутентификации",
+    "authTFBody": "Используйте мобильное приложение для аутентификации, чтобы получать код подтверждения, который нужно вводить каждый раз при входе в Mevoc.",
+    "authTwoAuthTitle": "Двухфакторная аутентификация",
+    "qrAddTitle": "Ваш QR-код",
+    "qrAddBody": "Отсканируйте этот QR-код, чтобы добавить Mevoc в свое предпочтительное приложение для аутентификации."
   },
   "de": {
     "account": "Konto",
@@ -69,7 +83,15 @@
     "textMsgTitle": "Textnachricht ",
     "textMsgContent": "Verwenden Sie Ihr Mobiltelefon, um eine SMS mit einem Authentifizierungscode zu erhalten, den Sie eingeben müssen, wenn Sie sich bei Mevoc anmelden.",
     "authAppTitle": "Authentifizierungs-App",
-    "authAppContent": "Verwenden Sie eine mobile Authentifizierungs-App, um einen Bestätigungscode zu erhalten, den Sie jedes Mal eingeben müssen, wenn Sie sich bei Mevoc anmelden."
+    "authAppContent": "Verwenden Sie eine mobile Authentifizierungs-App, um einen Bestätigungscode zu erhalten, den Sie jedes Mal eingeben müssen, wenn Sie sich bei Mevoc anmelden.",
+
+    "errorQRCodeTitle": "Ein Fehler ist aufgetreten",
+    "errorQRCodeBody": "Es ist ein Fehler aufgetreten beim Versuch, die Zwei-Faktor-Authentifizierung einzurichten. Bitte versuchen Sie es erneut.",
+    "authTitle": "Authentifizierungs-App",
+    "authTFBody": "Verwenden Sie eine mobile Authentifizierungs-App, um einen Bestätigungscode zu erhalten, den Sie jedes Mal eingeben müssen, wenn Sie sich bei Mevoc anmelden.",
+    "authTwoAuthTitle": "Zwei-Faktor-Authentifizierung",
+    "qrAddTitle": "Ihr QR-Code",
+    "qrAddBody": "Scannen Sie diesen QR-Code, um Mevoc zu Ihrer bevorzugten Authentifizierungs-App hinzuzufügen."
   },
   "fr": {
     "account": "Compte",
@@ -93,7 +115,14 @@
     "textMsgTitle": "message texte",
     "textMsgContent": "Utilisez votre téléphone portable pour recevoir un SMS avec un code d'authentification à entrer lorsque vous vous connectez à Mevoc.",
     "authAppTitle": "application d'authentification",
-    "authAppContent": "Utilisez une application d'authentification mobile pour obtenir un code de vérification à saisir chaque fois que vous vous connectez à Mevoc."
+    "authAppContent": "Utilisez une application d'authentification mobile pour obtenir un code de vérification à saisir chaque fois que vous vous connectez à Mevoc.",
+    "errorQRCodeTitle": "Une erreur s'est produite",
+    "errorQRCodeBody": "Une erreur s'est produite lors de la tentative de configuration de votre authentification à deux facteurs. Veuillez réessayer.",
+    "authTitle": "Application d'authentification",
+    "authTFBody": "Utilisez une application d'authentification mobile pour obtenir un code de vérification à saisir chaque fois que vous vous connectez à Mevoc.",
+    "authTwoAuthTitle": "Authentification à deux facteurs",
+    "qrAddTitle": "Votre QR Code",
+    "qrAddBody": "Scannez ce code QR pour ajouter Mevoc à votre application d'authentification préférée."
   },
   "es": {
     "account": "Cuenta",
@@ -117,7 +146,14 @@
     "textMsgTitle": "mensaje de texto",
     "textMsgContent": "Use su teléfono móvil para recibir un SMS con un código de autenticación para ingresar cuando inicie sesión en Mevoc",
     "authAppTitle": "aplicación de autenticación",
-    "authAppContent": "Use una aplicación de autenticación móvil para obtener un código de verificación para ingresar cada vez que inicie sesión en Mevoc."
+    "authAppContent": "Use una aplicación de autenticación móvil para obtener un código de verificación para ingresar cada vez que inicie sesión en Mevoc.",
+    "errorQRCodeTitle": "Se produjo un error",
+    "errorQRCodeBody": "Algo salió mal al intentar configurar su autenticación de dos factores. Por favor, inténtelo de nuevo.",
+    "authTitle": "Aplicación de autenticación",
+    "authTFBody": "Utilice una aplicación de autenticación móvil para obtener un código de verificación para ingresar cada vez que inicie sesión en Mevoc.",
+    "authTwoAuthTitle": "Autenticación de dos factores",
+    "qrAddTitle": "Tu código QR",
+    "qrAddBody": "Escanee este código QR para agregar Mevoc a su aplicación de autenticación preferida."
   },
   "se": {
     "account": "Användarkonto",
@@ -141,6 +177,13 @@
     "textMsgTitle": "textmeddelande",
     "textMsgContent": "Använd din mobiltelefon för att ta emot ett SMS med en autentiseringskod att ange när du loggar in på Mevoc.",
     "authAppTitle": "autentiseringsapp",
-    "authAppContent": "Använd en mobil autentiseringsapp för att få en verifieringskod att ange varje gång du loggar in på Mevoc."
+    "authAppContent": "Använd en mobil autentiseringsapp för att få en verifieringskod att ange varje gång du loggar in på Mevoc.",
+    "errorQRCodeTitle": "Ett fel inträffade",
+    "errorQRCodeBody": "Något gick fel när du försökte ställa in din tvåfaktorsautentisering. Var god försök igen.",
+    "authTitle": "Autentiseringsapp",
+    "authTFBody": "Använd en mobil autentiseringsapp för att få en verifieringskod att ange varje gång du loggar in på Mevoc.",
+    "authTwoAuthTitle": "Tvåfaktorsautentisering",
+    "qrAddTitle": "Din QR-kod",
+    "qrAddBody": "Skanna den här QR-koden för att lägga till Mevoc i din föredragna autentiseringsapp."
   }
 }

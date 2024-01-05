@@ -1,3 +1,4 @@
+/* eslint-disable */
 import classNames from 'classnames';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';

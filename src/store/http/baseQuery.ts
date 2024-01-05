@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import {
   BaseQueryFn,
   FetchArgs,
@@ -7,12 +8,10 @@ import {
 import { HTTP_UNAUTHORIZED } from '../../constants/httpStatuses';
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.REACT_APP_BACKEND_URL,
   credentials: 'include',
   prepareHeaders: headers => {
     headers.append('Content-Type', 'application/json');
     headers.append('accept', 'application/json');
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
     return headers;
   },
 });
@@ -23,6 +22,11 @@ export const baseQueryWithReauth: BaseQueryFn<
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
+  if (result.meta?.response?.status === 301) {
+    window.location.href = '/tfauth';
+    return result;
+  }
+
   if (result.error && result.error.status === HTTP_UNAUTHORIZED) {
     const { data }: any = await baseQuery(
       { url: 'auth/refresh', method: 'POST' },
@@ -40,5 +44,6 @@ export const baseQueryWithReauth: BaseQueryFn<
       return result;
     }
   }
+
   return result;
 };

@@ -81,14 +81,23 @@ export function WordPack({ item }: Props) {
         <Button
           type="primary"
           styles={primaryMiddle}
-          onClick={() => setCurrentModal(
-            <WordpackModal onConfirm={() => addHandler()} wordpack={item} />
-          )}
+          onClick={
+            () =>
+              // eslint-disable-next-line
+              setCurrentModal(
+                <WordpackModal
+                  onConfirm={() => addHandler()}
+                  wordpack={item}
+                />
+              )
+            // eslint-disable-next-line
+          }
         >
           {t('viewMore')}
         </Button>
 
         <button
+          aria-label="add"
           className={classNames(s.wordpack_add, {
             [s.wordpack_added]: added,
           })}

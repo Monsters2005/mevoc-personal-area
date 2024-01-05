@@ -10,5 +10,5 @@ export default yup.object().shape({
   location: yup
     .string()
     .required('Please select the country you are based in'),
-  phoneNumber: yup.string().required('Please enter your phone number'),
+  phoneNumber: yup.string(),
 });
