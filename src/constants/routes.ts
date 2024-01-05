@@ -2,6 +2,7 @@ export enum Path {
   HOME = 'dashboard',
 
   AUTH = 'auth',
+  TFAUTH = 'tfauth',
   USER = 'users',
   SIGN_UP = 'signup',
   SIGN_IN = 'signin',

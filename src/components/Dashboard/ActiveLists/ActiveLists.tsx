@@ -28,8 +28,6 @@ export function DashboardActiveLists({ onAddList }: Props) {
     skip: !user?.id,
   });
 
-  console.log(isLoading);
-
   useEffect(() => {
     if (lists) setItems(lists);
   }, [lists]);

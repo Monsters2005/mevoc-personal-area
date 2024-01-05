@@ -13,7 +13,5 @@ export default function PersonalizationLayout({
     onThemeSelect(user?.theme || 'dark');
   }, [user?.theme]);
 
-  console.log(user);
-
   return <div>{children}</div>;
 }

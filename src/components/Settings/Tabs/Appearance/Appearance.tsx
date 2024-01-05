@@ -1,5 +1,5 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
-import classNames from 'classnames';
 import {
   accentColors,
   currentTheme,
@@ -11,10 +11,7 @@ import { MultiSelector } from '../../../UI/MultiSelector/MultiSelector';
 import s from './Appearance.module.scss';
 import { SettingsColorSelect } from './ColorSelect/ColorSelect';
 import settings from '../../../../pages/Settings/Settings.i18n.json';
-import { useIsMounted } from '../../../../hooks/useDelay';
 import { hexToRgb } from '../../../../utils/lib/hexToRgb';
-import { darkTheme, lightTheme } from '../../../../constants/kit/themes';
-import { useLocalStorage } from '../../../../hooks/useLocalStorage';
 import {
   useGetCurrentUserQuery,
   useUpdateUserMutation,

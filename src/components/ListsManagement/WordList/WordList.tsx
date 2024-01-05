@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { CreateWordDto } from '../../../@types/dto/word/create.dto';
 import { EditWordDto } from '../../../@types/dto/word/edit.dto';
@@ -93,11 +94,13 @@ export function DashboardWordList({ selectedList }: Props) {
     <div className={s.wordlist_container}>
       <button
         className={s.wordlist_addword}
-        onClick={() => setCurrentModal(
-          <AddWordModal
-            onAddWord={(data: CreateWordDto) => handleWord(data)}
-          />
-        )}
+        onClick={() =>
+          setCurrentModal(
+            <AddWordModal
+              onAddWord={(data: CreateWordDto) => handleWord(data)}
+            />
+          )
+        }
       >
         <ListsManagementSvgSelector id="plus" />
       </button>

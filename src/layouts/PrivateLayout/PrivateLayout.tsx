@@ -15,7 +15,6 @@ export function PrivateLayout({
   const navigate = useNavigate();
 
   if (isLoading) return <Loader styles={centeredLoader} size={150} />;
-
   if (isError || !isAuth) {
     navigate('/signin');
     return null;

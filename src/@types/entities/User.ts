@@ -27,4 +27,5 @@ export type User = {
       };
     };
   };
+  mfa: boolean;
 };

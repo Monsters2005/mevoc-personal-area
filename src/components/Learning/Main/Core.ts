@@ -101,7 +101,6 @@ export class LearningCore {
     this.currentIndex = 0;
     this.currentCell = this.letters[this.currentIndex];
     this.pushEvent();
-    console.log(this);
   }
 
   handleCardPick(item: Letter) {

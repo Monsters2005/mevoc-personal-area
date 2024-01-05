@@ -11,6 +11,8 @@ import './styles/index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* eslint-disable-next-line */}
+    {/* @ts-ignore */}
     <BrowserRouter>
       <ModalProvider>
         <ActiveListsProvider>

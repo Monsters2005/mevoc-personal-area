@@ -2,6 +2,7 @@ import { ExecException } from 'child_process';
 import React, { ErrorInfo, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Exception } from 'sass';
+import { useDispatch } from 'react-redux';
 import { SignInDto } from '../../@types/dto/auth/signin.dto';
 import { Tokens } from '../../@types/dto/auth/tokens.dto';
 import { CustomError } from '../../@types/entities/ErrorObject';
@@ -21,6 +22,11 @@ import { languages } from '../../constants/kit/languages';
 import { Option } from '../../components/UI/DropDown/types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { LSKeys } from '../../constants/LSKeys';
+import {
+  cleanLogin,
+  setPassword,
+  setUsername,
+} from '../../store/slices/loginSlice';
 
 export function SignInPage() {
   const navigate = useNavigate();
@@ -34,18 +40,24 @@ export function SignInPage() {
     'English'
   );
 
+  const dispatch = useDispatch();
+
   const login = async (data: SignInDto) => {
     const dataObj: SignInDto = {
       email: data.email,
       password: data.password,
     };
 
+    dispatch(setUsername(data.email));
+    dispatch(setPassword(data.password));
+
     try {
       await signIn(dataObj)
         .unwrap()
         .then((result: unknown) => {
           const tokens = result as Tokens;
-          window.localStorage.setItem('accessToken', tokens.accessToken);
+          window.localStorage.setItem('accessToken', tokens?.accessToken);
+          cleanLogin();
         });
       eventBus.emit(EventTypes.notification, {
         message: SUCCESS_LOGIN,
@@ -57,8 +69,9 @@ export function SignInPage() {
       setLangDef('English');
       eventBus.emit(EventTypes.setLang, 'English');
     } catch (e: unknown) {
+      console.error(e);
       eventBus.emit(EventTypes.notification, {
-        message: (e as CustomError).data.message,
+        message: (e as CustomError)?.data?.message,
         title: t('error'),
         type: NotificationType.DANGER,
       });

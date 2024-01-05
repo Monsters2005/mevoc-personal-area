@@ -23,7 +23,14 @@ export function DashboardActiveList({ item, index }: Props) {
 
   function selectList() {
     setSelected(state => !state);
-    if (selected) setCurrentLists((state: List[] | []) => state.filter(el => el.id !== item.id));
+    if (selected) {
+      setCurrentLists(
+        (state: List[] | []) =>
+          // eslint-disable-next-line
+          state.filter(el => el.id !== item.id)
+        // eslint-disable-next-line
+      );
+    }
     if (!selected) setCurrentLists((state: List[] | []) => [...state, item]);
   }
 
@@ -46,6 +53,7 @@ export function DashboardActiveList({ item, index }: Props) {
           role="presentation"
         >
           <button
+            aria-label="checkbox"
             className={classNames(s.activelist_checkbox, {
               [s.activelist_checkbox_selected]: selected,
             })}

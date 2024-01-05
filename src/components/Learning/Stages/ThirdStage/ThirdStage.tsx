@@ -29,7 +29,6 @@ export default function ThirdStage({ word, currentStage, onComplete }: Stage) {
   const start = () => learning.start();
 
   useEffect(() => {
-    console.log('started');
     areaRef.current?.focus();
     start();
   }, [word]);
