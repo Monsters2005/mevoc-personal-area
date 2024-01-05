@@ -1,4 +1,7 @@
 import React, { CSSProperties } from 'react';
+import { useGetCurrentUserQuery } from '../../../store/api/userApi';
+import { rgbToHex } from '../../../utils/lib/colorTransform';
+import { defaultColorValues } from '../../../constants/kit/themes';
 
 type Props = {
   size?: number;
@@ -8,11 +11,11 @@ type Props = {
 };
 
 export function Loader({
-  size = 150,
-  color = '#FFEBA7',
-  stroke = 3,
-  styles,
+  size = 150, color, stroke = 3, styles,
 }: Props) {
+  const { data: user } = useGetCurrentUserQuery();
+  const accentColor = color || rgbToHex(user?.accentColor || defaultColorValues.accentColor);
+
   return (
     <div style={styles}>
       <svg
@@ -27,7 +30,7 @@ export function Loader({
             cy="0"
             r="8.333333333333334"
             fill="none"
-            stroke={color}
+            stroke={accentColor}
             strokeWidth={stroke}
             strokeDasharray="26.179938779914945 26.179938779914945"
           >
@@ -47,7 +50,7 @@ export function Loader({
             cy="0"
             r="16.666666666666668"
             fill="none"
-            stroke={color}
+            stroke={accentColor}
             strokeWidth={stroke}
             strokeOpacity={0.9}
             strokeDasharray="52.35987755982989 52.35987755982989"
@@ -68,7 +71,7 @@ export function Loader({
             cy="0"
             r="25"
             fill="none"
-            stroke={color}
+            stroke={accentColor}
             strokeWidth={stroke}
             strokeOpacity={0.8}
             strokeDasharray="78.53981633974483 78.53981633974483"
@@ -89,7 +92,7 @@ export function Loader({
             cy="0"
             r="33.333333333333336"
             fill="none"
-            stroke={color}
+            stroke={accentColor}
             strokeWidth={stroke}
             strokeOpacity={0.7}
             strokeDasharray="104.71975511965978 104.71975511965978"
@@ -110,7 +113,7 @@ export function Loader({
             cy="0"
             r="41.666666666666664"
             fill="none"
-            stroke={color}
+            stroke={accentColor}
             strokeOpacity={0.6}
             strokeWidth={stroke}
             strokeDasharray="130.89969389957471 130.89969389957471"

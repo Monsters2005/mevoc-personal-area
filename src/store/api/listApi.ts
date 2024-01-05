@@ -37,7 +37,7 @@ export const listApi = baseApi.injectEndpoints({
     updateList: builder.mutation<List, Partial<List> & Pick<List, 'id'>>({
       query(body) {
         return {
-          url: `${path}/${body.id}`,
+          url: path,
           method: 'PUT',
           body,
         };
